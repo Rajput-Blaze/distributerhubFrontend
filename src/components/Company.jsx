@@ -40,9 +40,9 @@ function Index(props) {
   const [inputFieldscity, setInputFieldscity] = useState([
     { id: uuidv4(), state: '', city: '', cityDropDown: [] },
   ]);
-  const [successMs, setsuccessMs] = useState('');
+  const [successno, setsuccessno] = useState(false);
   const [successMsg, setsuccessMsg] = useState('');
-  const [post, setpost] = useState([]);
+  const [checknumber, setcheckNumber] = useState(false);
   const [brand, setbrand] = useState([]);
   const [Type, setType] = useState([]);
   const [viewData, setViewData] = useState();
@@ -75,6 +75,7 @@ function Index(props) {
     stateee();
     categoryy();
   }, []);
+
   const sweetAlert = (msg) => {
     Swal.fire({
       title: msg,
@@ -281,7 +282,7 @@ function Index(props) {
         .get('https://api.postalpincode.in/pincode/' + pincode)
         .then((res) => {
           if (res?.data?.[0]?.PostOffice) {
-            setpost(res.data[0].PostOffice);
+            // setpost(res.data[0].PostOffice);
             gitBlock(res.data[0].PostOffice[0].District);
             let obj = {
               district: res.data[0].PostOffice[0].District,
@@ -296,7 +297,7 @@ function Index(props) {
           }
         });
     } else {
-      setpost([]);
+      // setpost([]);
     }
   };
   const getBrandList = () => {
@@ -441,6 +442,35 @@ function Index(props) {
     );
     setIntrestinputFields(values);
   };
+  const checkNumber = (e) => {
+    var phoneNo = e.target.value;
+    let checkReg = /(^[5-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$)/g;
+
+    if (checkReg.test(phoneNo)) {
+      setcheckNumber(true);
+    }
+  };
+  const checkNumber2 = (e) => {
+    console.log(e, 'e');
+    var phoneNo = e;
+    let checkReg = /(^[5-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$)/g;
+
+    if (checkReg.test(phoneNo)) {
+      axios
+        .post(apiUrl + 'user/getPhone', {
+          phoneNo: phoneNo,
+        })
+        .then(function (respon) {
+          seterrorMsg(respon.data.message);
+
+          //  console.log(`respon`, respon);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return (
     <>
       {/* <Header /> */}
@@ -611,12 +641,12 @@ function Index(props) {
                                 placeholder='Enter mobile number...'
                                 // ref={register}
                                 ref={register({
-                                  //   required: 'This is required ',
-                                  //   pattern: {
-                                  //     value:
-                                  //       /^[5-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/,
-                                  //     message: 'Enter Valid Contact Number',
-                                  //   },
+                                  required: 'This is required ',
+                                  pattern: {
+                                    value:
+                                      /^[5-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/,
+                                    message: 'Enter Valid Contact Number',
+                                  },
                                 })}
                               />
                               <ErrorMessage
