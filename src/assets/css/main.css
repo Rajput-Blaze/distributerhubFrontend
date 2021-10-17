@@ -41189,6 +41189,18 @@ select.form-control {
 .cus_d_none_sm{
   display: none;
 }
+.offset_1_sm{
+margin-left: 8.3333333333%;
+}
+
+}
+.padding_10{
+  padding: 10%;
+}
+.cus_btn_center{
+  display: flex;
+    align-content: center;
+    justify-content: center;
 }
 @media screen and (min-width: 768px){
   .serch {

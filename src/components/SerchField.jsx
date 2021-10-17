@@ -18,10 +18,11 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Swal from 'sweetalert2';
 import * as session from '../utils/session';
+import Loaderr from './Loaderr';
 function SerchField(props) {
   const history = useHistory();
 
-  const [successMs, setsuccessMs] = useState('');
+  const [isLoading, setisLoading] = useState(false);
   const [successMsg, setsuccessMsg] = useState('');
   const [post, setpost] = useState([]);
   const [brand, setbrand] = useState([]);
@@ -91,6 +92,7 @@ function SerchField(props) {
     setsubCategory(category[e]);
   };
   const serch = (formsubmitdata) => {
+    setisLoading(true);
     if (session.getToken() == null) {
       Swal.fire({
         title: 'Login To Perform search',
@@ -120,6 +122,9 @@ function SerchField(props) {
         })
         .catch(function (error) {
           console.log(`error`, error);
+        })
+        .finally((e) => {
+          setisLoading(false);
         });
     }
   };
@@ -271,12 +276,13 @@ function SerchField(props) {
                       </div>
                       <div className=' row align-item-center'>
                         <div className='offset-2 col-8 bb mt-2'>
-                          <span className=''>
+                          <span className='d-flex'>
                             <button
-                              type='submit'
-                              className='btn px-5 btn-primary btn-lg'>
+                              type={isLoading ? 'button' : 'submit'}
+                              className='btn px-5 btn-primary btn-lg mr-2'>
                               search
                             </button>
+                            {isLoading ? <Loaderr /> : ''}
                           </span>
                         </div>
                       </div>
@@ -287,18 +293,22 @@ function SerchField(props) {
             </div>
             <h4 class='container-fluid mt-5 pt-5'>
               {searchresult.length != 0
-                ? state?.type.toUpperCase() + ' Record found'
+                ? state?.type.charAt(0).toUpperCase() +
+                  state?.type.slice(1) +
+                  ' Record found'
                 : ''}
             </h4>
-            <div className='row justify-content-center h-100 align-items-center'>
-              {/* <div className='justify-content-center h-100 align-items-center'> */}
+            <div className='row  h-100 align-items-center'>
+              {/* <div className='justify-content-center h-100 align-items-center'>
+              charAt(0).toUpperCase() + str.slice(1)
+               */}
 
               {searchresult.map((data, index) => (
-                <div class='col-xl-3  col-md-6 col-sm-6 col-12'>
+                <div class='col-10  col-md-4 col-lg-3 offset_1_sm'>
                   <div class='x_car_offer_main_boxes_wrapper float_left'>
                     <div class='x_car_offer_img float_left'>
                       <Image
-                        className='img-fluid'
+                        className='img-fluid padding_10'
                         alt='img'
                         src={apiUrl + data.profileImg}
                       />
@@ -325,7 +335,7 @@ function SerchField(props) {
                           </span>
                         </i>
                       </span>
-                      <div class='BtnFull buttonHolder buttonHolder virtualNumberBtn'>
+                      <div class='BtnFull cus_btn_center buttonHolder buttonHolder virtualNumberBtn'>
                         <div
                           class=' btn-dcb btn-col-cus'
                           onClick={() => view(data)}>
