@@ -41176,6 +41176,18 @@ select.form-control {
 @media screen and (max-width: 540px){
   .serch {
     margin-top: 10vh; z-index: 9;
+    
+}
+.btn_cus{
+  padding: 10px 30px; 
+  margin: 5px 0px;  
+}
+.cus_h1_text{
+  font-size: 15px;
+  text-align: center;
+}
+.cus_d_none_sm{
+  display: none;
 }
 }
 @media screen and (min-width: 768px){

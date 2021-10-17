@@ -537,7 +537,7 @@ function Index(props) {
                                 Last Name
                               </label>
                               <input
-                                // type="number"
+                                type='text'
                                 className='form-control'
                                 id='val-username'
                                 name='lastName'
@@ -761,6 +761,7 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='contactNumber'
+                                onKeyPress={(e) => restrictAlpha(e)}
                                 value={state?.contactNumber}
                                 onChange={handleChange}
                                 placeholder='Enter Contact number..'
@@ -781,6 +782,7 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='alternativeNumber'
+                                onKeyPress={(e) => restrictAlpha(e)}
                                 value={state?.alternativeNumber}
                                 onChange={handleChange}
                                 placeholder='Enter Alternative number..'
@@ -797,7 +799,7 @@ function Index(props) {
                               </label>
 
                               <input
-                                type='text'
+                                type='email'
                                 className='form-control'
                                 id='val-username'
                                 name='alternativeEmail'
@@ -1048,8 +1050,10 @@ function Index(props) {
                         <div className='row'>
                           {inputFields.map((inputField) => (
                             <div key={inputField.id} className='row w-100 bb'>
-                              <div className='col-2 bb'>Sub Category</div>
-                              <div className='col-4 bb'>
+                              <div className='col-2 cus_d_none_sm bb'>
+                                Sub Category
+                              </div>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
@@ -1071,7 +1075,7 @@ function Index(props) {
                                   ))}
                                 </select>
                               </div>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <input
                                   type='text'
                                   className='form-control'
@@ -1090,12 +1094,12 @@ function Index(props) {
                                   })}
                                 />
                               </div>
-                              <div className='col-2 bb'>
+                              <div className='col-md-2 col-sm-6 bb'>
                                 {inputFields.length == 1 ? (
                                   ''
                                 ) : (
                                   <span
-                                    class='badge light badge-danger'
+                                    class='badge light badge-danger btn_cus'
                                     onClick={() =>
                                       inputFields.length == 1
                                         ? ''
@@ -1106,7 +1110,7 @@ function Index(props) {
                                 )}
 
                                 <span
-                                  class='badge light badge-success ml-1'
+                                  class='badge light badge-success btn_cus ml-1'
                                   onClick={handleAddFields}>
                                   Add
                                 </span>
@@ -1114,14 +1118,14 @@ function Index(props) {
                             </div>
                           ))}
 
-                          <h5 class='mt-5 mb-2'>
+                          <h5 class='mt-5 col-sm-6 mb-2 cus_h1_text'>
                             Upload Product Image (* Multiple Image )
                           </h5>
                           <div className='row w-100 '>
-                            <div className='col-6 '>
+                            <div className='col-md-6 col-sm-12 '>
                               <div class='form-group '>
                                 <label
-                                  class='col-form-label'
+                                  class='col-form-label cus_d_none_sm'
                                   for='val-username'>
                                   Select Multiple Image
                                 </label>
@@ -1193,8 +1197,10 @@ function Index(props) {
                         <div className='row'>
                           {intrestinputFields.map((inputField) => (
                             <div key={inputField.id} className='row w-100 bb'>
-                              <div className='col-2 bb'>Sub Category</div>
-                              <div className='col-4 bb'>
+                              <div className='col-2 cus_d_none_sm bb'>
+                                Sub Category
+                              </div>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
@@ -1219,7 +1225,7 @@ function Index(props) {
                                   ))}
                                 </select>
                               </div>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <input
                                   type='text'
                                   className='form-control'
@@ -1246,7 +1252,7 @@ function Index(props) {
                                   ''
                                 ) : (
                                   <span
-                                    class='badge light badge-danger'
+                                    class='badge light badge-danger btn_cus'
                                     onClick={() =>
                                       intrestinputFields.length == 1
                                         ? ''
@@ -1259,20 +1265,20 @@ function Index(props) {
                                 )}
 
                                 <span
-                                  class='badge light badge-success ml-1'
+                                  class='badge light btn_cus badge-success ml-1'
                                   onClick={intresthandleAddFields}>
                                   Add
                                 </span>
                               </div>
                             </div>
                           ))}
-                          <h5 class='mt-5 mb-2'>
+                          <h5 class='mt-5 mb-2 cus_h1_text'>
                             Select preferred location for distribution-ship
                             appointment
                           </h5>
                           {inputFieldscity.map((InputFieldcity) => (
                             <div className='row w-100 bb'>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
@@ -1297,7 +1303,7 @@ function Index(props) {
                                   ))}
                                 </select>
                               </div>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <Multiselect
                                   isObject={false}
                                   onRemove={function noRefCheck() {}}
@@ -1312,12 +1318,12 @@ function Index(props) {
                                 />
                               </div>
 
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 {inputFieldscity.length == 1 ? (
                                   ''
                                 ) : (
                                   <span
-                                    class='badge light badge-danger'
+                                    class='badge light badge-danger btn_cus'
                                     onClick={() =>
                                       cityRemoveFields(InputFieldcity.id)
                                     }>
@@ -1326,7 +1332,7 @@ function Index(props) {
                                 )}
 
                                 <span
-                                  class='badge light badge-success ml-1'
+                                  class='badge  btn_cus light badge-success ml-1'
                                   onClick={handleAddFieldscity}>
                                   Add
                                 </span>
@@ -1371,7 +1377,7 @@ function Index(props) {
                               />
                             </div>
                           </div>
-                          <div class='col-12 mt-3'>
+                          <div class='col-12 my-3'>
                             <label for='exampleFormControlTextarea1'>
                               About Company
                             </label>

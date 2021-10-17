@@ -53,7 +53,7 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(1);
+  const [formToggle, setformToggle] = useState(2);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
@@ -450,6 +450,7 @@ function Index(props) {
               <div className='col-md-12'>
                 <div className='card widget-stat'>
                   <Stepper
+                    className='overflow'
                     steps={[
                       { label: 'Personal Detail' },
                       { label: 'firm Details' },
@@ -505,7 +506,7 @@ function Index(props) {
                                 Last Name
                               </label>
                               <input
-                                // type="number"
+                                type='text'
                                 className='form-control'
                                 id='val-username'
                                 name='lastName'
@@ -721,10 +722,12 @@ function Index(props) {
                               </label>
 
                               <input
-                                type='text'
+                                // type='text'
                                 className='form-control'
                                 id='val-username'
                                 name='contactNumber'
+                                maxLength='10'
+                                onKeyPress={(e) => restrictAlpha(e)}
                                 value={state.contactNumber}
                                 onChange={handleChange}
                                 placeholder='Enter Contact number..'
@@ -741,9 +744,11 @@ function Index(props) {
                               </label>
 
                               <input
-                                type='text'
+                                // type='text'
                                 className='form-control'
                                 id='val-username'
+                                onKeyPress={(e) => restrictAlpha(e)}
+                                maxLength='10'
                                 name='alternativeNumber'
                                 value={state.alternativeNumber}
                                 onChange={handleChange}
@@ -761,7 +766,7 @@ function Index(props) {
                               </label>
 
                               <input
-                                type='text'
+                                type='email'
                                 className='form-control'
                                 id='val-username'
                                 name='alternativeEmail'
@@ -881,10 +886,11 @@ function Index(props) {
                               </label>
 
                               <input
-                                type='text'
+                                type='number'
                                 className='form-control'
                                 id='val-username'
                                 name=' numberofEmployee'
+                                onKeyPress={(e) => restrictAlpha(e)}
                                 value={state.numberofEmployee}
                                 onChange={handleChange}
                                 placeholder='Enter Number of Employee'
@@ -921,7 +927,7 @@ function Index(props) {
                               </label>
 
                               <input
-                                type='text'
+                                type='link'
                                 className='form-control'
                                 id='val-username'
                                 name='website'
@@ -1086,7 +1092,7 @@ function Index(props) {
                           <div className='col-lg-12'>
                             <div className='form-group '>
                               <label
-                                className='col-form-label'
+                                className='col-form-label '
                                 htmlFor='val-username'>
                                 Select Category
                               </label>
@@ -1243,8 +1249,10 @@ function Index(props) {
                         <div className='row'>
                           {inputFields.map((inputField) => (
                             <div key={inputField.id} className='row w-100 bb'>
-                              <div className='col-2 bb'>Sub Category</div>
-                              <div className='col-4 bb'>
+                              <div className='col-2 cus_d_none_sm bb'>
+                                Sub Category
+                              </div>
+                              <div className='col-md-4 col-sm-12 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
@@ -1266,7 +1274,7 @@ function Index(props) {
                                   ))}
                                 </select>
                               </div>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-12 bb'>
                                 <input
                                   type='text'
                                   className='form-control'
@@ -1290,7 +1298,7 @@ function Index(props) {
                                   ''
                                 ) : (
                                   <span
-                                    class='badge light badge-danger'
+                                    class='badge light badge-danger btn_cus'
                                     onClick={() =>
                                       inputFields.length == 1
                                         ? ''
@@ -1301,7 +1309,7 @@ function Index(props) {
                                 )}
 
                                 <span
-                                  class='badge light badge-success ml-1'
+                                  class='badge light badge-success ml-1 btn_cus'
                                   onClick={handleAddFields}>
                                   Add
                                 </span>
@@ -1309,14 +1317,14 @@ function Index(props) {
                             </div>
                           ))}
 
-                          <h5 class='mt-5 mb-2'>
+                          <h5 class='mt-5 mb-2 cus_h1_text'>
                             Upload Product Image (* Multiple Image )
                           </h5>
                           <div className='row w-100 '>
-                            <div className='col-6 '>
+                            <div className='col-md-6 col-sm-12 '>
                               <div class='form-group '>
                                 <label
-                                  class='col-form-label'
+                                  class='col-form-label cus_d_none_sm'
                                   for='val-username'>
                                   Select Multiple Image
                                 </label>
@@ -1391,7 +1399,7 @@ function Index(props) {
                         <div className='row'>
                           {intrestinputFields.map((inputField) => (
                             <div key={inputField.id} className='row w-100 bb'>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
@@ -1419,7 +1427,7 @@ function Index(props) {
                                   ))}
                                 </select>
                               </div>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-6 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
@@ -1448,7 +1456,7 @@ function Index(props) {
                                   ''
                                 ) : (
                                   <span
-                                    class='badge light badge-danger'
+                                    class='badge light badge-danger btn_cus'
                                     onClick={() =>
                                       intrestinputFields.length == 1
                                         ? ''
@@ -1461,20 +1469,20 @@ function Index(props) {
                                 )}
 
                                 <span
-                                  class='badge light badge-success ml-1'
+                                  class='badge light badge-success btn_cus ml-1'
                                   onClick={intresthandleAddFields}>
                                   Add
                                 </span>
                               </div>
                             </div>
                           ))}
-                          <h5 class='mt-5 mb-2'>
+                          <h5 class='mt-5 mb-2 cus_h1_text'>
                             Select preferred location for distribution-ship
                             appointment
                           </h5>
                           {inputFieldscity.map((InputFieldcity) => (
                             <div className='row w-100 bb'>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-12 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
@@ -1499,7 +1507,7 @@ function Index(props) {
                                   ))}
                                 </select>
                               </div>
-                              <div className='col-4 bb'>
+                              <div className='col-md-4 col-sm-12 bb'>
                                 <Multiselect
                                   isObject={false}
                                   onRemove={function noRefCheck() {}}
@@ -1519,7 +1527,7 @@ function Index(props) {
                                   ''
                                 ) : (
                                   <span
-                                    class='badge light badge-danger'
+                                    class='badge light badge-danger btn_cus'
                                     onClick={() =>
                                       cityRemoveFields(InputFieldcity.id)
                                     }>
@@ -1528,7 +1536,7 @@ function Index(props) {
                                 )}
 
                                 <span
-                                  class='badge light badge-success ml-1'
+                                  class='badge light badge-success btn_cus ml-1'
                                   onClick={handleAddFieldscity}>
                                   Add
                                 </span>
@@ -1559,7 +1567,7 @@ function Index(props) {
                             <div class='col-12 col-sm-4'>
                               <label for='file'>Upload Logo/Vedio</label>
                             </div>
-                            <div class='col-12 col-sm-8 mt-4 mt-sm-0'>
+                            <div class='col-12 col-sm-8 my-3 mt-sm-0'>
                               <input
                                 class='multisteps-form__input form-control'
                                 type='file'
