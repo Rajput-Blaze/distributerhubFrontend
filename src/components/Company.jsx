@@ -470,7 +470,10 @@ function Index(props) {
         });
     }
   };
-
+  // console.log(`state`, state);
+  // cityhandle.map((data) => {
+  //   console.log(data, 'data');
+  // });
   return (
     <>
       {/* <Header /> */}
@@ -555,6 +558,7 @@ function Index(props) {
                                 className='col-form-label'
                                 for='val-username'>
                                 Company Name
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -701,6 +705,7 @@ function Index(props) {
                                 className='col-form-label'
                                 for='val-username'>
                                 Company Name
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -925,6 +930,11 @@ function Index(props) {
                                 htmlFor='val-username'>
                                 State
                               </label>
+                              {/* <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                State
+                              </label>
 
                               <input
                                 type='text'
@@ -936,6 +946,23 @@ function Index(props) {
                                 placeholder='Enter State name..'
                                 ref={register}
                               />
+                               */}
+                              <select
+                                className='form-control'
+                                id='exampleFormControlSelect1'
+                                name='state'
+                                // value={state?.state}
+                                // onChange={handleChange}
+                                onChange={(e) => {
+                                  handleChange(e);
+                                  handleStatefunforcity(e.target.value);
+                                }}
+                                ref={register}>
+                                <option value=''>Select State </option>
+                                {Object.keys(statehandle).map((data) => (
+                                  <option value={data}>{data}</option>
+                                ))}
+                              </select>
                             </div>
                           </div>
 
@@ -946,8 +973,23 @@ function Index(props) {
                                 htmlFor='val-username'>
                                 City/Village
                               </label>
-
-                              <input
+                              <select
+                                className='form-control'
+                                id='exampleFormControlSelect1'
+                                name='cityVillage'
+                                // value={state?.state}
+                                onChange={handleChange}
+                                // onChange={(e) => {
+                                //   handleChange(e);
+                                //   handleStatefunforcity(e.target.value);
+                                // }}
+                                ref={register}>
+                                <option value=''>Select State </option>
+                                {cityhandle.map((data) => (
+                                  <option value={data}>{data}</option>
+                                ))}
+                              </select>
+                              {/* <input
                                 type='text'
                                 className='form-control'
                                 id='val-username'
@@ -956,7 +998,7 @@ function Index(props) {
                                 onChange={handleChange}
                                 placeholder='Enter city-village name..'
                                 ref={register}
-                              />
+                              /> */}
                             </div>
                           </div>
 
@@ -1051,13 +1093,15 @@ function Index(props) {
                           {inputFields.map((inputField) => (
                             <div key={inputField.id} className='row w-100 bb'>
                               <div className='col-2 cus_d_none_sm bb'>
-                                Sub Category
+                                Sub Category{' '}
+                                <span className='text-danger'>*</span>
                               </div>
                               <div className='col-md-4 col-sm-6 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
                                   name='name'
+                                  required
                                   // value={state?.subCategory}
                                   // value={inputField.firstName}
                                   // onChange={handleChange}
@@ -1199,12 +1243,14 @@ function Index(props) {
                             <div key={inputField.id} className='row w-100 bb'>
                               <div className='col-2 cus_d_none_sm bb'>
                                 Sub Category
+                                <span className='text-danger'>*</span>
                               </div>
                               <div className='col-md-4 col-sm-6 bb'>
                                 <select
                                   className='form-control'
                                   id='exampleFormControlSelect1'
                                   name='name'
+                                  required
                                   // value={state?.subCategory}
                                   // value={inputField.firstName}
                                   // onChange={handleChange}
@@ -1367,6 +1413,7 @@ function Index(props) {
                               <input
                                 class='multisteps-form__input form-control'
                                 type='file'
+                                required
                                 accept='image/*'
                                 name='profileImg'
                                 onChange={fileChange}

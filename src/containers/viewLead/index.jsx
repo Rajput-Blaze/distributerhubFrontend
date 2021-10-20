@@ -22,12 +22,12 @@ function ViewProfile(props) {
   const [subCategory, setsubCategory] = useState(
     props?.location?.data?.subCategory ?? []
   );
-  subCategory.map((data) => {});
+
   const [intreset, setintreset] = useState(props.location.data?.intreset ?? []);
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
 
   const [state, setState] = React.useState(false ?? []);
-  console.log(`id`, id);
+
   useEffect(() => {
     const ongoing = (page) => {
       axios

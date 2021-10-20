@@ -523,7 +523,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 for='val-username'>
-                                Company Name
+                                Company Name{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -597,6 +598,7 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='phoneNo'
+                                required
                                 onChange={(e) => {
                                   seterrorMsg('');
                                   handleChange(e);
@@ -631,10 +633,11 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Password
+                                Password <span className='text-danger'>*</span>
                               </label>
                               <input
                                 type='password'
+                                required
                                 className='form-control'
                                 // onKeyPress={(e) => restrictAlpha(e)}
                                 id='val-username'
@@ -994,6 +997,85 @@ function Index(props) {
                                 htmlFor='val-username'>
                                 State
                               </label>
+                              {/* <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                State
+                              </label>
+
+                              <input
+                                type='text'
+                                className='form-control'
+                                id='val-username'
+                                name='state'
+                                value={state?.state}
+                                onChange={handleChange}
+                                placeholder='Enter State name..'
+                                ref={register}
+                              />
+                               */}
+                              <select
+                                className='form-control'
+                                id='exampleFormControlSelect1'
+                                name='state'
+                                // value={state?.state}
+                                // onChange={handleChange}
+                                onChange={(e) => {
+                                  handleChange(e);
+                                  handleStatefunforcity(e.target.value);
+                                }}
+                                ref={register}>
+                                <option value=''>Select State </option>
+                                {Object.keys(statehandle).map((data) => (
+                                  <option value={data}>{data}</option>
+                                ))}
+                              </select>
+                            </div>
+                          </div>
+
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
+                              <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                City/Village
+                              </label>
+                              <select
+                                className='form-control'
+                                id='exampleFormControlSelect1'
+                                name='cityVillage'
+                                // value={state?.state}
+                                onChange={handleChange}
+                                // onChange={(e) => {
+                                //   handleChange(e);
+                                //   handleStatefunforcity(e.target.value);
+                                // }}
+                                ref={register}>
+                                <option value=''>Select State </option>
+                                {cityhandle.map((data) => (
+                                  <option value={data}>{data}</option>
+                                ))}
+                              </select>
+                              {/* <input
+                                type='text'
+                                className='form-control'
+                                id='val-username'
+                                name='cityVillage'
+                                value={state?.cityVillage}
+                                onChange={handleChange}
+                                placeholder='Enter city-village name..'
+                                ref={register}
+                              /> */}
+                            </div>
+                          </div>
+
+                          {/* <div className='col-lg-6'>
+                            <div className='form-group '>
+                              <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                State
+                              </label>
 
                               <input
                                 type='text'
@@ -1027,7 +1109,7 @@ function Index(props) {
                                 ref={register}
                               />
                             </div>
-                          </div>
+                          </div> */}
 
                           <div className='col-lg-6'>
                             <div className='form-group '>
