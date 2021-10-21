@@ -161,7 +161,7 @@ function Index(props) {
       for (let i = 0; i < otherImage.length; i++) {
         formData.append('otherImage', otherImage[i]);
       }
-      formData.append('establishmentYear', Selectedyear);
+      formData.append('establishmentYear', Selectedyear.split(' ')[3]);
       formData.append('profileImg', state?.profileImg);
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
       formData.append('subCategory', JSON.stringify(inputFields));

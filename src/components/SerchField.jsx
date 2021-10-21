@@ -132,7 +132,7 @@ function SerchField(props) {
     console.log('fgff', data);
 
     history.push({
-      pathname: '/vehicle-detail/60f7d9285efda3d40c2857fb',
+      pathname: '/vehicle-detail/' + data._id,
       data,
       type: state?.type,
     });

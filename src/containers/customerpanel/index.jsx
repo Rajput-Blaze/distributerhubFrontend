@@ -22,10 +22,10 @@ export default function Index(props) {
   const [subCategory, setsubCategory] = useState(
     props?.location?.data?.subCategory ?? []
   );
-  const [state, setState] = React.useState(false ?? []);
+
   const [intreset, setintreset] = useState(props.location.data?.intreset ?? []);
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
-
+  const [state, setState] = React.useState(false ?? []);
   let history = useHistory();
   useEffect(() => {
     var decoded = jwt_decode(window.localStorage.getItem('myData'));
@@ -38,6 +38,9 @@ export default function Index(props) {
           setsubCategory(resp?.data?.data?.subCategory);
           setintreset(resp?.data?.data?.intreset);
           setloction(resp?.data?.data?.preferred);
+          // state.firstName
+          // apiUrl + state.profileImg
+          //state?.userType
         })
         .catch((err) => {
           showNotification('danger', err.message);

@@ -41197,6 +41197,10 @@ margin-left: 8.3333333333%;
 .padding_10{
   padding: 10%;
 }
+.img_cus_padding_border{
+  padding:20 px;
+  border:1px solid #6aacff;
+}
 .cus_btn_center{
   display: flex;
     align-content: center;
