@@ -41137,6 +41137,9 @@ select.form-control {
     font-size: 15px;
     padding: 8px 10px;
   }
+  .paddingg{
+    padding: 20px;
+  }
 }
 
 @media (max-width: 1199.98px) {
@@ -41193,6 +41196,11 @@ select.form-control {
 margin-left: 8.3333333333%;
 }
 
+}
+
+.back_blue_color_white{
+  background-color: #6aacff;
+    color: white;
 }
 .padding_10{
   padding: 10%;

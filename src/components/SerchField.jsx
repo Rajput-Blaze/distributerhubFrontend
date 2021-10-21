@@ -146,12 +146,20 @@ function SerchField(props) {
             <div className='row  h-100  emi_row justify-content-center'>
               <div className='coln-8'>
                 <div className='card widget-stat'>
+                  <div className='card-header bg-custom-blue '>
+                    <h4 className='card-title text-white h1_tag'>
+                      {' '}
+                      Looking For Best Business and Distributership
+                      Opportunities In India
+                    </h4>
+
+                    <div className='two_btns_ps'></div>
+                  </div>
                   <div className='card-body'>
                     <div className='form-validation'>
-                      <div className='row middle2'>
-                        <span className='pt-3 pb-2 cus-text '>
-                          Looking For Best Business and Distributership
-                          Opportunities In India
+                      <div className='row middle2 '>
+                        <span className='pt-3 pb-2  h1_tag'>
+                          FIND BEST CHANNEL PARTNER
                         </span>
                         {/* <span >Select Any one of These </span> */}
                       </div>
