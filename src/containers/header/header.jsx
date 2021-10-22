@@ -546,22 +546,22 @@ function Header(props) {
             {role == 4 ? (
               <>
                 <li>
-                  <Link
+                  <a
                     className='ai-icon'
                     aria-expanded='false'
-                    to='/freshclients'>
+                    href='/freshclients'>
                     <i class='fa fa-building'></i>
                     <span className='nav-text'>Company</span>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     className='ai-icon'
                     aria-expanded='false'
-                    to='/reviewedclients'>
+                    href='/reviewedclients'>
                     <i class='fa fa-check-square' aria-hidden='true'></i>
                     <span className='nav-text'>Distributer</span>
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link className='ai-icon' aria-expanded='false' to='/help'>

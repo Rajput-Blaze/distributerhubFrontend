@@ -236,13 +236,13 @@ export default class Header extends Component {
                       </div>
                     ) : (
                       <div className='login-button call-btn'>
-                        <Link
-                          to='/dashboard'
+                        <a
+                          href='/dashboard'
                           className='btn btn-primary ml-3'
                           //onClick={this.registershow}
                         >
                           Dashboard
-                        </Link>
+                        </a>
                       </div>
                     )}
                   </li>

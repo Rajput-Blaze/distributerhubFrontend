@@ -75,7 +75,7 @@ function Index(props) {
     stateee();
     categoryy();
   }, []);
-
+  console.log(`Selectedyear`, Selectedyear);
   const sweetAlert = (msg) => {
     Swal.fire({
       title: msg,
@@ -161,7 +161,7 @@ function Index(props) {
       for (let i = 0; i < otherImage.length; i++) {
         formData.append('otherImage', otherImage[i]);
       }
-      formData.append('establishmentYear', Selectedyear.split(' ')[3]);
+      formData.append('establishmentYear', Selectedyear);
       formData.append('profileImg', state?.profileImg);
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
       formData.append('subCategory', JSON.stringify(inputFields));
@@ -839,7 +839,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                GST No
+                                GST No <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -850,7 +850,21 @@ function Index(props) {
                                 value={state?.gstNo}
                                 onChange={handleChange}
                                 placeholder='Enter GST No ..'
-                                ref={register}
+                                ref={register({
+                                  required: 'This is required ',
+                                  pattern: {
+                                    value:
+                                      /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
+                                    message: 'Enter Valid GST Number',
+                                  },
+                                })}
+                              />
+                              <ErrorMessage
+                                errors={errors}
+                                name='gstNo'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
                               />
                             </div>
                           </div>
@@ -984,7 +998,7 @@ function Index(props) {
                                 //   handleStatefunforcity(e.target.value);
                                 // }}
                                 ref={register}>
-                                <option value=''>Select State </option>
+                                <option value=''>Select city </option>
                                 {cityhandle.map((data) => (
                                   <option value={data}>{data}</option>
                                 ))}
@@ -1046,7 +1060,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Select Category
+                                Select Category{' '}
+                                <span className='text-danger'>*</span>
                               </label>
                               <div className='py-4 px-4'>
                                 {Object.keys(category).map((data) => (
@@ -1055,6 +1070,7 @@ function Index(props) {
                                       type='radio'
                                       className='w-auto  mr-3 input_cus_radio'
                                       id='val-username'
+                                      required
                                       name='category'
                                       onChange={(e) => {
                                         handleChange(e);
@@ -1062,11 +1078,21 @@ function Index(props) {
                                         updatesubcategory(e.target.value);
                                       }}
                                       value={data}
-                                      ref={register}
+                                      ref={register({
+                                        required: 'This is required ',
+                                      })}
                                     />
+
                                     {data}
                                   </div>
                                 ))}
+                                <ErrorMessage
+                                  errors={errors}
+                                  name='category'
+                                  render={({ message }) => (
+                                    <p className='error'>{message}</p>
+                                  )}
+                                />
                               </div>
                             </div>
                           </div>

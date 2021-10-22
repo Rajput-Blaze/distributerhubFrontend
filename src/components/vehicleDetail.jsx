@@ -179,10 +179,10 @@ const VehicleDetail = (props) => {
               <div className='col-12 col-md-4 d-flex justify-content-center img_cus_padding_border'>
                 {' '}
                 <img
-                  // src={getCarImageUrl(state?.profileImg)} https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg
-                  src={
-                    'https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg'
-                  }
+                  src={getCarImageUrl(state?.profileImg)} // https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg
+                  // src={
+                  //   'https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg'
+                  // }
                   class='responsive '
                   width='300'
                   height='300'
@@ -524,7 +524,7 @@ const VehicleDetail = (props) => {
                           <div className='col-sm-8 col-7'>
                             <span>
                               {state && state?.establishmentYear
-                                ? state?.establishmentYear
+                                ? state?.establishmentYear.split(' ')[3]
                                 : 'N/A'}{' '}
                             </span>
                           </div>

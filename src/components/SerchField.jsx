@@ -146,7 +146,7 @@ function SerchField(props) {
             <div className='row  h-100  emi_row justify-content-center'>
               <div className='coln-8'>
                 <div className='card widget-stat'>
-                  <div className='card-header bg-custom-blue '>
+                  <div className='card-header bg-custom-blue center_text'>
                     <h4 className='card-title text-white h1_tag'>
                       {' '}
                       Looking For Best Business and Distributership
@@ -157,7 +157,7 @@ function SerchField(props) {
                   </div>
                   <div className='card-body'>
                     <div className='form-validation'>
-                      <div className='row middle2 '>
+                      <div className='row middle2 center_text '>
                         <span className='pt-3 pb-2  h1_tag'>
                           FIND BEST CHANNEL PARTNER
                         </span>
