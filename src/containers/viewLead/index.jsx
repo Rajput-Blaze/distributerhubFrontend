@@ -84,7 +84,7 @@ function ViewProfile(props) {
 
                   <div className='two_btns_ps'>
                     {/* <Link to="/"> */}
-                    <button
+                    {/* <button
                       type='button'
                       onClick={() => {
                         history.push({
@@ -97,7 +97,7 @@ function ViewProfile(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button>
+                    </button> */}
                     {/* </Link> */}
                   </div>
                 </div>
@@ -217,7 +217,7 @@ function ViewProfile(props) {
 
                   <div className='two_btns_ps'>
                     {/* <Link to="/"> */}
-                    <button
+                    {/* <button
                       type='button'
                       onClick={() => {
                         history.push({
@@ -230,7 +230,7 @@ function ViewProfile(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button>
+                    </button> */}
                     {/* </Link> */}
                   </div>
                 </div>
@@ -422,118 +422,36 @@ function ViewProfile(props) {
               {/* Category Details */}
               <div className='card widget-stat'>
                 <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>Category Details</h4>
+                  <h4 className='card-title text-white'>
+                    Product Category Details
+                  </h4>
 
-                  <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    <button
-                      type='button'
-                      onClick={() => {
-                        history.push({
-                          pathname: '/profile',
-                          data: 6,
-                        });
-                      }}
-                      className='btn btn-light ml-2'>
-                      <i
-                        className='fa fa-pencil-square-o pr-1'
-                        aria-hidden='true'></i>
-                      <span>Update</span>
-                    </button>
-                    {/* </Link> */}
-                  </div>
+                  <div className='two_btns_ps'></div>
                 </div>
 
                 <div className='card-body'>
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
                       <div className='row mb-2'>
-                        <div className='col-sm-3 col-5'>
-                          <h6 className='f-w-500'>
-                            category <span className='pull-right'>:</span>
-                          </h6>
+                        <div className='col-sm-4 '>
+                          <h6 className='f-w-500'>Category </h6>
+                          <p>{state?.category && state?.category.toString()}</p>
                         </div>
-                        <div className='col-sm-9 col-7'>
-                          <span>{category.toString()}</span>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Sub Category </h6>
+                          {state?.subCategory &&
+                            state?.subCategory.map((data) => {
+                              return <p>{data?.name}</p>;
+                            })}
+                        </div>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Brand Name </h6>
+                          {state?.subCategory &&
+                            state?.subCategory.map((data) => {
+                              return <p>{data?.brandName}</p>;
+                            })}
                         </div>
                       </div>
-
-                      {/* {subCategory.map((data) => {
-                        return (
-                          <div className='row mb-2'>
-                            <div className='col-sm-3 col-5'>
-                              <h6 className='f-w-500'>
-                                subCategory{' '}
-                                <span className='pull-right'>:</span>
-                              </h6>
-                            </div>
-                            <div className='col-sm-9 col-7'>
-                              <span>{data?.name}</span>
-                            </div>
-                          </div>
-                        );
-                      })}  */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* subcategory */}
-              <div className='card widget-stat'>
-                <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>subCategory Details</h4>
-
-                  <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    <button
-                      type='button'
-                      onClick={() => {
-                        history.push({
-                          pathname: '/profile',
-                          data: 6,
-                        });
-                      }}
-                      className='btn btn-light ml-2'>
-                      <i
-                        className='fa fa-pencil-square-o pr-1'
-                        aria-hidden='true'></i>
-                      <span>Update</span>
-                    </button>
-                    {/* </Link> */}
-                  </div>
-                </div>
-
-                <div className='card-body'>
-                  <div className='form-validation'>
-                    <div className='profile-personal-info'>
-                      {subCategory.map((data) => {
-                        return (
-                          <>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  subCategory{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.name}</span>
-                              </div>
-                            </div>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  Brand Name{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.brandName}</span>
-                              </div>
-                            </div>
-                          </>
-                        );
-                      })}
                     </div>
                   </div>
                 </div>
@@ -542,117 +460,53 @@ function ViewProfile(props) {
               {/* //Interest Details */}
               <div className='card widget-stat'>
                 <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>Interest Details</h4>
-                  <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    <button
-                      type='button'
-                      onClick={() => {
-                        history.push({
-                          pathname: '/profile',
-                          data: 6,
-                        });
-                      }}
-                      className='btn btn-light ml-2'>
-                      <i
-                        className='fa fa-pencil-square-o pr-1'
-                        aria-hidden='true'></i>
-                      <span>Update</span>
-                    </button>
-                    {/* </Link> */}
-                  </div>
+                  <h4 className='card-title text-white'>
+                    Distribution-ship For Preferred Category &amp; Location
+                  </h4>
+                  <div className='two_btns_ps'></div>
                 </div>
 
                 <div className='card-body'>
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
-                      {intreset.map((data) => {
-                        return (
-                          <>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  subCategory{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.name}</span>
-                              </div>
-                            </div>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  Brand Name{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.brandName}</span>
-                              </div>
-                            </div>
-                          </>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* prefied Location  */}
-              <div className='card widget-stat'>
-                <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>Prefered Location</h4>
+                      <div className='row mb-2'>
+                        <div className='col-sm-4 '>
+                          <h6 className='f-w-500'>Category </h6>
+                          <p>{state?.category && state?.category.toString()}</p>
+                        </div>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Sub Category </h6>
+                          {state?.intreset &&
+                            state?.intreset.map((data) => {
+                              return <p>{data?.name}</p>;
+                            })}
+                        </div>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Brand Name </h6>
+                          {state?.intreset &&
+                            state?.intreset.map((data) => {
+                              return <p>{data?.brandName}</p>;
+                            })}
+                        </div>
+                      </div>
+                      <hr />
 
-                  <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    <button
-                      type='button'
-                      onClick={() => {
-                        history.push({
-                          pathname: '/profile',
-                          data: 6,
-                        });
-                      }}
-                      className='btn btn-light ml-2'>
-                      <i
-                        className='fa fa-pencil-square-o pr-1'
-                        aria-hidden='true'></i>
-                      <span>Update</span>
-                    </button>
-                    {/* </Link> */}
-                  </div>
-                </div>
-
-                <div className='card-body'>
-                  <div className='form-validation'>
-                    <div className='profile-personal-info'>
-                      {loction.map((data) => {
-                        return (
-                          <>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  State <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data.state.toString()}</span>
-                              </div>
-                            </div>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  city Name{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.city}</span>
-                              </div>
-                            </div>
-                          </>
-                        );
-                      })}
+                      {/* <p>{state.category.toString()}</p> */}
+                      <div className='row py-3'>
+                        <div className='col-sm-4 '>
+                          <h6 className='f-w-500'>State </h6>
+                          {state?.preferred && state?.preferred[0]?.state}
+                        </div>
+                        <div className='col-sm-8'>
+                          <h6 className='f-w-500'>City </h6>
+                          <p>
+                            {state &&
+                              state?.preferred &&
+                              state?.preferred[0]?.city &&
+                              state?.preferred[0]?.city.toString()}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

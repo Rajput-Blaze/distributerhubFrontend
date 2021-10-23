@@ -74,8 +74,9 @@ function Index(props) {
     axios
       .post(apiUrl + 'user/approve', { id: userid }, headers)
       .then((resp) => {
+        // showNotification('success ', 'Un-Blocked Sucessfull');
+        showNotification('success', 'Un-Blocked Sucessfull');
         ongoing(page);
-        showNotification('success ', 'Un-Blocked Sucessfull');
       })
       .catch((err) => {
         showNotification('danger', err.message);

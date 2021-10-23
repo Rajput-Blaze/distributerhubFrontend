@@ -141,7 +141,7 @@ function Index(props) {
       .post(apiUrl + 'user/approve', { id: userid }, headers)
       .then((resp) => {
         ongoing(page);
-        showNotification('success ', 'Un-Blocked Sucessfull');
+        showNotification('success', 'Un-Blocked Sucessfull');
       })
       .catch((err) => {
         showNotification('danger', err.message);
@@ -164,8 +164,12 @@ function Index(props) {
         showNotification('danger', err.message);
       });
   };
-
-  console.log(`confirmLead`, confirmLead);
+  const view = (data, id) => {
+    props.history.push({
+      pathname: '/viewLead/' + id,
+      data,
+    });
+  };
   return (
     <>
       <div className='content-body'>
@@ -265,6 +269,11 @@ function Index(props) {
                                   class='badge light badge-danger'
                                   onClick={() => deleteOne(data._id)}>
                                   Delete
+                                </span>
+                                <span
+                                  class='badge light badge-primary'
+                                  onClick={() => view(data, data._id)}>
+                                  View /Update
                                 </span>
                               </td>
                             </tr>

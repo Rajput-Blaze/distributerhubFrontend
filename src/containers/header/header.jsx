@@ -105,7 +105,7 @@ function Header(props) {
           <Image
             className='logo-abbr'
             alt='img'
-            src={'assets/images/logo.png'}
+            src={'/assets/images/logo (2).png'}
           />
           {/* DistributerHub */}
         </Link>
