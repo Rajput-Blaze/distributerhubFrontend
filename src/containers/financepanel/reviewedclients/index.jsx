@@ -237,7 +237,7 @@ function Index(props) {
                                   width='50'
                                   src={
                                     data?.profileImg
-                                      ? apiUrl + data?.profileImg
+                                      ? data?.profileImg
                                       : 'images/avatar/1.jpg'
                                   }
                                 />

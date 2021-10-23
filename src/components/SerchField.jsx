@@ -318,7 +318,7 @@ function SerchField(props) {
                       <Image
                         className='img-fluid padding_10'
                         alt='img'
-                        src={apiUrl + data.profileImg}
+                        src={data.profileImg}
                       />
                     </div>
                     <div class='gsc_col-xs-12 holder truncate'>

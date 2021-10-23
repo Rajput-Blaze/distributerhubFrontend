@@ -142,7 +142,7 @@ export default function Index(props) {
                               alt='img'
                               src={
                                 state && state.profileImg
-                                  ? apiUrl + state.profileImg
+                                  ? state.profileImg
                                   : 'assets/images/17.jpg'
                               }
                             />

@@ -178,11 +178,10 @@ const VehicleDetail = (props) => {
             <div className='row align-items-center'>
               <div className='col-12 col-md-4 d-flex justify-content-center img_cus_padding_border'>
                 {' '}
+                {console.log(state?.profileImg, 'state?.profileImg')}
                 <img
-                  src={getCarImageUrl(state?.profileImg)} // https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg
-                  // src={
-                  //   'https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg'
-                  // }
+                  // src={getCarImageUrl(state?.profileImg)} // https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg
+                  src={state?.profileImg}
                   class='responsive '
                   width='300'
                   height='300'

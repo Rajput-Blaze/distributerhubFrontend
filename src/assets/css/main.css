@@ -41199,13 +41199,7 @@ select.form-control {
   font-size: 15px !important;
   text-align: center;
 }
-.center_text{
-  
-    display: flex;
-    text-align: center;
-    justify-content: center;
 
-}
 .cus_d_none_sm{
   display: none;
 }
@@ -41291,4 +41285,11 @@ margin-left: 8.3333333333%;
 .cus-text{
   font-weight: 500;
     font-size: initial;
+}
+.center_text{
+  
+  display: flex;
+  text-align: center;
+  justify-content: center;
+
 }
