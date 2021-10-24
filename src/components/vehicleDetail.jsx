@@ -150,7 +150,7 @@ const VehicleDetail = (props) => {
           <div className='row'>
             <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width'>
               <div className='btc_tittle_left_heading'>
-                <h1>{type}Detail</h1>
+                <h1>{state?.type}Detail</h1>
               </div>
             </div>
             <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width'>
@@ -248,10 +248,7 @@ const VehicleDetail = (props) => {
                                   <div key={id} className='item'>
                                     <div className='x_car_offer_main_boxes_wrapper float_left'>
                                       <div className='x_car_offer_img float_left'>
-                                        <img
-                                          src={getCarImageUrl(item)}
-                                          alt={item}
-                                        />
+                                        <img src={item} alt={item} />
                                       </div>
                                     </div>
                                   </div>
