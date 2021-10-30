@@ -668,7 +668,8 @@ img {
   padding-top: 100px;
   padding-bottom: 100px;
 }
-.contect_form1 input {
+.contect_form1 input,
+select {
   width: 100%;
   height: 50px;
   margin-top: 30px;

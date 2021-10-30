@@ -61,7 +61,7 @@ function SerchField(props) {
   function stateee() {
     axios
       .get(
-        'https://raw.githubusercontent.com/bhanuc/indian-list/master/state-city.json'
+        'https://raw.githubusercontent.com/Rowdy-Rathore/Indian-Cities/main/states-cities.json'
       )
       .then((resp) => setstatehandle(resp?.data))
       .catch((err) => console.log(err));
@@ -173,6 +173,7 @@ function SerchField(props) {
                                   type='radio'
                                   className='w-auto ml-2 input_cus_radio'
                                   id='val-username'
+                                  required
                                   name='type'
                                   onChange={(e) => {
                                     handleChange(e);
@@ -192,6 +193,7 @@ function SerchField(props) {
                                   className='w-auto ml-2 input_cus_radio'
                                   id='val-username'
                                   name='type'
+                                  required
                                   value='distributer'
                                   //   checked={
                                   //     state?.commercialUse == 'no' ? true : ''

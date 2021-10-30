@@ -40,7 +40,7 @@ function Index(props) {
   const [inputFieldscity, setInputFieldscity] = useState([
     { id: uuidv4(), state: '', city: '', cityDropDown: [] },
   ]);
-  const [successno, setsuccessno] = useState(false);
+  const [passwordhideandshow, setpasswordhideandshow] = useState(false);
   const [successMsg, setsuccessMsg] = useState('');
   const [checknumber, setcheckNumber] = useState(false);
   const [brand, setbrand] = useState([]);
@@ -96,7 +96,7 @@ function Index(props) {
   function stateee() {
     axios
       .get(
-        'https://raw.githubusercontent.com/bhanuc/indian-list/master/state-city.json'
+        'https://raw.githubusercontent.com/Rowdy-Rathore/Indian-Cities/main/states-cities.json'
       )
       .then((resp) => setstatehandle(resp?.data))
       .catch((err) => console.log(err));
@@ -126,8 +126,10 @@ function Index(props) {
             .post(apiUrl + 'user/register', {
               phoneNo: formsubmitdata.phoneNo,
               firstName: formsubmitdata.firstName,
+              lastName: formsubmitdata.lastName,
               password: formsubmitdata.password,
               companyName: formsubmitdata.companyName,
+              email: formsubmitdata.email,
               role: 0, //type
               type: 'company',
               userType: 1,
@@ -470,10 +472,13 @@ function Index(props) {
         });
     }
   };
-  // console.log(`state`, state);
-  // cityhandle.map((data) => {
-  //   console.log(data, 'data');
-  // });
+  const change = () => {
+    if (passwordhideandshow) {
+      setpasswordhideandshow(false);
+    } else {
+      setpasswordhideandshow(true);
+    }
+  };
   return (
     <>
       {/* <Header /> */}
@@ -664,14 +669,14 @@ function Index(props) {
                             </div>
                           </div>
                           <div className='col-sm-6'>
-                            <div className='form-group '>
+                            <div className='form-group position-relative'>
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
                                 Password<span className='text-danger'>*</span>
                               </label>
                               <input
-                                type='password'
+                                type={passwordhideandshow ? 'text' : 'password'}
                                 className='form-control'
                                 // onKeyPress={(e) => restrictAlpha(e)}
                                 id='val-username'
@@ -683,6 +688,15 @@ function Index(props) {
                                 required
                                 defaultValue={viewData?.fatherName}
                               />
+                              {passwordhideandshow ? (
+                                <i
+                                  onClick={change}
+                                  className='fa fa-eye-slash eye'></i>
+                              ) : (
+                                <i
+                                  onClick={change}
+                                  className='fa fa-eye eye'></i>
+                              )}
                             </div>
                           </div>
 

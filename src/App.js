@@ -111,6 +111,9 @@ import Account from './components/account';
 import Provider from './context/provider';
 import HowItWorks from './components/howItWorks';
 import ContactUs from './components/contactUs';
+import Login from './containers/login/login';
+import Forgotpassword from './containers/forgotpassword/forgotpassword';
+import ChangePassword from './containers/login/ChangePassword';
 
 const routes = [
   {
@@ -179,6 +182,20 @@ const routes = [
     exact: true,
     path: '/distributer',
     Component: Distributer,
+  },
+  {
+    exact: true,
+    path: '/Login',
+    Component: Login,
+  },
+  {
+    exact: true,
+    path: '/Forgot-password',
+    Component: Forgotpassword,
+  },
+  {
+    path: '/Change-Password/:auth',
+    Component: ChangePassword,
   },
 ];
 

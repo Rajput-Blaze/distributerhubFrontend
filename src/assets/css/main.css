@@ -41274,6 +41274,9 @@ margin-left: 8.3333333333%;
   width: 100%;
   max-width: 180px;
 }
+.hide_in_sm{ display: none;}
+
+
 }
 /* .RFS-StepContainer{
   overflow-x: auto ;
@@ -41291,5 +41294,20 @@ margin-left: 8.3333333333%;
   display: flex;
   text-align: center;
   justify-content: center;
+
+}
+.center_text_bg{
+  width: 80%;
+  margin-left: 10%;
+  padding: 50px !important;
+  color: white;
+  border-radius: 10px !important;
+  background-color: #0eccfc;
+}
+.eye{
+  position: absolute;
+  left: 90%;
+  bottom: 20px;
+
 
 }

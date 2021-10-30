@@ -107,9 +107,8 @@ import Viewdocumentl2 from '../customermanpanel/Viewdocumentl2';
 // import Dealer from "../dealership/dealer";
 // import Customermanagement from "../../containers/customermanagement/customer";
 import { Redirect, Route } from 'react-router-dom';
-import Login from '../login/login';
+
 import Otp from '../otp/otp';
-import Forgotpassword from '../forgotpassword/forgotpassword';
 import loadjs from 'loadjs';
 // import '../../assets/css/bootstrap.min.css';
 // import '../../assets/css/main.css';
@@ -174,7 +173,7 @@ function Main() {
           )}
           <Route path='/vehicles' component={Vehicles} />
           <Route path='/buying' component={Buying} />
-          <Route exact path='/login' component={Login} />
+
           <Route exact path='/otp' component={Otp} />
           <Route path='/rejectedLead' component={Rejected} />
           <Route path='/profile' component={Profile} />
@@ -190,7 +189,7 @@ function Main() {
           <Route path='/estimateGenetate' component={EstimateGenetate} />
           <Route path='/insuranceSelect' component={InsuranceSelect} />
           <Route path='/dealerviewProfile' component={DelerviewProfile} />
-          <Route exact path='/forgotpassword' component={Forgotpassword} />
+
           <Route
             exact
             path='/dashboard'

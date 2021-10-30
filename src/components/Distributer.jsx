@@ -121,7 +121,7 @@ function Index(props) {
   function stateee() {
     axios
       .get(
-        'https://raw.githubusercontent.com/bhanuc/indian-list/master/state-city.json'
+        'https://raw.githubusercontent.com/Rowdy-Rathore/Indian-Cities/main/states-cities.json'
       )
       .then((resp) => setstatehandle(resp?.data))
       .catch((err) => console.log(err));
@@ -148,6 +148,7 @@ function Index(props) {
               firstName: formsubmitdata.firstName,
               password: formsubmitdata.password,
               companyName: formsubmitdata.companyName,
+              email: formsubmitdata.email,
               role: 0, //type
               type: 'distributer',
             })

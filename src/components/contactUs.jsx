@@ -14,7 +14,7 @@ export default class ContactUs extends Component {
     this.state = {
       formdata: {
         firstName: '',
-        lastName: '',
+        phoneNo: '',
         email: '',
         subject: '',
         message: '',
@@ -49,6 +49,18 @@ export default class ContactUs extends Component {
       },
     }));
   };
+  restrictAlpha = (e) => {
+    const re = /^[0-9\b]+$/;
+    const { target } = e;
+    if (e.target.value === '' || re.test(e.target.value)) {
+      this.setState((prev) => ({
+        formdata: {
+          ...prev.formdata,
+          [target.name]: target.value,
+        },
+      }));
+    }
+  };
 
   handleForm = (e) => {
     e.preventDefault();
@@ -59,7 +71,7 @@ export default class ContactUs extends Component {
 
     if (
       this.state.formdata.firstName === '' ||
-      this.state.formdata.lastName === '' ||
+      this.state.formdata.phoneNo === '' ||
       this.state.formdata.email === '' ||
       this.state.formdata.subject === '' ||
       this.state.formdata.message === ''
@@ -82,31 +94,12 @@ export default class ContactUs extends Component {
 
     var obj = {
       firstName: this.state.formdata.firstName,
-      lastName: this.state.formdata.lastName,
+      phoneNo: this.state.formdata.phoneNo,
       email: this.state.formdata.email,
       subject: this.state.formdata.subject,
       message: this.state.formdata.message,
     };
     this.sendData(obj);
-    // freshdesk.createTicket(
-    //     {
-    //       name: this.state.formdata.firstName +' '+this.state.formdata.lastName,
-    //       email: this.state.formdata.email,
-    //       subject: this.state.formdata.subject,
-    //       description:this.state.formdata.message,
-    //       status: 2,
-    //       priority: 1,
-    //     },
-    //      (err, dataa) =>{
-    //       if (dataa) {
-    //         obj.ticketNo = dataa.requester_id
-    //         this.sendData(obj);
-    //       }
-    //       if(err){
-    //         showNotification('danger', constant.ERRORMSG)
-    //       }
-    //     }
-    // );
   };
 
   sendData = (detail) => {
@@ -119,7 +112,7 @@ export default class ContactUs extends Component {
           this.setState({
             formdata: {
               firstName: '',
-              lastName: '',
+              phoneNo: '',
               email: '',
               subject: '',
               message: '',
@@ -196,15 +189,7 @@ export default class ContactUs extends Component {
               </div>
             </div>
           </div>
-          <div className='map_main_wrapper'>
-            {/* 30.9003405,75.8216539 */}
 
-            <iframe
-              src='https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319'
-              width='100%'
-              height='200'
-              frameborder='0'></iframe>
-          </div>
           <div className='x_contact_title_main_wrapper float_left padding_tb_100'>
             <div className='container'>
               <div className='row'>
@@ -219,11 +204,11 @@ export default class ContactUs extends Component {
                   <div className='contect_form1'>
                     <input
                       type='text'
-                      placeholder='First Name *'
+                      placeholder=' Name *'
                       value={this.state.formdata.firstName}
                       name='firstName'
                       onChange={this.handleChange}
-                      maxLength='100'
+                      maxLength='50'
                     />
                     {this.state.submitted &&
                       this.state.formdata.firstName === '' && (
@@ -235,14 +220,18 @@ export default class ContactUs extends Component {
                   <div className='contect_form1'>
                     <input
                       type='text'
-                      placeholder='Last Name *'
-                      value={this.state.formdata.lastName}
-                      name='lastName'
-                      onChange={this.handleChange}
-                      maxLength='100'
+                      placeholder='Phone No *'
+                      value={this.state.formdata.phoneNo}
+                      name='phoneNo'
+                      onChange={(e) => {
+                        // this.handleChange(e);
+                        this.restrictAlpha(e);
+                      }}
+                      // onChange={this.handleChange}
+                      maxLength='10'
                     />
                     {this.state.submitted &&
-                      this.state.formdata.lastName === '' && (
+                      this.state.formdata.phoneNo === '' && (
                         <span className='text-danger'> This is required</span>
                       )}
                   </div>
@@ -271,7 +260,14 @@ export default class ContactUs extends Component {
                 </div>
                 <div className='col-xl-5 col-lg-4 col-md-4 col-sm-12 col-xs-12'>
                   <div className='contect_form1'>
-                    <input
+                    <select
+                      // className='form-control'
+                      id='exampleFormControlSelect1'
+                      name='wheels'
+                      onChange={this.handleChange}>
+                      <option value='4'>4</option>
+                    </select>
+                    {/* <input
                       type='text'
                       placeholder='Subject *'
                       value={this.state.formdata.subject}
@@ -282,7 +278,7 @@ export default class ContactUs extends Component {
                     {this.state.submitted &&
                       this.state.formdata.subject === '' && (
                         <span className='text-danger'> This is required</span>
-                      )}
+                      )} */}
                   </div>
                 </div>
                 <div className='col-xl-10 offset-xl-1 col-lg-12 col-md-12 col-sm-12 col-xs-12'>

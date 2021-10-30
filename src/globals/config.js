@@ -2,8 +2,8 @@ const hostname = window.location.host;
 const api = {
   //localhost: 'http://18.191.154.248:3001/',
 
- // localhost: 'http://localhost:3001/',
-   localhost: 'https://distributerhubackend.herokuapp.com/',
+  localhost: 'http://localhost:3001/',
+  development: 'https://distributerhubackend.herokuapp.com/',
 };
 
 let apiBase = '';
@@ -14,6 +14,6 @@ if (
 ) {
   apiBase = api.localhost;
 } else {
-  apiBase = api.localhost;
+  apiBase = api.development;
 }
 export default apiBase;

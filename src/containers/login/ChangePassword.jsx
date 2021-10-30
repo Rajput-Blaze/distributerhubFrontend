@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import apiUrl from '../../globals/config';
 
+import apiUrl from '../../globals/config';
 import axios from 'axios';
 import showNotification from '../../services/notificationService';
-import { useHistory } from 'react-router-dom';
-export default function Login(props) {
-  let history = useHistory();
+import { useParams } from 'react-router-dom';
+export default function ChangePassword() {
+  let { auth } = useParams();
   const [state, setstate] = useState('');
+  const [message, setmessage] = useState('');
   const [passwordhideandshow, setpasswordhideandshow] = useState(false);
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -16,28 +17,33 @@ export default function Login(props) {
     });
   };
   const submit = () => {
-    console.log(state);
-    //user/otpVerification
-    axios
-      .post(apiUrl + 'user/otpVerification', state)
-      .then(function (resp) {
-        if (resp?.data.token) {
-          console.log(resp.data);
-          showNotification('success', 'Login  Successfully');
-          localStorage.setItem('myData', resp.data.token);
-          localStorage.setItem('role', resp?.data?.role ?? 0);
-          localStorage.setItem('userType', resp?.data?.userType ?? 0);
-          // console.log(`resp?.data`, resp?.data);
-          history.push('/');
-          window.location.reload();
-        }
-      })
-      .catch(function (error) {
-        showNotification('danger', error?.response?.data?.message);
-        // Object.keys(error).forEach((e) => {
-        //   console.log('111111', error[e]);
-        // });
-      });
+    const { password } = state;
+    console.log(state, auth);
+
+    if (state.password == state.cnfpassword) {
+      axios
+        .post(apiUrl + 'user/changePassword', { id: auth, password })
+        .then(function (resp) {
+          console.log(`resp`, resp);
+          if (resp) {
+            showNotification('success', 'Password Changed  Successfully');
+
+            // localStorage.setItem('myData', resp.data.token);
+            // localStorage.setItem('role', resp?.data?.role ?? 0);
+            // localStorage.setItem('userType', resp?.data?.userType ?? 0);
+            // // console.log(`resp?.data`, resp?.data);
+            // this.props.history.push('/');
+            // window.location.reload();
+          } else {
+            showNotification('danger', 'Invalid Crendiantial ');
+          }
+        })
+        .catch(function (error) {
+          console.log(`error`, error);
+        });
+    } else {
+      setmessage("Password Don't Match");
+    }
   };
   const change = () => {
     if (passwordhideandshow) {
@@ -61,7 +67,7 @@ export default function Login(props) {
             <div className='row justify-content-center'>
               <div className='col-md-8 mt-4'>
                 <div className='mb-4'>
-                  <h3 className='text-center'>Sign In</h3>
+                  <h5 className='text-center'>Change Password</h5>
                   <p className='mb-4 hide_in_sm'>
                     Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
                     consectetur adipisicing.
@@ -69,21 +75,7 @@ export default function Login(props) {
                 </div>
                 <form action='#' method='post'>
                   <div className='form-group first'>
-                    <label htmlFor='username'>Phone No</label>
-                    <input
-                      type='text'
-                      required
-                      maxLength='10'
-                      value={state.phoneNo}
-                      onChange={(e) => {
-                        handleChange(e);
-                      }}
-                      name='phoneNo'
-                      className='form-control'
-                    />
-                  </div>
-                  <div className='form-group last mb-4 position-relative'>
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='username'>Password</label>
                     <input
                       type={passwordhideandshow ? 'text' : 'password'}
                       name='password'
@@ -91,24 +83,40 @@ export default function Login(props) {
                       value={state.password}
                       onChange={(e) => {
                         handleChange(e);
+                        setmessage('');
+                      }}
+                      className='form-control'
+                      id='password'
+                    />
+                  </div>
+                  <div className='form-group last mb-4 position-relative'>
+                    <label htmlFor='password'>Confirm Password</label>
+                    <input
+                      type={passwordhideandshow ? 'text' : 'password'}
+                      name='cnfpassword'
+                      required
+                      value={state.cnfpassword}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setmessage('');
                       }}
                       className='form-control'
                       id='password'
                     />
 
                     {passwordhideandshow ? (
-                      <i onClick={change} className='fa fa-eye-slash eye'></i>
+                      <i onClick={change} className='far fa-check-square mt-2'>
+                        Hide Password
+                      </i>
                     ) : (
-                      <i onClick={change} className='fa fa-eye eye'></i>
+                      <i onClick={change} className='far fa-square mt-2'>
+                        {' '}
+                        Show Password
+                      </i>
                     )}
+                    <p className='error'>{message}</p>
                   </div>
-                  <div className='d-flex mb-5 align-items-center'>
-                    <span className=''>
-                      <a href='/forgot-password' className='forgot-pass'>
-                        Forgot Password !
-                      </a>
-                    </span>
-                  </div>
+
                   <input
                     type='button'
                     onClick={submit}
