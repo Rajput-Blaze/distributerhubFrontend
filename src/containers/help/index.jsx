@@ -145,7 +145,7 @@ export default function Index(props) {
                             <span>Email</span>
                           </th>
                           <th>
-                            <span>Subject</span>
+                            <span>Type</span>
                           </th>
                           <th>
                             <span>Description</span>
@@ -159,10 +159,10 @@ export default function Index(props) {
                               <strong>{index + 1}</strong>
                             </td>
                             <td>{data?.firstName}</td>
-                            <td>{data?.lastName}</td>
+                            <td>{data?.phoneNo}</td>
                             {/* <td>{data?.phoneNo}</td> */}
                             <td>{data?.email}</td>
-                            <td>{data?.subject}</td>
+                            <td>{data?.type}</td>
                             <td>{data?.message}</td>
                             <td>
                               <span

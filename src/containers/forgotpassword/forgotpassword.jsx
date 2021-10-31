@@ -1,6 +1,8 @@
 import React, { useState, useEfect } from 'react';
 import apiUrl from '../../globals/config';
 import axios from 'axios';
+import showNotification from '../../services/notificationService';
+
 export default function Forgotpassword() {
   const [state, setState] = React.useState('');
   const [success, setsuccess] = useState(false);
@@ -14,9 +16,15 @@ export default function Forgotpassword() {
   };
   const submit = () => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(state?.email)) {
-      axios.post(apiUrl + 'user/forgetPassword', state).then(function (resp) {
-        setsuccess(true);
-      });
+      axios
+        .post(apiUrl + 'user/forgetPassword', state)
+        .then(function (resp) {
+          setsuccess(true);
+        })
+        .catch((err) => {
+          showNotification('danger', err?.response?.data?.message);
+          console.log(err, 'errrrrrrrrrrr');
+        });
       console.log(`state`, state);
     } else {
       setmessage('Invalid Email Address');
@@ -45,6 +53,7 @@ export default function Forgotpassword() {
                     value={state.email}
                     onChange={(e) => {
                       handleChange(e);
+                      setmessage('');
                     }}
                   />
                   <p className='error'>{message}</p>

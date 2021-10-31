@@ -16,7 +16,7 @@ export default class ContactUs extends Component {
         firstName: '',
         phoneNo: '',
         email: '',
-        subject: '',
+        type: '',
         message: '',
       },
       submitted: false,
@@ -73,7 +73,7 @@ export default class ContactUs extends Component {
       this.state.formdata.firstName === '' ||
       this.state.formdata.phoneNo === '' ||
       this.state.formdata.email === '' ||
-      this.state.formdata.subject === '' ||
+      this.state.formdata.type === '' ||
       this.state.formdata.message === ''
     ) {
       return false;
@@ -96,7 +96,7 @@ export default class ContactUs extends Component {
       firstName: this.state.formdata.firstName,
       phoneNo: this.state.formdata.phoneNo,
       email: this.state.formdata.email,
-      subject: this.state.formdata.subject,
+      type: this.state.formdata.type,
       message: this.state.formdata.message,
     };
     this.sendData(obj);
@@ -114,7 +114,7 @@ export default class ContactUs extends Component {
               firstName: '',
               phoneNo: '',
               email: '',
-              subject: '',
+              type: '',
               message: '',
             },
           });
@@ -263,22 +263,20 @@ export default class ContactUs extends Component {
                     <select
                       // className='form-control'
                       id='exampleFormControlSelect1'
-                      name='wheels'
+                      name='type'
+                      value={this.state.formdata.type}
                       onChange={this.handleChange}>
-                      <option value='4'>4</option>
+                      <option selected='true' value=''>
+                        Select user
+                      </option>
+                      <option value='company'>Company</option>
+                      <option value='distributer'>distributer</option>
                     </select>
-                    {/* <input
-                      type='text'
-                      placeholder='Subject *'
-                      value={this.state.formdata.subject}
-                      name='subject'
-                      onChange={this.handleChange}
-                      maxLength='100'
-                    />
+
                     {this.state.submitted &&
-                      this.state.formdata.subject === '' && (
+                      this.state.formdata.type === '' && (
                         <span className='text-danger'> This is required</span>
-                      )} */}
+                      )}
                   </div>
                 </div>
                 <div className='col-xl-10 offset-xl-1 col-lg-12 col-md-12 col-sm-12 col-xs-12'>

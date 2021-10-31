@@ -2,9 +2,12 @@ import React, { useEffect, useState, useCallback } from 'react';
 
 import apiUrl from '../../globals/config';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import showNotification from '../../services/notificationService';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 export default function ChangePassword() {
+  let history = useHistory();
+
   let { auth } = useParams();
   const [state, setstate] = useState('');
   const [message, setmessage] = useState('');
@@ -14,6 +17,23 @@ export default function ChangePassword() {
     setstate({
       ...state,
       [name]: value,
+    });
+  };
+  const sweetAlert = (msg) => {
+    Swal.fire({
+      title: msg,
+      timer: 7000,
+      icon: 'success',
+
+      confirmButtonText: 'Login',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        history.push('/Login');
+      } else {
+        history.push('/');
+      }
+      // setTimeout(history.goBack(), 500);
     });
   };
   const submit = () => {
@@ -26,13 +46,13 @@ export default function ChangePassword() {
         .then(function (resp) {
           console.log(`resp`, resp);
           if (resp) {
-            showNotification('success', 'Password Changed  Successfully');
-
+            sweetAlert('Password Changed  Successfully');
+            // showNotification('success', 'Password Changed  Successfully');
             // localStorage.setItem('myData', resp.data.token);
             // localStorage.setItem('role', resp?.data?.role ?? 0);
             // localStorage.setItem('userType', resp?.data?.userType ?? 0);
             // // console.log(`resp?.data`, resp?.data);
-            // this.props.history.push('/');
+            // history.push('/login');
             // window.location.reload();
           } else {
             showNotification('danger', 'Invalid Crendiantial ');
