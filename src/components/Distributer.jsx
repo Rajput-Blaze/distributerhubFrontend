@@ -21,6 +21,8 @@ import { Multiselect } from 'multiselect-react-dropdown';
 import Swal from 'sweetalert2';
 var _ = require('underscore');
 function Index(props) {
+  const [passwordhideandshow, setpasswordhideandshow] = useState(false);
+
   let history = useHistory();
   const [inputFields, setInputFields] = useState([
     { id: uuidv4(), name: '', brandName: '' },
@@ -292,11 +294,18 @@ function Index(props) {
     setformToggle(5);
     setheading('Exchange Vehicle');
   };
-  const gitBlock = (value) => {
-    axios.get(apiUrl + 'user/getDistrict?district=' + value).then((res) => {
-      setblockData(res.data.message);
-    });
+  const change = () => {
+    if (passwordhideandshow) {
+      setpasswordhideandshow(false);
+    } else {
+      setpasswordhideandshow(true);
+    }
   };
+  // const gitBlock = (value) => {
+  //   axios.get(apiUrl + 'user/getDistrict?district=' + value).then((res) => {
+  //     setblockData(res.data.message);
+  //   });
+  // };
   const checkpincode = (e) => {
     var pincode = e.target.value;
     let checkReg = /(^[0-9][0-9][0-9][0-9][0-9][0-9]$)/g;
@@ -306,7 +315,7 @@ function Index(props) {
         .then((res) => {
           if (res?.data?.[0]?.PostOffice) {
             setpost(res.data[0].PostOffice);
-            gitBlock(res.data[0].PostOffice[0].District);
+            // gitBlock(res.data[0].PostOffice[0].District);
             let obj = {
               district: res.data[0].PostOffice[0].District,
               pincode: pincode,
@@ -316,7 +325,7 @@ function Index(props) {
               ...state,
               ...obj,
             });
-            gitBlock(res.data[0].PostOffice[0].District);
+            // gitBlock(res.data[0].PostOffice[0].District);
           }
         });
     } else {
@@ -533,8 +542,9 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='companyName'
+                                value={state?.companyName}
                                 onChange={handleChange}
-                                placeholder='Enter company number..'
+                                placeholder='Enter company name..'
                                 ref={register({
                                   // pattern: {
                                   //   value: /^[a-zA-Z]+$/,
@@ -630,14 +640,14 @@ function Index(props) {
                             </div>
                           </div>
                           <div className='col-sm-6'>
-                            <div className='form-group '>
+                            <div className='form-group position-relative'>
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
                                 Password <span className='text-danger'>*</span>
                               </label>
                               <input
-                                type='password'
+                                type={passwordhideandshow ? 'text' : 'password'}
                                 required
                                 className='form-control'
                                 // onKeyPress={(e) => restrictAlpha(e)}
@@ -649,6 +659,15 @@ function Index(props) {
                                 ref={register}
                                 defaultValue={viewData?.fatherName}
                               />
+                              {passwordhideandshow ? (
+                                <i
+                                  onClick={change}
+                                  className='fa fa-eye-slash eye'></i>
+                              ) : (
+                                <i
+                                  onClick={change}
+                                  className='fa fa-eye eye'></i>
+                              )}
                             </div>
                           </div>
 
@@ -679,7 +698,8 @@ function Index(props) {
                                 id='val-username'
                                 name='companyName'
                                 onChange={handleChange}
-                                placeholder='Enter company number..'
+                                value={state?.companyName}
+                                placeholder='Enter company name..'
                                 ref={register({
                                   // pattern: {
                                   //   value: /^[a-zA-Z]+$/,

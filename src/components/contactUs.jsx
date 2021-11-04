@@ -262,7 +262,7 @@ export default class ContactUs extends Component {
                   <div className='contect_form1'>
                     <select
                       // className='form-control'
-                      id='exampleFormControlSelect1'
+                      id='selectt'
                       name='type'
                       value={this.state.formdata.type}
                       onChange={this.handleChange}>

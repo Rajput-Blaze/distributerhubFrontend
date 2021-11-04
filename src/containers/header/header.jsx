@@ -516,7 +516,27 @@ function Header(props) {
                     <span className='nav-text'>Dashboard</span>
                   </Link>
                 </li>{' '}
-                <Link to='/' className='customer-dash-user'>
+                <li>
+                  {' '}
+                  <Link
+                    className='ai-icon active'
+                    aria-expanded='false'
+                    to='/forgot-password'>
+                    <i className='fa fa-dashboard'></i>
+                    <span className='nav-text'>Forget Password</span>
+                  </Link>
+                </li>{' '}
+                <li>
+                  {' '}
+                  <Link
+                    className='ai-icon active'
+                    aria-expanded='false'
+                    onClick={_logout}>
+                    <i className='fa fa-dashboard'></i>
+                    <span className='nav-text'>logout</span>
+                  </Link>
+                </li>{' '}
+                {/* <Link to='/' className='customer-dash-user'>
                   <div className='add-menu-sidebar'>
                     <div className='user_main_icon_box d-flex justify-content-center align-items-center'>
                       <Image
@@ -531,13 +551,12 @@ function Header(props) {
                     <div className='ml-2'>
                       <h5 className='text-white	font-w500 mb-0'>
                         Company ...
-                        {/* {viewData && viewData.lastName ? ' ' + viewData.lastName : ''} */}
                       </h5>
                       <h5 className='text-white	font-w500 mb-0'></h5>
                       <p className=' mb-0'>Dashboard</p>
                     </div>
                   </div>
-                </Link>
+                </Link> */}
               </>
             ) : (
               ''

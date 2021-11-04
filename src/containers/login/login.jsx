@@ -15,6 +15,7 @@ export default function Login(props) {
       [name]: value,
     });
   };
+
   const submit = () => {
     console.log(state);
     //user/otpVerification
@@ -69,16 +70,16 @@ export default function Login(props) {
                 </div>
                 <form action='#' method='post'>
                   <div className='form-group first'>
-                    <label htmlFor='username'>Phone No</label>
+                    <label htmlFor='username'>Email ID</label>
                     <input
-                      type='text'
+                      type='email'
                       required
                       maxLength='10'
-                      value={state.phoneNo}
+                      value={state.email}
                       onChange={(e) => {
                         handleChange(e);
                       }}
-                      name='phoneNo'
+                      name='email'
                       className='form-control'
                     />
                   </div>

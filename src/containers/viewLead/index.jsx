@@ -84,7 +84,7 @@ function ViewProfile(props) {
 
                   <div className='two_btns_ps'>
                     {/* <Link to="/"> */}
-                    {/* <button
+                    <button
                       type='button'
                       onClick={() => {
                         history.push({
@@ -97,7 +97,7 @@ function ViewProfile(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button> */}
+                    </button>
                     {/* </Link> */}
                   </div>
                 </div>
@@ -217,7 +217,7 @@ function ViewProfile(props) {
 
                   <div className='two_btns_ps'>
                     {/* <Link to="/"> */}
-                    {/* <button
+                    <button
                       type='button'
                       onClick={() => {
                         history.push({
@@ -230,7 +230,7 @@ function ViewProfile(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button> */}
+                    </button>
                     {/* </Link> */}
                   </div>
                 </div>
@@ -426,7 +426,22 @@ function ViewProfile(props) {
                     Product Category Details
                   </h4>
 
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/updateData/' + id,
+                          data: 3,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                  </div>
                 </div>
 
                 <div className='card-body'>
@@ -463,9 +478,25 @@ function ViewProfile(props) {
                   <h4 className='card-title text-white'>
                     Distribution-ship For Preferred Category &amp; Location
                   </h4>
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/updateData/' + id,
+                          data: 4,
+                          categorydata: state?.category,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                  </div>
                 </div>
-
+                {console.log('state?.category', state?.category)}
                 <div className='card-body'>
                   <div className='form-validation'>
                     <div className='profile-personal-info'>

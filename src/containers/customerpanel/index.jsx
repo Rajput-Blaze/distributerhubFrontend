@@ -10,6 +10,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import styled from 'styled-components';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
+import ToggleButton from 'react-toggle-button'
 import showNotification from '../../.../../services/notificationService';
 import jwt_decode from 'jwt-decode';
 import * as constant from '../.../../../services/constant';
@@ -22,13 +23,18 @@ export default function Index(props) {
   const [subCategory, setsubCategory] = useState(
     props?.location?.data?.subCategory ?? []
   );
-
+  const [id, setid] = useState('');
   const [intreset, setintreset] = useState(props.location.data?.intreset ?? []);
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
   const [state, setState] = React.useState(false ?? []);
   let history = useHistory();
+  const [role, setrole] = useState('');
+
   useEffect(() => {
+    setrole(localStorage.getItem('userType'));
+
     var decoded = jwt_decode(window.localStorage.getItem('myData'));
+    setid(decoded.userId);
     const ongoing = (page) => {
       axios
         .get(apiUrl + 'user/getcompanyById/' + decoded.userId)
@@ -48,6 +54,7 @@ export default function Index(props) {
     };
     ongoing();
   }, []);
+  console.log(`role`, role);
   return (
     <>
       <div className='content-body'>
@@ -59,12 +66,11 @@ export default function Index(props) {
                   <h4 className='card-title text-white'>Personal Details</h4>
 
                   <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    {/* <button
+                    <button
                       type='button'
                       onClick={() => {
                         history.push({
-                          pathname: '/updateData/' + 'id',
+                          pathname: '/updateData/' + id,
                           data: 1,
                         });
                       }}
@@ -73,8 +79,7 @@ export default function Index(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button> */}
-                    {/* </Link> */}
+                    </button>
                   </div>
                 </div>
 
@@ -167,20 +172,25 @@ export default function Index(props) {
                           )} */}
                         </div>
                       </div>{' '}
-                      <div className='row mb-2'>
-                        <div className='col-sm-3 col-5'>
-                          <h6 className='f-w-500'>
-                            About Company <span className='pull-right'>:</span>
-                          </h6>
+                      {role == 1 ? (
+                        <div className='row mb-2'>
+                          <div className='col-sm-3 col-5'>
+                            <h6 className='f-w-500'>
+                              About Company{' '}
+                              <span className='pull-right'>:</span>
+                            </h6>
+                          </div>
+                          <div className='col-sm-9 col-7'>
+                            <span>
+                              {state && state.aboutCompany
+                                ? state.aboutCompany
+                                : 'N/A'}{' '}
+                            </span>
+                          </div>
                         </div>
-                        <div className='col-sm-9 col-7'>
-                          <span>
-                            {state && state.aboutCompany
-                              ? state.aboutCompany
-                              : 'N/A'}{' '}
-                          </span>
-                        </div>
-                      </div>{' '}
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </div>
                 </div>
@@ -192,13 +202,13 @@ export default function Index(props) {
                   <h4 className='card-title text-white'>firm Details</h4>
 
                   <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    {/* <button
+                    <button
                       type='button'
                       onClick={() => {
-                        history.push({
-                          pathname: '/updateData/' + 'id',
-                          data: 2,
+                        var newid = role == 1 ? 2 : 5;
+                        return history.push({
+                          pathname: '/updateData/' + id,
+                          data: newid,
                         });
                       }}
                       className='btn btn-light ml-2'>
@@ -206,8 +216,7 @@ export default function Index(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button> */}
-                    {/* </Link> */}
+                    </button>
                   </div>
                 </div>
 
@@ -217,7 +226,10 @@ export default function Index(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            Company Name<span className='pull-right'>:</span>
+                            {role == 1
+                              ? 'Company Name'
+                              : 'Distributer Firm Name'}
+                            <span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7'>
@@ -328,6 +340,87 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>{' '}
+                      {/* start distributer data */}
+                      {role == 1 ? (
+                        ''
+                      ) : (
+                        <>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Website <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.website
+                                  ? state.website
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Number of Brand{' '}
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.numberofBrand
+                                  ? state.numberofBrand
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Distributor Cover Area
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.distributorCoverArea
+                                  ? state.distributorCoverArea
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Number of Employee{' '}
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.numberofEmployee
+                                  ? state.numberofEmployee
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Godown Space{' '}
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.godownSpace
+                                  ? state.godownSpace
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                        </>
+                      )}
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -395,19 +488,19 @@ export default function Index(props) {
                   </div>
                 </div>
               </div>
-              {/* Category Details */}
               <div className='card widget-stat'>
                 <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>Category Details</h4>
+                  <h4 className='card-title text-white'>
+                    Product Category Details
+                  </h4>
 
                   <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    {/* <button
+                    <button
                       type='button'
                       onClick={() => {
                         history.push({
-                          pathname: '/profile',
-                          data: 6,
+                          pathname: '/updateData/' + id,
+                          data: 3,
                         });
                       }}
                       className='btn btn-light ml-2'>
@@ -415,8 +508,7 @@ export default function Index(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button> */}
-                    {/* </Link> */}
+                    </button>
                   </div>
                 </div>
 
@@ -424,93 +516,25 @@ export default function Index(props) {
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
                       <div className='row mb-2'>
-                        <div className='col-sm-3 col-5'>
-                          <h6 className='f-w-500'>
-                            category <span className='pull-right'>:</span>
-                          </h6>
+                        <div className='col-sm-4 '>
+                          <h6 className='f-w-500'>Category </h6>
+                          <p>{state?.category && state?.category.toString()}</p>
                         </div>
-                        <div className='col-sm-9 col-7'>
-                          <span>{state && state?.category.toString()}</span>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Sub Category </h6>
+                          {state?.subCategory &&
+                            state?.subCategory.map((data) => {
+                              return <p>{data?.name}</p>;
+                            })}
+                        </div>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Brand Name </h6>
+                          {state?.subCategory &&
+                            state?.subCategory.map((data) => {
+                              return <p>{data?.brandName}</p>;
+                            })}
                         </div>
                       </div>
-
-                      {/* {subCategory.map((data) => {
-                        return (
-                          <div className='row mb-2'>
-                            <div className='col-sm-3 col-5'>
-                              <h6 className='f-w-500'>
-                                subCategory{' '}
-                                <span className='pull-right'>:</span>
-                              </h6>
-                            </div>
-                            <div className='col-sm-9 col-7'>
-                              <span>{data?.name}</span>
-                            </div>
-                          </div>
-                        );
-                      })}  */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* subcategory */}
-              <div className='card widget-stat'>
-                <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>subCategory Details</h4>
-
-                  <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    {/* <button
-                      type='button'
-                      onClick={() => {
-                        history.push({
-                          pathname: '/profile',
-                          data: 6,
-                        });
-                      }}
-                      className='btn btn-light ml-2'>
-                      <i
-                        className='fa fa-pencil-square-o pr-1'
-                        aria-hidden='true'></i>
-                      <span>Update</span>
-                    </button> */}
-                    {/* </Link> */}
-                  </div>
-                </div>
-
-                <div className='card-body'>
-                  <div className='form-validation'>
-                    <div className='profile-personal-info'>
-                      {subCategory.map((data) => {
-                        return (
-                          <>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  subCategory{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.name}</span>
-                              </div>
-                            </div>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  Brand Name{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.brandName}</span>
-                              </div>
-                            </div>
-                            <hr />
-                          </>
-                        );
-                      })}
                     </div>
                   </div>
                 </div>
@@ -519,15 +543,17 @@ export default function Index(props) {
               {/* //Interest Details */}
               <div className='card widget-stat'>
                 <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>Interest Details</h4>
+                  <h4 className='card-title text-white'>
+                    Distribution-ship For Preferred Category &amp; Location
+                  </h4>
                   <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    {/* <button
+                    <button
                       type='button'
                       onClick={() => {
                         history.push({
-                          pathname: '/profile',
-                          data: 6,
+                          pathname: '/updateData/' + id,
+                          data: 4,
+                          categorydata: state?.category,
                         });
                       }}
                       className='btn btn-light ml-2'>
@@ -535,102 +561,51 @@ export default function Index(props) {
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
                       <span>Update</span>
-                    </button> */}
-                    {/* </Link> */}
+                    </button>
                   </div>
                 </div>
-
+                {console.log('state?.category', state?.category)}
                 <div className='card-body'>
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
-                      {intreset.map((data) => {
-                        return (
-                          <>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  subCategory{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.name}</span>
-                              </div>
-                            </div>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  Brand Name{' '}
-                                  <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.brandName}</span>
-                              </div>
-                            </div>
-                            <hr />
-                          </>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* prefied Location  */}
-              <div className='card widget-stat'>
-                <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>Prefered Location</h4>
+                      <div className='row mb-2'>
+                        <div className='col-sm-4 '>
+                          <h6 className='f-w-500'>Category </h6>
+                          <p>{state?.category && state?.category.toString()}</p>
+                        </div>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Sub Category </h6>
+                          {state?.intreset &&
+                            state?.intreset.map((data) => {
+                              return <p>{data?.name}</p>;
+                            })}
+                        </div>
+                        <div className='col-sm-4'>
+                          <h6 className='f-w-500'>Brand Name </h6>
+                          {state?.intreset &&
+                            state?.intreset.map((data) => {
+                              return <p>{data?.brandName}</p>;
+                            })}
+                        </div>
+                      </div>
+                      <hr />
 
-                  <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
-                    {/* <button
-                      type='button'
-                      onClick={() => {
-                        history.push({
-                          pathname: '/profile',
-                          data: 6,
-                        });
-                      }}
-                      className='btn btn-light ml-2'>
-                      <i
-                        className='fa fa-pencil-square-o pr-1'
-                        aria-hidden='true'></i>
-                      <span>Update</span>
-                    </button> */}
-                    {/* </Link> */}
-                  </div>
-                </div>
-
-                <div className='card-body'>
-                  <div className='form-validation'>
-                    <div className='profile-personal-info'>
-                      {loction.map((data) => {
-                        return (
-                          <>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  State <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.state}</span>
-                              </div>
-                            </div>
-                            <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
-                                <h6 className='f-w-500'>
-                                  City <span className='pull-right'>:</span>
-                                </h6>
-                              </div>
-                              <div className='col-sm-9 col-7'>
-                                <span>{data?.city?.toString()}</span>
-                              </div>
-                            </div>
-                            <hr />
-                          </>
-                        );
-                      })}
+                      {/* <p>{state.category.toString()}</p> */}
+                      <div className='row py-3'>
+                        <div className='col-sm-4 '>
+                          <h6 className='f-w-500'>State </h6>
+                          {state?.preferred && state?.preferred[0]?.state}
+                        </div>
+                        <div className='col-sm-8'>
+                          <h6 className='f-w-500'>City </h6>
+                          <p>
+                            {state &&
+                              state?.preferred &&
+                              state?.preferred[0]?.city &&
+                              state?.preferred[0]?.city.toString()}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

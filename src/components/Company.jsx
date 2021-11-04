@@ -75,7 +75,6 @@ function Index(props) {
     stateee();
     categoryy();
   }, []);
-  console.log(`Selectedyear`, Selectedyear);
   const sweetAlert = (msg) => {
     Swal.fire({
       title: msg,
@@ -210,7 +209,7 @@ function Index(props) {
       //     setheading('Upload logo/Video');
       //   }
     } catch (err) {
-      showNotification('danger', err.message);
+      showNotification('danger', err?.message);
     }
   };
 
@@ -271,11 +270,11 @@ function Index(props) {
     setformToggle(6);
     setheading('Document');
   };
-  const gitBlock = (value) => {
-    axios.get(apiUrl + 'user/getDistrict?district=' + value).then((res) => {
-      setblockData(res.data.message);
-    });
-  };
+  // const gitBlock = (value) => {
+  //   axios.get(apiUrl + 'user/getDistrict?district=' + value).then((res) => {
+  //     setblockData(res.data.message);
+  //   });
+  // };
   const checkpincode = (e) => {
     var pincode = e.target.value;
     let checkReg = /(^[0-9][0-9][0-9][0-9][0-9][0-9]$)/g;
@@ -285,7 +284,7 @@ function Index(props) {
         .then((res) => {
           if (res?.data?.[0]?.PostOffice) {
             // setpost(res.data[0].PostOffice);
-            gitBlock(res.data[0].PostOffice[0].District);
+            // gitBlock(res.data[0].PostOffice[0].District);
             let obj = {
               district: res.data[0].PostOffice[0].District,
               pincode: pincode,
@@ -295,7 +294,7 @@ function Index(props) {
               ...state,
               ...obj,
             });
-            gitBlock(res.data[0].PostOffice[0].District);
+            // gitBlock(res.data[0].PostOffice[0].District);
           }
         });
     } else {
@@ -373,7 +372,6 @@ function Index(props) {
       }
       return i;
     });
-    console.log(`newInputFields`, newInputFields);
 
     setInputFieldscity(newInputFields);
   };
@@ -419,7 +417,6 @@ function Index(props) {
       }
       return i;
     });
-    console.log(`category`, newInputFields);
     setIntrestinputFields(newInputFields);
   };
 
@@ -453,7 +450,6 @@ function Index(props) {
     }
   };
   const checkNumber2 = (e) => {
-    console.log(e, 'e');
     var phoneNo = e;
     let checkReg = /(^[5-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$)/g;
 
@@ -729,7 +725,7 @@ function Index(props) {
                                 name='companyName'
                                 value={state?.companyName}
                                 onChange={handleChange}
-                                placeholder='Enter company number..'
+                                placeholder='Enter company name..'
                                 ref={register({
                                   // pattern: {
                                   //   value: /^[a-zA-Z]+$/,
@@ -780,6 +776,7 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='contactNumber'
+                                maxLength='10'
                                 onKeyPress={(e) => restrictAlpha(e)}
                                 value={state?.contactNumber}
                                 onChange={handleChange}
@@ -800,6 +797,7 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
+                                maxLength='10'
                                 name='alternativeNumber'
                                 onKeyPress={(e) => restrictAlpha(e)}
                                 value={state?.alternativeNumber}
