@@ -110,10 +110,10 @@ function Index(props) {
   const onSubmit = (formsubmitdata) => {
     // console.log(`formsubmitdata`, intrestinputFields);
 
-    if (formToggle == 1 && formsubmitdata.phoneNo && formsubmitdata.password) {
+    if (formToggle == 1 && formsubmitdata.email && formsubmitdata.password) {
       axios
         .post(apiUrl + 'user/getPhone', {
-          phoneNo: formsubmitdata.phoneNo,
+          email: formsubmitdata.email,
         })
         .then(function (respon) {
           seterrorMsg(respon.data.message);
@@ -600,17 +600,20 @@ function Index(props) {
                                 id='val-username'
                                 name='email'
                                 value={state?.email}
-                                onChange={handleChange}
+                                onChange={(e) => {
+                                  seterrorMsg('');
+                                  handleChange(e);
+                                }}
                                 placeholder='Enter email..'
                                 ref={register({
-                                  // required: "This is required ",
-                                  // pattern: {
-                                  //   value:
-                                  //     /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
-                                  //   message: 'Enter Valid Email id',
-                                  // },
+                                  required: 'This is required ',
+                                  pattern: {
+                                    value:
+                                      /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
+                                    message: 'Enter Valid Email id',
+                                  },
                                 })}
-                                defaultValue={viewData?.email}
+                                // defaultValue={viewData?.email}
                               />
                               <ErrorMessage
                                 errors={errors}
@@ -619,6 +622,7 @@ function Index(props) {
                                   <p className='error'>{message}</p>
                                 )}
                               />
+                              <p className='error'>{errorMsg}</p>
                             </div>
                           </div>
                           <div className='col-sm-6'>
@@ -661,7 +665,6 @@ function Index(props) {
                                   <p className='error'>{message}</p>
                                 )}
                               />
-                              <p className='error'>{errorMsg}</p>
                             </div>
                           </div>
                           <div className='col-sm-6'>

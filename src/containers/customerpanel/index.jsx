@@ -10,7 +10,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import styled from 'styled-components';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
-import ToggleButton from 'react-toggle-button'
+import ToggleButton from 'react-toggle-button';
 import showNotification from '../../.../../services/notificationService';
 import jwt_decode from 'jwt-decode';
 import * as constant from '../.../../../services/constant';
