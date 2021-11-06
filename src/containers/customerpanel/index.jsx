@@ -29,7 +29,7 @@ export default function Index(props) {
   const [state, setState] = React.useState(false ?? []);
   let history = useHistory();
   const [role, setrole] = useState('');
-
+  const [hiddenNumber, sethiddenNumber] = useState(undefined);
   useEffect(() => {
     setrole(localStorage.getItem('userType'));
 
@@ -54,7 +54,28 @@ export default function Index(props) {
     };
     ongoing();
   }, []);
-  console.log(`role`, role);
+  useEffect(() => {
+    if (hiddenNumber?.value == false || hiddenNumber?.value == true) {
+      axios
+        .post(apiUrl + 'user/hideShowNumber/' + id, {
+          hiddenNumber: hiddenNumber?.value,
+        })
+        .then((resp) => {
+          var data = resp?.data?.data;
+          console.log(`resp?.data`, resp?.data);
+          // state.firstName
+          // apiUrl + state.profileImg
+          //state?.userType
+        })
+        .catch((err) => {
+          console.log(`err`, err);
+          showNotification('danger', err.message);
+        });
+    } else {
+      console.log(`---------fire api undefined`, hiddenNumber?.value);
+    }
+  }, [hiddenNumber?.value]);
+  // console.log(`role`, role);
   return (
     <>
       <div className='content-body'>
@@ -564,7 +585,7 @@ export default function Index(props) {
                     </button>
                   </div>
                 </div>
-                {console.log('state?.category', state?.category)}
+                {/* {console.log('state?.category', state?.category)} */}
                 <div className='card-body'>
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
@@ -592,17 +613,27 @@ export default function Index(props) {
 
                       {/* <p>{state.category.toString()}</p> */}
                       <div className='row py-3'>
-                        <div className='col-sm-4 '>
+                        <div className='col-4 '>
                           <h6 className='f-w-500'>State </h6>
-                          {state?.preferred && state?.preferred[0]?.state}
+                          {state &&
+                            state?.preferred &&
+                            state?.preferred.map((data) => {
+                              return data?.state;
+                            })}
+                          {/* {state?.preferred && state?.preferred[0]?.state} */}
                         </div>
-                        <div className='col-sm-8'>
+                        <div className='col-8'>
                           <h6 className='f-w-500'>City </h6>
                           <p>
                             {state &&
                               state?.preferred &&
-                              state?.preferred[0]?.city &&
-                              state?.preferred[0]?.city.toString()}
+                              state?.preferred.map((data) => {
+                                return data?.city.toString();
+                              })}
+                            {/* {state &&
+                                state?.preferred &&
+                                state?.preferred[0]?.city &&
+                                state?.preferred[0]?.city.toString()} */}
                           </p>
                         </div>
                       </div>
@@ -611,18 +642,21 @@ export default function Index(props) {
                 </div>
               </div>
             </div>
-
+            {/* {console.log(state?.value, 'statee.valu')} */}
             <div className='col-lg-12 d-flex '>
-              {/* <Link to='/leads'> */}
-              {/* <button
-                type='button'
-                className='btn btn-primary mr-2'
-                onClick={(e) => {
-                  history.goBack();
-                }}>
-                Back
-              </button> */}
-              {/* </Link> */}
+              <ToggleButton
+                value={hiddenNumber?.value || false}
+                onToggle={(value) => {
+                  sethiddenNumber({
+                    value: !value,
+                  });
+                }}
+              />{' '}
+              <p className='pl-2'>
+                {hiddenNumber?.value == true
+                  ? 'Number Is hidden'
+                  : 'Number Is Public'}
+              </p>
             </div>
 
             {/* <input type='button' value='button' /> */}

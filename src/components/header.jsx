@@ -114,57 +114,58 @@ export default class Header extends Component {
   render() {
     return (
       <>
-        <header
-          id='header'
-          className={
-            this.context.store.pathName === '/'
-              ? `banner-header`
-              : 'inner-page-header'
-          }>
-          <div className='container nayk-container'>
-            <nav
-              id='main-menu'
-              className='navbar navbar-expand-lg navbar-light  px-0'>
-              <span onClick={this.changePage}>
-                <a href='/' className='navbar-brand'>
-                  <img
-                    src={
-                      this.context.store.pathName === '/'
-                        ? `/assets/images/logo (2).png`
-                        : '/assets/images/logo (2).png'
-                    }
-                    className='img-fluid'
-                  />
-                  {/* Distributorshub */}
-                </a>
-              </span>
-              <button
-                className='navbar-toggler collapsed'
-                type='button'
-                data-toggle='collapse'
-                data-target='#naayakNav'
-                aria-controls='naayakNav'
-                aria-expanded='false'
-                aria-label='Toggle navigation'>
-                <span className='navbar-toggler-icon' />
-              </button>
-              <div className='collapse navbar-collapse' id='naayakNav'>
-                <ul className='menu navbar-nav mx-auto'>
-                  <span onClick={this.changePage}>
-                    <a href='/' className='navbar-brand d-lg-none mx-auto'>
-                      <img
-                        src={
-                          this.context.store.pathName === '/'
-                            ? `/assets/images/logo (2).png`
-                            : '/assets/images/logo (2).png'
-                        }
-                        className='img-fluid'
-                      />
-                      {/* Distributorshub */}
-                    </a>
-                  </span>
-                  <li className='nav-item' onClick={this.changePage}>
-                    {/* <NavLink
+        <div className='navSticky'>
+          <header
+            id='header'
+            className={
+              this.context.store.pathName === '/'
+                ? `banner-header`
+                : 'inner-page-header'
+            }>
+            <div className='container nayk-container'>
+              <nav
+                id='main-menu'
+                className='navbar navbar-expand-lg navbar-light  px-0'>
+                <span onClick={this.changePage}>
+                  <a href='/' className='navbar-brand'>
+                    <img
+                      src={
+                        this.context.store.pathName === '/'
+                          ? `/assets/images/logo (2).png`
+                          : '/assets/images/logo (2).png'
+                      }
+                      className='img-fluid'
+                    />
+                    {/* Distributorshub */}
+                  </a>
+                </span>
+                <button
+                  className='navbar-toggler collapsed'
+                  type='button'
+                  data-toggle='collapse'
+                  data-target='#naayakNav'
+                  aria-controls='naayakNav'
+                  aria-expanded='false'
+                  aria-label='Toggle navigation'>
+                  <span className='navbar-toggler-icon' />
+                </button>
+                <div className='collapse navbar-collapse' id='naayakNav'>
+                  <ul className='menu navbar-nav mx-auto'>
+                    <span onClick={this.changePage}>
+                      <a href='/' className='navbar-brand d-lg-none mx-auto'>
+                        <img
+                          src={
+                            this.context.store.pathName === '/'
+                              ? `/assets/images/logo (2).png`
+                              : '/assets/images/logo (2).png'
+                          }
+                          className='img-fluid'
+                        />
+                        {/* Distributorshub */}
+                      </a>
+                    </span>
+                    <li className='nav-item' onClick={this.changePage}>
+                      {/* <NavLink
                       // className='nav-link'
                       className={
                         this.context.store.pathName === '/'
@@ -174,84 +175,85 @@ export default class Header extends Component {
                       to='/'>
                       Home{' '}
                     </NavLink> */}
-                    <a
-                      // className='nav-link'
-                      className={
-                        this.context.store.pathName === '/'
-                          ? ` nav-link `
-                          : 'nav-link'
-                      }
-                      href='/'>
-                      Home{' '}
-                    </a>
-                  </li>
-                  <li className='nav-item' onClick={this.changePage}>
-                    {/* <NavLink className='nav-link' to='/about'>
+                      <a
+                        // className='nav-link'
+                        className={
+                          this.context.store.pathName === '/'
+                            ? ` nav-link `
+                            : 'nav-link'
+                        }
+                        href='/'>
+                        Home{' '}
+                      </a>
+                    </li>
+                    <li className='nav-item' onClick={this.changePage}>
+                      {/* <NavLink className='nav-link' to='/about'>
                       About Us
                     </NavLink> */}
-                    <a className='nav-link' href='/about'>
-                      About Us
-                    </a>
-                  </li>
+                      <a className='nav-link' href='/about'>
+                        About Us
+                      </a>
+                    </li>
 
-                  <li className='nav-item' onClick={this.changePage}>
-                    {/* <NavLink className='nav-link' to='/contact-us'>
+                    <li className='nav-item' onClick={this.changePage}>
+                      {/* <NavLink className='nav-link' to='/contact-us'>
                       Contact Us{' '}
                     </NavLink> */}
-                    <a className='nav-link' href='/contact-us'>
-                      Contact Us{' '}
-                    </a>
-                  </li>
-                </ul>
-                <ul className='menu navbar-nav mt-4 mt-lg-0'>
-                  <li>
-                    {session.getToken() == null ? (
-                      <div className='login-button'>
-                        <a
-                          href='/login'
-                          className='btn btn-primary ml-3 login-btn-cus'
-                          // onClick={this.handleLoginClick}
-                        >
-                          Login
-                        </a>
-                      </div>
-                    ) : (
-                      <div className='login-button'>
-                        <a
-                          href='javascript:;'
-                          className='btn btn-primary ml-3 login-btn-cus'
-                          onClick={this.handleLogout}>
-                          Logout
-                        </a>
-                      </div>
-                    )}
-                  </li>
-                  <li>
-                    {session.getToken() == null ? (
-                      <div className='login-button call-btn'>
-                        <a
-                          className='btn btn-primary ml-3'
-                          onClick={this.registershow}>
-                          Register
-                        </a>
-                      </div>
-                    ) : (
-                      <div className='login-button call-btn'>
-                        <a
-                          href='/dashboard'
-                          className='btn btn-primary ml-3'
-                          //onClick={this.registershow}
-                        >
-                          Dashboard
-                        </a>
-                      </div>
-                    )}
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div>
-        </header>
+                      <a className='nav-link' href='/contact-us'>
+                        Contact Us{' '}
+                      </a>
+                    </li>
+                  </ul>
+                  <ul className='menu navbar-nav mt-4 mt-lg-0'>
+                    <li>
+                      {session.getToken() == null ? (
+                        <div className='login-button'>
+                          <a
+                            href='/login'
+                            className='btn btn-primary ml-3 login-btn-cus'
+                            // onClick={this.handleLoginClick}
+                          >
+                            Login
+                          </a>
+                        </div>
+                      ) : (
+                        <div className='login-button'>
+                          <a
+                            href='javascript:;'
+                            className='btn btn-primary ml-3 login-btn-cus'
+                            onClick={this.handleLogout}>
+                            Logout
+                          </a>
+                        </div>
+                      )}
+                    </li>
+                    <li>
+                      {session.getToken() == null ? (
+                        <div className='login-button call-btn'>
+                          <a
+                            className='btn btn-primary ml-3'
+                            onClick={this.registershow}>
+                            Register
+                          </a>
+                        </div>
+                      ) : (
+                        <div className='login-button call-btn'>
+                          <a
+                            href='/dashboard'
+                            className='btn btn-primary ml-3'
+                            //onClick={this.registershow}
+                          >
+                            Dashboard
+                          </a>
+                        </div>
+                      )}
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </header>
+        </div>
         <div className='main-rgt-login'>
           <div className='fade-cus-shadow' />
 

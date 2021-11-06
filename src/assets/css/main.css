@@ -41217,7 +41217,7 @@ margin-left: 8.3333333333%;
   padding: 10%;
 }
 .img_cus_padding_border{
-  padding:20 px;
+  padding:20px;
   border:1px solid #6aacff;
 }
 .cus_btn_center{
@@ -41310,4 +41310,23 @@ margin-left: 8.3333333333%;
   bottom: 20px;
 
 
+}
+@media screen and (max-width: 480px) {
+.img_main{
+  width: 50vw;
+}
+.img_main img {
+  width :100%;
+height: auto;
+}
+.text_insm{
+  font-size: 18px!important;
+}
+
+}
+.navSticky{
+  position: fixed;
+    z-index: 99999999999999999999;
+    width: 100%;
+    background-color: white;
 }

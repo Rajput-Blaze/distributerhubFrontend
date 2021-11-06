@@ -150,7 +150,7 @@ const VehicleDetail = (props) => {
           <div className='row'>
             <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width'>
               <div className='btc_tittle_left_heading'>
-                <h1>{state?.type}Detail</h1>
+                {/* <h1>{state?.type}Detail</h1> */}
               </div>
             </div>
             <div className='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width'>
@@ -175,8 +175,8 @@ const VehicleDetail = (props) => {
       <div className='page-wrapper'>
         <div className='page-details-top-section'>
           <div className='container nayk-container'>
-            <div className='row align-items-center'>
-              <div className='col-12 col-md-4 d-flex justify-content-center img_cus_padding_border'>
+            <div className='row container align-items-center'>
+              <div className='img_main col-6 col-md-4 d-flex justify-content-center img_cus_padding_border'>
                 {' '}
                 {console.log(state?.profileImg, 'state?.profileImg')}
                 <img
@@ -187,9 +187,9 @@ const VehicleDetail = (props) => {
                   height='300'
                 />{' '}
               </div>
-              <div className='col-12 col-md-8'>
+              <div className='col-6 col-md-8'>
                 {' '}
-                <h4> {state?.companyName}</h4>
+                <h4 className='text_insm'> {state?.companyName}</h4>
                 <div className='rating-wrap d-flex'>
                   <div className='rating-list py-3'>
                     <Rating
@@ -205,7 +205,7 @@ const VehicleDetail = (props) => {
       <a href='#rating_div'>Rate This Car</a> */}
                   </div>
                 </div>
-                <div>
+                <div className='hide_in_sm'>
                   <img
                     src='/assets/images/trust-stamp-big.png'
                     alt='seal Stamp'
@@ -296,20 +296,20 @@ const VehicleDetail = (props) => {
                     <div className='form-validation'>
                       <div className='profile-personal-info'>
                         <div className='row mb-2'>
-                          <div className='col-sm-4 '>
+                          <div className='col-4 '>
                             <h6 className='f-w-500'>Category </h6>
                             <p>
                               {state?.category && state?.category.toString()}
                             </p>
                           </div>
-                          <div className='col-sm-4'>
+                          <div className='col-4'>
                             <h6 className='f-w-500'>Sub Category </h6>
                             {state?.subCategory &&
                               state?.subCategory.map((data) => {
                                 return <p>{data?.name}</p>;
                               })}
                           </div>
-                          <div className='col-sm-4'>
+                          <div className='col-4'>
                             <h6 className='f-w-500'>Brand Name </h6>
                             {state?.subCategory &&
                               state?.subCategory.map((data) => {
@@ -335,20 +335,20 @@ const VehicleDetail = (props) => {
                     <div className='form-validation'>
                       <div className='profile-personal-info'>
                         <div className='row mb-2'>
-                          <div className='col-sm-4 '>
+                          <div className='col-4 '>
                             <h6 className='f-w-500'>Category </h6>
                             <p>
                               {state?.category && state?.category.toString()}
                             </p>
                           </div>
-                          <div className='col-sm-4'>
+                          <div className='col-4'>
                             <h6 className='f-w-500'>Sub Category </h6>
                             {state?.intreset &&
                               state?.intreset.map((data) => {
                                 return <p>{data?.name}</p>;
                               })}
                           </div>
-                          <div className='col-sm-4'>
+                          <div className='col-4'>
                             <h6 className='f-w-500'>Brand Name </h6>
                             {state?.intreset &&
                               state?.intreset.map((data) => {
@@ -360,17 +360,27 @@ const VehicleDetail = (props) => {
 
                         {/* <p>{state.category.toString()}</p> */}
                         <div className='row py-3'>
-                          <div className='col-sm-4 '>
+                          <div className='col-4 '>
                             <h6 className='f-w-500'>State </h6>
-                            {state?.preferred && state?.preferred[0]?.state}
+                            {state &&
+                              state?.preferred &&
+                              state?.preferred.map((data) => {
+                                return data?.state;
+                              })}
+                            {/* {state?.preferred && state?.preferred[0]?.state} */}
                           </div>
-                          <div className='col-sm-8'>
+                          <div className='col-8'>
                             <h6 className='f-w-500'>City </h6>
                             <p>
                               {state &&
                                 state?.preferred &&
+                                state?.preferred.map((data) => {
+                                  return data?.city.toString();
+                                })}
+                              {/* {state &&
+                                state?.preferred &&
                                 state?.preferred[0]?.city &&
-                                state?.preferred[0]?.city.toString()}
+                                state?.preferred[0]?.city.toString()} */}
                             </p>
                           </div>
                         </div>
@@ -392,7 +402,7 @@ const VehicleDetail = (props) => {
                     <div className='form-validation'>
                       <div className='profile-personal-info'>
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Name<span className='pull-right'>:</span>
                             </h6>
@@ -406,7 +416,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Contact Personal{' '}
                               <span className='pull-right'>:</span>
@@ -421,7 +431,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Contact No<span className='pull-right'>:</span>
                             </h6>
@@ -435,7 +445,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Alternate no.{' '}
                               <span className='pull-right'>:</span>
@@ -449,8 +459,88 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        {state?.type == 1 ? (
+                          ''
+                        ) : (
+                          <>
+                            <div className='row mb-2'>
+                              <div className='col-sm-3 col-5'>
+                                <h6 className='f-w-500'>
+                                  Website <span className='pull-right'>:</span>
+                                </h6>
+                              </div>
+                              <div className='col-sm-9 col-7'>
+                                <span>
+                                  {state && state?.website
+                                    ? state.website
+                                    : 'N/A'}{' '}
+                                </span>
+                              </div>
+                            </div>
+                            <div className='row mb-2'>
+                              <div className='col-sm-3 col-5'>
+                                <h6 className='f-w-500'>
+                                  Number of Brand{' '}
+                                  <span className='pull-right'>:</span>
+                                </h6>
+                              </div>
+                              <div className='col-sm-9 col-7'>
+                                <span>
+                                  {state && state?.numberofBrand
+                                    ? state.numberofBrand
+                                    : 'N/A'}{' '}
+                                </span>
+                              </div>
+                            </div>
+                            <div className='row mb-2'>
+                              <div className='col-sm-3 col-5'>
+                                <h6 className='f-w-500'>
+                                  Distributor Cover Area
+                                  <span className='pull-right'>:</span>
+                                </h6>
+                              </div>
+                              <div className='col-sm-9 col-7'>
+                                <span>
+                                  {state && state?.distributorCoverArea
+                                    ? state.distributorCoverArea
+                                    : 'N/A'}{' '}
+                                </span>
+                              </div>
+                            </div>
+                            <div className='row mb-2'>
+                              <div className='col-sm-3 col-5'>
+                                <h6 className='f-w-500'>
+                                  Number of Employee{' '}
+                                  <span className='pull-right'>:</span>
+                                </h6>
+                              </div>
+                              <div className='col-sm-9 col-7'>
+                                <span>
+                                  {state && state?.numberofEmployee
+                                    ? state.numberofEmployee
+                                    : 'N/A'}{' '}
+                                </span>
+                              </div>
+                            </div>
+                            <div className='row mb-2'>
+                              <div className='col-sm-3 col-5'>
+                                <h6 className='f-w-500'>
+                                  Godown Space{' '}
+                                  <span className='pull-right'>:</span>
+                                </h6>
+                              </div>
+                              <div className='col-sm-9 col-7'>
+                                <span>
+                                  {state && state?.godownSpace
+                                    ? state.godownSpace
+                                    : 'N/A'}{' '}
+                                </span>
+                              </div>
+                            </div>
+                          </>
+                        )}
                         <div className='row mb-2 align-items-center'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Address<span className='pull-right'>:</span>
                             </h6>
@@ -462,7 +552,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               City <span className='pull-right'>:</span>
                             </h6>
@@ -476,7 +566,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               State <span className='pull-right'>:</span>
                             </h6>
@@ -488,7 +578,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Pin Code <span className='pull-right'>:</span>
                             </h6>
@@ -500,7 +590,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Country
                               <span className='pull-right'>:</span>
@@ -511,7 +601,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Establishment Year
                               <span className='pull-right'>:</span>
@@ -526,7 +616,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               GST No<span className='pull-right'>:</span>
                             </h6>
@@ -538,7 +628,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Mail Id
                               <span className='pull-right'>:</span>
@@ -551,7 +641,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Turnover of the company
                               <span className='pull-right'>:</span>
@@ -565,8 +655,8 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
-                        <div className='row mb-2'>
-                          <div className='col-sm-4 col-5'>
+                        {/* <div className='row mb-2'>
+                          <div className='col-4 col-5'>
                             <h6 className='f-w-500'>
                               Website
                               <span className='pull-right'>:</span>
@@ -575,7 +665,7 @@ const VehicleDetail = (props) => {
                           <div className='col-sm-8 col-7'>
                             <span>{'N/A'} </span>
                           </div>
-                        </div>{' '}
+                        </div>{' '} */}
                       </div>
                     </div>
                   </div>
