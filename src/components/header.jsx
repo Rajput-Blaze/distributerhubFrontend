@@ -118,9 +118,10 @@ export default class Header extends Component {
           <header
             id='header'
             className={
-              this.context.store.pathName === '/'
-                ? `banner-header`
-                : 'inner-page-header'
+              // this.context.store.pathName === '/'
+              //   ? `banner-header`
+              // :
+              'inner-page-header'
             }>
             <div className='container nayk-container'>
               <nav

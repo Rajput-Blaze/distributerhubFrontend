@@ -117,15 +117,17 @@ function SerchField(props) {
           setsearchresult(respon?.data?.data?.verify_otp ?? []);
           console.log(`respon...`, respon?.data?.data?.verify_otp.length);
           if (respon?.data?.data?.verify_otp.length == 0) {
+            setisLoading(false);
             showNotification('danger', 'No record Found');
           }
         })
         .catch(function (error) {
-          console.log(`error`, error);
-        })
-        .finally((e) => {
           setisLoading(false);
+          console.log(`error`, error);
         });
+      // .finally((e) => {
+      //   setisLoading(false);
+      // });
     }
   };
   const view = (data) => {
@@ -140,6 +142,7 @@ function SerchField(props) {
   return (
     <>
       {/* <Header /> */}
+      {isLoading ? <Loaderr /> : ''}
       <div className='serch '>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <div className='container-fluid'>
@@ -292,7 +295,6 @@ function SerchField(props) {
                               className='btn px-5 btn-primary btn-lg mr-2'>
                               search
                             </button>
-                            {isLoading ? <Loaderr /> : ''}
                           </span>
                         </div>
                       </div>

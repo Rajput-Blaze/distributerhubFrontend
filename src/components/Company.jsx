@@ -20,6 +20,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
 // import DatePicker from 'react-date-picker';
 import Swal from 'sweetalert2';
+import Loaderr from './Loaderr';
 
 var _ = require('underscore');
 function Index(props) {
@@ -59,7 +60,7 @@ function Index(props) {
   const [formToggle, setformToggle] = useState(1);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
-  const [data, setdata] = useState({});
+  const [loading, setloading] = useState(false);
   const [Selectedyear, setSelectedyear] = useState(null);
   const [errorMsg, seterrorMsg] = useState('');
   const [SelectedDate, setSelectedDate] = useState(null);
@@ -109,7 +110,7 @@ function Index(props) {
 
   const onSubmit = (formsubmitdata) => {
     // console.log(`formsubmitdata`, intrestinputFields);
-
+    setloading(true);
     if (formToggle == 1 && formsubmitdata.email && formsubmitdata.password) {
       axios
         .post(apiUrl + 'user/getPhone', {
@@ -134,6 +135,7 @@ function Index(props) {
               userType: 1,
             })
             .then(function (respon) {
+              setloading(false);
               if (formToggle == 1) {
                 setstep(1);
                 setformToggle(2);
@@ -142,6 +144,7 @@ function Index(props) {
               // console.log(`respon`, respon);
             })
             .catch(function (error) {
+              setloading(false);
               console.log(`error`, error);
             });
         });
@@ -173,13 +176,16 @@ function Index(props) {
         .then(function (respon) {
           // console.log(`respon`, respon);
           //showNotification('success', 'Company Added Successfully');
+          setloading(false);
           sweetAlert('Company Added Successfully');
+
           // history.push({
           //   pathname: '/',
           // });
         })
         .catch(function (error) {
           console.log(`error`, error);
+          setloading(false);
           showNotification('danger', 'something went wrong');
         });
     } else {
@@ -478,6 +484,8 @@ function Index(props) {
   return (
     <>
       {/* <Header /> */}
+      {loading ? <Loaderr /> : null}
+
       <div className=''>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <div className='container-fluid'>
