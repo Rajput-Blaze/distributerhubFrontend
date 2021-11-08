@@ -74,7 +74,7 @@ export default function Login(props) {
                     <input
                       type='email'
                       required
-                      maxLength='10'
+                      // maxLength='10'
                       value={state.email}
                       onChange={(e) => {
                         handleChange(e);

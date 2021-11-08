@@ -94,6 +94,7 @@ export default class Header extends Component {
     window.location.href = '/';
   };
   registershow = (e) => {
+    document.getElementById('close').click();
     Swal.fire({
       title: 'Select Form Type',
       icon: 'info',
@@ -141,6 +142,7 @@ export default class Header extends Component {
                   </a>
                 </span>
                 <button
+                  id='close'
                   className='navbar-toggler collapsed'
                   type='button'
                   data-toggle='collapse'
