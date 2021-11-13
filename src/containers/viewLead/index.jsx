@@ -448,18 +448,18 @@ function ViewProfile(props) {
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
                       <div className='row mb-2'>
-                        <div className='col-sm-4 '>
+                        <div className='col-4 '>
                           <h6 className='f-w-500'>Category </h6>
                           <p>{state?.category && state?.category.toString()}</p>
                         </div>
-                        <div className='col-sm-4'>
+                        <div className='col-4'>
                           <h6 className='f-w-500'>Sub Category </h6>
                           {state?.subCategory &&
                             state?.subCategory.map((data) => {
                               return <p>{data?.name}</p>;
                             })}
                         </div>
-                        <div className='col-sm-4'>
+                        <div className='col-4'>
                           <h6 className='f-w-500'>Brand Name </h6>
                           {state?.subCategory &&
                             state?.subCategory.map((data) => {
@@ -501,18 +501,18 @@ function ViewProfile(props) {
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
                       <div className='row mb-2'>
-                        <div className='col-sm-4 '>
+                        <div className='col-4 '>
                           <h6 className='f-w-500'>Category </h6>
                           <p>{state?.category && state?.category.toString()}</p>
                         </div>
-                        <div className='col-sm-4'>
+                        <div className='col-4'>
                           <h6 className='f-w-500'>Sub Category </h6>
                           {state?.intreset &&
                             state?.intreset.map((data) => {
                               return <p>{data?.name}</p>;
                             })}
                         </div>
-                        <div className='col-sm-4'>
+                        <div className='col-4'>
                           <h6 className='f-w-500'>Brand Name </h6>
                           {state?.intreset &&
                             state?.intreset.map((data) => {
@@ -524,17 +524,27 @@ function ViewProfile(props) {
 
                       {/* <p>{state.category.toString()}</p> */}
                       <div className='row py-3'>
-                        <div className='col-sm-4 '>
+                        <div className='col-4 '>
                           <h6 className='f-w-500'>State </h6>
-                          {state?.preferred && state?.preferred[0]?.state}
+                          {state &&
+                            state?.preferred &&
+                            state?.preferred.map((data) => {
+                              return data?.state;
+                            })}
+                          {/* {state?.preferred && state?.preferred[0]?.state} */}
                         </div>
-                        <div className='col-sm-8'>
+                        <div className='col-8'>
                           <h6 className='f-w-500'>City </h6>
                           <p>
                             {state &&
                               state?.preferred &&
-                              state?.preferred[0]?.city &&
-                              state?.preferred[0]?.city.toString()}
+                              state?.preferred.map((data) => {
+                                return data?.city.toString();
+                              })}
+                            {/* {state &&
+                                state?.preferred &&
+                                state?.preferred[0]?.city &&
+                                state?.preferred[0]?.city.toString()} */}
                           </p>
                         </div>
                       </div>

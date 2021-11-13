@@ -147,8 +147,13 @@ const routes = [
     Component: VehicleListing,
   },
   {
-    // exact: true,
-    path: '/vehicle-detail/:id',
+    // exact: true,distributer
+    path: '/company-detail/:company/:id',
+    Component: VehicleDetail,
+  },
+  {
+    // exact: true,distributer
+    path: '/distributer-detail/:company/:id',
     Component: VehicleDetail,
   },
   {

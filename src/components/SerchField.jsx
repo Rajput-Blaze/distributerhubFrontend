@@ -92,7 +92,6 @@ function SerchField(props) {
     setsubCategory(category[e]);
   };
   const serch = (formsubmitdata) => {
-    setisLoading(true);
     if (session.getToken() == null) {
       Swal.fire({
         title: 'Login To Perform search',
@@ -110,10 +109,12 @@ function SerchField(props) {
         },
       });
     } else {
+      setisLoading(true);
       axios
         .post(apiUrl + 'user/search', formsubmitdata) //data.data.verify_otp
         .then(function (respon) {
           // if()
+          setisLoading(false);
           setsearchresult(respon?.data?.data?.verify_otp ?? []);
           console.log(`respon...`, respon?.data?.data?.verify_otp.length);
           if (respon?.data?.data?.verify_otp.length == 0) {
@@ -132,12 +133,19 @@ function SerchField(props) {
   };
   const view = (data) => {
     console.log('fgff', data);
-
-    history.push({
-      pathname: '/vehicle-detail/' + data._id,
-      data,
-      type: state?.type,
-    });
+    if (state?.type == 'company') {
+      history.push({
+        pathname: '/company-detail/' + data?.companyName + '/' + data._id,
+        data,
+        type: state?.type,
+      });
+    } else {
+      history.push({
+        pathname: '/distributer-detail/' + data?.companyName + '/' + data._id,
+        data,
+        type: state?.type,
+      });
+    }
   };
   return (
     <>
