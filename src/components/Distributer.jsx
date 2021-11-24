@@ -22,6 +22,7 @@ import Swal from 'sweetalert2';
 var _ = require('underscore');
 function Index(props) {
   const [passwordhideandshow, setpasswordhideandshow] = useState(false);
+  const [passwordhideandshow2, setpasswordhideandshow2] = useState(false);
 
   let history = useHistory();
   const [inputFields, setInputFields] = useState([
@@ -138,7 +139,7 @@ function Index(props) {
     if (formToggle == 1 && formsubmitdata.phoneNo && formsubmitdata.password) {
       axios
         .post(apiUrl + 'user/getPhone', {
-          phoneNo: formsubmitdata.phoneNo,
+          email: formsubmitdata.email,
         })
         .then(function (respon) {
           seterrorMsg(respon.data.message);
@@ -299,6 +300,13 @@ function Index(props) {
       setpasswordhideandshow(false);
     } else {
       setpasswordhideandshow(true);
+    }
+  };
+  const change2 = () => {
+    if (passwordhideandshow2) {
+      setpasswordhideandshow2(false);
+    } else {
+      setpasswordhideandshow2(true);
     }
   };
   // const gitBlock = (value) => {
@@ -496,7 +504,7 @@ function Index(props) {
                                 placeholder='Enter first name..'
                                 // required
                                 ref={register({
-                                  //   required: 'This is required ',
+                                  required: 'This is required ',
                                 })}
                               />
                               <ErrorMessage
@@ -533,7 +541,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 for='val-username'>
-                                Company Name{' '}
+                                Company Name
                                 <span className='text-danger'>*</span>
                               </label>
 
@@ -541,11 +549,13 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name='companyName'
                                 value={state?.companyName}
+                                name='companyName'
                                 onChange={handleChange}
-                                placeholder='Enter company name..'
+                                placeholder='Enter company number..'
                                 ref={register({
+                                  required: 'This is required ',
+
                                   // pattern: {
                                   //   value: /^[a-zA-Z]+$/,
                                   //   message: "Enter Valid company Name",
@@ -567,7 +577,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Email
+                                Email<span className='text-danger'>*</span>
                               </label>
                               <input
                                 type='email'
@@ -575,17 +585,20 @@ function Index(props) {
                                 id='val-username'
                                 name='email'
                                 value={state?.email}
-                                onChange={handleChange}
+                                onChange={(e) => {
+                                  seterrorMsg('');
+                                  handleChange(e);
+                                }}
                                 placeholder='Enter email..'
                                 ref={register({
-                                  // required: "This is required ",
-                                  // pattern: {
-                                  //   value:
-                                  //     /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
-                                  //   message: 'Enter Valid Email id',
-                                  // },
+                                  required: 'This is required ',
+                                  pattern: {
+                                    value:
+                                      /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
+                                    message: 'Enter Valid Email id',
+                                  },
                                 })}
-                                defaultValue={viewData?.email}
+                                // defaultValue={viewData?.email}
                               />
                               <ErrorMessage
                                 errors={errors}
@@ -594,6 +607,7 @@ function Index(props) {
                                   <p className='error'>{message}</p>
                                 )}
                               />
+                              <p className='error'>{errorMsg}</p>
                             </div>
                           </div>
                           <div className='col-sm-6'>
@@ -609,7 +623,6 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='phoneNo'
-                                required
                                 onChange={(e) => {
                                   seterrorMsg('');
                                   handleChange(e);
@@ -617,16 +630,17 @@ function Index(props) {
                                 maxLength='10'
                                 // required
                                 value={state?.phoneNo}
+                                // onChange={handleChange}
                                 onKeyPress={(e) => restrictAlpha(e)}
                                 placeholder='Enter mobile number...'
                                 // ref={register}
                                 ref={register({
-                                  //   required: 'This is required ',
-                                  //   pattern: {
-                                  //     value:
-                                  //       /^[5-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/,
-                                  //     message: 'Enter Valid Contact Number',
-                                  //   },
+                                  required: 'This is required ',
+                                  pattern: {
+                                    value:
+                                      /^[5-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/,
+                                    message: 'Enter Valid Contact Number',
+                                  },
                                 })}
                               />
                               <ErrorMessage
@@ -636,7 +650,6 @@ function Index(props) {
                                   <p className='error'>{message}</p>
                                 )}
                               />
-                              <p className='error'>{errorMsg}</p>
                             </div>
                           </div>
                           <div className='col-sm-6'>
@@ -644,19 +657,21 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Password <span className='text-danger'>*</span>
+                                Password<span className='text-danger'>*</span>
                               </label>
                               <input
                                 type={passwordhideandshow ? 'text' : 'password'}
-                                required
                                 className='form-control'
                                 // onKeyPress={(e) => restrictAlpha(e)}
                                 id='val-username'
                                 name='password'
-                                value={state.password}
+                                value={state?.password}
                                 onChange={handleChange}
                                 placeholder='Enter Password ..'
-                                ref={register}
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
+                                // required
                                 defaultValue={viewData?.fatherName}
                               />
                               {passwordhideandshow ? (
@@ -668,6 +683,59 @@ function Index(props) {
                                   onClick={change}
                                   className='fa fa-eye eye'></i>
                               )}
+                              <ErrorMessage
+                                errors={errors}
+                                name='password'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              />
+                            </div>
+                          </div>
+                          <div className='col-sm-6'>
+                            <div className='form-group position-relative'>
+                              <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                confirm Password
+                                <span className='text-danger'>*</span>
+                              </label>
+                              <input
+                                type={
+                                  passwordhideandshow2 ? 'text' : 'password'
+                                }
+                                className='form-control'
+                                // onKeyPress={(e) => restrictAlpha(e)}
+                                id='val-username'
+                                name='confirm_password'
+                                // value={state?.password}
+                                // onChange={handleChange}
+                                placeholder='Enter confirm Password ..'
+                                ref={register({
+                                  validate: (value) =>
+                                    value === state.password ||
+                                    'The passwords do not match',
+                                  required: 'This is required ',
+                                })}
+                                // required
+                                // defaultValue={viewData?.fatherName}
+                              />
+                              {passwordhideandshow2 ? (
+                                <i
+                                  onClick={change2}
+                                  className='fa fa-eye-slash eye'></i>
+                              ) : (
+                                <i
+                                  onClick={change2}
+                                  className='fa fa-eye eye'></i>
+                              )}
+                              <ErrorMessage
+                                errors={errors}
+                                name='confirm_password'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              />
                             </div>
                           </div>
 
@@ -1165,8 +1233,8 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name='turnoverOfTheCompany'
-                                value={state.turnoverOfTheCompany}
+                                name='aboutCompany'
+                                value={state.aboutCompany}
                                 onChange={handleChange}
                                 placeholder='About US'
                                 ref={register}
@@ -1625,7 +1693,7 @@ function Index(props) {
                                 />
                               </div>
 
-                              <div className='col-4 bb'>
+                              {/* <div className='col-4 bb'>
                                 {inputFieldscity.length == 1 ? (
                                   ''
                                 ) : (
@@ -1643,7 +1711,7 @@ function Index(props) {
                                   onClick={handleAddFieldscity}>
                                   Add
                                 </span>
-                              </div>
+                              </div> */}
                             </div>
                           ))}
 

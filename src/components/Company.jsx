@@ -42,6 +42,8 @@ function Index(props) {
     { id: uuidv4(), state: '', city: '', cityDropDown: [] },
   ]);
   const [passwordhideandshow, setpasswordhideandshow] = useState(false);
+  const [passwordhideandshow2, setpasswordhideandshow2] = useState(false);
+
   const [successMsg, setsuccessMsg] = useState('');
   const [checknumber, setcheckNumber] = useState(false);
   const [brand, setbrand] = useState([]);
@@ -481,6 +483,13 @@ function Index(props) {
       setpasswordhideandshow(true);
     }
   };
+  const change2 = () => {
+    if (passwordhideandshow2) {
+      setpasswordhideandshow2(false);
+    } else {
+      setpasswordhideandshow2(true);
+    }
+  };
   return (
     <>
       {/* <Header /> */}
@@ -529,7 +538,7 @@ function Index(props) {
                                 placeholder='Enter first name..'
                                 // required
                                 ref={register({
-                                  //   required: 'This is required ',
+                                  required: 'This is required ',
                                 })}
                               />
                               <ErrorMessage
@@ -579,6 +588,8 @@ function Index(props) {
                                 onChange={handleChange}
                                 placeholder='Enter company number..'
                                 ref={register({
+                                  required: 'This is required ',
+
                                   // pattern: {
                                   //   value: /^[a-zA-Z]+$/,
                                   //   message: "Enter Valid company Name",
@@ -600,7 +611,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Email
+                                Email<span className='text-danger'>*</span>
                               </label>
                               <input
                                 type='email'
@@ -651,7 +662,7 @@ function Index(props) {
                                   handleChange(e);
                                 }}
                                 maxLength='10'
-                                required
+                                // required
                                 value={state?.phoneNo}
                                 // onChange={handleChange}
                                 onKeyPress={(e) => restrictAlpha(e)}
@@ -691,8 +702,10 @@ function Index(props) {
                                 value={state?.password}
                                 onChange={handleChange}
                                 placeholder='Enter Password ..'
-                                ref={register}
-                                required
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
+                                // required
                                 defaultValue={viewData?.fatherName}
                               />
                               {passwordhideandshow ? (
@@ -704,6 +717,59 @@ function Index(props) {
                                   onClick={change}
                                   className='fa fa-eye eye'></i>
                               )}
+                              <ErrorMessage
+                                errors={errors}
+                                name='password'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              />
+                            </div>
+                          </div>
+                          <div className='col-sm-6'>
+                            <div className='form-group position-relative'>
+                              <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                confirm Password
+                                <span className='text-danger'>*</span>
+                              </label>
+                              <input
+                                type={
+                                  passwordhideandshow2 ? 'text' : 'password'
+                                }
+                                className='form-control'
+                                // onKeyPress={(e) => restrictAlpha(e)}
+                                id='val-username'
+                                name='confirm_password'
+                                // value={state?.password}
+                                // onChange={handleChange}
+                                placeholder='Enter confirm Password ..'
+                                ref={register({
+                                  validate: (value) =>
+                                    value === state.password ||
+                                    'The passwords do not match',
+                                  required: 'This is required ',
+                                })}
+
+                                // defaultValue={viewData?.fatherName}
+                              />
+                              {passwordhideandshow2 ? (
+                                <i
+                                  onClick={change2}
+                                  className='fa fa-eye-slash eye'></i>
+                              ) : (
+                                <i
+                                  onClick={change2}
+                                  className='fa fa-eye eye'></i>
+                              )}
+                              <ErrorMessage
+                                errors={errors}
+                                name='confirm_password'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              />
                             </div>
                           </div>
 

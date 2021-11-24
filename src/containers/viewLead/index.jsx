@@ -14,7 +14,7 @@ function ViewProfile(props) {
   //     pathname: '/',
   //   });
   // }
-
+  const [role, setrole] = useState('');
   let history = useHistory();
   const [category, setcategory] = useState(
     props?.location?.data?.category ?? []
@@ -35,6 +35,7 @@ function ViewProfile(props) {
         .then((resp) => {
           var data = resp?.data?.data;
           setState(resp?.data?.data);
+          setrole(resp?.data?.data?.userType);
         })
         .catch((err) => {
           showNotification('danger', err.message);
@@ -216,13 +217,13 @@ function ViewProfile(props) {
                   <h4 className='card-title text-white'>firm Details</h4>
 
                   <div className='two_btns_ps'>
-                    {/* <Link to="/"> */}
                     <button
                       type='button'
                       onClick={() => {
-                        history.push({
+                        var newid = role == 1 ? 2 : 5;
+                        return history.push({
                           pathname: '/updateData/' + id,
-                          data: 2,
+                          data: newid,
                         });
                       }}
                       className='btn btn-light ml-2'>
@@ -231,7 +232,6 @@ function ViewProfile(props) {
                         aria-hidden='true'></i>
                       <span>Update</span>
                     </button>
-                    {/* </Link> */}
                   </div>
                 </div>
 
@@ -241,7 +241,11 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            Company Name<span className='pull-right'>:</span>
+                            {console.log(role, 'role')}
+                            {role == 1
+                              ? 'Company Name'
+                              : 'Distributer Firm Name'}
+                            <span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7'>
@@ -352,6 +356,87 @@ function ViewProfile(props) {
                           </span>
                         </div>
                       </div>{' '}
+                      {/* start distributer data */}
+                      {role == 1 ? (
+                        ''
+                      ) : (
+                        <>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Website <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.website
+                                  ? state.website
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Number of Brand{' '}
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.numberofBrand
+                                  ? state.numberofBrand
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Distributor Cover Area
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.distributorCoverArea
+                                  ? state.distributorCoverArea
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Number of Employee{' '}
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.numberofEmployee
+                                  ? state.numberofEmployee
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                          <div className='row mb-2'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Godown Space{' '}
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7'>
+                              <span>
+                                {state && state?.godownSpace
+                                  ? state.godownSpace
+                                  : 'N/A'}{' '}
+                              </span>
+                            </div>
+                          </div>
+                        </>
+                      )}
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
