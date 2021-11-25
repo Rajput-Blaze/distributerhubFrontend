@@ -961,7 +961,7 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name=' distributorCoverArea'
+                                name='distributorCoverArea'
                                 value={state.distributorCoverArea}
                                 onChange={handleChange}
                                 placeholder='Enter Distributor Cover Area'
@@ -981,7 +981,7 @@ function Index(props) {
                                 type='number'
                                 className='form-control'
                                 id='val-username'
-                                name=' numberofEmployee'
+                                name='numberofEmployee'
                                 onKeyPress={(e) => restrictAlpha(e)}
                                 value={state.numberofEmployee}
                                 onChange={handleChange}

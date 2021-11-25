@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Multiselect } from 'multiselect-react-dropdown';
+
 import { Link, useHistory } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import base from '../globals/base';
@@ -24,7 +25,7 @@ function SerchField(props) {
 
   const [isLoading, setisLoading] = useState(false);
   const [successMsg, setsuccessMsg] = useState('');
-  const [post, setpost] = useState([]);
+  const [cty, setcty] = useState([]);
   const [brand, setbrand] = useState([]);
   const [Type, setType] = useState([]);
   const [viewData, setViewData] = useState();
@@ -146,6 +147,9 @@ function SerchField(props) {
         type: state?.type,
       });
     }
+  };
+  const handleChangee = (data) => {
+    setcty(data)
   };
   return (
     <>
@@ -278,7 +282,7 @@ function SerchField(props) {
                           </select>
                         </div>
                         <div className='col-sm-12 col-md-6 '>
-                          <select
+                          {/* <select
                             className='form-control'
                             id='exampleFormControlSelect1'
                             name='city'
@@ -292,7 +296,17 @@ function SerchField(props) {
                             {cityhandle.map((data) => (
                               <option value={data}>{data}</option>
                             ))}
-                          </select>
+                          </select> */}
+                          <Multiselect
+                            isObject={false}
+                            onRemove={function noRefCheck() {}}
+                            onSearch={function noRefCheck() {}}
+                            onSelect={(data) => {
+                              console.log(data);
+                              handleChangee(data);
+                            }}
+                            options={cityhandle}
+                          />
                         </div>
                       </div>
                       <div className=' row align-item-center'>
