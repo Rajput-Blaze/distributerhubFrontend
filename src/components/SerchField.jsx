@@ -25,7 +25,7 @@ function SerchField(props) {
 
   const [isLoading, setisLoading] = useState(false);
   const [successMsg, setsuccessMsg] = useState('');
-  const [cty, setcty] = useState([]);
+  const [cityarray, setcityarray] = useState([]);
   const [brand, setbrand] = useState([]);
   const [Type, setType] = useState([]);
   const [viewData, setViewData] = useState();
@@ -48,7 +48,7 @@ function SerchField(props) {
   const [SelectedDate, setSelectedDate] = useState(null);
   const [Varient, setVarient] = useState([]);
   const [exchange, setexchange] = useState(false);
-  const [step, setstep] = useState(0);
+  const [categoryData, setcategoryData] = useState([]);
   const [state, setState] = React.useState();
   const [statehandle, setstatehandle] = useState({});
   const [cityhandle, setcityhandle] = useState([]); //
@@ -111,8 +111,16 @@ function SerchField(props) {
       });
     } else {
       setisLoading(true);
+
+      var city = JSON.stringify(cityarray);
+      let subCategory = JSON.stringify(categoryData);
+      subCategory = { subCategory };
+      city = { city };
+      let che = { ...formsubmitdata, ...city, ...subCategory };
+      console.log(che);
+
       axios
-        .post(apiUrl + 'user/search', formsubmitdata) //data.data.verify_otp
+        .post(apiUrl + 'user/search', che) //data.data.verify_otp
         .then(function (respon) {
           // if()
           setisLoading(false);
@@ -148,9 +156,13 @@ function SerchField(props) {
       });
     }
   };
-  const handleChangee = (data) => {
-    setcty(data)
+  const handleChangee = (data, id) => {
+    if (id == 2) setcategoryData(data);
+    else {
+      setcityarray(data);
+    }
   };
+  // console.log('cityarray', cityarray);
   return (
     <>
       {/* <Header /> */}
@@ -234,7 +246,8 @@ function SerchField(props) {
                             value={state?.category}
                             onChange={(e) => {
                               handleChange(e);
-                              updatesubcategory(e.target.value);
+                              if (e.target.value != '')
+                                updatesubcategory(e.target.value);
                             }}
                             ref={register}>
                             <option value=''>Select Category</option>
@@ -244,7 +257,7 @@ function SerchField(props) {
                           </select>
                         </div>
                         <div className='col-sm-12 col-md-6'>
-                          <select
+                          {/* <select
                             className='form-control'
                             id='exampleFormControlSelect1'
                             name='subCategory'
@@ -259,7 +272,16 @@ function SerchField(props) {
                             {subCategory.map((data) => (
                               <option value={data}>{data}</option>
                             ))}
-                          </select>
+                          </select> */}
+                          <Multiselect
+                            isObject={false}
+                            onRemove={function noRefCheck() {}}
+                            onSearch={function noRefCheck() {}}
+                            onSelect={(data) => {
+                              handleChangee(data, 2);
+                            }}
+                            options={subCategory}
+                          />
                         </div>
                       </div>
                       <div className='row align-item-center pt-2 '>
@@ -302,8 +324,7 @@ function SerchField(props) {
                             onRemove={function noRefCheck() {}}
                             onSearch={function noRefCheck() {}}
                             onSelect={(data) => {
-                              console.log(data);
-                              handleChangee(data);
+                              handleChangee(data, 1);
                             }}
                             options={cityhandle}
                           />
