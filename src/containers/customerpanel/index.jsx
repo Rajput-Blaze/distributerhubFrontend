@@ -329,7 +329,7 @@ export default function Index(props) {
                         <div className='col-sm-9 col-7'>
                           <span>
                             {state && state?.establishmentYear
-                              ? state?.establishmentYear
+                              ? state?.establishmentYear.split(' ')[3]
                               : 'N/A'}{' '}
                           </span>
                         </div>

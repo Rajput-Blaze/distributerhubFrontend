@@ -37,7 +37,7 @@ export default class About extends Component {
   render() {
     return (
       <>
-        <div className='page-wrapper'>
+        <div className='page-wrapper mt-5'>
           <div className='about-page-sections section-padding'>
             <div className='container nayk-container'>
               <div className='row axil-featured align-items-center'>

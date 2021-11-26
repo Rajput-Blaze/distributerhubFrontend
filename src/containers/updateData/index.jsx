@@ -63,7 +63,7 @@ function Index(props) {
   const [Type, setType] = useState([]);
   const [iscomplete, setiscomplete] = useState(false);
   const [subCategory, setsubCategory] = useState([]);
-  const [formToggle, setformToggle] = useState(props.location.data ?? 5);
+  const [formToggle, setformToggle] = useState(props.location.data ?? 1);
   const [heading, setheading] = useState(
     formToggle == 1
       ? 'Personal Details'
@@ -179,7 +179,10 @@ function Index(props) {
   const onSubmit = (formsubmitdata) => {
     const formData = new FormData();
     formData.append('email', email);
-
+    for (let i = 0; i < otherImage.length; i++) {
+      formData.append('otherImage', otherImage[i]);
+    }
+    if (state?.profileImg) formData.append('profileImg', state.profileImg);
     if (Selectedyear) formData.append('establishmentYear', Selectedyear);
     if (formToggle == 1 || formToggle == 2 || formToggle == 5) {
       // const formData = new FormData();
@@ -462,6 +465,7 @@ function Index(props) {
                                 </label>
                                 <input
                                   type='email'
+                                  disabled
                                   className='form-control'
                                   id='val-username'
                                   name='email'
@@ -469,14 +473,14 @@ function Index(props) {
                                   value={state?.email}
                                   onChange={handleChange}
                                   placeholder='Enter email..'
-                                  ref={register({
-                                    // required: "This is required ",
-                                    pattern: {
-                                      value:
-                                        /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
-                                      message: 'Enter Valid Email id',
-                                    },
-                                  })}
+                                  // ref={register({
+                                  //   // required: "This is required ",
+                                  //   pattern: {
+                                  //     value:
+                                  //       /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
+                                  //     message: 'Enter Valid Email id',
+                                  //   },
+                                  // })}
                                   defaultValue={viewData?.email}
                                 />
                                 <ErrorMessage
@@ -498,7 +502,6 @@ function Index(props) {
                                 <input
                                   className='form-control'
                                   id='val-username'
-                                  disabled
                                   maxLength='10'
                                   value={state?.phoneNo}
                                   onChange={handleChange}
@@ -508,6 +511,73 @@ function Index(props) {
                                 />
                               </div>
                             </div>
+                            <div className='col-lg-6'>
+                              <div className='form-group '>
+                                <label
+                                  className='col-form-label'
+                                  htmlFor='val-username'>
+                                  Upload Logo
+                                </label>
+                                <input
+                                  class='multisteps-form__input form-control'
+                                  type='file'
+                                  required
+                                  accept='image/*'
+                                  name='profileImg'
+                                  onChange={fileChange}
+                                  placeholder='image'
+                                  ref={register({
+                                    //   required: 'This is required ',
+                                  })}
+                                />
+                              </div>
+                            </div>
+                            {/* <div className='col-lg-6'>
+                              <div className='form-group '>
+                                <label
+                                  className='col-form-label'
+                                  htmlFor='val-username'>
+                                  Upload Logo
+                                </label>
+                                <div class='custom-file mb-3'>
+                                  <input
+                                    type='file'
+                                    class='custom-file-input'
+                                    id='customFile'
+                                    accept='image/*'
+                                    onChange={(e) => {
+                                      setotherImage(e.target.files);
+                                      console.log(
+                                        _.size(e.target.files),
+                                        'otherImage'
+                                      );
+                                      let data = '';
+                                      Object.keys(e.target.files).forEach(
+                                        (key) => {
+                                          if (data == '') {
+                                            data =
+                                              data + e.target.files[key].name;
+                                          } else {
+                                            data =
+                                              data +
+                                              ',' +
+                                              e.target.files[key].name;
+                                          }
+                                          setimagename(data);
+                                        }
+                                      );
+                                    }}
+                                    name='otherImage'
+                                    multiple
+                                  />
+                                  <label
+                                    class='custom-file-label'
+                                    for='customFile'>
+                                    {imagename ? imagename : 'Choose File'}
+                                  </label>
+                                </div>
+                              </div>
+                            </div> */}
 
                             <div className='col-lg-12'>
                               <div className='contect_form1'>
@@ -638,6 +708,22 @@ function Index(props) {
                                   htmlFor='val-username'>
                                   Establishment Year
                                 </label>
+                                <DatePicker
+                                  placeholderText='Establishment Year '
+                                  // onSelect={this.handleDateSelect.bind(this)}
+                                  selected={Selectedyear}
+                                  className='form-control'
+                                  onChange={(date) => setSelectedyear(date)}
+                                  showYearPicker
+                                  dateFormat='yyyy'
+                                />
+                              </div>
+                              {/* <div className='form-group '>
+                                <label
+                                  className='col-form-label'
+                                  htmlFor='val-username'>
+                                  Establishment Year
+                                </label>
                                 <input
                                   required
                                   className='form-control'
@@ -648,7 +734,7 @@ function Index(props) {
                                   placeholder='Enter last name..'
                                   ref={register}
                                 />
-                              </div>
+                              </div> */}
                             </div>
                             <div className='col-lg-6'>
                               <div className='form-group '>
