@@ -196,7 +196,7 @@ function Index(props) {
 
       // console.log(`intrestinputFields`, intrestinputFields);
       // console.log(`inputFieldscity`, inputFieldscity);
-
+      formData.append('establishmentYear', Selectedyear);
       formData.append('category', JSON.stringify(newCategory));
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
       formData.append('subCategory', JSON.stringify(inputFields));

@@ -275,6 +275,7 @@ function SerchField(props) {
                           </select> */}
                           <Multiselect
                             isObject={false}
+                            placeholder='Select Sub Category'
                             onRemove={function noRefCheck() {}}
                             onSearch={function noRefCheck() {}}
                             onSelect={(data) => {
@@ -321,6 +322,7 @@ function SerchField(props) {
                           </select> */}
                           <Multiselect
                             isObject={false}
+                            placeholder='Select City'
                             onRemove={function noRefCheck() {}}
                             onSearch={function noRefCheck() {}}
                             onSelect={(data) => {

@@ -15,10 +15,6 @@ const Services = (props) => {
     localStorage.setItem('user', JSON.stringify(state));
   }
 
-  return (
-    <div className='page-wrapper services-page'>
-      <ViewCompany state={state} />
-    </div>
-  );
+  return <div className='page-wrapper services-page'></div>;
 };
 export default Services;

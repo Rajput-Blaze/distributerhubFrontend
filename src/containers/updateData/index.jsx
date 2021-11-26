@@ -8,6 +8,7 @@ import Footer from '../footer/footer';
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
+import DatePicker from 'react-datepicker';
 
 import showNotification from '../../services/notificationService';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -17,7 +18,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import DatePicker from 'react-datepicker';
+
 import _ from 'underscore';
 import 'react-datepicker/dist/react-datepicker.css';
 function Index(props) {
@@ -47,7 +48,7 @@ function Index(props) {
   const [SelectedDate, setSelectedDate] = useState(null);
   const [statehandle, setstatehandle] = useState({});
   const [successMsg, setsuccessMsg] = useState('');
-  const [phoneNo, setphoneNo] = useState('');
+  const [email, setemail] = useState('');
   const [viewData, setViewData] = useState();
   const { register, errors, handleSubmit } = useForm();
   const [cityhandle, setcityhandle] = useState([]);
@@ -62,7 +63,7 @@ function Index(props) {
   const [Type, setType] = useState([]);
   const [iscomplete, setiscomplete] = useState(false);
   const [subCategory, setsubCategory] = useState([]);
-  const [formToggle, setformToggle] = useState(props.location.data ?? 3);
+  const [formToggle, setformToggle] = useState(props.location.data ?? 5);
   const [heading, setheading] = useState(
     formToggle == 1
       ? 'Personal Details'
@@ -118,9 +119,11 @@ function Index(props) {
     props?.location?.categorydata && props?.location?.categorydata[0]
   );
   useEffect(() => {
-    getLeads();
-    stateee();
     categoryy();
+    stateee();
+    getLeads();
+    // if (state && state?.state && statehandle)
+    //   setcityhandle(statehandle[state?.state]);
   }, []);
   function stateee() {
     axios
@@ -166,7 +169,7 @@ function Index(props) {
       .then((resp) => {
         var data = resp?.data?.data;
         setState(resp?.data?.data);
-        setphoneNo(resp?.data?.data?.phoneNo);
+        setemail(resp?.data?.data?.email);
       })
       .catch((err) => {
         showNotification('danger', err.message);
@@ -175,8 +178,9 @@ function Index(props) {
 
   const onSubmit = (formsubmitdata) => {
     const formData = new FormData();
-    formData.append('phoneNo', phoneNo);
+    formData.append('email', email);
 
+    if (Selectedyear) formData.append('establishmentYear', Selectedyear);
     if (formToggle == 1 || formToggle == 2 || formToggle == 5) {
       // const formData = new FormData();
       Object.keys(formsubmitdata).forEach((key) => {
@@ -1291,7 +1295,7 @@ function Index(props) {
                               </div>
                             </div>
                             <div className='col-lg-6'>
-                              <div className='form-group '>
+                              {/* <div className='form-group '>
                                 <label
                                   className='col-form-label'
                                   htmlFor='val-username'>
@@ -1306,6 +1310,22 @@ function Index(props) {
                                   onChange={handleChange}
                                   placeholder='Enter last name..'
                                   ref={register}
+                                />
+                              </div> */}
+                              <div className='form-group '>
+                                <label
+                                  className='col-form-label'
+                                  htmlFor='val-username'>
+                                  Establishment Year
+                                </label>
+                                <DatePicker
+                                  placeholderText='Establishment Year '
+                                  // onSelect={this.handleDateSelect.bind(this)}
+                                  selected={Selectedyear}
+                                  className='form-control'
+                                  onChange={(date) => setSelectedyear(date)}
+                                  showYearPicker
+                                  dateFormat='yyyy'
                                 />
                               </div>
                             </div>
@@ -1379,7 +1399,7 @@ function Index(props) {
                                   type='text'
                                   className='form-control'
                                   id='val-username'
-                                  name=' distributorCoverArea'
+                                  name='distributorCoverArea'
                                   value={state.distributorCoverArea}
                                   onChange={handleChange}
                                   placeholder='Enter Distributor Cover Area'
@@ -1399,7 +1419,7 @@ function Index(props) {
                                   type='number'
                                   className='form-control'
                                   id='val-username'
-                                  name=' numberofEmployee'
+                                  name='numberofEmployee'
                                   onKeyPress={(e) => restrictAlpha(e)}
                                   value={state.numberofEmployee}
                                   onChange={handleChange}
