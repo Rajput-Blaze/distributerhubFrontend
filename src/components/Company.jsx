@@ -495,7 +495,7 @@ function Index(props) {
       {/* <Header /> */}
       {loading ? <Loaderr /> : null}
 
-      <div className=''>
+      <div className='mt70'>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <div className='container-fluid'>
             <div className='row justify-content-center h-100 align-items-center emi_row'>

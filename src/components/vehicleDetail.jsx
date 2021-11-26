@@ -459,7 +459,7 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
-                        {state?.type == 1 ? (
+                        {state?.userType == 1 ? (
                           ''
                         ) : (
                           <>

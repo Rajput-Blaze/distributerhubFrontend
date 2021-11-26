@@ -15,6 +15,38 @@ const Services = (props) => {
     localStorage.setItem('user', JSON.stringify(state));
   }
 
-  return <div className='page-wrapper services-page'></div>;
+  return (
+    <div className='page-wrapper services-page'>
+      <div
+        className='content'
+        style={{ height: '50vh', marginTop: '70px', padding: '50px 0px' }}>
+        <div className='container card widget-stat'>
+          <p className='text-center pt-5 pb-2'>Select Form Type For Register</p>
+          <div className='row'>
+            <div className='col'>
+              <a href='/company-register'>
+                <input
+                  type='button'
+                  // onClick={submit}
+                  defaultValue='Company'
+                  className='btn btn-block btn-primary mb-3'
+                />
+              </a>
+            </div>
+            <div className='col'>
+              <a href='/distributer-register'>
+                <input
+                  type='button'
+                  // onClick={submit}
+                  defaultValue='Distributer'
+                  className='btn btn-block btn-primary mb-3'
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default Services;

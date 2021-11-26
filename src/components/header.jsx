@@ -234,8 +234,10 @@ export default class Header extends Component {
                       {session.getToken() == null ? (
                         <div className='login-button call-btn'>
                           <a
+                            href='/Register'
                             className='btn btn-primary ml-3'
-                            onClick={this.registershow}>
+                            // onClick={this.registershow}
+                          >
                             Register
                           </a>
                         </div>

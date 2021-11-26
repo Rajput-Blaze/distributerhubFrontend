@@ -123,7 +123,7 @@ const routes = [
   },
   {
     exact: true,
-    path: '/services',
+    path: '/Register',
     Component: Services,
   },
   {
@@ -180,12 +180,12 @@ const routes = [
   },
   {
     exact: true,
-    path: '/company',
+    path: '/company-register',
     Component: Company,
   },
   {
     exact: true,
-    path: '/distributer',
+    path: '/distributer-register',
     Component: Distributer,
   },
   {
