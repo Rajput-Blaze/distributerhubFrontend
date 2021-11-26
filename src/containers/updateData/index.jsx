@@ -47,7 +47,7 @@ function Index(props) {
   const [SelectedDate, setSelectedDate] = useState(null);
   const [statehandle, setstatehandle] = useState({});
   const [successMsg, setsuccessMsg] = useState('');
-  const [phoneNo, setphoneNo] = useState('');
+  const [email, setemail] = useState('');
   const [viewData, setViewData] = useState();
   const { register, errors, handleSubmit } = useForm();
   const [cityhandle, setcityhandle] = useState([]);
@@ -166,7 +166,7 @@ function Index(props) {
       .then((resp) => {
         var data = resp?.data?.data;
         setState(resp?.data?.data);
-        setphoneNo(resp?.data?.data?.phoneNo);
+        setemail(resp?.data?.data?.email);
       })
       .catch((err) => {
         showNotification('danger', err.message);
@@ -175,7 +175,7 @@ function Index(props) {
 
   const onSubmit = (formsubmitdata) => {
     const formData = new FormData();
-    formData.append('phoneNo', phoneNo);
+    formData.append('email', email);
 
     if (formToggle == 1 || formToggle == 2 || formToggle == 5) {
       // const formData = new FormData();
