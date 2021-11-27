@@ -308,7 +308,7 @@ img {
   .hamburger-inner::before,
   .hamburger-inner::after {
     background: #fff;
-    border-radius: 0;
+    border-radius: 0;git add . && git commit -m"Check Router" && git push origin predev
   }
   .hamburger.is-active:hover {
     opacity: 1;
