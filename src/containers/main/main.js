@@ -157,8 +157,10 @@ function Main() {
       'assets/js/jquery.countdown.js',
       'assets/js/scrollup.min.js',
       'assets/js/jquery-3.3.1.slim.min.js',
-      'assets/js/custom.js',
+      // 'assets/js/custom.js',
       'assets/js/jquery.jqZoom.js',
+      // 'public/assets/js/common.js',
+      // 'assets/js/custom.min.js',
     ]);
   });
 

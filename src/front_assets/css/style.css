@@ -216,9 +216,9 @@ img {
 
 /* Start Navbar */
 
-.hamburger {
+/* .hamburger {
   display: none;
-}
+} */
 
 /* .navbar {
   padding: 12px 0;
@@ -279,7 +279,7 @@ img {
   }
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .menu-open {
     overflow: hidden;
     overflow-x: hidden;
@@ -418,7 +418,7 @@ img {
     position: absolute;
     width: 100%;
   }
-}
+} */
 
 /* Start Footer */
 

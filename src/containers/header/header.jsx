@@ -111,7 +111,7 @@ function Header(props) {
         </Link>
         <div className='nav-control '>
           <div
-            className={!showSide ? 'hamburger' : 'hamburger is-active'}
+            // className={!showSide ? 'hamburger' : 'hamburger is-active'}
             onClick={sideBarShow}>
             <span className='line'></span>
             <span className='line'></span>

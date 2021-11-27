@@ -1,18 +1,14 @@
-/*
-@copyright : ToXSL Technologies Pvt. Ltd. < www.toxsl.com >
-@author    : Shiv Charan Panjeta < shiv@toxsl.com >
-
-All Rights Reserved.
-Proprietary and confidential :  All information contained here in is, and remains
-the property of ToXSL Technologies Pvt. Ltd. and it's partners.
-Unauthorized copying of this file, via any medium is strictly prohibited.
-*/
-
 import React, { useEffect, useState } from 'react';
 import * as loadjs from 'loadjs';
 // import React from "react";
 import MainAdmin from '../src/containers/main/main';
-import { Route, Switch, BrowserRouter, Router } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  BrowserRouter,
+  Router,
+  useHistory,
+} from 'react-router-dom';
 
 import BankDetails from './containers/bankDetails';
 import Buying from './containers/buying';
@@ -100,7 +96,7 @@ import Footer from './components/footer';
 import About from './components/about';
 import Company from './components/Company';
 import Distributer from './components/Distributer';
-// import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
+// import { BrowserRouter, Route, Switch,  } from 'react-router-dom';
 import Services from './components/services';
 import Faq from './components/faq';
 import PrivacyPolicy from './components/privacyPolicy';
@@ -206,17 +202,14 @@ const routes = [
 
 function App() {
   const role_n = localStorage.getItem('role');
-
   const [role, setRole] = useState(role_n);
-  useEffect(() => {
-    loadjs(['/naayak/assets/js/custom.js']);
-    loadjs(['/assets/js/header_login.js']);
-    loadjs(['/assets/js/sticky.js']);
-  }, []);
-  history.listen((location, action) => {
-    loadjs(['/naayak/assets/js/custom.js']);
-    // loadjs([base + "assets/js/common.js"]);
-  });
+  // useEffect(() => {
+  //   loadjs(['/assets/js/custom.js']);
+  //   loadjs(['/assets/js/header_login.js']);
+  //   loadjs(['/assets/js/sticky.js']);
+  //   // console.log(`history`, );
+  // }, []);
+
   return (
     <Provider>
       <BrowserRouter history={history}>

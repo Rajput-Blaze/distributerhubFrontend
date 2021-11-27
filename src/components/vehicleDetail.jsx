@@ -438,9 +438,11 @@ const VehicleDetail = (props) => {
                           </div>
                           <div className='col-sm-8 col-7'>
                             <span>
-                              {state && state?.contactNumber
+                              {state?.hiddenNumber == true
+                                ? '**********'
+                                : state && state?.contactNumber
                                 ? state?.contactNumber
-                                : 'N/A'}{' '}
+                                : 'N/A'}
                             </span>
                           </div>
                         </div>{' '}
@@ -453,7 +455,9 @@ const VehicleDetail = (props) => {
                           </div>
                           <div className='col-sm-8 col-7'>
                             <span>
-                              {state && state?.alternativeNumber
+                              {state?.hiddenNumber == true
+                                ? '**********'
+                                : state && state?.alternativeNumber
                                 ? state?.alternativeNumber
                                 : 'N/A'}{' '}
                             </span>

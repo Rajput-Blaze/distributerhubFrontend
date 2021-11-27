@@ -4746,9 +4746,9 @@ input {
     display: block;
     z-index: 9999;
   }
-  .hamburger {
+  /* .hamburger {
     display: inline-block;
-  }
+  } */
   #navbarNav.navbar-collapse.menu-show {
     left: 0;
     opacity: 1;
@@ -4776,12 +4776,12 @@ input {
   .container.nayk-container {
     justify-content: flex-end !important;
   }
-  .hamburger-inner,
+  /* .hamburger-inner,
   .hamburger-inner::before,
   .hamburger-inner::after {
     background: #0d0d0d !important;
     border-radius: 0;
-  }
+  } */
   .lag-box {
     display: none !important;
   }
