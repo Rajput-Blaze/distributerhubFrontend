@@ -166,7 +166,7 @@ const routes = [
 
   {
     exact: true,
-    path: '/how-it-works',
+    path: '/Advantages',
     Component: HowItWorks,
   },
   {

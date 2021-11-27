@@ -717,14 +717,14 @@ function Index(props) {
                                   onClick={change}
                                   className='fa fa-eye eye'></i>
                               )}
-                              <ErrorMessage
-                                errors={errors}
-                                name='password'
-                                render={({ message }) => (
-                                  <p className='error'>{message}</p>
-                                )}
-                              />
                             </div>
+                            <ErrorMessage
+                              errors={errors}
+                              name='password'
+                              render={({ message }) => (
+                                <p className='error'>{message}</p>
+                              )}
+                            />
                           </div>
                           <div className='col-sm-6'>
                             <div className='form-group position-relative'>
@@ -763,14 +763,14 @@ function Index(props) {
                                   onClick={change2}
                                   className='fa fa-eye eye'></i>
                               )}
-                              <ErrorMessage
-                                errors={errors}
-                                name='confirm_password'
-                                render={({ message }) => (
-                                  <p className='error'>{message}</p>
-                                )}
-                              />
                             </div>
+                            <ErrorMessage
+                              errors={errors}
+                              name='confirm_password'
+                              render={({ message }) => (
+                                <p className='error'>{message}</p>
+                              )}
+                            />
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>

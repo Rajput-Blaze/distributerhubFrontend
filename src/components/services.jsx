@@ -5,7 +5,7 @@ import * as service from '../services/apiServices';
 import showNotification from '../services/notificationService';
 import * as constant from '../services/constant';
 import ViewCompany from './viewCompany';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 const Services = (props) => {
   const history = useHistory();
   var user = JSON.parse(localStorage.getItem('user'));
@@ -24,14 +24,14 @@ const Services = (props) => {
           <p className='text-center pt-5 pb-2'>Select Form Type For Register</p>
           <div className='row'>
             <div className='col'>
-              <a href='/company-register'>
+              <Link to='/company-register'>
                 <input
                   type='button'
                   // onClick={submit}
                   defaultValue='Company'
                   className='btn btn-block btn-primary mb-3'
                 />
-              </a>
+              </Link>
             </div>
             <div className='col'>
               <a href='/distributer-register'>

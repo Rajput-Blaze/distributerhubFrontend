@@ -111,7 +111,7 @@ function Header(props) {
         </Link>
         <div className='nav-control '>
           <div
-            // className={!showSide ? 'hamburger' : 'hamburger is-active'}
+            className={!showSide ? 'hamburger' : 'hamburger is-active'}
             onClick={sideBarShow}>
             <span className='line'></span>
             <span className='line'></span>
@@ -299,7 +299,7 @@ function Header(props) {
                 <li
                   className='nav-item dropdown header-profile'
                   onClick={() => showSetStatusPopup()}>
-                  <a className='nav-link' href='#0' role='button'>
+                  <a className='nav-link' role='button'>
                     <Image
                       alt='img'
                       src={
@@ -565,22 +565,22 @@ function Header(props) {
             {role == 4 ? (
               <>
                 <li>
-                  <a
+                  <Link
                     className='ai-icon'
                     aria-expanded='false'
-                    href='/freshclients'>
+                    to='/freshclients'>
                     <i class='fa fa-building'></i>
                     <span className='nav-text'>Company</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className='ai-icon'
                     aria-expanded='false'
-                    href='/reviewedclients'>
+                    to='/reviewedclients'>
                     <i class='fa fa-check-square' aria-hidden='true'></i>
                     <span className='nav-text'>Distributer</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link className='ai-icon' aria-expanded='false' to='/help'>
@@ -1031,7 +1031,7 @@ function Header(props) {
                   </Link>
                 </li>
                 <li>
-                  <a className='ai-icon' href='#0' aria-expanded='false'>
+                  <a className='ai-icon' aria-expanded='false'>
                     <i className='fa fa-question-circle'></i>
                     <span className='nav-text'>Help</span>
                   </a>

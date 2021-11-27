@@ -239,7 +239,7 @@ function SerchField(props) {
                       <div className='row align-items-center '>
                         <div className='col-sm-12 col-md-6 pb-sm-2'>
                           <select
-                            className='form-control'
+                            className='form-control shad'
                             id='exampleFormControlSelect1'
                             name='category'
                             required
@@ -288,7 +288,7 @@ function SerchField(props) {
                       <div className='row align-item-center pt-2 '>
                         <div className='col-sm-12 col-md-6 pb-sm-2'>
                           <select
-                            className='form-control'
+                            className='form-control shad'
                             id='exampleFormControlSelect1'
                             name='state'
                             required
