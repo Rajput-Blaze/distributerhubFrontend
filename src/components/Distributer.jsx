@@ -671,7 +671,6 @@ function Index(props) {
                                 ref={register({
                                   required: 'This is required ',
                                 })}
-                                // required
                                 defaultValue={viewData?.fatherName}
                               />
                               {passwordhideandshow ? (
