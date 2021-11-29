@@ -356,25 +356,23 @@ function ViewProfile(props) {
                           </span>
                         </div>
                       </div>{' '}
+                      <div className='row mb-2'>
+                        <div className='col-sm-3 col-5'>
+                          <h6 className='f-w-500'>
+                            Website <span className='pull-right'>:</span>
+                          </h6>
+                        </div>
+                        <div className='col-sm-9 col-7'>
+                          <span>
+                            {state && state?.website ? state.website : 'N/A'}{' '}
+                          </span>
+                        </div>
+                      </div>
                       {/* start distributer data */}
                       {role == 1 ? (
                         ''
                       ) : (
                         <>
-                          <div className='row mb-2'>
-                            <div className='col-sm-3 col-5'>
-                              <h6 className='f-w-500'>
-                                Website <span className='pull-right'>:</span>
-                              </h6>
-                            </div>
-                            <div className='col-sm-9 col-7'>
-                              <span>
-                                {state && state?.website
-                                  ? state.website
-                                  : 'N/A'}{' '}
-                              </span>
-                            </div>
-                          </div>
                           <div className='row mb-2'>
                             <div className='col-sm-3 col-5'>
                               <h6 className='f-w-500'>

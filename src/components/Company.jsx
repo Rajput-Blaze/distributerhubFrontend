@@ -119,6 +119,8 @@ function Index(props) {
           email: formsubmitdata.email,
         })
         .then(function (respon) {
+          setloading(false);
+
           seterrorMsg(respon.data.message);
 
           //  console.log(`respon`, respon);
@@ -977,7 +979,26 @@ function Index(props) {
                               />
                             </div>
                           </div>
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
+                              <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                Website
+                              </label>
 
+                              <input
+                                type='link'
+                                className='form-control'
+                                id='val-username'
+                                name='website'
+                                value={state.website}
+                                onChange={handleChange}
+                                placeholder='Enter Website'
+                                ref={register}
+                              />
+                            </div>
+                          </div>
                           {/* address  */}
                           <div className='col-lg-6'>
                             <div className='form-group '>

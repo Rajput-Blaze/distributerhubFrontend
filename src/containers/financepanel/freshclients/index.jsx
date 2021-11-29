@@ -169,6 +169,12 @@ function Index(props) {
                             <th>
                               <span>Contact Number</span>
                             </th>
+                            <th>
+                              <span>Contact Email</span>
+                            </th>
+                            <th>
+                              <span>Password </span>
+                            </th>
 
                             <th>
                               <span>Action</span>
@@ -199,7 +205,8 @@ function Index(props) {
                               <td>{data?.companyName}</td>
                               <td>{data?.firstName}</td>
                               <td>{data?.phoneNo}</td>
-
+                              <td>{data?.email}</td>
+                              <td>{data?.password}</td>
                               <td>
                                 {data?.status ? (
                                   <span

@@ -56,7 +56,7 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(1);
+  const [formToggle, setformToggle] = useState(2);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
@@ -1222,13 +1222,22 @@ function Index(props) {
 
                           <div className='col-lg-6'>
                             <div className='form-group '>
-                              <label
+                              {/* <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
                                 About US
+                              </label> */}
+                              <label for='exampleFormControlTextarea1'>
+                                About Company
                               </label>
-
-                              <input
+                              <textarea
+                                class='form-control'
+                                name='aboutCompany'
+                                onChange={handleChange}
+                                ref={register}
+                                id='exampleFormControlTextarea1'
+                                rows='3'></textarea>
+                              {/* <input
                                 type='text'
                                 className='form-control'
                                 id='val-username'
@@ -1237,7 +1246,7 @@ function Index(props) {
                                 onChange={handleChange}
                                 placeholder='About US'
                                 ref={register}
-                              />
+                              /> */}
                             </div>
                           </div>
 

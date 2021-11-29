@@ -422,7 +422,7 @@ function Index(props) {
                                   name='firstName'
                                   value={state?.firstName}
                                   onChange={handleChange}
-                                  required
+                                  // required
                                   placeholder='Enter name..'
                                   ref={register({
                                     required: 'This is required ',
@@ -445,7 +445,7 @@ function Index(props) {
                                   Last Name
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='lastName'
@@ -469,7 +469,7 @@ function Index(props) {
                                   className='form-control'
                                   id='val-username'
                                   name='email'
-                                  required
+                                  // required
                                   value={state?.email}
                                   onChange={handleChange}
                                   placeholder='Enter email..'
@@ -521,7 +521,7 @@ function Index(props) {
                                 <input
                                   class='multisteps-form__input form-control'
                                   type='file'
-                                  required
+                                  // required
                                   accept='image/*'
                                   name='profileImg'
                                   onChange={fileChange}
@@ -633,7 +633,7 @@ function Index(props) {
                                   Contact person
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='contactPerson'
@@ -652,7 +652,7 @@ function Index(props) {
                                   Contact number
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='contactNumber'
@@ -671,7 +671,7 @@ function Index(props) {
                                   Alternative number
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='alternativeNumber'
@@ -690,7 +690,7 @@ function Index(props) {
                                   Alternative email
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='alternativeEmail'
@@ -763,7 +763,7 @@ function Index(props) {
                                   Turnover of the company
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='turnoverOfTheCompany'
@@ -774,6 +774,27 @@ function Index(props) {
                                 />
                               </div>
                             </div>
+                            <div className='col-lg-6'>
+                              <div className='form-group '>
+                                <label
+                                  className='col-form-label'
+                                  htmlFor='val-username'>
+                                  Website
+                                </label>
+
+                                <input
+                                  type='link'
+                                  className='form-control'
+                                  id='val-username'
+                                  name='website'
+                                  value={state.website}
+                                  onChange={handleChange}
+                                  placeholder='Enter Website'
+                                  ref={register}
+                                />
+                              </div>
+                            </div>
+
                             <div className='col-lg-6'>
                               <div className='form-group '>
                                 <label
@@ -929,7 +950,7 @@ function Index(props) {
                                           type='radio'
                                           className='w-auto  mr-3 input_cus_radio'
                                           id='val-username'
-                                          required
+                                          // required
                                           name='category'
                                           value={state?.category}
                                           onChange={(e) => {
@@ -939,7 +960,7 @@ function Index(props) {
                                           }}
                                           value={data}
                                           ref={register({
-                                            required: 'This is required ',
+                                            // required: 'This is required ',
                                           })}
                                         />
 
@@ -971,7 +992,7 @@ function Index(props) {
                                       className='form-control'
                                       id='exampleFormControlSelect1'
                                       name='name'
-                                      required
+                                      // required
                                       // value={state?.subCategory}
                                       // value={inputField.firstName}
                                       // onChange={handleChange}
@@ -1127,7 +1148,7 @@ function Index(props) {
                                       className='form-control'
                                       id='exampleFormControlSelect1'
                                       name='name'
-                                      required
+                                      // required
                                       // value={state?.subCategory}
                                       // value={inputField.firstName}
                                       // onChange={handleChange}
@@ -1208,7 +1229,7 @@ function Index(props) {
                                       className='form-control'
                                       id='exampleFormControlSelect1'
                                       name='state'
-                                      required
+                                      // required
                                       // value={state?.state}
                                       onChange={(event) => {
                                         handleChangeInputcity(
@@ -1293,7 +1314,7 @@ function Index(props) {
                                   Company Name
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='companyName'
@@ -1312,7 +1333,7 @@ function Index(props) {
                                   Contact person
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='contactPerson'
@@ -1331,7 +1352,7 @@ function Index(props) {
                                   Contact number
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='contactNumber'
@@ -1350,7 +1371,7 @@ function Index(props) {
                                   Alternative number
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='alternativeNumber'
@@ -1369,7 +1390,7 @@ function Index(props) {
                                   Alternative email
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='alternativeEmail'
@@ -1388,7 +1409,7 @@ function Index(props) {
                                   Establishment Year
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='lastName'
@@ -1442,7 +1463,7 @@ function Index(props) {
                                   Turnover of the company
                                 </label>
                                 <input
-                                  required
+                                  // required
                                   className='form-control'
                                   id='val-username'
                                   name='turnoverOfTheCompany'
