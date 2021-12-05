@@ -337,24 +337,38 @@ const VehicleDetail = (props) => {
                         <div className='row mb-2'>
                           <div className='col-4 '>
                             <h6 className='f-w-500'>Category </h6>
-                            <p>
-                              {state?.category && state?.category.toString()}
-                            </p>
+                            {state?.userType == 1 ? (
+                              <p>
+                                {state?.category && state?.category.toString()}
+                              </p>
+                            ) : (
+                              state?.intreset &&
+                              state?.intreset.map((data) => {
+                                return <p>{data?.category}</p>;
+                              })
+                            )}
                           </div>
-                          <div className='col-4'>
+                          <div
+                            className={
+                              state?.userType == 1 ? 'col-4' : 'col-6'
+                            }>
                             <h6 className='f-w-500'>Sub Category </h6>
                             {state?.intreset &&
                               state?.intreset.map((data) => {
                                 return <p>{data?.name}</p>;
                               })}
                           </div>
-                          <div className='col-4'>
-                            <h6 className='f-w-500'>Brand Name </h6>
-                            {state?.intreset &&
-                              state?.intreset.map((data) => {
-                                return <p>{data?.brandName}</p>;
-                              })}
-                          </div>
+                          {state?.userType == 1 ? (
+                            <div className='col-4'>
+                              <h6 className='f-w-500'>Brand Name </h6>
+                              {state?.intreset &&
+                                state?.intreset.map((data) => {
+                                  return <p>{data?.brandName}</p>;
+                                })}
+                            </div>
+                          ) : (
+                            ''
+                          )}
                         </div>
                         <hr />
 
@@ -365,7 +379,7 @@ const VehicleDetail = (props) => {
                             {state &&
                               state?.preferred &&
                               state?.preferred.map((data) => {
-                                return data?.state;
+                                return <p>{data?.state}</p>;
                               })}
                             {/* {state?.preferred && state?.preferred[0]?.state} */}
                           </div>

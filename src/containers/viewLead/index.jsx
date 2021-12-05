@@ -565,12 +565,19 @@ function ViewProfile(props) {
                     <button
                       type='button'
                       onClick={() => {
-                        history.push({
+                        var newid = role == 2 ? 4 : 6;//check role if distributer(role =2) then 4 update form 
+                        return history.push({
                           pathname: '/updateData/' + id,
-                          data: 4,
-                          categorydata: state?.category,
+                          data: newid,
                         });
                       }}
+                      // onClick={() => {
+                      //   history.push({
+                      //     pathname: '/updateData/' + id,
+                      //     data: 4,
+                      //     categorydata: state?.category,
+                      //   });
+                      // }}
                       className='btn btn-light ml-2'>
                       <i
                         className='fa fa-pencil-square-o pr-1'
@@ -586,22 +593,30 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-4 '>
                           <h6 className='f-w-500'>Category </h6>
-                          <p>{state?.category && state?.category.toString()}</p>
+                          {role==1?
+                          <p>{state?.category && state?.category.toString()}</p>:
+                          state?.intreset &&
+                            state?.intreset.map((data) => {
+                              return <p>{data?.category}</p>
+                          })}
                         </div>
-                        <div className='col-4'>
+                        <div className={role==1?'col-4':'col-6'}>
                           <h6 className='f-w-500'>Sub Category </h6>
                           {state?.intreset &&
                             state?.intreset.map((data) => {
                               return <p>{data?.name}</p>;
                             })}
                         </div>
-                        <div className='col-4'>
-                          <h6 className='f-w-500'>Brand Name </h6>
-                          {state?.intreset &&
-                            state?.intreset.map((data) => {
-                              return <p>{data?.brandName}</p>;
-                            })}
-                        </div>
+                        {role==1?
+                         <div className='col-4'>
+                         <h6 className='f-w-500'>Brand Name </h6>
+                         {state?.intreset &&
+                           state?.intreset.map((data) => {
+                             return <p>{data?.brandName}</p>;
+                           })}
+                       </div>
+                        :""}
+                       
                       </div>
                       <hr />
 
@@ -612,7 +627,7 @@ function ViewProfile(props) {
                           {state &&
                             state?.preferred &&
                             state?.preferred.map((data) => {
-                              return data?.state;
+                              return <p>{data?.state}</p>;
                             })}
                           {/* {state?.preferred && state?.preferred[0]?.state} */}
                         </div>
@@ -623,6 +638,7 @@ function ViewProfile(props) {
                               state?.preferred &&
                               state?.preferred.map((data) => {
                                 return data?.city.toString();
+                                // return <p>{data?.city.toString()}</p>;
                               })}
                             {/* {state &&
                                 state?.preferred &&

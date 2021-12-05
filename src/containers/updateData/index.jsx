@@ -63,7 +63,7 @@ function Index(props) {
   const [Type, setType] = useState([]);
   const [iscomplete, setiscomplete] = useState(false);
   const [subCategory, setsubCategory] = useState([]);
-  const [formToggle, setformToggle] = useState(props.location.data ?? 1);
+  const [formToggle, setformToggle] = useState(props.location.data ?? 4);
   const [heading, setheading] = useState(
     formToggle == 1
       ? 'Personal Details'
@@ -72,8 +72,10 @@ function Index(props) {
       : formToggle == 3
       ? 'Category'
       : formToggle == 4
-      ? 'Intrest'
-      : 'Firm Detail'
+      ? 'Interest'
+      : formToggle == 5
+      ? 'Firm Detail'
+      : 'Interest'
   );
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
@@ -114,14 +116,11 @@ function Index(props) {
     type: '',
     variants: '',
   });
-  console.log(
-    `props.location.categorydata`,
-    props?.location?.categorydata && props?.location?.categorydata[0]
-  );
+
   useEffect(() => {
-    categoryy();
+    // categoryy();
     stateee();
-    getLeads();
+    getLeads(categoryyy);
     // if (state && state?.state && statehandle)
     //   setcityhandle(statehandle[state?.state]);
   }, []);
@@ -133,19 +132,38 @@ function Index(props) {
       .then((resp) => setstatehandle(resp?.data))
       .catch((err) => console.log(err));
   }
-  function categoryy() {
+  function categoryyy(data) {
+    // console.log(data,"data")
     axios
       .get(window.location.origin + '/categories.json')
       .then((resp) => {
-        if (approve) {
-          console.log(resp?.data[approve], 'resp?.data[approve]');
-          setsubCategory(resp?.data[approve]);
+        if (approve || data) {
+          setsubCategory(resp?.data[approve || data]);
         }
 
         return setcategory(resp?.data);
       })
       .catch((err) => console.log(err));
   }
+  const getLeads = (categoryCall) => {
+    axios
+      .get(apiUrl + 'user/getcompanyById/' + id)
+      .then((resp) => {
+        var data = resp?.data?.data;
+        let categoryy = resp?.data?.data?.category ?? '';
+        data.category = categoryy;
+        setInputFields(data?.subCategory);
+        setState(data);
+        setIntrestinputFields(data?.intreset);
+        setemail(resp?.data?.data?.email);
+        //set subcategory
+        setInputFieldscity(data?.preferred);
+        categoryCall(categoryy);
+      })
+      .catch((err) => {
+        showNotification('danger', err.message);
+      });
+  };
   const sweetAlert = (msg) => {
     Swal.fire({
       title: msg,
@@ -162,18 +180,6 @@ function Index(props) {
       }
       // setTimeout(history.goBack(), 500);
     });
-  };
-  const getLeads = () => {
-    axios
-      .get(apiUrl + 'user/getcompanyById/' + id)
-      .then((resp) => {
-        var data = resp?.data?.data;
-        setState(resp?.data?.data);
-        setemail(resp?.data?.data?.email);
-      })
-      .catch((err) => {
-        showNotification('danger', err.message);
-      });
   };
 
   const onSubmit = (formsubmitdata) => {
@@ -197,9 +203,12 @@ function Index(props) {
     // console.log(`phoneNo`, phoneNo);
     // return; category
     else if (formToggle == 3) {
-      formData.append('category', JSON.stringify([state?.category]));
+      console.log(state, 'state', inputFields);
+      Array.isArray(state?.category)
+        ? formData.append('category', JSON.stringify(state?.category))
+        : formData.append('category', JSON.stringify([state?.category]));
       formData.append('subCategory', JSON.stringify(inputFields));
-    } else if (formToggle == 4) {
+    } else if (formToggle == 4 || formToggle == 6) {
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
 
       formData.append('intreset', JSON.stringify(intrestinputFields));
@@ -207,7 +216,7 @@ function Index(props) {
     axios
       .post(apiUrl + 'user/updateuserprofile/', formData)
       .then((resp) => {
-        console.log(`resp`, resp);
+        // console.log(`resp`, resp);
         sweetAlert('Update Successfully');
       })
       .catch((err) => {
@@ -952,10 +961,13 @@ function Index(props) {
                                           id='val-username'
                                           // required
                                           name='category'
-                                          value={state?.category}
+                                          checked={state?.category.includes(
+                                            data
+                                          )}
+                                          // value={state?.category}
                                           onChange={(e) => {
                                             handleChange(e);
-                                            // console.log(e.target.value);
+                                            //
                                             updatesubcategory(e.target.value);
                                           }}
                                           value={data}
@@ -963,6 +975,10 @@ function Index(props) {
                                             // required: 'This is required ',
                                           })}
                                         />
+                                        {console.log(
+                                          state?.category.includes(data),
+                                          state?.category
+                                        )}
 
                                         {data}
                                       </div>
@@ -994,7 +1010,7 @@ function Index(props) {
                                       name='name'
                                       // required
                                       // value={state?.subCategory}
-                                      // value={inputField.firstName}
+                                      value={inputField?.name}
                                       // onChange={handleChange}
                                       onChange={(event) => {
                                         handleChangeInput(inputField.id, event);
@@ -1022,7 +1038,7 @@ function Index(props) {
                                         handleChangeInput(inputField.id, event);
                                         handleChange(event);
                                       }}
-                                      // value={state?.brandName}
+                                      value={inputField?.brandName}
                                       // onChange={handleChange}
                                       placeholder='Add more Brand'
                                       // required
@@ -1139,60 +1155,62 @@ function Index(props) {
                                 <div
                                   key={inputField.id}
                                   className='row w-100 bb'>
-                                  <div className='col-2 cus_d_none_sm bb'>
-                                    Sub Category
-                                    <span className='text-danger'>*</span>
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    <select
+                                      className='form-control'
+                                      id='exampleFormControlSelect1'
+                                      name='category'
+                                      // value={state?.subCategory}
+                                      value={inputField.category}
+                                      // onChange={handleChange}
+                                      onChange={(event) => {
+                                        intresthandleChangeInput(
+                                          inputField.id,
+                                          event
+                                        );
+                                        // handleChange(event);
+                                      }}
+                                      ref={register}>
+                                      {/* {subCategory.map((data) => {
+                                  <option value={data}>{data}</option>;
+                                })} */}
+                                      <option value=''>Select Category</option>
+                                      {/* {category.map((data) => (
+                                    <option value={data}>{data}</option>
+                                  ))} */}
+                                      {Object.keys(category).map((data, id) => (
+                                        <option value={data}>{data}</option>
+                                      ))}
+                                    </select>
                                   </div>
                                   <div className='col-md-4 col-sm-6 bb'>
                                     <select
                                       className='form-control'
                                       id='exampleFormControlSelect1'
                                       name='name'
-                                      // required
                                       // value={state?.subCategory}
-                                      // value={inputField.firstName}
+                                      value={inputField.name}
                                       // onChange={handleChange}
                                       onChange={(event) => {
                                         intresthandleChangeInput(
                                           inputField.id,
                                           event
                                         );
-                                        handleChange(event);
+                                        //handleChange(event);
                                       }}
                                       ref={register}>
-                                      {/* {subCategory.map((data) => {
-                                  <option value={data}>{data}</option>;
-                                })} */}
                                       <option value=''>
                                         Select Sub Category
                                       </option>
-                                      {subCategory.map((data) => (
-                                        <option value={data}>{data}</option>
-                                      ))}
+                                      {inputField.categoryDropDown.map(
+                                        (data) => (
+                                          <option value={data}>{data}</option>
+                                        )
+                                      )}
+                                      {}
                                     </select>
                                   </div>
-                                  <div className='col-md-4 col-sm-6 bb'>
-                                    <input
-                                      type='text'
-                                      className='form-control'
-                                      id='val-username'
-                                      name='brandName'
-                                      onChange={(event) => {
-                                        intresthandleChangeInput(
-                                          inputField.id,
-                                          event
-                                        );
-                                        handleChange(event);
-                                      }}
-                                      // value={state?.brandName}
-                                      // onChange={handleChange}
-                                      placeholder='Add more Brand'
-                                      // required
-                                      ref={register({
-                                        //   required: 'This is required ',
-                                      })}
-                                    />
-                                  </div>
+
                                   <div className='col-2 bb'>
                                     {intrestinputFields.length == 1 ? (
                                       ''
@@ -1211,7 +1229,7 @@ function Index(props) {
                                     )}
 
                                     <span
-                                      class='badge light btn_cus badge-success ml-1'
+                                      class='badge light badge-success btn_cus ml-1'
                                       onClick={intresthandleAddFields}>
                                       Add
                                     </span>
@@ -1224,13 +1242,13 @@ function Index(props) {
                               </h5>
                               {inputFieldscity.map((InputFieldcity) => (
                                 <div className='row w-100 bb'>
-                                  <div className='col-md-4 col-sm-6 bb'>
+                                  <div className='col-md-4 col-sm-12 bb'>
                                     <select
                                       className='form-control'
                                       id='exampleFormControlSelect1'
                                       name='state'
-                                      // required
-                                      // value={state?.state}
+                                      required
+                                      value={InputFieldcity?.state}
                                       onChange={(event) => {
                                         handleChangeInputcity(
                                           InputFieldcity.id,
@@ -1249,9 +1267,10 @@ function Index(props) {
                                       ))}
                                     </select>
                                   </div>
-                                  <div className='col-md-4 col-sm-6 bb'>
+                                  <div className='col-md-4 col-sm-12 bb'>
                                     <Multiselect
                                       isObject={false}
+                                      selectedValues={InputFieldcity?.city}
                                       onRemove={function noRefCheck() {}}
                                       onSearch={function noRefCheck() {}}
                                       onSelect={(data) =>
@@ -1264,25 +1283,25 @@ function Index(props) {
                                     />
                                   </div>
 
-                                  <div className='col-md-4 col-sm-6 bb'>
-                                    {inputFieldscity.length == 1 ? (
-                                      ''
-                                    ) : (
-                                      <span
-                                        class='badge light badge-danger btn_cus'
-                                        onClick={() =>
-                                          cityRemoveFields(InputFieldcity.id)
-                                        }>
-                                        Delete
-                                      </span>
-                                    )}
+                                  {/* <div className='col-4 bb'>
+                                {inputFieldscity.length == 1 ? (
+                                  ''
+                                ) : (
+                                  <span
+                                    class='badge light badge-danger btn_cus'
+                                    onClick={() =>
+                                      cityRemoveFields(InputFieldcity.id)
+                                    }>
+                                    Delete
+                                  </span>
+                                )}
 
-                                    <span
-                                      class='badge  btn_cus light badge-success ml-1'
-                                      onClick={handleAddFieldscity}>
-                                      Add
-                                    </span>
-                                  </div>
+                                <span
+                                  class='badge light badge-success btn_cus ml-1'
+                                  onClick={handleAddFieldscity}>
+                                  Add
+                                </span>
+                              </div> */}
                                 </div>
                               ))}
                               <div className='col-lg-12 d-flex justify-content-end'>
@@ -1712,6 +1731,180 @@ function Index(props) {
                             </div>
                             <p className='successMag'>{successMsg}</p>
                           </div>
+                        )}
+                        {formToggle == 6 && (
+                          <>
+                            <div className='row'>
+                              {intrestinputFields.map((inputField) => (
+                                <div
+                                  key={inputField.id}
+                                  className='row w-100 bb'>
+                                  <div className='col-2 cus_d_none_sm bb'>
+                                    Sub Category
+                                    <span className='text-danger'>*</span>
+                                  </div>
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    <select
+                                      className='form-control'
+                                      id='exampleFormControlSelect1'
+                                      name='name'
+                                      required
+                                      // value={state?.subCategory}
+                                      value={inputField?.name}
+                                      // onChange={handleChange}
+                                      onChange={(event) => {
+                                        intresthandleChangeInput(
+                                          inputField.id,
+                                          event
+                                        );
+                                        handleChange(event);
+                                      }}
+                                      ref={register}>
+                                      {/* {subCategory.map((data) => {
+                                  <option value={data}>{data}</option>;
+                                })} */}
+                                      <option value=''>
+                                        Select Sub Category
+                                      </option>
+                                      {subCategory.map((data) => (
+                                        <option value={data}>{data}</option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    <input
+                                      type='text'
+                                      className='form-control'
+                                      id='val-username'
+                                      name='brandName'
+                                      onChange={(event) => {
+                                        intresthandleChangeInput(
+                                          inputField.id,
+                                          event
+                                        );
+                                        handleChange(event);
+                                      }}
+                                      value={inputField?.brandName}
+                                      // onChange={handleChange}
+                                      placeholder='Add more Brand'
+                                      // required
+                                      ref={register({
+                                        //   required: 'This is required ',
+                                      })}
+                                    />
+                                  </div>
+                                  <div className='col-2 bb'>
+                                    {intrestinputFields.length == 1 ? (
+                                      ''
+                                    ) : (
+                                      <span
+                                        class='badge light badge-danger btn_cus'
+                                        onClick={() =>
+                                          intrestinputFields.length == 1
+                                            ? ''
+                                            : intresthandleRemoveFields(
+                                                inputField.id
+                                              )
+                                        }>
+                                        Delete
+                                      </span>
+                                    )}
+
+                                    <span
+                                      class='badge light btn_cus badge-success ml-1'
+                                      onClick={intresthandleAddFields}>
+                                      Add
+                                    </span>
+                                  </div>
+                                </div>
+                              ))}
+                              <h5 class='mt-5 mb-2 cus_h1_text'>
+                                Select preferred location for distribution-ship
+                                appointment
+                              </h5>
+                              {inputFieldscity.map((InputFieldcity) => (
+                                <div className='row w-100 bb'>
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    <select
+                                      className='form-control'
+                                      id='exampleFormControlSelect1'
+                                      name='state'
+                                      required
+                                      value={InputFieldcity?.state}
+                                      onChange={(event) => {
+                                        handleChangeInputcity(
+                                          InputFieldcity.id,
+                                          event
+                                        );
+                                        // handleStatefunforcity(event.target.value);
+                                      }}
+                                      // onChange={(e) => {
+                                      //   handleChange(e);
+                                      //   handleStatefunforcity(e.target.value);
+                                      // }}
+                                      ref={register}>
+                                      <option value=''>Select State </option>
+                                      {Object.keys(statehandle).map((data) => (
+                                        <option value={data}>{data}</option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    <Multiselect
+                                      isObject={false}
+                                      selectedValues={InputFieldcity?.city}
+                                      onRemove={function noRefCheck() {}}
+                                      onSearch={function noRefCheck() {}}
+                                      onSelect={(data) =>
+                                        handleChangeInputcitynew(
+                                          InputFieldcity.id,
+                                          data
+                                        )
+                                      }
+                                      options={InputFieldcity.cityDropDown}
+                                    />
+                                  </div>
+
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    {inputFieldscity.length == 1 ? (
+                                      ''
+                                    ) : (
+                                      <span
+                                        class='badge light badge-danger btn_cus'
+                                        onClick={() =>
+                                          cityRemoveFields(InputFieldcity.id)
+                                        }>
+                                        Delete
+                                      </span>
+                                    )}
+
+                                    <span
+                                      class='badge  btn_cus light badge-success ml-1'
+                                      onClick={handleAddFieldscity}>
+                                      Add
+                                    </span>
+                                  </div>
+                                </div>
+                              ))}
+
+                              <div className='col-lg-12 d-flex justify-content-end'>
+                                <button
+                                  type='button'
+                                  className='btn btn-primary mr-2'
+                                  onClick={back}>
+                                  Back
+                                </button>
+
+                                <button
+                                  type='submit'
+                                  className='btn btn-primary'>
+                                  Save
+                                </button>
+                              </div>
+
+                              <p className='successMag'>{successMsg}</p>
+                            </div>
+                          </>
                         )}
                       </div>
                     </div>
