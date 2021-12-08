@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
@@ -10,11 +10,14 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
 import apiUrl from '../../../globals/config';
 function Index(props) {
-  if (!props.location.data) {
-    props.history.push({
-      pathname: '/ongoingDeals',
-    });
-  }
+  const { id } = useParams();
+  let history = useHistory();
+
+  // if (!props.location.data) {
+  //   props.history.push({
+  //     pathname: '/ongoingDeals',
+  //   });
+  // }
   const [viewData, setViewData] = useState(props.location.data);
   const [state, setState] = React.useState('');
 
@@ -33,31 +36,20 @@ function Index(props) {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    let token = localStorage.getItem('myData');
-    let headers = {
-      headers: {
-        'x-token': `Bearer ${token}`,
-      },
-    };
 
     const data = state;
-    data.id = viewData;
-    
 
     const formData = new FormData();
-    Object.keys(data).forEach((key) => {
-      if (data[key]) {
-        formData.append([key], data[key]);
-      }
-    });
-    formData.append('confirm', 2);
+    console.log(`state?.otherImage`, state?.otherImage);
+    // return;
+    formData.append('otherImage', state?.otherImage);
 
     axios
-      .post(apiUrl + 'user/updateStage', formData, headers)
+      .post(apiUrl + 'user/productImageAdd/' + id, formData)
       .then((resp) => {
-        props.history.push({
-          pathname: '/ongoingDeals',
-        });
+        history.goBack();
+
+        console.log(`resp`, resp);
       })
       .catch((err) => {
         console.log(err);
@@ -72,7 +64,7 @@ function Index(props) {
             <div class='col-lg-12'>
               <div class='card widget-stat'>
                 <div class='card-header bg-custom-blue '>
-                  <h4 class='card-title text-white'>L1 Stage Document</h4>
+                  <h4 class='card-title text-white'>Add Product</h4>
                 </div>
                 <div class='card-body'>
                   <div class='form-validation'>
@@ -80,7 +72,7 @@ function Index(props) {
                       <Col sm={6}>
                         <div class='form-group '>
                           <label class='col-form-label' for='val-username'>
-                            Proforma Invoice (pdf/img)
+                            Product Image
                           </label>
 
                           <div class='custom-file'>
@@ -92,53 +84,38 @@ function Index(props) {
                             <input
                               type='file'
                               required
-                              name='proformaInvoiceL1'
+                              name='otherImage'
                               class='custom-file-input form-control'
                               onChange={fileChange}
                             />
                             <label class='custom-file-label'>
-                              {state?.proformaInvoiceL1?.name
-                                ? state.proformaInvoiceL1?.name
+                              {state?.otherImage?.name
+                                ? state.otherImage?.name
                                 : 'Choose File'}
                             </label>
                             {/* <label class="custom-file-label">Choose file</label> */}
                           </div>
                         </div>
                       </Col>
-                      <Col sm={6}>
-                        <div class='form-group '>
-                          <label class='col-form-label' for='val-username'>
-                            Chassis Number
-                          </label>
-                          <input
-                            type='text'
-                            required
-                            class='form-control'
-                            id='val-username'
-                            name='chassisNumberL1'
-                            onChange={handleChange}
-                            placeholder='Enter a chassis number..'
-                          />
-                        </div>
-                      </Col>
 
                       <Col sm={12} className='d-flex mt-3'>
-                        <Link className='mr-2' to='/ongoingDeals'>
+                        <Link
+                          className='mr-2'
+                          onClick={(e) => history.goBack()}>
                           {' '}
                           <button type='submit' class='btn btn-primary'>
-                          Previous
+                            Back
                           </button>
                         </Link>
-                        {/* <Link className='' to='/#0'> */}
-                          {' '}
-                          <button
-                            type='submit'
-                            onClick={(e) => {
-                              onSubmit(e);
-                            }}
-                            class='btn btn-primary'>
-                            Save
-                          </button>
+                        {/* <Link className='' to='/#0'> */}{' '}
+                        <button
+                          type='submit'
+                          onClick={(e) => {
+                            onSubmit(e);
+                          }}
+                          class='btn btn-primary'>
+                          Save
+                        </button>
                         {/* </Link> */}
                       </Col>
                     </Row>

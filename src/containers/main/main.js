@@ -213,7 +213,7 @@ function Main() {
                 : Home
             }
           />
-          <Route path='/stageone' component={Stageone} />
+          <Route path='/stageone/:id' component={Stageone} />
           <Route path='/stagetwo' component={Stagetwo} />
           <Route path='/stagefour' component={Stagefour} />
           <Route path='/stagefive' component={Stagefive} />
@@ -309,7 +309,7 @@ function Main() {
           {history.location.pathname !== base + 'redirection' ? <Footer /> : ''}
         </Route>
       ) : (
-        <Redirect to='/home'></Redirect>
+        <Redirect to='/'></Redirect>
         // history.push('/')
         // "signup routing"
       )}

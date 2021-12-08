@@ -5,6 +5,8 @@ import axios from 'axios';
 import apiUrl from '../../globals/config';
 import Header from '../header/header';
 import { param } from 'jquery';
+import OwlCarousel from 'react-owl-carousel';
+
 import showNotification from '../../services/notificationService';
 var fileDownload = require('js-file-download');
 function ViewProfile(props) {
@@ -25,24 +27,25 @@ function ViewProfile(props) {
 
   const [intreset, setintreset] = useState(props.location.data?.intreset ?? []);
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
+  const [render, setrender] = useState('');
 
   const [state, setState] = React.useState(false ?? []);
 
   useEffect(() => {
-    const ongoing = (page) => {
-      axios
-        .get(apiUrl + 'user/getcompanyById/' + id)
-        .then((resp) => {
-          var data = resp?.data?.data;
-          setState(resp?.data?.data);
-          setrole(resp?.data?.data?.userType);
-        })
-        .catch((err) => {
-          showNotification('danger', err.message);
-        });
-    };
     ongoing();
-  }, []);
+  }, [render]);
+  const ongoing = (page) => {
+    axios
+      .get(apiUrl + 'user/getcompanyById/' + id)
+      .then((resp) => {
+        var data = resp?.data?.data;
+        setState(resp?.data?.data);
+        setrole(resp?.data?.data?.userType);
+      })
+      .catch((err) => {
+        showNotification('danger', err.message);
+      });
+  };
   // const getLeads = () => {
   //   axios
   //     .post(apiUrl + 'user/verifyNo', props.location.data)
@@ -72,7 +75,37 @@ function ViewProfile(props) {
         fileDownload(res.data, fileName);
       });
   }
-  //
+  const options = {
+    responsive: {
+      0: {
+        items: 1,
+      },
+      576: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      992: {
+        items: 3,
+      },
+    },
+  };
+  const deleteImage = (image) => {
+    console.log(`image`, image);
+
+    axios
+      .post(apiUrl + 'user/productImageDelete/' + id, { otherImage: image })
+      .then((resp) => {
+        // history.goBack();
+        window.location.reload();
+        setrender((e) => e + 1);
+        console.log(`resp`, resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className='content-body'>
@@ -565,7 +598,7 @@ function ViewProfile(props) {
                     <button
                       type='button'
                       onClick={() => {
-                        var newid = role == 2 ? 4 : 6;//check role if distributer(role =2) then 4 update form 
+                        var newid = role == 2 ? 4 : 6; //check role if distributer(role =2) then 4 update form
                         return history.push({
                           pathname: '/updateData/' + id,
                           data: newid,
@@ -593,30 +626,35 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-4 '>
                           <h6 className='f-w-500'>Category </h6>
-                          {role==1?
-                          <p>{state?.category && state?.category.toString()}</p>:
-                          state?.intreset &&
+                          {role == 1 ? (
+                            <p>
+                              {state?.category && state?.category.toString()}
+                            </p>
+                          ) : (
+                            state?.intreset &&
                             state?.intreset.map((data) => {
-                              return <p>{data?.category}</p>
-                          })}
+                              return <p>{data?.category}</p>;
+                            })
+                          )}
                         </div>
-                        <div className={role==1?'col-4':'col-6'}>
+                        <div className={role == 1 ? 'col-4' : 'col-6'}>
                           <h6 className='f-w-500'>Sub Category </h6>
                           {state?.intreset &&
                             state?.intreset.map((data) => {
                               return <p>{data?.name}</p>;
                             })}
                         </div>
-                        {role==1?
-                         <div className='col-4'>
-                         <h6 className='f-w-500'>Brand Name </h6>
-                         {state?.intreset &&
-                           state?.intreset.map((data) => {
-                             return <p>{data?.brandName}</p>;
-                           })}
-                       </div>
-                        :""}
-                       
+                        {role == 1 ? (
+                          <div className='col-4'>
+                            <h6 className='f-w-500'>Brand Name </h6>
+                            {state?.intreset &&
+                              state?.intreset.map((data) => {
+                                return <p>{data?.brandName}</p>;
+                              })}
+                          </div>
+                        ) : (
+                          ''
+                        )}
                       </div>
                       <hr />
 
@@ -645,6 +683,69 @@ function ViewProfile(props) {
                                 state?.preferred[0]?.city &&
                                 state?.preferred[0]?.city.toString()} */}
                           </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* product image  */}
+              <div className='card widget-stat'>
+                <div className='card-header bg-custom-blue '>
+                  <h4 className='card-title text-white'>Product's Image</h4>
+
+                  <div className='two_btns_ps'>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/stageone/' + id,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className='card-body'>
+                  <div className='form-validation'>
+                    <div className='profile-personal-info'>
+                      <div className='row mb-2'>
+                        <div className='col-12 '>
+                          <OwlCarousel
+                            className='similar-cars owl-carousel owl-theme custom-slider'
+                            margin={10}
+                            items={3}
+                            nav
+                            dots={false}
+                            {...options}>
+                            {state?.otherImage &&
+                              state?.otherImage.map((item, id) => (
+                                <div key={id} className='item'>
+                                  <div className='x_car_offer_main_boxes_wrapper float_left'>
+                                    <div className='x_car_offer_img float_left'>
+                                      <img src={item} alt={item} />
+                                    </div>
+                                    <div
+                                      className='d-flex justify-content-center'
+                                      // style={{ position: 'absolute' }}
+                                    >
+                                      {/* //login-button call-btn */}
+                                      <p
+                                        className='btn btn-danger ml-3'
+                                        onClick={(e) => deleteImage(item)}>
+                                        Delete
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                          </OwlCarousel>
                         </div>
                       </div>
                     </div>

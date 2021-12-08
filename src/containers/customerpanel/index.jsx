@@ -27,6 +27,7 @@ export default function Index(props) {
   const [intreset, setintreset] = useState(props.location.data?.intreset ?? []);
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
   const [state, setState] = React.useState(false ?? []);
+  const [render, setrender] = useState('');
   let history = useHistory();
   const [role, setrole] = useState('');
   const [hiddenNumber, sethiddenNumber] = useState(undefined);
@@ -53,7 +54,7 @@ export default function Index(props) {
         });
     };
     ongoing();
-  }, []);
+  }, [render]);
   useEffect(() => {
     if (hiddenNumber?.value == false || hiddenNumber?.value == true) {
       axios
@@ -91,6 +92,20 @@ export default function Index(props) {
         items: 3,
       },
     },
+  };
+  const deleteImage = (image) => {
+    console.log(`image`, image);
+
+    axios
+      .post(apiUrl + 'user/productImageDelete/' + id, { otherImage: image })
+      .then((resp) => {
+        // history.goBack();
+        setrender((e) => e + 1);
+        console.log(`resp`, resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
@@ -672,7 +687,21 @@ export default function Index(props) {
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>Product's Image</h4>
 
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/stageone/' + id,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                  </div>
                 </div>
 
                 <div className='card-body'>
@@ -693,6 +722,17 @@ export default function Index(props) {
                                   <div className='x_car_offer_main_boxes_wrapper float_left'>
                                     <div className='x_car_offer_img float_left'>
                                       <img src={item} alt={item} />
+                                    </div>
+                                    <div
+                                      className='d-flex justify-content-center'
+                                      // style={{ position: 'absolute' }}
+                                    >
+                                      {/* //login-button call-btn */}
+                                      <p
+                                        className='btn btn-danger ml-3'
+                                        onClick={(e) => deleteImage(item)}>
+                                        Delete
+                                      </p>
                                     </div>
                                   </div>
                                 </div>
