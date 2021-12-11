@@ -113,6 +113,18 @@ export default function Index(props) {
         <div className='container-fluid'>
           <div className='row justify-content-center h-100 align-items-center emi_row'>
             <div className='col-md-12'>
+              {state?.status == false ? (
+                <div className='card widget-stat'>
+                  <div className='card-header bg-custom-red '>
+                    <h4 className='card-title text-white'>
+                      Account not Verified
+                    </h4>
+                  </div>
+                </div>
+              ) : (
+                ''
+              )}
+
               <div className='card widget-stat'>
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>Personal Details</h4>

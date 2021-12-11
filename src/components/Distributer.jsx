@@ -389,6 +389,16 @@ function Index(props) {
 
     setInputFieldscity(newInputFields);
   };
+  // const handleChangeInputcitynew = (id, data) => {
+  //   const newInputFields = inputFieldscity.map((i) => {
+  //     if (id === i.id) {
+  //       i.city = data;
+  //     }
+  //     return i;
+  //   });
+
+  //   setInputFieldscity(newInputFields);
+  // };
   const handleChangeInputcitynew = (id, data) => {
     const newInputFields = inputFieldscity.map((i) => {
       if (id === i.id) {
@@ -397,6 +407,15 @@ function Index(props) {
       return i;
     });
 
+    setInputFieldscity(newInputFields);
+  };
+  const handleRemovecity = (id, data) => {
+    const newInputFields = inputFieldscity.map((i) => {
+      if (id === i.id) {
+        i.city = data;
+      }
+      return i;
+    });
     setInputFieldscity(newInputFields);
   };
   const handleAddFieldscity = () => {
@@ -1689,7 +1708,9 @@ function Index(props) {
                               <div className='col-md-4 col-sm-12 bb'>
                                 <Multiselect
                                   isObject={false}
-                                  onRemove={function noRefCheck() {}}
+                                  onRemove={(data) => {
+                                    handleRemovecity(InputFieldcity.id, data);
+                                  }}
                                   onSearch={function noRefCheck() {}}
                                   onSelect={(data) =>
                                     handleChangeInputcitynew(

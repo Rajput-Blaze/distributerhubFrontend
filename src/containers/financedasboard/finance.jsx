@@ -28,14 +28,14 @@ function Finance() {
     //     "x-token": `Bearer ${token}`,
     //   },
     // };
-    // axios
-    //   .get(apiUrl + "user/financerClientCount", headers)
-    //   .then((resp) => {
-    //     setuser(resp.data);
-    //   })
-    //   .catch((err) => {
-    //     showNotification("danger", err.message);
-    //   });
+    axios
+      .get(apiUrl + 'user/getCount')
+      .then((resp) => {
+        setuser(resp.data);
+      })
+      .catch((err) => {
+        showNotification('danger', err.message);
+      });
   };
 
   return (
@@ -57,7 +57,7 @@ function Finance() {
                         />
                       </span>
                       <div className='media-body text-center'>
-                        <h4 className='mb-2'>{user ? user?.newCases : '0'}</h4>
+                        <h4 className='mb-2'>{user ? user?.company : '0'}</h4>
                         <h5 className='mb-0'>Total Company </h5>
                         <div class='d-flex justify-content-center mt-3'>
                           <a href='#0' class='btn btn-primary btn-xxs shadow'>
@@ -85,7 +85,7 @@ function Finance() {
                       </span>
                       <div className='media-body text-center'>
                         <h4 className='mb-2'>
-                          {user ? user?.rejectedCases : '0'}
+                          {user ? user?.distributer : '0'}
                         </h4>
                         <h5 className='mb-0'>Total Distributer</h5>
                         <div class='d-flex justify-content-center mt-3'>
@@ -113,7 +113,7 @@ function Finance() {
                       </span>
                       <div className='media-body text-center'>
                         <h4 className='mb-2'>
-                          {user ? user?.doreadyCases : '0'}
+                          {user ? user?.contactForm : '0'}
                         </h4>
                         <h5 className='mb-0'>Total Contact Form</h5>
                         <div class='d-flex justify-content-center mt-3'>

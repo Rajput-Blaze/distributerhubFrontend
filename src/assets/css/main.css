@@ -39535,6 +39535,11 @@ a {
   background-color: #6aacff !important;
   border-radius: 0px !important;
 }
+.emi_row .bg-custom-red {
+  background-color: red !important;
+  border-radius: 3px !important;
+  padding: 15px 10px;
+}
 
 .color_9d {
   color: #6aacff;
@@ -40155,6 +40160,9 @@ border-color: #007bff;
 }
 
 .bg-custom-blue > h4 {
+  font-size: 18px;
+}
+.bg-custom-red > h4 {
   font-size: 18px;
 }
 

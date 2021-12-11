@@ -181,7 +181,9 @@ function Index(props) {
           // console.log(`respon`, respon);
           //showNotification('success', 'Company Added Successfully');
           setloading(false);
-          sweetAlert('Company Added Successfully');
+          sweetAlert(
+            'Company Added Successfully Your Profile is under Review '
+          );
 
           // history.push({
           //   pathname: '/',
@@ -393,6 +395,15 @@ function Index(props) {
       return i;
     });
 
+    setInputFieldscity(newInputFields);
+  };
+  const handleRemovecity = (id, data) => {
+    const newInputFields = inputFieldscity.map((i) => {
+      if (id === i.id) {
+        i.city = data;
+      }
+      return i;
+    });
     setInputFieldscity(newInputFields);
   };
   const handleAddFieldscity = () => {
@@ -1487,8 +1498,11 @@ function Index(props) {
                               </div>
                               <div className='col-md-4 col-sm-6 bb'>
                                 <Multiselect
+                                  // ref={multiselectRef}
                                   isObject={false}
-                                  onRemove={function noRefCheck() {}}
+                                  onRemove={(data) => {
+                                    handleRemovecity(InputFieldcity.id, data);
+                                  }}
                                   onSearch={function noRefCheck() {}}
                                   onSelect={(data) =>
                                     handleChangeInputcitynew(

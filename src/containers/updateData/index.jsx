@@ -343,6 +343,15 @@ function Index(props) {
 
     setInputFieldscity(newInputFields);
   };
+  const handleRemovecity = (id, data) => {
+    const newInputFields = inputFieldscity.map((i) => {
+      if (id === i.id) {
+        i.city = data;
+      }
+      return i;
+    });
+    setInputFieldscity(newInputFields);
+  };
   const handleAddFieldscity = () => {
     setInputFieldscity([
       ...inputFieldscity,
@@ -1271,7 +1280,12 @@ function Index(props) {
                                     <Multiselect
                                       isObject={false}
                                       selectedValues={InputFieldcity?.city}
-                                      onRemove={function noRefCheck() {}}
+                                      onRemove={(data) => {
+                                        handleRemovecity(
+                                          InputFieldcity.id,
+                                          data
+                                        );
+                                      }}
                                       onSearch={function noRefCheck() {}}
                                       onSelect={(data) =>
                                         handleChangeInputcitynew(

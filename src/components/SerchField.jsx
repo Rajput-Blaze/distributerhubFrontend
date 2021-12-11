@@ -21,6 +21,9 @@ import Swal from 'sweetalert2';
 import * as session from '../utils/session';
 import Loaderr from './Loaderr';
 function SerchField(props) {
+  const multiselectRefcity = React.createRef();
+  const multiselectRefsub = React.createRef();
+
   const history = useHistory();
 
   const [isLoading, setisLoading] = useState(false);
@@ -123,12 +126,19 @@ function SerchField(props) {
         .post(apiUrl + 'user/search', che) //data.data.verify_otp
         .then(function (respon) {
           // if()
-          setisLoading(false);
-          setsearchresult(respon?.data?.data?.verify_otp ?? []);
-          console.log(`respon...`, respon?.data?.data?.verify_otp.length);
+
+          // console.log(`respon...`, respon?.data?.data?.verify_otp.length);
           if (respon?.data?.data?.verify_otp.length == 0) {
             setisLoading(false);
             showNotification('danger', 'No record Found');
+          } else {
+            setisLoading(false);
+            setsearchresult(respon?.data?.data?.verify_otp ?? []);
+            // #search_Result
+            document
+              .getElementById('search_Result')
+              .scrollIntoView({ behavior: 'smooth' });
+            // history.push('#search_Result');
           }
         })
         .catch(function (error) {
@@ -157,6 +167,14 @@ function SerchField(props) {
     }
   };
   const handleChangee = (data, id) => {
+    console.log(data, 'data');
+    if (id == 2) setcategoryData(data);
+    else {
+      setcityarray(data);
+    }
+  };
+  const handleRemove = (data, id) => {
+    console.log(data, 'data');
     if (id == 2) setcategoryData(data);
     else {
       setcityarray(data);
@@ -246,6 +264,7 @@ function SerchField(props) {
                             value={state?.category}
                             onChange={(e) => {
                               handleChange(e);
+                              multiselectRefsub.current.resetSelectedValues();
                               if (e.target.value != '')
                                 updatesubcategory(e.target.value);
                             }}
@@ -257,26 +276,13 @@ function SerchField(props) {
                           </select>
                         </div>
                         <div className='col-sm-12 col-md-6'>
-                          {/* <select
-                            className='form-control'
-                            id='exampleFormControlSelect1'
-                            name='subCategory'
-                            required
-                            value={state?.subCategory}
-                            onChange={(e) => {
-                              handleChange(e);
-                              // handleStatefunforcity(e.target.value);
-                            }}
-                            ref={register}>
-                            <option value=''>Select Sub Category</option>
-                            {subCategory.map((data) => (
-                              <option value={data}>{data}</option>
-                            ))}
-                          </select> */}
                           <Multiselect
                             isObject={false}
+                            ref={multiselectRefsub}
                             placeholder='Select Sub Category'
-                            onRemove={function noRefCheck() {}}
+                            onRemove={(data) => {
+                              handleRemove(data, 2);
+                            }}
                             onSearch={function noRefCheck() {}}
                             onSelect={(data) => {
                               handleChangee(data, 2);
@@ -296,6 +302,7 @@ function SerchField(props) {
                             onChange={(e) => {
                               handleChange(e);
                               handleStatefunforcity(e.target.value);
+                              multiselectRefcity.current.resetSelectedValues();
                             }}
                             ref={register}>
                             <option value=''>Select State </option>
@@ -322,8 +329,11 @@ function SerchField(props) {
                           </select> */}
                           <Multiselect
                             isObject={false}
+                            ref={multiselectRefcity}
                             placeholder='Select City'
-                            onRemove={function noRefCheck() {}}
+                            onRemove={(data) => {
+                              handleRemove(data, 1);
+                            }}
                             onSearch={function noRefCheck() {}}
                             onSelect={(data) => {
                               handleChangee(data, 1);
@@ -348,7 +358,7 @@ function SerchField(props) {
                 </div>
               </div>
             </div>
-            <h4 class='container-fluid mt-5 pt-5'>
+            <h4 class='container-fluid mt-5 pt-5' id='search_Result'>
               {searchresult.length != 0
                 ? state?.type.charAt(0).toUpperCase() +
                   state?.type.slice(1) +
