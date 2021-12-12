@@ -576,13 +576,13 @@ const VehicleDetail = (props) => {
                         ) : (
                           <>
                             <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
+                              <div className='col-sm-4 col-5'>
                                 <h6 className='f-w-500'>
                                   Number of Brand{' '}
                                   <span className='pull-right'>:</span>
                                 </h6>
                               </div>
-                              <div className='col-sm-9 col-7'>
+                              <div className='col-sm-8 col-7'>
                                 <span>
                                   {state && state?.numberofBrand
                                     ? state.numberofBrand
@@ -592,13 +592,13 @@ const VehicleDetail = (props) => {
                             </div>
                             <hr />
                             <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
+                              <div className='col-sm-4 col-5'>
                                 <h6 className='f-w-500'>
                                   Distributor Cover Area
                                   <span className='pull-right'>:</span>
                                 </h6>
                               </div>
-                              <div className='col-sm-9 col-7'>
+                              <div className='col-sm-8 col-7'>
                                 <span>
                                   {state && state?.distributorCoverArea
                                     ? state.distributorCoverArea
@@ -608,13 +608,13 @@ const VehicleDetail = (props) => {
                             </div>
                             <hr />
                             <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
+                              <div className='col-sm-4 col-5'>
                                 <h6 className='f-w-500'>
                                   Number of Employee{' '}
                                   <span className='pull-right'>:</span>
                                 </h6>
                               </div>
-                              <div className='col-sm-9 col-7'>
+                              <div className='col-sm-8 col-7'>
                                 <span>
                                   {state && state?.numberofEmployee
                                     ? state.numberofEmployee
@@ -624,13 +624,13 @@ const VehicleDetail = (props) => {
                             </div>
                             <hr />
                             <div className='row mb-2'>
-                              <div className='col-sm-3 col-5'>
+                              <div className='col-sm-4 col-5'>
                                 <h6 className='f-w-500'>
                                   Godown Space{' '}
                                   <span className='pull-right'>:</span>
                                 </h6>
                               </div>
-                              <div className='col-sm-9 col-7'>
+                              <div className='col-sm-8 col-7'>
                                 <span>
                                   {state && state?.godownSpace
                                     ? state.godownSpace
