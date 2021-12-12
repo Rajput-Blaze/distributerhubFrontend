@@ -292,10 +292,10 @@ const VehicleDetail = (props) => {
                     <div className='two_btns_ps'></div>
                   </div>
 
-                  <div className='card-body'>
+                  <div className='card-body responsiveCardouter'>
                     <div className='form-validation'>
                       <div className='profile-personal-info'>
-                        <div className='row mb-2'>
+                        <div className='row responsiveCardinner mb-2'>
                           <div className='col-4 '>
                             <h6 className='f-w-500'>Category </h6>
                             <p>
@@ -331,10 +331,10 @@ const VehicleDetail = (props) => {
                     <div className='two_btns_ps'></div>
                   </div>
 
-                  <div className='card-body'>
+                  {/* <div className='card-body responsiveCardouter'>
                     <div className='form-validation'>
                       <div className='profile-personal-info'>
-                        <div className='row mb-2'>
+                        <div className='row responsiveCardinner mb-2'>
                           <div className='col-4 '>
                             <h6 className='f-w-500'>Category </h6>
                             {state?.userType == 1 ? (
@@ -372,8 +372,8 @@ const VehicleDetail = (props) => {
                         </div>
                         <hr />
 
-                        {/* <p>{state.category.toString()}</p> */}
-                        <div className='row py-3'>
+                        <p>{state.category.toString()}</p>
+                        <div className='row responsiveCardinner py-3'>
                           <div className='col-4 '>
                             <h6 className='f-w-500'>State </h6>
                             {state &&
@@ -381,7 +381,7 @@ const VehicleDetail = (props) => {
                               state?.preferred.map((data) => {
                                 return <p>{data?.state}</p>;
                               })}
-                            {/* {state?.preferred && state?.preferred[0]?.state} */}
+                           
                           </div>
                           <div className='col-8'>
                             <h6 className='f-w-500'>City </h6>
@@ -391,14 +391,90 @@ const VehicleDetail = (props) => {
                                 state?.preferred.map((data) => {
                                   return data?.city.toString();
                                 })}
-                              {/* {state &&
-                                state?.preferred &&
-                                state?.preferred[0]?.city &&
-                                state?.preferred[0]?.city.toString()} */}
+                              
                             </p>
                           </div>
                         </div>
                       </div>
+                    </div>
+                  </div> */}
+                  <div className='card-body'>
+                    {/* <div
+                      id='example_filter'
+                      class='dataTables_filter d-flex justify-content-end'>
+                      <input
+                        type='search'
+                        class='w-30 mr-3'
+                        placeholder='search Company'
+                        aria-controls='example'
+                      />{' '}
+                      <a href='#0' class='btn btn-primary rounded d-block'>
+                        Search
+                      </a>
+                    </div>
+                    */}
+                    <div className='table-responsive'>
+                      <table className='table'>
+                        <thead>
+                          <tr className='table_th'>
+                            <th className='width100'>Category</th>
+                            <th className='width100'>Sub Category</th>
+                            {state?.userType == 1 ? (
+                              <th className='width100'>Brand</th>
+                            ) : (
+                              ''
+                            )}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {state?.userType == 1 &&
+                            state?.intreset.map((data, index) => {
+                              return (
+                                <tr>
+                                  {index == 0 ? (
+                                    <td>
+                                      {state?.category &&
+                                        state?.category.toString()}
+                                    </td>
+                                  ) : (
+                                    <td></td>
+                                  )}
+                                  <td>{data?.name}</td>
+                                  <td>{data?.brandName}</td>
+                                </tr>
+                              );
+                            })}
+                          {state?.userType == 2 &&
+                            state?.intreset.map((data, index) => {
+                              return (
+                                <tr>
+                                  <td>{data?.category}</td>
+                                  <td>{data?.name}</td>
+                                </tr>
+                              );
+                            })}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className='table-responsive'>
+                      <table className='table'>
+                        <thead>
+                          <tr className='table_th'>
+                            <th className='width100'>State</th>
+                            <th className='width100'>City </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {state?.preferred?.map((data, index) => {
+                            return (
+                              <tr>
+                                <td>{data?.state}</td>
+                                <td>{data?.city.toString()}</td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -416,11 +492,12 @@ const VehicleDetail = (props) => {
                     <div className='form-validation'>
                       <div className='profile-personal-info'>
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Name<span className='pull-right'>:</span>
                             </h6>
                           </div>
+
                           <div className='col-sm-8 col-7'>
                             <span>
                               {state && state?.companyName
@@ -429,8 +506,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Contact Personal{' '}
                               <span className='pull-right'>:</span>
@@ -444,8 +522,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Contact No<span className='pull-right'>:</span>
                             </h6>
@@ -460,8 +539,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Alternate no.{' '}
                               <span className='pull-right'>:</span>
@@ -477,18 +557,20 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-sm-3 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Website <span className='pull-right'>:</span>
                             </h6>
                           </div>
-                          <div className='col-sm-9 col-7'>
+                          <div className='col-sm-8 col-7'>
                             <span>
                               {state && state?.website ? state.website : 'N/A'}{' '}
                             </span>
                           </div>
                         </div>
+                        <hr />
                         {state?.userType == 1 ? (
                           ''
                         ) : (
@@ -508,6 +590,7 @@ const VehicleDetail = (props) => {
                                 </span>
                               </div>
                             </div>
+                            <hr />
                             <div className='row mb-2'>
                               <div className='col-sm-3 col-5'>
                                 <h6 className='f-w-500'>
@@ -523,6 +606,7 @@ const VehicleDetail = (props) => {
                                 </span>
                               </div>
                             </div>
+                            <hr />
                             <div className='row mb-2'>
                               <div className='col-sm-3 col-5'>
                                 <h6 className='f-w-500'>
@@ -538,6 +622,7 @@ const VehicleDetail = (props) => {
                                 </span>
                               </div>
                             </div>
+                            <hr />
                             <div className='row mb-2'>
                               <div className='col-sm-3 col-5'>
                                 <h6 className='f-w-500'>
@@ -553,10 +638,11 @@ const VehicleDetail = (props) => {
                                 </span>
                               </div>
                             </div>
+                            <hr />
                           </>
                         )}
                         <div className='row mb-2 align-items-center'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Address<span className='pull-right'>:</span>
                             </h6>
@@ -567,8 +653,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               City <span className='pull-right'>:</span>
                             </h6>
@@ -581,8 +668,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               State <span className='pull-right'>:</span>
                             </h6>
@@ -593,8 +681,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Pin Code <span className='pull-right'>:</span>
                             </h6>
@@ -605,8 +694,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Country
                               <span className='pull-right'>:</span>
@@ -616,8 +706,9 @@ const VehicleDetail = (props) => {
                             <span>{state ? 'India' : 'N/A'} </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Establishment Year
                               <span className='pull-right'>:</span>
@@ -631,8 +722,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               GST No<span className='pull-right'>:</span>
                             </h6>
@@ -643,8 +735,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Mail Id
                               <span className='pull-right'>:</span>
@@ -656,8 +749,9 @@ const VehicleDetail = (props) => {
                             </span>
                           </div>
                         </div>{' '}
+                        <hr />
                         <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Turnover of the company
                               <span className='pull-right'>:</span>
@@ -672,7 +766,7 @@ const VehicleDetail = (props) => {
                           </div>
                         </div>{' '}
                         {/* <div className='row mb-2'>
-                          <div className='col-4 col-5'>
+                          <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
                               Website
                               <span className='pull-right'>:</span>

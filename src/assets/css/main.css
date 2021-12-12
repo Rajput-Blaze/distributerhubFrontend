@@ -33387,7 +33387,7 @@ code {
   border-bottom-width: 1px;
   font-size: 14px;
   font-weight: 600;
-  padding: 20px 20px;
+  /* padding: 20px 20px; */
   letter-spacing: 0.5px;
   border-color: #f0f1f5;
 }
@@ -41363,4 +41363,12 @@ box-shadow: 0px 0 8px rgb(64 24 157 / 46%) !important;
 margin-top: 70px;}
 .shad{
   box-shadow: 0px 0 8px rgb(64 24 157 / 46%);
+}
+.responsiveCardinner{
+  min-width: 636px;
+ 
+}
+.responsiveCardouter{
+ 
+  overflow-x: auto;
 }

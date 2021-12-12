@@ -137,7 +137,7 @@ function Index(props) {
                     <h4 class='card-title text-white'>All Company</h4>
                   </div>
                   <div className='card-body'>
-                    <div
+                    {/* <div
                       id='example_filter'
                       class='dataTables_filter d-flex justify-content-end'>
                       <input
@@ -150,6 +150,7 @@ function Index(props) {
                         Search
                       </a>
                     </div>
+                    */}
                     <div className='table-responsive'>
                       <table className='table'>
                         <thead>
@@ -238,6 +239,7 @@ function Index(props) {
                         </tbody>
                       </table>
                     </div>
+
                     <div className='d-flex justify-content-between mt-3'>
                       <div
                         className='dataTables_info pl-3'
