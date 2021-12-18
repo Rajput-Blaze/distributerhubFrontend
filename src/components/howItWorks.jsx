@@ -71,13 +71,6 @@ export default class About extends Component {
             <div className='container nayk-container'>
               <div className='section-title text-center mb--20'>
                 <h2 className='title'>Advantages</h2>
-                {/* <p className='subtitle-2'>
-                  This platform gives wing to companies and distributors who all
-                  are seeking for appointing distributors and searching
-                  manufacturing companies for taking distribution-ship in their
-                  desired state/city. This platform providing online search and
-                  offline meetings with channel partners.
-                </p> */}
               </div>
               <div className='row'>
                 {/* Start Single Service */}
@@ -92,15 +85,31 @@ export default class About extends Component {
                     </div>
                     <div className='content'>
                       <h4 className='title'>
-                        <a href>Exceed clients’ and colleagues’ expectations</a>
+                        <a href>
+                          Advantage & Benefit for Distributors, Companies and
+                          Manufacturer{' '}
+                        </a>
                       </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Iusto asperiores dolorum exercitationem. Nulla nostrum
-                        itaque hic quas? Praesentium, dolorum veniam deserunt
-                        sed nam quia voluptatum quaerat temporibus id? Quisquam,
-                        laboriosam.
-                      </p>
+                      <ul
+                        className=''
+                        style={{ listStyle: 'disc', paddingLeft: '10px' }}>
+                        <li style={{ listStyle: 'disc' }}>
+                          Provide the same platform to two different
+                          organizations, meet hands for the same purpose of a
+                          business that never met before.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          <a href='/Register'>
+                            <b>Create a free Business Profile</b>
+                          </a>{' '}
+                          and connect with business partners and build your
+                          trust through your mutual relationships
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Showcase your business category online and make a
+                          network, connect and grow your business.
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -117,18 +126,53 @@ export default class About extends Component {
                     </div>
                     <div className='content'>
                       <h4 className='title'>
-                        <a href>
-                          Take ownership and question the status quo in a
-                          constructive manner
-                        </a>
+                        <a href>Distributors Advantages & Benefits</a>
                       </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Illum, dolor fuga? Harum itaque eos voluptas. Debitis
-                        perspiciatis, suscipit laborum consequuntur soluta
-                        necessitatibus, facilis quaerat, veniam quod
-                        voluptatibus inventore deserunt repellendus?
-                      </p>
+                      <ul
+                        className=''
+                        style={{ listStyle: 'disc', paddingLeft: '10px' }}>
+                        <li style={{ listStyle: 'disc' }}>
+                          The world is becoming digital, and presence online is
+                          very important for Today’s business era. Here, the
+                          <a href='/'>
+                            <b>Distributors hub</b>
+                          </a>{' '}
+                          gives new opportunities to being online and growing
+                          distributorship with connecting different
+                          companies/manufacturers.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Reach and reorganization becomes easy with the online
+                          listing of the distributor
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Distributor reaches the same category of organization
+                          at a one-time click.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Distributor distribution expansion is possible in the
+                          same & different categories of products, and it is
+                          also possible to expand the same or different area of
+                          market, city and state
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          This online portal gives a platform to distributors
+                          for{' '}
+                          <a href='/'>
+                            <b>searching and taking distributorship</b>
+                          </a>{' '}
+                          for their new business opportunities.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          View every listed company information through one
+                          profile.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Get notified when any interested company send a
+                          request for conversation, you can instantly connect
+                          through call or Mail
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -145,106 +189,65 @@ export default class About extends Component {
                     </div>
                     <div className='content'>
                       <h4 className='title'>
-                        <a href>
-                          Take ownership and question the status quo in a
-                          constructive manner
-                        </a>
+                        <a href>Company / Manufacture Advantages & Benefits</a>
                       </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Illum, dolor fuga? Harum itaque eos voluptas. Debitis
-                        perspiciatis, suscipit laborum consequuntur soluta
-                        necessitatibus, facilis quaerat, veniam quod
-                        voluptatibus inventore deserunt repellendus?
-                      </p>
+                      <ul
+                        className=''
+                        style={{ listStyle: 'disc', paddingLeft: '10px' }}>
+                        <li style={{ listStyle: 'disc' }}>
+                          Search for the distributors in the same Category of
+                          Products for The desired market territory now became
+                          easy.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Looking for market expansion, area expansion, city
+                          expansion, and state expansion for your brand, now
+                          it’s work of just a click.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Distributor search in different trade of market is
+                          possible now with the listing on distributor Hub
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Companies can access distributor working profiles &
+                          interests easily
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          New companies/manufacturers get a platform for
+                          searching distributors
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Company/manufacturer can get no’s of distributor
+                          Profile for their final call of distribution
+                          appointment
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          An organization can take its perfect decision while
+                          approaching & appointing a distributor
+                        </li>
+
+                        <li style={{ listStyle: 'disc' }}>
+                          Company brand visibility and reach to a broad audience
+                          is possible with the listing at the distributor hub.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Presence on the digital platform gives more
+                          credibility and uniqueness of beliefs in the
+                          Companies.
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          View all the distributors' information through one
+                          profile
+                        </li>
+                        <li style={{ listStyle: 'disc' }}>
+                          Get notified when any of the interested distributors
+                          send a request for conversation or you can instantly
+                          connect through calls or E-mail.
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-                {/* End Single Service  */}
-                {/* Start Single Service  */}
-                <div className='col-lg-4 col-md-6 col-12 mt-40'>
-                  <div className='service-box color-var-4'>
-                    <div className='icon'>
-                      <img
-                        src='./assets/images/about/layer.svg'
-                        alt='Icon Images'
-                      />
-                      <div className='text'>4</div>
-                    </div>
-                    <div className='content'>
-                      <h4 className='title'>
-                        <a href>
-                          Take ownership and question the status quo in a
-                          constructive manner
-                        </a>
-                      </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Illum, dolor fuga? Harum itaque eos voluptas. Debitis
-                        perspiciatis, suscipit laborum consequuntur soluta
-                        necessitatibus, facilis quaerat, veniam quod
-                        voluptatibus inventore deserunt repellendus?
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* End Single Service  */}
-                {/* Start Single Service  */}
-                <div className='col-lg-4 col-md-6 col-12 mt-40'>
-                  <div className='service-box color-var-5'>
-                    <div className='icon'>
-                      <img
-                        src='./assets/images/about/layer.svg'
-                        alt='Icon Images'
-                      />
-                      <div className='text'>5</div>
-                    </div>
-                    <div className='content'>
-                      <h4 className='title'>
-                        <a href>
-                          Take ownership and question the status quo in a
-                          constructive manner
-                        </a>
-                      </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Illum, dolor fuga? Harum itaque eos voluptas. Debitis
-                        perspiciatis, suscipit laborum consequuntur soluta
-                        necessitatibus, facilis quaerat, veniam quod
-                        voluptatibus inventore deserunt repellendus?
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* End Single Service  */}
-                {/* Start Single Service  */}
-                <div className='col-lg-4 col-md-6 col-12 mt-40'>
-                  <div className='service-box color-var-2'>
-                    <div className='icon'>
-                      <img
-                        src='./assets/images/about/layer.svg'
-                        alt='Icon Images'
-                      />
-                      <div className='text'>6</div>
-                    </div>
-                    <div className='content'>
-                      <h4 className='title'>
-                        <a href>
-                          Take ownership and question the status quo in a
-                          constructive manner
-                        </a>
-                      </h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Illum, dolor fuga? Harum itaque eos voluptas. Debitis
-                        perspiciatis, suscipit laborum consequuntur soluta
-                        necessitatibus, facilis quaerat, veniam quod
-                        voluptatibus inventore deserunt repellendus?
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* End Single Service  */}
               </div>
             </div>
           </div>

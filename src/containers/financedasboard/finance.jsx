@@ -87,7 +87,7 @@ function Finance() {
                         <h4 className='mb-2'>
                           {user ? user?.distributer : '0'}
                         </h4>
-                        <h5 className='mb-0'>Total Distributer</h5>
+                        <h5 className='mb-0'>Total Distributor</h5>
                         <div class='d-flex justify-content-center mt-3'>
                           <a href='#0' class='btn btn-primary btn-xxs shadow'>
                             Details

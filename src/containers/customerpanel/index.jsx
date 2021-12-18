@@ -292,7 +292,7 @@ export default function Index(props) {
                           <h6 className='f-w-500'>
                             {role == 1
                               ? 'Company Name'
-                              : 'Distributer Firm Name'}
+                              : 'Distributor Firm Name'}
                             <span className='pull-right'>:</span>
                           </h6>
                         </div>

@@ -149,7 +149,7 @@ const routes = [
   },
   {
     // exact: true,distributer
-    path: '/distributer-detail/:company/:id',
+    path: '/Distributor-detail/:company/:id',
     Component: VehicleDetail,
   },
   {
@@ -181,7 +181,7 @@ const routes = [
   },
   {
     exact: true,
-    path: '/distributer-register',
+    path: '/Distributor-register',
     Component: Distributer,
   },
   {

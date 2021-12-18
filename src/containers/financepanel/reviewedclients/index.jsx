@@ -180,7 +180,7 @@ function Index(props) {
               <div className='col-lg-12 mt-0'>
                 <div className='card widget-stat'>
                   <div class='card-header bg-custom-blue '>
-                    <h4 class='card-title text-white'>All Distributer</h4>
+                    <h4 class='card-title text-white'>All Distributor</h4>
                   </div>
                   <div className='card-body'>
                     <div
@@ -189,7 +189,7 @@ function Index(props) {
                       <input
                         type='search'
                         class='w-30 mr-3'
-                        placeholder='search Distributer'
+                        placeholder='search Distributor'
                         aria-controls='example'
                       />{' '}
                       <a href='#0' class='btn btn-primary rounded d-block'>
@@ -204,16 +204,22 @@ function Index(props) {
                               <span>S.NO </span>
                             </th>
                             <th>
-                              <span>Distributer Logo</span>
+                              <span>Distributor Logo</span>
                             </th>
                             <th>
-                              <span>Distributer Name</span>
+                              <span>Distributor Name</span>
                             </th>
                             <th>
                               <span>Full Name</span>
                             </th>
                             <th>
                               <span>Contact Number</span>
+                            </th>
+                            <th>
+                              <span>Contact Email</span>
+                            </th>
+                            <th>
+                              <span>Password </span>
                             </th>
 
                             <th>
@@ -249,7 +255,8 @@ function Index(props) {
                                   : ''}
                               </td>
                               <td>{data?.phoneNo}</td>
-
+                              <td>{data?.email}</td>
+                              <td>{data?.password}</td>
                               <td>
                                 {data?.status ? (
                                   <span

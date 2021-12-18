@@ -205,7 +205,7 @@ function Index(props) {
         .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
           console.log(`respon`, respon);
-          sweetAlert('Distributer Added Successfully');
+          sweetAlert('Distributor Added Successfully');
           // showNotification('success', 'Distributer Added Successfully');
           // history.push({
           //   pathname: '/',
@@ -560,7 +560,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 for='val-username'>
-                                Company Name
+                                Distributor Name
                                 <span className='text-danger'>*</span>
                               </label>
 
@@ -571,7 +571,7 @@ function Index(props) {
                                 value={state?.companyName}
                                 name='companyName'
                                 onChange={handleChange}
-                                placeholder='Enter company number..'
+                                placeholder='Enter Distributor number..'
                                 ref={register({
                                   required: 'This is required ',
 
@@ -775,7 +775,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 for='val-username'>
-                                Distributer Firm Name
+                                Distributor Firm Name
                               </label>
 
                               <input
@@ -785,7 +785,7 @@ function Index(props) {
                                 name='companyName'
                                 onChange={handleChange}
                                 value={state?.companyName}
-                                placeholder='Enter company name..'
+                                placeholder='Enter Distributor name..'
                                 ref={register({
                                   // pattern: {
                                   //   value: /^[a-zA-Z]+$/,

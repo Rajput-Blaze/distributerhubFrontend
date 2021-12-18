@@ -36,8 +36,9 @@ export default function Login(props) {
           localStorage.setItem('role', resp?.data?.role ?? 0);
           localStorage.setItem('userType', resp?.data?.userType ?? 0);
           // console.log(`resp?.data`, resp?.data);
+          setstate({});
           history.push('/');
-          window.location.reload();
+          // window.location.reload();
         }
       })
       .catch(function (error) {
@@ -59,10 +60,10 @@ export default function Login(props) {
   return (
     <>
       {loading ? <Loaderr /> : null}
-      <div className='content'>
+      <div className='content mt-5'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-6 hide_in_sm'>
+            <div className='col-md-6 hide_in_sm pt-4'>
               <img
                 src='/assets/images/undraw_remotely_2j6y.svg'
                 alt='Image'
@@ -74,10 +75,10 @@ export default function Login(props) {
                 <div className='col-md-8 mt-4'>
                   <div className='mb-4'>
                     <h3 className='text-center'>Sign In</h3>
-                    <p className='mb-4 hide_in_sm'>
+                    {/* <p className='mb-4 hide_in_sm'>
                       Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
                       consectetur adipisicing.
-                    </p>
+                    </p> */}
                   </div>
                   <form action='#' method='post'>
                     <div className='form-group first'>
@@ -100,7 +101,7 @@ export default function Login(props) {
                         type={passwordhideandshow ? 'text' : 'password'}
                         name='password'
                         required
-                        value={state.password}
+                        value={state?.password}
                         onChange={(e) => {
                           handleChange(e);
                         }}
@@ -113,6 +114,13 @@ export default function Login(props) {
                       ) : (
                         <i onClick={change} className='fa fa-eye eye'></i>
                       )}
+                    </div>
+                    <div className='d-flex  align-items-center'>
+                      <span className=''>
+                        <a href='/forgot-password' className='forgot-pass'>
+                          Create a New Account
+                        </a>
+                      </span>
                     </div>
                     <div className='d-flex mb-5 align-items-center'>
                       <span className=''>

@@ -277,7 +277,7 @@ function ViewProfile(props) {
                             {console.log(role, 'role')}
                             {role == 1
                               ? 'Company Name'
-                              : 'Distributer Firm Name'}
+                              : 'Distributor Firm Name'}
                             <span className='pull-right'>:</span>
                           </h6>
                         </div>

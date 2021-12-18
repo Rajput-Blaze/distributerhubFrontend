@@ -160,7 +160,7 @@ function SerchField(props) {
       });
     } else {
       history.push({
-        pathname: '/distributer-detail/' + data?.companyName + '/' + data._id,
+        pathname: '/Distributor-detail/' + data?.companyName + '/' + data._id,
         data,
         type: state?.type,
       });
@@ -194,7 +194,7 @@ function SerchField(props) {
                   <div className='card-header bg-custom-blue center_text'>
                     <h4 className='card-title text-white h1_tag'>
                       {' '}
-                      Looking For Best Business and Distributership
+                      Looking For Best Business and Distributorship
                       Opportunities In India
                     </h4>
 
@@ -204,9 +204,13 @@ function SerchField(props) {
                     <div className='form-validation'>
                       <div className='row middle2 center_text '>
                         <span className='pt-3 pb-2  h1_tag'>
+                          WORK ON SEARCH, FIND & CONNECT CONCEPT
+                        </span>
+                      </div>
+                      <div className='row middle2 center_text '>
+                        <span className='pt-3 pb-2  h1_tag'>
                           FIND BEST CHANNEL PARTNER
                         </span>
-                        {/* <span >Select Any one of These </span> */}
                       </div>
                       <div className='row middle'>
                         <div className=''>
@@ -232,7 +236,7 @@ function SerchField(props) {
                                 />
                               </div>
                               <div className='w-110 d-flex align-items-center'>
-                                Distributer{' '}
+                                Distributor{' '}
                                 <input
                                   type='radio'
                                   className='w-auto ml-2 input_cus_radio'
@@ -387,7 +391,7 @@ function SerchField(props) {
                         <span class='icon-cd_R'>
                           {state?.type == 'company'
                             ? 'Company Name'
-                            : 'Distributer Name'}
+                            : 'Distributor Name'}
                           :-
                         </span>
                         {data?.companyName}

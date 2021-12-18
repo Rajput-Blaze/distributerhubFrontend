@@ -34,7 +34,7 @@ const Services = (props) => {
               </Link>
             </div>
             <div className='col'>
-              <a href='/distributer-register'>
+              <a href='/Distributor-register'>
                 <input
                   type='button'
                   // onClick={submit}

@@ -61,7 +61,10 @@ export default class About extends Component {
                       vice-versa, who looking for Distributorship and business
                       opportunities. Those companies involved in manufacturing
                       and marketing and need to have a channel partner for their
-                      product penetration in the market. Here, Distributorhub.in
+                      product penetration in the market. Here,{' '}
+                      <a href='/'>
+                        <b className=''>Distributorhub.in </b>
+                      </a>
                       fulfil the gap between companies and distributors by
                       providing them an online gateway that comes with an
                       informative listing of prominent distributors and
@@ -76,14 +79,50 @@ export default class About extends Component {
                       </div>
                       Giving solutions to all at one place to find out new
                       distributorship and business opportunities.
-                      Distributorhub.in plays a vital role for companies and
-                      distributors to enhance their business proficiency with
+                      Distributorhub.in plays a{' '}
+                      <a href='/Register'>
+                        <b>vital role for companies and distributors </b>
+                      </a>{' '}
+                      to enhance their business proficiency with
                       Cost-effectiveness and hassle-free journey to finding out
                       Best channel Partner as per the needed requirement and
                       exploring network for reaching all over India.
+                      <div className='pt-3'>
+                        This platform gives wing to companies and distributors
+                        who all are seeking for appointing distributors and
+                        searching manufacturing companies for taking
+                        distribution-ship in their desired state/city. This
+                        platform providing online search and offline meetings
+                        with channel partners.
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className=' container nayk-container align-items-center pt-5'>
+              Many manufacturers / companies in India are struggling and not
+              able to set up their business network due to a lack of leads of
+              distributors and many distributors still waiting for the best
+              companies with whom they want to work as a channel partner. Due to
+              limited resource companies / manufacturers and distributor does
+              not get meet at one point of time. But with the help of
+              distributor hub, it is possible with
+              <a href='/Register'>
+                <b>listing their selves on the online portal </b>
+              </a>{' '}
+              to recognize among the similar or different groups who have never
+              been recognized before.
+              <div className='pt-3'>
+                Distributor hub is bound to congregate every distributor,
+                organization, manufacturers and other SMEs at the same place to
+                grow their business profitably. Expecting in the future we’ll
+                serve millions of clients with the hope of helping new start-ups
+                and established organizations. For finding out the best channel
+                partner and new business opportunities always click on
+                <a href='/'>
+                  <b className=''>Distributorhub.in </b>
+                </a>
               </div>
             </div>
           </div>

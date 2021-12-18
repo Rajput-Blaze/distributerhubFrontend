@@ -579,7 +579,7 @@ function Header(props) {
                     aria-expanded='false'
                     to='/reviewedclients'>
                     <i class='fa fa-check-square' aria-hidden='true'></i>
-                    <span className='nav-text'>Distributer</span>
+                    <span className='nav-text'>Distributor</span>
                   </Link>
                 </li>
                 <li>

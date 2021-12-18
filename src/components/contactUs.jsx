@@ -270,7 +270,7 @@ export default class ContactUs extends Component {
                         Select user
                       </option>
                       <option value='company'>Company</option>
-                      <option value='distributer'>distributer</option>
+                      <option value='distributer'>Distributor</option>
                     </select>
 
                     {this.state.submitted &&

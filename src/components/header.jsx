@@ -100,7 +100,7 @@ export default class Header extends Component {
       icon: 'info',
       html:
         "<a href='/company' class='btn btn-primary ' > Company </a>" +
-        "<a href='/Distributer' class='btn btn-primary ml-3' > Distributer </a>",
+        "<a href='/Distributor' class='btn btn-primary ml-3' > Distributer </a>",
       showCloseButton: true,
       showConfirmButton: false,
       showClass: {
