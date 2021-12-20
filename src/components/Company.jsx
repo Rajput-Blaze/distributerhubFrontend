@@ -46,7 +46,7 @@ function Index(props) {
 
   const [successMsg, setsuccessMsg] = useState('');
   const [checknumber, setcheckNumber] = useState(false);
-  const [brand, setbrand] = useState([]);
+  const [Selectedyearerror, setSelectedyearerror] = useState('');
   const [Type, setType] = useState([]);
   const [viewData, setViewData] = useState();
   const { register, errors, handleSubmit } = useForm();
@@ -111,9 +111,10 @@ function Index(props) {
   }
 
   const onSubmit = (formsubmitdata) => {
-    // console.log(`formsubmitdata`, intrestinputFields);
-    setloading(true);
+    console.log(`formsubmitdata`, formToggle == 2 && Selectedyear == null);
+
     if (formToggle == 1 && formsubmitdata.email && formsubmitdata.password) {
+      setloading(true);
       axios
         .post(apiUrl + 'user/getPhone', {
           email: formsubmitdata.email,
@@ -143,7 +144,7 @@ function Index(props) {
               if (formToggle == 1) {
                 setstep(1);
                 setformToggle(2);
-                setheading('firm Details');
+                setheading('Company Details');
               }
               // console.log(`respon`, respon);
             })
@@ -152,6 +153,9 @@ function Index(props) {
               console.log(`error`, error);
             });
         });
+    } else if (formToggle == 2 && Selectedyear == null) {
+      setSelectedyearerror('This is required ');
+      return;
     } else if (formToggle == 6) {
       // console.log(`state`, state);
 
@@ -209,7 +213,9 @@ function Index(props) {
       } else if (formToggle == 4) {
         setformToggle(5);
         setstep(4);
-        setheading('Intreset');
+        setheading(
+          'Select preferred Sub-Category for Distribution ship Appointment'
+        );
       } else if (formToggle == 5) {
         setformToggle(6);
         setstep(5);
@@ -325,7 +331,7 @@ function Index(props) {
       .then((response) => {
         let data = response?.data?.data[0].data;
         // console.log(`data`, data);
-        setbrand(data);
+        // setbrand(data);
       })
       .catch(function (error) {
         showNotification('danger', error.message);
@@ -518,11 +524,14 @@ function Index(props) {
                     className='overflow'
                     steps={[
                       { label: 'Personal Detail' },
-                      { label: 'firm Details' },
+                      { label: 'Company Details' },
                       { label: 'Categories Details' },
                       { label: 'Brand  Name' },
-                      { label: 'Interest Details' },
-                      { label: 'Upload logo/Video' },
+                      {
+                        label:
+                          'Select preferred Sub-Category for Distribution ship Appointment',
+                      },
+                      { label: 'Upload logo' },
                     ]}
                     activeStep={step}
                   />
@@ -817,10 +826,7 @@ function Index(props) {
                                 onChange={handleChange}
                                 placeholder='Enter company name..'
                                 ref={register({
-                                  // pattern: {
-                                  //   value: /^[a-zA-Z]+$/,
-                                  //   message: "Enter Valid company Name",
-                                  // },
+                                  required: 'This is required ',
                                 })}
                               />
                               <ErrorMessage
@@ -849,7 +855,16 @@ function Index(props) {
                                 value={state?.contactPerson}
                                 onChange={handleChange}
                                 placeholder='Enter Contact person..'
-                                ref={register}
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
+                              />
+                              <ErrorMessage
+                                errors={errors}
+                                name='contactPerson'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
                               />
                             </div>
                           </div>
@@ -871,7 +886,16 @@ function Index(props) {
                                 value={state?.contactNumber}
                                 onChange={handleChange}
                                 placeholder='Enter Contact number..'
-                                ref={register}
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
+                              />
+                              <ErrorMessage
+                                errors={errors}
+                                name='contactNumber'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
                               />
                             </div>
                           </div>
@@ -893,8 +917,17 @@ function Index(props) {
                                 value={state?.alternativeNumber}
                                 onChange={handleChange}
                                 placeholder='Enter Alternative number..'
-                                ref={register}
+                                ref={register({
+                                  // required: 'This is required ',
+                                })}
                               />
+                              {/* <ErrorMessage
+                                errors={errors}
+                                name='alternativeNumber'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              /> */}
                             </div>
                           </div>
                           <div className='col-lg-6'>
@@ -913,7 +946,16 @@ function Index(props) {
                                 value={state?.alternativeEmail}
                                 onChange={handleChange}
                                 placeholder='Enter Alternative email..'
-                                ref={register}
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
+                              />
+                              <ErrorMessage
+                                errors={errors}
+                                name='alternativeEmail'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
                               />
                             </div>
                           </div>
@@ -934,6 +976,7 @@ function Index(props) {
                                 showYearPicker
                                 dateFormat='yyyy'
                               />
+                              <p className='error'>{Selectedyearerror}</p>
                             </div>
                           </div>
                           <div className='col-lg-6'>
@@ -986,7 +1029,16 @@ function Index(props) {
                                 value={state?.turnoverOfTheCompany}
                                 onChange={handleChange}
                                 placeholder='Enter Turnover of the company ..'
-                                ref={register}
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
+                              />
+                              <ErrorMessage
+                                errors={errors}
+                                name='turnoverOfTheCompany'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
                               />
                             </div>
                           </div>
@@ -1003,11 +1055,18 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='website'
-                                value={state.website}
+                                value={state?.website}
                                 onChange={handleChange}
                                 placeholder='Enter Website'
                                 ref={register}
                               />
+                              {/* <ErrorMessage
+                                errors={errors}
+                                name='website'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              /> */}
                             </div>
                           </div>
                           {/* address  */}
@@ -1028,7 +1087,9 @@ function Index(props) {
                                 onKeyUp={(e) => checkpincode(e)}
                                 defaultValue={state?.pincode}
                                 placeholder='Enter pin code..'
-                                ref={register()}
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
                               />
 
                               <ErrorMessage
@@ -1053,9 +1114,18 @@ function Index(props) {
                                 name='Country'
                                 onChange={handleChange}
                                 value={state?.Country}
-                                ref={register}>
+                                ref={register({
+                                  required: 'This is required ',
+                                })}>
                                 <option value='India'>{'India'}</option>
                               </select>
+                              <ErrorMessage
+                                errors={errors}
+                                name='Country'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              />
                             </div>
                           </div>
                           <div className='col-lg-6'>
@@ -1065,23 +1135,7 @@ function Index(props) {
                                 htmlFor='val-username'>
                                 State
                               </label>
-                              {/* <label
-                                className='col-form-label'
-                                htmlFor='val-username'>
-                                State
-                              </label>
 
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='state'
-                                value={state?.state}
-                                onChange={handleChange}
-                                placeholder='Enter State name..'
-                                ref={register}
-                              />
-                               */}
                               <select
                                 className='form-control'
                                 id='exampleFormControlSelect1'
@@ -1092,12 +1146,21 @@ function Index(props) {
                                   handleChange(e);
                                   handleStatefunforcity(e.target.value);
                                 }}
-                                ref={register}>
+                                ref={register({
+                                  required: 'This is required ',
+                                })}>
                                 <option value=''>Select State </option>
                                 {Object.keys(statehandle).map((data) => (
                                   <option value={data}>{data}</option>
                                 ))}
                               </select>
+                              <ErrorMessage
+                                errors={errors}
+                                name='state'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              />
                             </div>
                           </div>
 
@@ -1118,22 +1181,21 @@ function Index(props) {
                                 //   handleChange(e);
                                 //   handleStatefunforcity(e.target.value);
                                 // }}
-                                ref={register}>
+                                ref={register({
+                                  required: 'This is required ',
+                                })}>
                                 <option value=''>Select city </option>
                                 {cityhandle.map((data) => (
                                   <option value={data}>{data}</option>
                                 ))}
                               </select>
-                              {/* <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
+                              <ErrorMessage
+                                errors={errors}
                                 name='cityVillage'
-                                value={state?.cityVillage}
-                                onChange={handleChange}
-                                placeholder='Enter city-village name..'
-                                ref={register}
-                              /> */}
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
+                              />
                             </div>
                           </div>
 
@@ -1153,7 +1215,16 @@ function Index(props) {
                                 value={state?.address}
                                 onChange={handleChange}
                                 placeholder='Enter address name..'
-                                ref={register}
+                                ref={register({
+                                  required: 'This is required ',
+                                })}
+                              />
+                              <ErrorMessage
+                                errors={errors}
+                                name='address'
+                                render={({ message }) => (
+                                  <p className='error'>{message}</p>
+                                )}
                               />
                             </div>
                           </div>
@@ -1191,7 +1262,6 @@ function Index(props) {
                                       type='radio'
                                       className='w-auto  mr-3 input_cus_radio'
                                       id='val-username'
-                                      required
                                       name='category'
                                       onChange={(e) => {
                                         handleChange(e);
@@ -1256,7 +1326,9 @@ function Index(props) {
                                     handleChangeInput(inputField.id, event);
                                     handleChange(event);
                                   }}
-                                  ref={register}>
+                                  ref={register({
+                                    required: 'This is required ',
+                                  })}>
                                   {/* {subCategory.map((data) => {
                                   <option value={data}>{data}</option>;
                                 })} */}
@@ -1265,12 +1337,20 @@ function Index(props) {
                                     <option value={data}>{data}</option>
                                   ))}
                                 </select>
+                                <ErrorMessage
+                                  errors={errors}
+                                  name='name'
+                                  render={({ message }) => (
+                                    <p className='error'>{message}</p>
+                                  )}
+                                />
                               </div>
                               <div className='col-md-4 col-sm-6 bb'>
                                 <input
                                   type='text'
                                   className='form-control'
                                   id='val-username'
+                                  required
                                   name='brandName'
                                   onChange={(event) => {
                                     handleChangeInput(inputField.id, event);
@@ -1281,7 +1361,7 @@ function Index(props) {
                                   placeholder='Add more Brand'
                                   // required
                                   ref={register({
-                                    //   required: 'This is required ',
+                                    // required: 'This is required ',
                                   })}
                                 />
                               </div>
@@ -1424,6 +1504,7 @@ function Index(props) {
                                   className='form-control'
                                   id='val-username'
                                   name='brandName'
+                                  required
                                   onChange={(event) => {
                                     intresthandleChangeInput(
                                       inputField.id,
@@ -1499,6 +1580,7 @@ function Index(props) {
                               <div className='col-md-4 col-sm-6 bb'>
                                 <Multiselect
                                   // ref={multiselectRef}
+                                  required
                                   isObject={false}
                                   onRemove={(data) => {
                                     handleRemovecity(InputFieldcity.id, data);
@@ -1557,7 +1639,9 @@ function Index(props) {
                         <div className='row'>
                           <div class='form-row mt-4'>
                             <div class='col-12 col-sm-4'>
-                              <label for='file'>Upload Logo/Video</label>
+                              <label for='file'>
+                                Upload logo of the company
+                              </label>
                             </div>
                             <div class='col-12 col-sm-8 mt-4 mt-sm-0'>
                               <input

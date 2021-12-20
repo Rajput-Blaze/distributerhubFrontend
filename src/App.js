@@ -176,12 +176,12 @@ const routes = [
   },
   {
     exact: true,
-    path: '/company-register',
+    path: '/company-registration',
     Component: Company,
   },
   {
     exact: true,
-    path: '/Distributor-register',
+    path: '/distributor-registration',
     Component: Distributer,
   },
   {

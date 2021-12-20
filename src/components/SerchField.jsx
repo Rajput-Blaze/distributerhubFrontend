@@ -204,11 +204,6 @@ function SerchField(props) {
                     <div className='form-validation'>
                       <div className='row middle2 center_text '>
                         <span className='pt-3 pb-2  h1_tag'>
-                          WORK ON SEARCH, FIND & CONNECT CONCEPT
-                        </span>
-                      </div>
-                      <div className='row middle2 center_text '>
-                        <span className='pt-3 pb-2  h1_tag'>
                           FIND BEST CHANNEL PARTNER
                         </span>
                       </div>

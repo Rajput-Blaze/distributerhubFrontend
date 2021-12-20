@@ -226,7 +226,11 @@ const VehicleDetail = (props) => {
                 {/* slider image */}
                 <div className='card widget-stat'>
                   <div className='card-header bg-custom-blue '>
-                    <h4 className='card-title text-white'>Product's Image</h4>
+                    <h4 className='card-title text-white'>
+                      {state?.userType == 1
+                        ? 'Company’s Product Range'
+                        : 'Product / Distributor office Image'}
+                    </h4>
 
                     <div className='two_btns_ps'></div>
                   </div>
@@ -286,7 +290,9 @@ const VehicleDetail = (props) => {
                 <div className='card widget-stat'>
                   <div className='card-header bg-custom-blue '>
                     <h4 className='card-title text-white'>
-                      Product Category Details
+                      {state?.userType == 1
+                        ? 'Company’s Product Category'
+                        : 'Distributor Product Category Details'}
                     </h4>
 
                     <div className='two_btns_ps'></div>
@@ -482,7 +488,9 @@ const VehicleDetail = (props) => {
                 <div className='card widget-stat'>
                   <div className='card-header bg-custom-blue '>
                     <h4 className='card-title text-white'>
-                      Company Contact Details
+                      {state?.userType == 1
+                        ? 'Company Contact Details'
+                        : 'Distributor Contact Details'}
                     </h4>
 
                     <div className='two_btns_ps'></div>
@@ -494,7 +502,10 @@ const VehicleDetail = (props) => {
                         <div className='row mb-2'>
                           <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
-                              Name<span className='pull-right'>:</span>
+                              {state?.userType == 1
+                                ? 'Company Name'
+                                : 'Distributor Firm Name'}
+                              <span className='pull-right'>:</span>
                             </h6>
                           </div>
 
@@ -594,7 +605,7 @@ const VehicleDetail = (props) => {
                             <div className='row mb-2'>
                               <div className='col-sm-4 col-5'>
                                 <h6 className='f-w-500'>
-                                  Distributor Cover Area
+                                  Distributor Coverage Area
                                   <span className='pull-right'>:</span>
                                 </h6>
                               </div>

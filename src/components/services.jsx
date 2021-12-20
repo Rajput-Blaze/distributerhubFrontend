@@ -24,7 +24,7 @@ const Services = (props) => {
           <p className='text-center pt-5 pb-2'>Select Form Type For Register</p>
           <div className='row'>
             <div className='col'>
-              <Link to='/company-register'>
+              <Link to='/company-registration'>
                 <input
                   type='button'
                   // onClick={submit}
@@ -34,7 +34,7 @@ const Services = (props) => {
               </Link>
             </div>
             <div className='col'>
-              <a href='/Distributor-register'>
+              <a href='/distributor-registration'>
                 <input
                   type='button'
                   // onClick={submit}
