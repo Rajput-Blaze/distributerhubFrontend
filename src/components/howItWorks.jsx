@@ -39,6 +39,16 @@ export default class About extends Component {
       <>
         <div className='page-wrapper mt-5'>
           <div className='about-page-sections section-padding'>
+            <nav aria-label='breadcrumb '>
+              <ol class='breadcrumb justify-content-end'>
+                <li class='breadcrumb-item'>
+                  <a href='/'>Home</a>
+                </li>
+                <li class='breadcrumb-item active' aria-current='page'>
+                  Advantage and Benefit
+                </li>
+              </ol>
+            </nav>
             <div className='container nayk-container'>
               <div className='row axil-featured align-items-center'>
                 <div className='col-lg-6 col-xl-6 col-md-12 col-12 mb-4 mb-lg-0'>
@@ -70,11 +80,34 @@ export default class About extends Component {
           <div className='section-padding why-choose-section'>
             <div className='container nayk-container'>
               <div className='section-title text-center mb--20'>
-                <h2 className='title'>Advantages</h2>
+                <h3 className='title pb-2'>
+                  Advantage & Benefit for Distributors, Companies and
+                  Manufacturer
+                </h3>
+                <ul
+                  className=''
+                  style={{ listStyle: 'disc', padding: '0 10vw' }}>
+                  <li style={{ listStyle: 'disc' }}>
+                    Provide the same platform to two different organizations,
+                    meet hands for the same purpose of a business that never met
+                    before.
+                  </li>
+                  <li style={{ listStyle: 'disc' }}>
+                    <a href='/Register'>
+                      <b>Create a free Business Profile</b>
+                    </a>{' '}
+                    and connect with business partners and build your trust
+                    through your mutual relationships
+                  </li>
+                  <li style={{ listStyle: 'disc' }}>
+                    Showcase your business category online and make a network,
+                    connect and grow your business.
+                  </li>
+                </ul>
               </div>
               <div className='row'>
                 {/* Start Single Service */}
-                <div className='col-lg-4 col-md-6 col-12 mt-40'>
+                {/* <div className='col-lg-4 col-md-6 col-12 mt-40'>
                   <div className='service-box '>
                     <div className='icon'>
                       <img
@@ -112,17 +145,17 @@ export default class About extends Component {
                       </ul>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* End Single Service  */}
                 {/* Start Single Service  */}
-                <div className='col-lg-4 col-md-6 col-12 mt-40'>
+                <div className='col-lg-6 col-md-6 col-12 mt-40'>
                   <div className='service-box color-var-2 '>
                     <div className='icon'>
                       <img
                         src='./assets/images/about/layer.svg'
                         alt='Icon Images'
                       />
-                      <div className='text'>2</div>
+                      <div className='text'>1</div>
                     </div>
                     <div className='content'>
                       <h4 className='title'>
@@ -135,6 +168,7 @@ export default class About extends Component {
                           The world is becoming digital, and presence online is
                           very important for Today’s business era. Here, the
                           <a href='/'>
+                            {' '}
                             <b>Distributors hub</b>
                           </a>{' '}
                           gives new opportunities to being online and growing
@@ -178,14 +212,14 @@ export default class About extends Component {
                 </div>
                 {/* End Single Service  */}
                 {/* Start Single Service  */}
-                <div className='col-lg-4 col-md-6 col-12 mt-40'>
+                <div className='col-lg-6 col-md-6 col-12 mt-40'>
                   <div className='service-box color-var-3 '>
                     <div className='icon'>
                       <img
                         src='./assets/images/about/layer.svg'
                         alt='Icon Images'
                       />
-                      <div className='text'>3</div>
+                      <div className='text'>2</div>
                     </div>
                     <div className='content'>
                       <h4 className='title'>
@@ -250,6 +284,9 @@ export default class About extends Component {
                 </div>
               </div>
             </div>
+          </div>
+          <div className='container pt-4'>
+            To know more about distributor hub<a href='/about'> "click here</a>{' '}
           </div>
           <div className='shipping-area about-shipping'>
             <div className='container'>

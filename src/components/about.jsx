@@ -39,6 +39,16 @@ export default class About extends Component {
       <>
         <div className='page-wrapper mt-5'>
           <div className='about-page-sections section-padding'>
+            <nav aria-label='breadcrumb '>
+              <ol class='breadcrumb justify-content-end'>
+                <li class='breadcrumb-item'>
+                  <a href='/'>Home</a>
+                </li>
+                <li class='breadcrumb-item active' aria-current='page'>
+                  About Us
+                </li>
+              </ol>
+            </nav>
             <div className='container nayk-container'>
               <div className='row axil-featured align-items-center'>
                 <div className='col-lg-6 col-xl-6 col-md-12 col-12 mb-4 mb-lg-0'>
@@ -53,7 +63,7 @@ export default class About extends Component {
                 <div className='col-lg-6 col-xl-6 col-md-12 col-12'>
                   <div className='inner'>
                     <div className='section-title text-left'>
-                      <h2 className='title '>{'About us'}</h2>
+                      <h2 className='title '>{'About - distributorhub.in'}</h2>
                     </div>
                     <div className='text-wrap'>
                       Distributor Hub is a B2B platform that connects the
@@ -80,7 +90,7 @@ export default class About extends Component {
                       Giving solutions to all at one place to find out new
                       distributorship and business opportunities.
                       Distributorhub.in plays a{' '}
-                      <a href='/Register'>
+                      <a href='/advantage-and-benefit'>
                         <b>vital role for companies and distributors </b>
                       </a>{' '}
                       to enhance their business proficiency with
@@ -107,9 +117,9 @@ export default class About extends Component {
               companies with whom they want to work as a channel partner. Due to
               limited resource companies / manufacturers and distributor does
               not get meet at one point of time. But with the help of
-              distributor hub, it is possible with
+              distributor hub, it is possible with{' '}
               <a href='/Register'>
-                <b>listing their selves on the online portal </b>
+                <b> listing their selves on the online portal </b>
               </a>{' '}
               to recognize among the similar or different groups who have never
               been recognized before.
@@ -119,7 +129,7 @@ export default class About extends Component {
                 grow their business profitably. Expecting in the future we’ll
                 serve millions of clients with the hope of helping new start-ups
                 and established organizations. For finding out the best channel
-                partner and new business opportunities always click on
+                partner and new business opportunities always click on{' '}
                 <a href='/'>
                   <b className=''>Distributorhub.in </b>
                 </a>

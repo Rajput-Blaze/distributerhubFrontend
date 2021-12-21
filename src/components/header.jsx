@@ -198,8 +198,8 @@ export default class Header extends Component {
                       </a> */}
                     </li>
                     <li className='nav-item' onClick={this.changePage}>
-                      <NavLink className='nav-link' to='/Advantages'>
-                        Advantages
+                      <NavLink className='nav-link' to='/advantage-and-benefit'>
+                        Advantages/Benefit
                       </NavLink>
                       {/* <a className='nav-link' href='/about'>
                         About Us

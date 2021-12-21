@@ -133,14 +133,33 @@ export default class ContactUs extends Component {
     return (
       <>
         <div className='page-wrapper'>
-          <div className='x_contact_title_main_wrapper float_left padding_tb_100'>
+          <div
+            className='x_contact_title_main_wrapper float_left padding_tb_100'
+            style={{ paddingTop: '61px' }}>
+            <nav aria-label='breadcrumb '>
+              <ol class='breadcrumb justify-content-end'>
+                <li class='breadcrumb-item'>
+                  <a href='/'>Home</a>
+                </li>
+                <li class='breadcrumb-item active' aria-current='page'>
+                  Contact-Us
+                </li>
+              </ol>
+            </nav>
             <div className='container'>
               <div className='row'>
                 <div className='col-md-12'>
                   <div className='x_offer_car_heading_wrapper x_offer_car_heading_wrapper_contact float_left'>
                     <h4>get in touch</h4>
-                    <h3>Contact Info</h3>
-                    <p>{this.state.detail?.t1}</p>
+                    <h3>
+                      Hello, we welcome you for giving your valuable feedback /
+                      suggestion
+                    </h3>
+                    <p>
+                      Hello Business Partner, Share and contact us with your
+                      feedback on Distributorhub.in and we will revert you back
+                      on your suggestion and query.
+                    </p>
                   </div>
                 </div>
                 <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 full_width mt-3'>
