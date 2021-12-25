@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import * as service from '../services/apiServices';
 import showNotification from '../services/notificationService';
 import * as constant from '../services/constant';
+import { Helmet } from 'react-helmet';
 var Freshdesk = require('freshdesk-api');
-var freshdesk = new Freshdesk(
-  'https://naayak.freshdesk.com/',
-  'NTvjJVEZz5hfMBXFn7'
-);
+var freshdesk = new Freshdesk();
 
 export default class ContactUs extends Component {
   constructor(props) {
@@ -132,6 +130,20 @@ export default class ContactUs extends Component {
   render() {
     return (
       <>
+        <Helmet>
+          <meta charSet='utf-8' />
+          <title>
+            Customer Care-contact-us / Feedback Form – Distributorhub.in
+          </title>
+          <meta
+            name='description'
+            content='= Share and contact us with your feedback on Distributorhub.in and we will revert you back on your suggestion and query, for writing us click on the feedback form'
+          />
+          <meta
+            name='keywords'
+            content='= feedback form, distributor hub customer care, distributor hub feedback form, distributorship, world best business opportunity, distributorship opportunities, distributor hub contact us form, business partner, channel partner '></meta>
+          <link rel='canonical' href='https://distributorhub.in/contact-us' />
+        </Helmet>
         <div className='page-wrapper'>
           <div
             className='x_contact_title_main_wrapper float_left padding_tb_100'
@@ -170,9 +182,12 @@ export default class ContactUs extends Component {
                     </div>
                     <div className='x_contact_title_icon_cont'>
                       <h3>
-                        <a href='#'>address</a>
+                        <a>address</a>
                       </h3>
-                      <p>{this.state.detail?.address}</p>
+                      <p>
+                        Block 6-D, flat no. 207, Provident Sunworth, Kengeri,
+                        Mysore Road, Bangalore-560060, India
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -184,9 +199,9 @@ export default class ContactUs extends Component {
                     </div>
                     <div className='x_contact_title_icon_cont'>
                       <h3>
-                        <a href='#'>phone Number</a>
+                        <a>phone Number</a>
                       </h3>
-                      <p>{this.state.detail?.phoneNumber}</p>
+                      <p>9565109111</p>
                     </div>
                   </div>
                 </div>
@@ -197,10 +212,10 @@ export default class ContactUs extends Component {
                     </div>
                     <div className='x_contact_title_icon_cont'>
                       <h3>
-                        <a href='#'>Email Address</a>
+                        <a>Email Address</a>
                       </h3>
                       <p>
-                        <a href='#'>{this.state.detail?.emailAddress}</a>
+                        <a>distributorhub.in@gmail.com</a>
                       </p>
                     </div>
                   </div>

@@ -5,6 +5,7 @@ import axios from 'axios';
 import showNotification from '../../services/notificationService';
 import { useHistory } from 'react-router-dom';
 import Loaderr from '../../components/Loaderr';
+import { Helmet } from 'react-helmet';
 export default function Login(props) {
   let history = useHistory();
   const [state, setstate] = useState('');
@@ -59,6 +60,20 @@ export default function Login(props) {
   };
   return (
     <>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>
+          Find Best Business & channel Partner / Distributorhub.in-Login Here
+        </title>
+        <meta
+          name='description'
+          content='Welcome to Distributorhub.in – Explore new distribution opportunities and business opportunities, for finding best business & channel Partner in India click here'
+        />
+        <meta
+          name='keywords'
+          content='distributorship opportunities, distributor, Business opportunities, business partnership, new business opportunities, Find the Best Business & channel Partner'></meta>
+        <link rel='canonical' href='https://distributorhub.in/login' />
+      </Helmet>
       {loading ? <Loaderr /> : null}
       <div className='content mt-5'>
         <div className='container'>
@@ -70,9 +85,10 @@ export default function Login(props) {
                 className='img-fluid'
               />
             </div>
-            <div className='col-md-6 contents'>
+            <div className='col-md-6 contents mt-5'>
               <div className='row justify-content-center'>
-                <div className='col-md-8 mt-4'>
+                <h5>Welcome to Distributor Hub</h5>
+                <div className='col-md-8 '>
                   <div className='mb-4'>
                     <h3 className='text-center'>Sign In</h3>
                     {/* <p className='mb-4 hide_in_sm'>

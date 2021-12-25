@@ -38,7 +38,7 @@ export default class Footer extends Component {
               </div>
               <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12'>
                 <div className='x_footer_bottom_box_wrapper_second float_left'>
-                  <h3>Information</h3>
+                  <h3>UseFul Link's</h3>
                   <ul>
                     <li>
                       <Link to='/about'>
@@ -77,8 +77,8 @@ export default class Footer extends Component {
                       <i className='fas fa-phone-alt' />
                     </div>
                     <div className='x_footer_bottom_icon_cont'>
-                      <h4>Toll Free caling in world</h4>
-                      <p>808 - 111 - 9999</p>
+                      <h4>Contact Number</h4>
+                      <p>9565109111</p>
                     </div>
                   </div>
                   <div className='x_footer_bottom_icon_section x_footer_bottom_icon_section2 float_left'>
@@ -89,11 +89,11 @@ export default class Footer extends Component {
                     <div className='x_footer_bottom_icon_cont'>
                       <h4>Email Us</h4>
                       <p>
-                        <a href='#'>listing@example.com</a>
+                        <a>distributorhub.in@gmail.com</a>
                       </p>
                     </div>
                   </div>
-                  <div className='x_footer_bottom_icon_section x_footer_bottom_icon_section2 float_left'>
+                  {/* <div className='x_footer_bottom_icon_section x_footer_bottom_icon_section2 float_left'>
                     <div className='x_footer_bottom_icon x_footer_bottom_icon3'>
                       {' '}
                       <i className='fa fa-map-marker' />
@@ -103,30 +103,20 @@ export default class Footer extends Component {
                         <a href='#'>View On Map</a>
                       </h4>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
+          <p className='text-white text-center pt-5'>
+            Distributorhub.in - An ideal platform for those who are looking
+            forward to Appointing or Becoming a Distributor.{' '}
+          </p>
         </div>
         <div className='footer-2'>
           <div className='container'>
             <div className='footer-widget'>
-              <p className='text-center  mb-0'>
-                {' '}
-                2016-2021{' '}
-                {/* <a className="text-primary" href="/#0">
-                  Naayak
-                </a>{" "}
-                | All Rights Reserved. Powered By{" "}
-                <a
-                  className="text-primary"
-                  target="_blank"
-                  href="https://www.toxsl.com"
-                >
-                  
-                </a> */}
-              </p>
+              <p className='text-center  mb-0'> 2016-2021 </p>
             </div>
           </div>
         </div>

@@ -2,6 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Distributor_Hub" />
+
+    <meta
+      name="twitter:description"
+      content="Distributor Hub provides a platform that connects the distributors and companies vice versa, Searching for distributorship and business opportunities in India, Click here"
+    />
+    <meta
+      name="twitter:title"
+      content="Looking for Best business and distributorship opportunities in India "
+    />
+    <meta
+      name="twitter:image"
+      content="https://distributorhub.in/assets/images/logo%20(2).png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DISTRIBUTORHUB.IN",
+        "url": "https://distributorhub.in/",
+        "logo": "https://distributorhub.in/assets/images/logo%20(2).png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "9565109111",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": "en"
+        },
+        "sameAs": [
+          "https://business.facebook.com/distributorhub.in",
+          "https://distributorhub.in/"
+        ]
+      }
+    </script>
+    <meta
+      property="og:title"
+      content="Looking for distributorship and business opportunities in India"
+    />
+    <meta property="og:site_name" content="DISTRIBUTORHUB.IN" />
+    <meta property="og:url" content="https://distributorhub.in/" />
+    <meta
+      property="og:description"
+      content="Distributor Hub provides a platform that connects the distributors and companies vice versa,
+ Searching for distributorship and business opportunities in India, Click here"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://distributorhub.in/assets/images/logo%20(2).png"
+    />
     <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
     <meta
       http-equiv="Content-Security-Policy"
@@ -42,17 +94,6 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <!-- <title>Nayaak</title> -->
   </head>
   <body
     class="banners-effect2 default home2--style meganeu-toggler-on"
@@ -69,19 +110,17 @@
     direction="ltr"
     data-primary="color_1"
   >
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KS544FP"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="main-wrapper mh-100v" id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-
-    -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -110,18 +149,6 @@
           viewerHeight: 300,
         });
       });
-
-      // (function () {
-      //   var ga = document.createElement('script');
-      //   ga.type = 'text/javascript';
-      //   ga.async = true;
-      //   ga.src =
-      //     ('https:' == document.location.protocol
-      //       ? 'https://ssl'
-      //       : 'http://www') + '.google-analytics.com/ga.js';
-      //   var s = document.getElementsByTagName('script')[0];
-      //   s.parentNode.insertBefore(ga, s);
-      // })();
     </script>
     <script>
       $(document).ready(function () {
@@ -137,22 +164,21 @@
         });
       });
     </script>
-
     <script>
-      // window.onscroll = function () {
-      //   myFunction();
-      // };
-
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KS544FP');
+    </script>
+    <script>
       var header = document.getElementById('myHeader');
       var sticky = header.offsetTop;
-
-      // function myFunction() {
-      //   if (window.pageYOffset > sticky) {
-      //     header.classList.add('sticky');
-      //   } else {
-      //     header.classList.remove('sticky');
-      //   }
-      // }
     </script>
   </body>
 </html>

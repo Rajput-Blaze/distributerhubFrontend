@@ -4,7 +4,7 @@ const hostname = window.location.hostname;
 
 const base = {
   localhost: '/',
-  platform: '/naayak',
+  platform: '/',
 };
 
 let basename = '';

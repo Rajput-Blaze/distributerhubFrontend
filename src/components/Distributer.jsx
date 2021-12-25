@@ -106,6 +106,8 @@ function Index(props) {
     categoryy();
   }, []);
   const sweetAlert = (msg) => {
+    history.push('/distributor-registration-successful');
+    return;
     Swal.fire({
       title: msg,
       timer: 7000,

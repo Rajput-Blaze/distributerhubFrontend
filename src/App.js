@@ -98,6 +98,11 @@ import Company from './components/Company';
 import Distributer from './components/Distributer';
 // import { BrowserRouter, Route, Switch,  } from 'react-router-dom';
 import Services from './components/services';
+
+import CompanySuccess from './components/companySuccess';
+
+import DistributerSuccess from './components/distributerSuccess';
+
 import Faq from './components/faq';
 import PrivacyPolicy from './components/privacyPolicy';
 import TermsCondition from './components/termsCondition';
@@ -119,8 +124,18 @@ const routes = [
   },
   {
     exact: true,
-    path: '/Register',
+    path: '/registration-create-free-business-profile',
     Component: Services,
+  },
+  {
+    exact: true,
+    path: '/distributor-registration-successful',
+    Component: DistributerSuccess,
+  },
+  {
+    exact: true,
+    path: '/company-registration-successful',
+    Component: CompanySuccess,
   },
   {
     exact: true,

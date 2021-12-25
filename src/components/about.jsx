@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as service from '../services/apiServices';
 import showNotification from '../services/notificationService';
 import { getTeamImageUrl } from '../globals/constant';
+import HelmetComponent from './HelmetComponentAbout';
 
 export default class About extends Component {
   constructor(props) {
@@ -11,32 +12,11 @@ export default class About extends Component {
       team: [],
     };
   }
-  // componentDidMount() {
-  //   this.getAbout();
-  // // }
-
-  // getAbout() {
-  //   service.getAbout().then((resp) => {
-  //     if (resp?.data?.success) {
-  //       this.setState({
-  //         detail: resp.data.data[0],
-  //       });
-  //     }
-  //   });
-  //   service.getTeamMembers().then((resp) => {
-  //     if (resp?.data?.success) {
-  //       this.setState({
-  //         team: resp.data.data,
-  //       });
-  //     }
-  //   });
-
-  //   // getTeamMembers
-  // }
 
   render() {
     return (
       <>
+        <HelmetComponent />
         <div className='page-wrapper mt-5'>
           <div className='about-page-sections section-padding'>
             <nav aria-label='breadcrumb '>
@@ -72,9 +52,11 @@ export default class About extends Component {
                       opportunities. Those companies involved in manufacturing
                       and marketing and need to have a channel partner for their
                       product penetration in the market. Here,{' '}
-                      <a href='/'>
-                        <b className=''>Distributorhub.in </b>
-                      </a>
+                      {/* <a href='/'>
+                        <b className=''> */}
+                      Distributorhub.in{' '}
+                      {/* </b>
+                      </a> */}
                       fulfil the gap between companies and distributors by
                       providing them an online gateway that comes with an
                       informative listing of prominent distributors and
@@ -118,7 +100,7 @@ export default class About extends Component {
               limited resource companies / manufacturers and distributor does
               not get meet at one point of time. But with the help of
               distributor hub, it is possible with{' '}
-              <a href='/Register'>
+              <a href='/registration-create-free-business-profile'>
                 <b> listing their selves on the online portal </b>
               </a>{' '}
               to recognize among the similar or different groups who have never

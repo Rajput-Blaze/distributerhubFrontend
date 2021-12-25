@@ -20,6 +20,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import Swal from 'sweetalert2';
 import * as session from '../utils/session';
 import Loaderr from './Loaderr';
+import { Helmet } from 'react-helmet';
 function SerchField(props) {
   const multiselectRefcity = React.createRef();
   const multiselectRefsub = React.createRef();
@@ -183,7 +184,21 @@ function SerchField(props) {
   // console.log('cityarray', cityarray);
   return (
     <>
-      {/* <Header /> */}
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>
+          Looking for distributorship and business opportunities in
+          India-Distributor Hub
+        </title>
+        <meta
+          name='description'
+          content='Distributor Hub provides a platform that connects the distributors and companies vice versa, Searching for distributorship and business opportunities in India, Click here'
+        />
+        <meta
+          name='keywords'
+          content='Distributor, Distributorship, Looking Distributorship Opportunities in India, Business Opportunities in India, channel partners, business partner, looking for distributors, company looking for distributors, wanted distributor, world best business opportunity, manufacturing companies, Distributor business Opportunities '></meta>
+        <link rel='canonical' href='https://distributorhub.in/' />
+      </Helmet>
       {isLoading ? <Loaderr /> : ''}
       <div className='serch '>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>

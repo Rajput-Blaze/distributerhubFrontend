@@ -79,6 +79,8 @@ function Index(props) {
     categoryy();
   }, []);
   const sweetAlert = (msg) => {
+    history.push('/company-registration-successful');
+    return;
     Swal.fire({
       title: msg,
       timer: 7000,
@@ -219,7 +221,7 @@ function Index(props) {
       } else if (formToggle == 5) {
         setformToggle(6);
         setstep(5);
-        setheading('Upload logo/Video');
+        setheading('Upload logo');
       }
       //   else if (formToggle == 5) {
       //     setformToggle(6);
@@ -528,8 +530,7 @@ function Index(props) {
                       { label: 'Categories Details' },
                       { label: 'Brand  Name' },
                       {
-                        label:
-                          'Select preferred Sub-Category for Distribution ship Appointment',
+                        label: 'Interest Details',
                       },
                       { label: 'Upload logo' },
                     ]}
@@ -1647,7 +1648,7 @@ function Index(props) {
                               <input
                                 class='multisteps-form__input form-control'
                                 type='file'
-                                required
+                                // required
                                 accept='image/*'
                                 name='profileImg'
                                 onChange={fileChange}

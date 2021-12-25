@@ -7,7 +7,7 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
-import showNotification from "../../services/notificationService";
+import showNotification from '../../services/notificationService';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Line } from 'react-chartjs-2';
 import ReactPaginate from 'react-paginate';
@@ -16,7 +16,6 @@ import apiUrl from '../../globals/config';
 import Vechiclecomponent from './Vechiclecomponent';
 
 function AdminDashboard(props) {
-
   const handlePageClick = (data) => {
     setPage(parseInt(data.selected) + 1);
   };
@@ -49,14 +48,14 @@ function AdminDashboard(props) {
         'x-token': `Bearer ${token}`,
       },
     };
-    axios  
+    axios
       .get(apiUrl + 'user/findRole', headers)
- 
+
       .then((resp) => {
         setuser(resp.data);
       })
       .catch((err) => {
-        showNotification('danger', err.message)
+        showNotification('danger', err.message);
       });
   };
   const topsellingvehicle = (page) => {
@@ -72,10 +71,9 @@ function AdminDashboard(props) {
       .then((resp) => {
         setconfirmLead(resp?.data?.data[0].data); //
         setdatacount(resp?.data?.data[0]?.count[0]?.count);
-        
       })
       .catch((err) => {
-        showNotification('danger', err.message)
+        showNotification('danger', err.message);
       });
   };
   const viewClient = (phoneNo, otp) => {
@@ -212,14 +210,13 @@ function AdminDashboard(props) {
                         />
                       </span>
                       <div className='media-body'>
-                        <p className='mb-1'>Naayaks</p>
+                        <p className='mb-1'></p>
                         <h4 className='mb-0'>
                           {user?.agent ? user?.agent : '0'}
                         </h4>
                       </div>
                     </div>
                     <div className='d-flex mt-3'>
-                     
                       <a
                         href='#0'
                         className='btn btn-outline-danger btn-xxs ml-2'>
@@ -248,7 +245,6 @@ function AdminDashboard(props) {
                       </div>
                     </div>
                     <div className='d-flex mt-3'>
-                      
                       <a
                         href='#0'
                         className='btn btn-outline-danger btn-xxs ml-2'>
@@ -278,7 +274,6 @@ function AdminDashboard(props) {
                       </div>
                     </div>
                     <div className='d-flex mt-3'>
-                    
                       <a
                         href='#0'
                         className='btn btn-outline-danger btn-xxs ml-2'>
@@ -307,7 +302,6 @@ function AdminDashboard(props) {
                       </div>
                     </div>
                     <div className='d-flex mt-3'>
-                      
                       <a
                         href='#0'
                         className='btn btn-outline-danger btn-xxs ml-2'>
@@ -336,7 +330,6 @@ function AdminDashboard(props) {
                       </div>
                     </div>
                     <div className='d-flex mt-3'>
-                    
                       <a
                         href='#0'
                         className='btn btn-outline-danger btn-xxs ml-2'>
@@ -364,7 +357,6 @@ function AdminDashboard(props) {
                       </div>
                     </div>
                     <div className='d-flex mt-3'>
-                      
                       <a
                         href='#0'
                         className='btn btn-outline-danger btn-xxs ml-2'>
@@ -394,7 +386,6 @@ function AdminDashboard(props) {
                     </div>
 
                     <div className='d-flex mt-3'>
-                     
                       <a
                         href='#0'
                         className='btn btn-outline-danger btn-xxs ml-2'>
@@ -417,7 +408,7 @@ function AdminDashboard(props) {
                         Top selling vehicle
                       </h4>
                     </div>
-                   
+
                     <div class='table-responsive'>
                       <table class='table'>
                         <thead>

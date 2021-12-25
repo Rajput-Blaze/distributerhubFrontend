@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as service from '../services/apiServices';
 import showNotification from '../services/notificationService';
 import { getTeamImageUrl } from '../globals/constant';
+import { Helmet } from 'react-helmet';
 
 export default class About extends Component {
   constructor(props) {
@@ -37,6 +38,24 @@ export default class About extends Component {
   render() {
     return (
       <>
+        <Helmet>
+          <meta charSet='utf-8' />
+          <title>
+            Best Business Opportunities and Distributorship Opportunities in
+            India
+          </title>
+          <meta
+            name='description'
+            content='Distributorhub.in- Provide the same platform to two different organizations, meet hands for the same purpose of a business that never met before. Showcases, connect and grow your business in India'
+          />
+          <meta
+            name='keywords'
+            content='distributorship opportunities, best business opportunities, channel partner, distributor, company, organization, world best business opportunity, new business opportunities'></meta>
+          <link
+            rel='canonical'
+            href='https://distributorhub.in/http://localhost:3000/advantage-and-benefit'
+          />
+        </Helmet>
         <div className='page-wrapper mt-5'>
           <div className='about-page-sections section-padding'>
             <nav aria-label='breadcrumb '>
@@ -93,7 +112,7 @@ export default class About extends Component {
                     before.
                   </li>
                   <li style={{ listStyle: 'disc' }}>
-                    <a href='/Register'>
+                    <a href='/registration-create-free-business-profile'>
                       <b>Create a free Business Profile</b>
                     </a>{' '}
                     and connect with business partners and build your trust

@@ -124,6 +124,7 @@ function Index(props) {
       .delete(apiUrl + 'user/deleteRecordcompany/' + id, headers)
 
       .then((resp) => {
+        showNotification('danger', 'Deleted Sucessfull');
         ongoing(page);
       })
       .catch((err) => {
