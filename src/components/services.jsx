@@ -36,9 +36,19 @@ const Services = (props) => {
           href='https://distributorhub.in/registration-create-free-business-profile'
         />
       </Helmet>
+      <nav aria-label='breadcrumb ' style={{ margin: '62px 0 0 0' }}>
+        <ol class='breadcrumb justify-content-end'>
+          <li class='breadcrumb-item'>
+            <a href='/'>Home</a>
+          </li>
+          <li class='breadcrumb-item active' aria-current='page'>
+            Login
+          </li>
+        </ol>
+      </nav>
       <div
         className='row  h-100  emi_row justify-content-center'
-        style={{ margin: '150px 0' }}>
+        style={{ margin: '120px 0' }}>
         <div className='coln-8'>
           <div className='card widget-stat'>
             <div className='card-header bg-custom-blue center_text'>
@@ -52,14 +62,14 @@ const Services = (props) => {
             <div className='card-body'>
               <div className='form-validation'>
                 <p className='text-center'>
-                  Welcome to the registration process at Distributorhub.in.
+                  Welcome to the registration process at Distributorhub.in
                   Create a free business profile, Fill the registration form to
                   get listed and to be recognized by best business & channel
                   partner
                 </p>
                 <div className='row middle2 center_text '>
                   <span className='pt-3 pb-4  h1_tag'>
-                    Select Form Type For Register
+                    Select Firm Type For Register
                   </span>
                 </div>
                 <div className='row middle pb-4 pt-2'>
@@ -76,7 +86,7 @@ const Services = (props) => {
                           </Link>
                         </div>
                         <div className='w-110 d-flex align-items-center'>
-                          <Link to='/company-registration'>
+                          <Link to='/distributor-registration'>
                             <button
                               type='button'
                               className='btn px-5 btn-primary btn-lg mr-2'>

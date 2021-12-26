@@ -9,7 +9,7 @@ export default function HelmetComponent() {
       </title>
       <meta
         name='description'
-        content='= Distributor Hub is a B2B platform that connects the distributors with relevant companies vice versa. Who looking for distributorship and business opportunities in India click here'
+        content=' Distributor Hub is a B2B platform that connects the distributors with relevant companies vice versa. Who looking for distributorship and business opportunities in India click here'
       />
       <meta
         name='keywords'

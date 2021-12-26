@@ -119,7 +119,7 @@ import ChangePassword from './containers/login/ChangePassword';
 const routes = [
   {
     exact: true,
-    path: '/about',
+    path: '/about-us',
     Component: About,
   },
   {

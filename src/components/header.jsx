@@ -190,7 +190,7 @@ export default class Header extends Component {
                       </Link>
                     </li>
                     <li className='nav-item' onClick={this.changePage}>
-                      <NavLink className='nav-link' to='/about'>
+                      <NavLink className='nav-link' to='/about-us'>
                         About Us
                       </NavLink>
                       {/* <a className='nav-link' href='/about'>

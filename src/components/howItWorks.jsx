@@ -305,7 +305,8 @@ export default class About extends Component {
             </div>
           </div>
           <div className='container pt-4'>
-            To know more about distributor hub<a href='/about'> "click here</a>{' '}
+            To know more about distributor hub
+            <a href='/about-us'> "click here</a>{' '}
           </div>
           <div className='shipping-area about-shipping'>
             <div className='container'>

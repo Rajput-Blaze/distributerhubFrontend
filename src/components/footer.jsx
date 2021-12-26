@@ -17,20 +17,36 @@ export default class Footer extends Component {
                     vice-versa
                   </p>
                   <span>
-                    <a href='/'>
+                    <a href='/about-us'>
                       Read More &nbsp;
                       <i className='fa fa-angle-double-right' />
                     </a>
                   </span>
                   <ul>
                     <li>
-                      <a href='#'>
+                      <a href='https://www.facebook.com/distributorhub.in'>
                         <i className='fab fa-facebook-f' />
                       </a>
                     </li>
                     <li>
-                      <a href='#'>
+                      <a href='https://twitter.com/Distributor_Hub'>
                         <i className='fab fa-twitter' />
+                      </a>
+                    </li>
+
+                    <li style={{ backgroundColor: '#ed0b4c' }}>
+                      <a href='https://www.instagram.com/distributorhub.in/'>
+                        <i class='fab fa-instagram' />
+                      </a>
+                    </li>
+                    <li style={{ backgroundColor: 'teal' }}>
+                      <a href='https://www.linkedin.com/company/distributor-hub/'>
+                        <i class='fab fa-linkedin' />
+                      </a>
+                    </li>
+                    <li style={{ backgroundColor: 'red' }}>
+                      <a href='"https://www.youtube.com/channel/UCYBh3qczdqcMYie_L9nnbgw"/'>
+                        <i class='fab fa-youtube' />
                       </a>
                     </li>
                   </ul>
@@ -41,7 +57,7 @@ export default class Footer extends Component {
                   <h3>UseFul Link's</h3>
                   <ul>
                     <li>
-                      <Link to='/about'>
+                      <Link to='/about-us'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; About
                       </Link>
                     </li>

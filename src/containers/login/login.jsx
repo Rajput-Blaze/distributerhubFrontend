@@ -74,8 +74,19 @@ export default function Login(props) {
           content='distributorship opportunities, distributor, Business opportunities, business partnership, new business opportunities, Find the Best Business & channel Partner'></meta>
         <link rel='canonical' href='https://distributorhub.in/login' />
       </Helmet>
+
       {loading ? <Loaderr /> : null}
-      <div className='content mt-5'>
+      <div className='content mt-5 pt-3'>
+        <nav aria-label='breadcrumb '>
+          <ol class='breadcrumb justify-content-end'>
+            <li class='breadcrumb-item'>
+              <a href='/'>Home</a>
+            </li>
+            <li class='breadcrumb-item active' aria-current='page'>
+              Login
+            </li>
+          </ol>
+        </nav>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6 hide_in_sm pt-4'>
@@ -133,7 +144,9 @@ export default function Login(props) {
                     </div>
                     <div className='d-flex  align-items-center'>
                       <span className=''>
-                        <a href='/forgot-password' className='forgot-pass'>
+                        <a
+                          href='/registration-create-free-business-profile'
+                          className='forgot-pass'>
                           Create a New Account
                         </a>
                       </span>

@@ -137,11 +137,11 @@ export default class ContactUs extends Component {
           </title>
           <meta
             name='description'
-            content='= Share and contact us with your feedback on Distributorhub.in and we will revert you back on your suggestion and query, for writing us click on the feedback form'
+            content=' Share and contact us with your feedback on Distributorhub.in and we will revert you back on your suggestion and query, for writing us click on the feedback form'
           />
           <meta
             name='keywords'
-            content='= feedback form, distributor hub customer care, distributor hub feedback form, distributorship, world best business opportunity, distributorship opportunities, distributor hub contact us form, business partner, channel partner '></meta>
+            content=' feedback form, distributor hub customer care, distributor hub feedback form, distributorship, world best business opportunity, distributorship opportunities, distributor hub contact us form, business partner, channel partner '></meta>
           <link rel='canonical' href='https://distributorhub.in/contact-us' />
         </Helmet>
         <div className='page-wrapper'>
