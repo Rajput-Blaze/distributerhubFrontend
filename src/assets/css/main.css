@@ -41164,14 +41164,20 @@ select.form-control {
   }
 }
 @media (min-width: 767.98px) {
-  .h1_tag {
-   font-size: 25px;
+  .h1_tag_cum {
+   font-size: 32px;
   }
+  .h1_tag {
+    font-size: 25px;
+   }
 }
 @media (max-width: 767.98px) {
   .h1_tag {
    font-size: 20px;
   }
+  .h1_tag_cum {
+    font-size: 25px;
+   }
 }
 
 .tox-notifications-container {
@@ -41339,6 +41345,9 @@ height: auto;
 }
 h1_tag {
   font-size: 25px !important;
+}
+h1_tag_cum {
+  font-size: 33px !important;
 }
 }
 .navSticky{

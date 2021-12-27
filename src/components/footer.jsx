@@ -68,14 +68,14 @@ export default class Footer extends Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to='/'>
+                      <Link to='/terms-condition'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Terms
                         and Conditions
                       </Link>
                     </li>
 
                     <li>
-                      <Link to='/'>
+                      <Link to='/privacy-policy'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Privacy
                         &amp; Cookies Policy
                       </Link>
