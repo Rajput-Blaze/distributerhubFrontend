@@ -43,7 +43,9 @@ export default class About extends Component {
                 <div className='col-lg-6 col-xl-6 col-md-12 col-12'>
                   <div className='inner'>
                     <div className='section-title text-left'>
-                      <h2 className='title '>{'About - distributorhub.in'}</h2>
+                      <h1 className='title  h1_tag pb-2  '>
+                        {'About - distributorhub.in'}
+                      </h1>
                     </div>
                     <div className='text-wrap'>
                       Distributor Hub is a B2B platform that connects the

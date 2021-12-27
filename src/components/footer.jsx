@@ -45,7 +45,7 @@ export default class Footer extends Component {
                       </a>
                     </li>
                     <li style={{ backgroundColor: 'red' }}>
-                      <a href='"https://www.youtube.com/channel/UCYBh3qczdqcMYie_L9nnbgw"/'>
+                      <a href='https://www.youtube.com/channel/UCYBh3qczdqcMYie_L9nnbgw/'>
                         <i class='fab fa-youtube' />
                       </a>
                     </li>
@@ -54,7 +54,7 @@ export default class Footer extends Component {
               </div>
               <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12'>
                 <div className='x_footer_bottom_box_wrapper_second float_left'>
-                  <h3>UseFul Link's</h3>
+                  <h3>UseFul Links</h3>
                   <ul>
                     <li>
                       <Link to='/about-us'>

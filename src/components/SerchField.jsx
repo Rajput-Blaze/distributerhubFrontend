@@ -207,11 +207,11 @@ function SerchField(props) {
               <div className='coln-8'>
                 <div className='card widget-stat'>
                   <div className='card-header bg-custom-blue center_text'>
-                    <h4 className='card-title text-white h1_tag'>
+                    <h1 className='card-title text-white h1_tag'>
                       {' '}
                       Looking For Best Business and Distributorship
                       Opportunities In India
-                    </h4>
+                    </h1>
 
                     <div className='two_btns_ps'></div>
                   </div>

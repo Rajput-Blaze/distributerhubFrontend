@@ -163,10 +163,10 @@ export default class ContactUs extends Component {
                 <div className='col-md-12'>
                   <div className='x_offer_car_heading_wrapper x_offer_car_heading_wrapper_contact float_left'>
                     <h4>get in touch</h4>
-                    <h3>
+                    <h1 className='h1_tag'>
                       Hello, we welcome you for giving your valuable feedback /
                       suggestion
-                    </h3>
+                    </h1>
                     <p>
                       Hello Business Partner, Share and contact us with your
                       feedback on Distributorhub.in and we will revert you back

@@ -42,20 +42,18 @@ const Services = (props) => {
             <a href='/'>Home</a>
           </li>
           <li class='breadcrumb-item active' aria-current='page'>
-            Registration
+            Login
           </li>
         </ol>
       </nav>
-      <div
-        className='row  h-100  emi_row justify-content-center'
-        style={{ margin: '120px 0' }}>
+      <div className='row  h-100  emi_row marginSpace justify-content-center'>
         <div className='coln-8'>
           <div className='card widget-stat'>
             <div className='card-header bg-custom-blue center_text'>
-              <h4 className='card-title text-white h1_tag'>
+              <h1 className='card-title text-white h1_tag'>
                 {' '}
                 Hello Business Partner, We welcome you on Distributor hub
-              </h4>
+              </h1>
 
               <div className='two_btns_ps'></div>
             </div>
@@ -69,7 +67,7 @@ const Services = (props) => {
                 </p>
                 <div className='row middle2 center_text '>
                   <span className='pt-3 pb-4  h1_tag'>
-                    Select Firm Type For Registration
+                    Select Firm Type For registration
                   </span>
                 </div>
                 <div className='row middle pb-4 pt-2'>
@@ -80,7 +78,7 @@ const Services = (props) => {
                           <Link to='/company-registration'>
                             <button
                               type='button'
-                              className='btn px-5 btn-primary btn-lg mr-2'>
+                              className='btn px-3 btn-primary btn-lg mr-2'>
                               Company
                             </button>
                           </Link>
@@ -89,7 +87,7 @@ const Services = (props) => {
                           <Link to='/distributor-registration'>
                             <button
                               type='button'
-                              className='btn px-5 btn-primary btn-lg mr-2'>
+                              className='btn px-3 btn-primary btn-lg mr-2'>
                               Distributor
                             </button>
                           </Link>

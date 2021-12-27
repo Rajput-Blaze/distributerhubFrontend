@@ -3329,7 +3329,7 @@ header.white-header {
   background: #f9f9f9;
 }
 
-.section-padding .section-title h2.title::after {
+/* .section-padding .section-title h1.title::after {
   content: '';
   position: absolute;
   width: 30px;
@@ -3339,7 +3339,7 @@ header.white-header {
   border-radius: 2px;
   bottom: 0;
   display: block;
-}
+} */
 
 .section-padding .section-title.text-center h2.title::after {
   margin: auto;

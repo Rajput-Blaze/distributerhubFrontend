@@ -98,10 +98,12 @@ export default function Login(props) {
             </div>
             <div className='col-md-6 contents mt-5'>
               <div className='row justify-content-center'>
-                <h5>Welcome to Distributor Hub</h5>
+                <h1 className='card-title  h1_tag'>
+                  Welcome to Distributor Hub
+                </h1>
                 <div className='col-md-8 '>
                   <div className='mb-4'>
-                    <h3 className='text-center'>Sign In</h3>
+                    <h3 className='text-center h1_tag'>Sign In</h3>
                     {/* <p className='mb-4 hide_in_sm'>
                       Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
                       consectetur adipisicing.

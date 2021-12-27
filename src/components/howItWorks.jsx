@@ -99,10 +99,10 @@ export default class About extends Component {
           <div className='section-padding why-choose-section'>
             <div className='container nayk-container'>
               <div className='section-title text-center mb--20'>
-                <h3 className='title pb-2'>
+                <h1 className='title pb-2 h1_tag'>
                   Advantage & Benefit for Distributors, Companies and
                   Manufacturer
-                </h3>
+                </h1>
                 <ul
                   className=''
                   style={{ listStyle: 'disc', padding: '0 10vw' }}>
@@ -177,9 +177,9 @@ export default class About extends Component {
                       <div className='text'>1</div>
                     </div>
                     <div className='content'>
-                      <h4 className='title'>
+                      <h2 className='title'>
                         <a href>Distributors Advantages & Benefits</a>
-                      </h4>
+                      </h2>
                       <ul
                         className=''
                         style={{ listStyle: 'disc', paddingLeft: '10px' }}>
@@ -241,9 +241,9 @@ export default class About extends Component {
                       <div className='text'>2</div>
                     </div>
                     <div className='content'>
-                      <h4 className='title'>
+                      <h2 className='title'>
                         <a href>Company / Manufacture Advantages & Benefits</a>
-                      </h4>
+                      </h2>
                       <ul
                         className=''
                         style={{ listStyle: 'disc', paddingLeft: '10px' }}>

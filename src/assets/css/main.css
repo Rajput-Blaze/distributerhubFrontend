@@ -41276,6 +41276,9 @@ margin-left: 8.3333333333%;
   width: 100%;
   max-width: 180px;
 }
+.marginSpace{
+  margin: 120px 0px;
+}
 }
 @media screen and (max-width: 480px) {
  
@@ -41331,7 +41334,12 @@ height: auto;
 .text_insm{
   font-size: 18px!important;
 }
-
+.marginSpace{
+  margin: 55px 0px !important;
+}
+h1_tag {
+  font-size: 25px !important;
+}
 }
 .navSticky{
   position: fixed;
