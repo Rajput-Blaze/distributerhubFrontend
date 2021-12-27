@@ -42,7 +42,7 @@ const Services = (props) => {
             <a href='/'>Home</a>
           </li>
           <li class='breadcrumb-item active' aria-current='page'>
-            Login
+            Registration
           </li>
         </ol>
       </nav>
@@ -69,7 +69,7 @@ const Services = (props) => {
                 </p>
                 <div className='row middle2 center_text '>
                   <span className='pt-3 pb-4  h1_tag'>
-                    Select Firm Type For Register
+                    Select Firm Type For Registration
                   </span>
                 </div>
                 <div className='row middle pb-4 pt-2'>
