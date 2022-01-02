@@ -874,7 +874,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Contact number
+                                Contact number{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -948,7 +949,7 @@ function Index(props) {
                                 onChange={handleChange}
                                 placeholder='Enter Alternative email..'
                                 ref={register({
-                                  required: 'This is required ',
+                                  // required: 'This is required ',
                                 })}
                               />
                               <ErrorMessage
@@ -966,7 +967,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Establishment Year
+                                Establishment Year{' '}
+                                <span className='text-danger'>*</span>
                               </label>
                               <DatePicker
                                 placeholderText='Establishment Year '
@@ -1019,7 +1021,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Turnover of the company
+                                Turnover of the company{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -1076,7 +1079,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Pin Code
+                                Pin Code <span className='text-danger'>*</span>
                               </label>
                               <input
                                 type='text'
@@ -1107,7 +1110,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Country
+                                Country <span className='text-danger'>*</span>
                               </label>
                               <select
                                 className='form-control'
@@ -1134,7 +1137,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                State
+                                State <span className='text-danger'>*</span>
                               </label>
 
                               <select
@@ -1170,7 +1173,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                City/Village
+                                City/Village{' '}
+                                <span className='text-danger'>*</span>
                               </label>
                               <select
                                 className='form-control'
@@ -1205,7 +1209,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Address
+                                Address<span className='text-danger'>*</span>
                               </label>
 
                               <input

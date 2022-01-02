@@ -167,6 +167,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -179,6 +180,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>{' '}
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -191,6 +193,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>{' '}
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -203,6 +206,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>{' '}
+                      <hr />
                       <div className='row mb-2 align-items-center'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -242,6 +246,7 @@ export default function Index(props) {
                           )} */}
                         </div>
                       </div>{' '}
+                      <hr />
                       {role == 1 ? (
                         <div className='row mb-2'>
                           <div className='col-sm-3 col-5'>
@@ -310,6 +315,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -323,7 +329,8 @@ export default function Index(props) {
                               : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -352,7 +359,8 @@ export default function Index(props) {
                               : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -367,7 +375,8 @@ export default function Index(props) {
                               : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -382,7 +391,8 @@ export default function Index(props) {
                               : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -409,7 +419,8 @@ export default function Index(props) {
                               : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -442,6 +453,7 @@ export default function Index(props) {
                               </span>
                             </div>
                           </div>
+                          <hr />
                           <div className='row mb-2'>
                             <div className='col-sm-3 col-5'>
                               <h6 className='f-w-500'>
@@ -457,6 +469,7 @@ export default function Index(props) {
                               </span>
                             </div>
                           </div>
+                          <hr />
                           <div className='row mb-2'>
                             <div className='col-sm-3 col-5'>
                               <h6 className='f-w-500'>
@@ -472,6 +485,7 @@ export default function Index(props) {
                               </span>
                             </div>
                           </div>
+                          <hr />
                           <div className='row mb-2'>
                             <div className='col-sm-3 col-5'>
                               <h6 className='f-w-500'>
@@ -487,6 +501,7 @@ export default function Index(props) {
                               </span>
                             </div>
                           </div>
+                          <hr />
                         </>
                       )}
                       <div className='row mb-2'>
@@ -501,6 +516,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -511,7 +527,8 @@ export default function Index(props) {
                         <div className='col-sm-9 col-7'>
                           <span>{state ? 'India' : 'N/A'} </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -523,7 +540,8 @@ export default function Index(props) {
                             {state && state?.state ? state.state : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -538,7 +556,8 @@ export default function Index(props) {
                               : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -551,7 +570,8 @@ export default function Index(props) {
                             {state && state?.address ? state.address : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{' '}
+                      </div>
+                      <hr />
                     </div>
                   </div>
                 </div>
@@ -566,9 +586,10 @@ export default function Index(props) {
                     <button
                       type='button'
                       onClick={() => {
-                        history.push({
+                        var newid = role == 2 ? 7 : 3; //check role if distributer(role =2) then 7 update form
+                        return history.push({
                           pathname: '/updateData/' + id,
-                          data: 3,
+                          data: newid,
                         });
                       }}
                       className='btn btn-light ml-2'>
@@ -580,27 +601,36 @@ export default function Index(props) {
                   </div>
                 </div>
 
-                <div className='card-body'>
+                <div className='card-body responsiveCardouter'>
                   <div className='form-validation'>
                     <div className='profile-personal-info'>
-                      <div className='row mb-2'>
-                        <div className='col-sm-4 '>
+                      <div className='row responsiveCardinner mb-2'>
+                        <div className='col-4 '>
                           <h6 className='f-w-500'>Category </h6>
                           <p>{state?.category && state?.category.toString()}</p>
                         </div>
-                        <div className='col-sm-4'>
-                          <h6 className='f-w-500'>Sub Category </h6>
-                          {state?.subCategory &&
-                            state?.subCategory.map((data) => {
-                              return <p>{data?.name}</p>;
-                            })}
-                        </div>
-                        <div className='col-sm-4'>
-                          <h6 className='f-w-500'>Brand Name </h6>
-                          {state?.subCategory &&
-                            state?.subCategory.map((data) => {
-                              return <p>{data?.brandName}</p>;
-                            })}
+                        <div className='col-8'>
+                          <div className='table-responsive'>
+                            <table className='table'>
+                              <thead>
+                                <tr className='table_th'>
+                                  <th className='width100'>Sub Category</th>
+                                  <th className='width100'>SubBrand </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {state?.subCategory &&
+                                  state?.subCategory.map((data) => {
+                                    return (
+                                      <tr>
+                                        <td>{data?.name}</td>
+                                        <td>{data?.brandName}</td>
+                                      </tr>
+                                    );
+                                  })}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -634,70 +664,68 @@ export default function Index(props) {
                 </div>
                 {/* {console.log('state?.category', state?.category)} */}
                 <div className='card-body'>
-                  <div className='form-validation'>
-                    <div className='profile-personal-info'>
-                      <div className='row mb-2'>
-                        <div className='col-sm-4 '>
-                          <h6 className='f-w-500'>Category </h6>
-                          {role == 1 ? (
-                            <p>
-                              {state?.category && state?.category.toString()}
-                            </p>
+                  <div className='table-responsive'>
+                    <table className='table'>
+                      <thead>
+                        <tr className='table_th'>
+                          <th className='width100'>Category</th>
+                          <th className='width100'>Sub Category</th>
+                          {state?.userType == 1 ? (
+                            <th className='width100'>Brand</th>
                           ) : (
-                            state?.intreset &&
-                            state?.intreset.map((data) => {
-                              return <p>{data?.category}</p>;
-                            })
+                            ''
                           )}
-                        </div>
-                        <div className={role == 1 ? 'col-4' : 'col-6'}>
-                          <h6 className='f-w-500'>Sub Category </h6>
-                          {state?.intreset &&
-                            state?.intreset.map((data) => {
-                              return <p>{data?.name}</p>;
-                            })}
-                        </div>
-                        {role == 1 ? (
-                          <div className='col-4'>
-                            <h6 className='f-w-500'>Brand Name </h6>
-                            {state?.intreset &&
-                              state?.intreset.map((data) => {
-                                return <p>{data?.brandName}</p>;
-                              })}
-                          </div>
-                        ) : (
-                          ''
-                        )}
-                      </div>
-                      <hr />
-
-                      {/* <p>{state.category.toString()}</p> */}
-                      <div className='row py-3'>
-                        <div className='col-4 '>
-                          <h6 className='f-w-500'>State </h6>
-                          {state &&
-                            state?.preferred &&
-                            state?.preferred.map((data) => {
-                              return data?.state;
-                            })}
-                          {/* {state?.preferred && state?.preferred[0]?.state} */}
-                        </div>
-                        <div className='col-8'>
-                          <h6 className='f-w-500'>City </h6>
-                          <p>
-                            {state &&
-                              state?.preferred &&
-                              state?.preferred.map((data) => {
-                                return data?.city.toString();
-                              })}
-                            {/* {state &&
-                                state?.preferred &&
-                                state?.preferred[0]?.city &&
-                                state?.preferred[0]?.city.toString()} */}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {state?.userType == 1 &&
+                          state?.intreset.map((data, index) => {
+                            return (
+                              <tr>
+                                {index == 0 ? (
+                                  <td>
+                                    {state?.category &&
+                                      state?.category.toString()}
+                                  </td>
+                                ) : (
+                                  <td></td>
+                                )}
+                                <td>{data?.name}</td>
+                                <td>{data?.brandName}</td>
+                              </tr>
+                            );
+                          })}
+                        {state?.userType == 2 &&
+                          state?.intreset.map((data, index) => {
+                            return (
+                              <tr>
+                                <td>{data?.category}</td>
+                                <td>{data?.name}</td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className='table-responsive'>
+                    <table className='table'>
+                      <thead>
+                        <tr className='table_th'>
+                          <th className='width100'>State</th>
+                          <th className='width100'>City </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {state?.preferred?.map((data, index) => {
+                          return (
+                            <tr>
+                              <td>{data?.state}</td>
+                              <td>{data?.city.toString()}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>

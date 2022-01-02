@@ -791,6 +791,7 @@ function Index(props) {
                                 className='col-form-label'
                                 for='val-username'>
                                 Distributor Firm Name
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -821,6 +822,7 @@ function Index(props) {
                                 className='col-form-label'
                                 htmlFor='val-username'>
                                 Contact person
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -849,7 +851,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Contact number
+                                Contact number{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -909,7 +912,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Alternative email
+                                Alternative email{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -939,7 +943,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Establishment Year
+                                Establishment Year{' '}
+                                <span className='text-danger'>*</span>
                               </label>
                               <DatePicker
                                 placeholderText='Establishment Year '
@@ -958,7 +963,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                GST No
+                                GST No <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -992,7 +997,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Turnover of the Firm
+                                Turnover of the Firm{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -1022,7 +1028,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Number of Brand
+                                Number of Brand{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -1051,7 +1058,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Distributor Coverage Area
+                                Distributor Coverage Area{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -1080,7 +1088,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Number of Employee
+                                Number of Employee{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -1110,7 +1119,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Godown Space
+                                Godown Space{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -1161,7 +1171,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Pin Code
+                                Pin Code <span className='text-danger'>*</span>
                               </label>
                               <input
                                 type='text'
@@ -1192,7 +1202,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Country
+                                Country <span className='text-danger'>*</span>
                               </label>
                               <select
                                 className='form-control'
@@ -1212,7 +1222,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                State
+                                State <span className='text-danger'>*</span>
                               </label>
 
                               <select
@@ -1248,7 +1258,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                City/Village
+                                City/Village{' '}
+                                <span className='text-danger'>*</span>
                               </label>
                               <select
                                 className='form-control'
@@ -1283,7 +1294,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Address
+                                Address <span className='text-danger'>*</span>
                               </label>
 
                               <input
@@ -1316,7 +1327,8 @@ function Index(props) {
                                 About US
                               </label> */}
                               <label for='exampleFormControlTextarea1'>
-                                About Distributor
+                                About Firm{' '}
+                                <span className='text-danger'>*</span>
                               </label>
                               <textarea
                                 class='form-control'

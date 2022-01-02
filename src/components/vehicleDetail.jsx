@@ -308,19 +308,28 @@ const VehicleDetail = (props) => {
                               {state?.category && state?.category.toString()}
                             </p>
                           </div>
-                          <div className='col-4'>
-                            <h6 className='f-w-500'>Sub Category </h6>
-                            {state?.subCategory &&
-                              state?.subCategory.map((data) => {
-                                return <p>{data?.name}</p>;
-                              })}
-                          </div>
-                          <div className='col-4'>
-                            <h6 className='f-w-500'>Brand Name </h6>
-                            {state?.subCategory &&
-                              state?.subCategory.map((data) => {
-                                return <p>{data?.brandName}</p>;
-                              })}
+                          <div className='col-8'>
+                            <div className='table-responsive'>
+                              <table className='table'>
+                                <thead>
+                                  <tr className='table_th'>
+                                    <th className='width100'>Sub Category</th>
+                                    <th className='width100'>SubBrand </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {state?.subCategory &&
+                                    state?.subCategory.map((data) => {
+                                      return (
+                                        <tr>
+                                          <td>{data?.name}</td>
+                                          <td>{data?.brandName}</td>
+                                        </tr>
+                                      );
+                                    })}
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -337,88 +346,7 @@ const VehicleDetail = (props) => {
                     <div className='two_btns_ps'></div>
                   </div>
 
-                  {/* <div className='card-body responsiveCardouter'>
-                    <div className='form-validation'>
-                      <div className='profile-personal-info'>
-                        <div className='row responsiveCardinner mb-2'>
-                          <div className='col-4 '>
-                            <h6 className='f-w-500'>Category </h6>
-                            {state?.userType == 1 ? (
-                              <p>
-                                {state?.category && state?.category.toString()}
-                              </p>
-                            ) : (
-                              state?.intreset &&
-                              state?.intreset.map((data) => {
-                                return <p>{data?.category}</p>;
-                              })
-                            )}
-                          </div>
-                          <div
-                            className={
-                              state?.userType == 1 ? 'col-4' : 'col-6'
-                            }>
-                            <h6 className='f-w-500'>Sub Category </h6>
-                            {state?.intreset &&
-                              state?.intreset.map((data) => {
-                                return <p>{data?.name}</p>;
-                              })}
-                          </div>
-                          {state?.userType == 1 ? (
-                            <div className='col-4'>
-                              <h6 className='f-w-500'>Brand Name </h6>
-                              {state?.intreset &&
-                                state?.intreset.map((data) => {
-                                  return <p>{data?.brandName}</p>;
-                                })}
-                            </div>
-                          ) : (
-                            ''
-                          )}
-                        </div>
-                        <hr />
-
-                        <p>{state.category.toString()}</p>
-                        <div className='row responsiveCardinner py-3'>
-                          <div className='col-4 '>
-                            <h6 className='f-w-500'>State </h6>
-                            {state &&
-                              state?.preferred &&
-                              state?.preferred.map((data) => {
-                                return <p>{data?.state}</p>;
-                              })}
-                           
-                          </div>
-                          <div className='col-8'>
-                            <h6 className='f-w-500'>City </h6>
-                            <p>
-                              {state &&
-                                state?.preferred &&
-                                state?.preferred.map((data) => {
-                                  return data?.city.toString();
-                                })}
-                              
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                   <div className='card-body'>
-                    {/* <div
-                      id='example_filter'
-                      class='dataTables_filter d-flex justify-content-end'>
-                      <input
-                        type='search'
-                        class='w-30 mr-3'
-                        placeholder='search Company'
-                        aria-controls='example'
-                      />{' '}
-                      <a href='#0' class='btn btn-primary rounded d-block'>
-                        Search
-                      </a>
-                    </div>
-                    */}
                     <div className='table-responsive'>
                       <table className='table'>
                         <thead>
