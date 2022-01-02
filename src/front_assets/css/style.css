@@ -480,6 +480,7 @@ img {
 /* End Footer */
 /*--Faq--*/
 .btc_tittle_main_wrapper {
+  height: 100px;
   background: url('../images/title_bg.jpg') 50% 0 repeat-y;
 
   background-size: cover;

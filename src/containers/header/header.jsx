@@ -104,7 +104,7 @@ function Header(props) {
         <Link className='brand-logo' to='/'>
           <Image
             className='logo-abbr'
-            alt='img'
+            alt='logo of distributorhub.in'
             src={'/assets/images/logo (2).png'}
           />
           {/* DistributerHub */}

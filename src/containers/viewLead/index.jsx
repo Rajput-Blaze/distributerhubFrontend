@@ -25,7 +25,7 @@ function ViewProfile(props) {
     props?.location?.data?.subCategory ?? []
   );
 
-  const [intreset, setintreset] = useState(props.location.data?.intreset ?? []);
+  const [companyDistributerName, setcompanyDistributerName] = useState('');
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
   const [render, setrender] = useState('');
 
@@ -41,6 +41,9 @@ function ViewProfile(props) {
         var data = resp?.data?.data;
         setState(resp?.data?.data);
         setrole(resp?.data?.data?.userType);
+        setcompanyDistributerName(
+          resp?.data?.data?.userType == 1 ? 'Company' : 'Distributor'
+        );
       })
       .catch((err) => {
         showNotification('danger', err.message);
@@ -190,7 +193,8 @@ function ViewProfile(props) {
                       <div className='row mb-2 align-items-center'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            Company Logo<span className='pull-right'>:</span>
+                            {companyDistributerName} Logo
+                            <span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7 d-flex align-items-center'>
@@ -228,7 +232,8 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            About Company <span className='pull-right'>:</span>
+                            About {companyDistributerName}{' '}
+                            <span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7'>
@@ -253,7 +258,7 @@ function ViewProfile(props) {
                     <button
                       type='button'
                       onClick={() => {
-                        var newid = role == 1 ? 2 : 5;
+                        var newid = role == 1 ? 2 : 5; //1- company 2--distributer
                         return history.push({
                           pathname: '/updateData/' + id,
                           data: newid,
@@ -377,7 +382,7 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            Turnover of the company
+                            Turnover of the {'Firm'}
                             <span className='pull-right'>:</span>
                           </h6>
                         </div>

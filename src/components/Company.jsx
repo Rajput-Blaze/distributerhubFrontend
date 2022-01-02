@@ -1391,7 +1391,7 @@ function Index(props) {
                           ))}
 
                           <h5 class='mt-5 col-sm-6 mb-2 cus_h1_text'>
-                            Upload Product Image (* Multiple Image )
+                            Upload your Office / Godown / Product Image
                           </h5>
                           <div className='row w-100 '>
                             <div className='col-md-6 col-sm-12 '>

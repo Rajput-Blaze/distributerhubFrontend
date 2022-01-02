@@ -62,6 +62,12 @@ export default class Footer extends Component {
                       </Link>
                     </li>
                     <li>
+                      <Link to='/advantage-and-benefit'>
+                        <i className='fa fa-long-arrow-right' /> &nbsp;
+                        Advantages/Benefit
+                      </Link>
+                    </li>
+                    <li>
                       <Link to='/contact-us'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Contact
                         Us

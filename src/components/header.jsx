@@ -131,6 +131,7 @@ export default class Header extends Component {
                 <span onClick={this.changePage}>
                   <Link to='/' className='navbar-brand'>
                     <img
+                      alt='logo of distributorhub.in'
                       src={
                         this.context.store.pathName === '/'
                           ? `/assets/images/logo (2).png`

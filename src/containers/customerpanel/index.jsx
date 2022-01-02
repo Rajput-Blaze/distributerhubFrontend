@@ -28,12 +28,15 @@ export default function Index(props) {
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
   const [state, setState] = React.useState(false ?? []);
   const [render, setrender] = useState('');
+  const [companyDistributerName, setcompanyDistributerName] = useState('');
   let history = useHistory();
   const [role, setrole] = useState('');
   const [hiddenNumber, sethiddenNumber] = useState(undefined);
   useEffect(() => {
     setrole(localStorage.getItem('userType'));
-
+    setcompanyDistributerName(
+      localStorage.getItem('userType') == 1 ? 'Company' : 'Distributor'
+    );
     var decoded = jwt_decode(window.localStorage.getItem('myData'));
     setid(decoded.userId);
     const ongoing = (page) => {
@@ -117,9 +120,10 @@ export default function Index(props) {
               {state?.status == false ? (
                 <div className='card widget-stat'>
                   <div className='card-header bg-custom-red '>
-                    <h4 className='card-title text-white'>
-                      Account not Verified
-                    </h4>
+                    <h6 className=' text-white'>
+                      Your Account verification is in process, don’t worry it
+                      will get verified soon than your profile will get live
+                    </h6>
                   </div>
                 </div>
               ) : (
@@ -202,7 +206,8 @@ export default function Index(props) {
                       <div className='row mb-2 align-items-center'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            Company Logo<span className='pull-right'>:</span>
+                            {companyDistributerName} Logo
+                            <span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7 d-flex align-items-center'>
@@ -241,7 +246,7 @@ export default function Index(props) {
                         <div className='row mb-2'>
                           <div className='col-sm-3 col-5'>
                             <h6 className='f-w-500'>
-                              About Company{' '}
+                              About {companyDistributerName}
                               <span className='pull-right'>:</span>
                             </h6>
                           </div>
@@ -393,7 +398,7 @@ export default function Index(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            Turnover of the company
+                            Turnover of the {role == 1 ? 'Company' : 'Firm'}
                             <span className='pull-right'>:</span>
                           </h6>
                         </div>

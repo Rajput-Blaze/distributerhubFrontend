@@ -992,7 +992,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Turnover of the company
+                                Turnover of the Firm
                               </label>
 
                               <input
@@ -1002,7 +1002,7 @@ function Index(props) {
                                 name='turnoverOfTheCompany'
                                 value={state.turnoverOfTheCompany}
                                 onChange={handleChange}
-                                placeholder='Enter Turnover of the company ..'
+                                placeholder='Enter Turnover of the firm ..'
                                 ref={register({
                                   required: 'This is required ',
                                 })}
@@ -1120,7 +1120,7 @@ function Index(props) {
                                 name='godownSpace'
                                 value={state.godownSpace}
                                 onChange={handleChange}
-                                placeholder='Enter Godown Space'
+                                placeholder='Enter Godown Space in Sq. Ft'
                                 ref={register({
                                   required: 'This is required ',
                                 })}
@@ -1316,7 +1316,7 @@ function Index(props) {
                                 About US
                               </label> */}
                               <label for='exampleFormControlTextarea1'>
-                                About Company
+                                About Distributor
                               </label>
                               <textarea
                                 class='form-control'
@@ -1589,7 +1589,7 @@ function Index(props) {
                           ))}
 
                           <h5 class='mt-5 mb-2 cus_h1_text'>
-                            Upload Product Image (* Multiple Image )
+                            Upload your Office / Godown / Product Image
                           </h5>
                           <div className='row w-100 '>
                             <div className='col-md-6 col-sm-12 '>

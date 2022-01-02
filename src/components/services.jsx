@@ -62,7 +62,7 @@ const Services = (props) => {
             <a href='/'>Home</a>
           </li>
           <li class='breadcrumb-item active' aria-current='page'>
-            Login
+            Registration
           </li>
         </ol>
       </nav>

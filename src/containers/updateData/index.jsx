@@ -1256,7 +1256,7 @@ function Index(props) {
                                 <label
                                   className='col-form-label'
                                   htmlFor='val-username'>
-                                  Company Name
+                                  Distributor Name
                                 </label>
                                 <input
                                   // required
@@ -1265,7 +1265,7 @@ function Index(props) {
                                   name='companyName'
                                   value={state?.companyName}
                                   onChange={handleChange}
-                                  placeholder='Enter  Company Name..'
+                                  placeholder='Enter  Distributor Name..'
                                   ref={register}
                                 />
                               </div>
@@ -1405,7 +1405,7 @@ function Index(props) {
                                 <label
                                   className='col-form-label'
                                   htmlFor='val-username'>
-                                  Turnover of the company
+                                  Turnover of the Firm
                                 </label>
                                 <input
                                   // required
@@ -1414,7 +1414,7 @@ function Index(props) {
                                   name='turnoverOfTheCompany'
                                   value={state?.turnoverOfTheCompany}
                                   onChange={handleChange}
-                                  placeholder='Enter Turnover of the company..'
+                                  placeholder='Enter Turnover of the firm..'
                                   ref={register}
                                 />
                               </div>
@@ -1495,7 +1495,7 @@ function Index(props) {
                                   name='godownSpace'
                                   value={state.godownSpace}
                                   onChange={handleChange}
-                                  placeholder='Enter Godown Space'
+                                  placeholder='Enter Godown Space in Sq. Ft'
                                   ref={register}
                                 />
                               </div>

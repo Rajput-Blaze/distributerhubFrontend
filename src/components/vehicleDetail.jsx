@@ -158,7 +158,7 @@ const VehicleDetail = (props) => {
                 <div className='btc_tittle_right_cont_wrapper'>
                   <ul>
                     <li>
-                      <Link to='/home'>Home</Link>{' '}
+                      <Link to='/'>Home</Link>{' '}
                       <i className='fa fa-angle-right'></i>
                     </li>
                     <li>
@@ -268,7 +268,7 @@ const VehicleDetail = (props) => {
                 {/* About us */}
                 <div className='card widget-stat'>
                   <div className='card-header bg-custom-blue '>
-                    <h4 className='card-title text-white'>About Company</h4>
+                    <h4 className='card-title text-white'>About Firm</h4>
 
                     <div className='two_btns_ps'></div>
                   </div>
@@ -652,14 +652,14 @@ const VehicleDetail = (props) => {
                             <hr />
                           </>
                         )}
-                        <div className='row mb-2 align-items-center'>
+                        <div className='row mb-2'>
                           <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
-                              Address<span className='pull-right'>:</span>
+                              Address <span className='pull-right'>:</span>
                             </h6>
                           </div>
-                          <div className='col-sm-8 col-7 d-flex align-items-center'>
-                            <span className='file-name-box'>
+                          <div className='col-sm-8 col-7'>
+                            <span>
                               {state && state?.address ? state.address : 'N/A'}
                             </span>
                           </div>
@@ -764,7 +764,8 @@ const VehicleDetail = (props) => {
                         <div className='row mb-2'>
                           <div className='col-sm-4 col-5'>
                             <h6 className='f-w-500'>
-                              Turnover of the company
+                              Turnover of the{' '}
+                              {state?.userType == 1 ? 'company' : 'Firm'}
                               <span className='pull-right'>:</span>
                             </h6>
                           </div>

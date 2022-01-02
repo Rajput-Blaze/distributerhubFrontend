@@ -166,7 +166,7 @@ function Index(props) {
                               <span>company Name</span>
                             </th>
                             <th>
-                              <span>Full Name</span>
+                              <span>Name</span>
                             </th>
                             <th>
                               <span>Contact Number</span>

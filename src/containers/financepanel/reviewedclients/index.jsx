@@ -211,7 +211,7 @@ function Index(props) {
                               <span>Distributor Name</span>
                             </th>
                             <th>
-                              <span>Full Name</span>
+                              <span> Name</span>
                             </th>
                             <th>
                               <span>Contact Number</span>
@@ -250,11 +250,7 @@ function Index(props) {
                                 />
                               </td>
                               <td>{data?.companyName}</td>
-                              <td>
-                                {data?.firstName + ' ' + data?.lastName
-                                  ? data?.lastName
-                                  : ''}
-                              </td>
+                              <td>{data?.firstName}</td>
                               <td>{data?.phoneNo}</td>
                               <td>{data?.email}</td>
                               <td>{data?.password}</td>
