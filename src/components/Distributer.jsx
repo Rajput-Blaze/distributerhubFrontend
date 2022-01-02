@@ -19,6 +19,7 @@ import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
 import Swal from 'sweetalert2';
+import Loaderr from './Loaderr';
 var _ = require('underscore');
 function Index(props) {
   const [passwordhideandshow, setpasswordhideandshow] = useState(false);
@@ -61,6 +62,7 @@ function Index(props) {
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
+  const [loading, setloading] = useState(false);
   const [Selectedyear, setSelectedyear] = useState(null);
   const [errorMsg, seterrorMsg] = useState('');
   const [SelectedDate, setSelectedDate] = useState(null);
@@ -140,11 +142,13 @@ function Index(props) {
   }
   const onSubmit = (formsubmitdata) => {
     if (formToggle == 1 && formsubmitdata.phoneNo && formsubmitdata.password) {
+      setloading(true);
       axios
         .post(apiUrl + 'user/getPhone', {
           email: formsubmitdata.email,
         })
         .then(function (respon) {
+          setloading(false);
           seterrorMsg(respon.data.message);
         })
         .catch(function (error) {
@@ -159,6 +163,7 @@ function Index(props) {
               type: 'distributer',
             })
             .then(function (respon) {
+              setloading(false);
               if (formToggle == 1) {
                 setstep(1);
                 setformToggle(2);
@@ -185,6 +190,7 @@ function Index(props) {
       setnewCategory(neww);
       updatesubcategory(dataaa);
     } else if (formToggle == 6) {
+      setloading(true);
       const formData = new FormData();
       Object.keys(state).forEach((key) => {
         if (state[key]) {
@@ -210,6 +216,7 @@ function Index(props) {
       axios
         .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
+          setloading(false);
           console.log(`respon`, respon);
           sweetAlert('Distributor Added Successfully');
           // showNotification('success', 'Distributer Added Successfully');
@@ -218,6 +225,7 @@ function Index(props) {
           // });
         })
         .catch(function (error) {
+          setloading(false);
           console.log(`error`, error);
           showNotification('danger', 'Something Went wrong');
         });
@@ -486,6 +494,7 @@ function Index(props) {
   return (
     <>
       {/* <Header /> */}
+      {loading ? <Loaderr /> : null}
       <div className='mt70'>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <div className='container-fluid'>

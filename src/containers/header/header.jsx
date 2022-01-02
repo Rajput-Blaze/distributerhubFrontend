@@ -303,11 +303,16 @@ function Header(props) {
                     <Image
                       alt='img'
                       src={
-                        viewData && viewData?.docs[0]?.profilePic
-                          ? apiUrl + viewData.docs[0].profilePic
+                        role && role == 0
+                          ? localStorage.getItem('profileImg')
                           : 'assets/images/17.jpg'
                       }
                     />
+                    {console.log(
+                      localStorage.getItem('profileImg'),
+                      "localStorage.getItem('profileImg')",
+                      role
+                    )}
                     <div className='header-info'>
                       <span className='text-black'>
                         <strong>
@@ -367,7 +372,7 @@ function Header(props) {
                           ? 'Customer Specialist'
                           : viewData?.role == 7
                           ? 'Onboarding Team'
-                          : 'User'}
+                          : 'Admin'}
                       </p>
                     </div>
                   </a>

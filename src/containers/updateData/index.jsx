@@ -54,7 +54,7 @@ function Index(props) {
   const [cityhandle, setcityhandle] = useState([]);
   const [imagename, setimagename] = useState('');
   const [otherImage, setotherImage] = useState('');
-  const [inputfilepan, setinputfilepan] = useState('');
+  const [categoryForDistributer, setcategoryForDistributer] = useState([]);
   const [inputfile, setinputfile] = useState('');
   const [inputfilepic, setinputfilepic] = useState('');
   const [districtData, setdistrictData] = useState([]);
@@ -63,13 +63,13 @@ function Index(props) {
   const [Type, setType] = useState([]);
   const [iscomplete, setiscomplete] = useState(false);
   const [subCategory, setsubCategory] = useState([]);
-  const [formToggle, setformToggle] = useState(props.location.data ?? 4);
+  const [formToggle, setformToggle] = useState(props.location.data ?? 7);
   const [heading, setheading] = useState(
     formToggle == 1
       ? 'Personal Details'
       : formToggle == 2
       ? 'Firm Detail'
-      : formToggle == 3
+      : formToggle == 3 || formToggle == 7
       ? 'Category'
       : formToggle == 4
       ? 'Interest'
@@ -132,15 +132,20 @@ function Index(props) {
       .then((resp) => setstatehandle(resp?.data))
       .catch((err) => console.log(err));
   }
-  function categoryyy(data) {
-    // console.log(data,"data")
+  function categoryyy(data, arrayofCategory) {
     axios
       .get(window.location.origin + '/categories.json')
       .then((resp) => {
         if (approve || data) {
           setsubCategory(resp?.data[approve || data]);
+        } else if (arrayofCategory && formToggle == 7) {
+          var dataaa = [];
+          let rdata = arrayofCategory.map((data) => {
+            dataaa = [...dataaa, ...resp?.data[data]];
+            return dataaa;
+          });
+          setsubCategory(dataaa);
         }
-
         return setcategory(resp?.data);
       })
       .catch((err) => console.log(err));
@@ -154,11 +159,17 @@ function Index(props) {
         data.category = categoryy;
         setInputFields(data?.subCategory);
         setState(data);
+        setcategoryForDistributer(data?.category ?? []);
         setIntrestinputFields(data?.intreset);
         setemail(resp?.data?.data?.email);
         //set subcategory
         setInputFieldscity(data?.preferred);
-        categoryCall(categoryy);
+
+        if (data?.category && formToggle == 7) {
+          categoryCall(false, data?.category);
+        } else {
+          categoryCall(categoryy);
+        }
       })
       .catch((err) => {
         showNotification('danger', err.message);
@@ -198,12 +209,7 @@ function Index(props) {
           console.log([key], formsubmitdata[key]);
         }
       });
-      // formData.append('phoneNo', phoneNo);
-    }
-    // console.log(`phoneNo`, phoneNo);
-    // return; category
-    else if (formToggle == 3) {
-      console.log(state, 'state', inputFields);
+    } else if (formToggle == 3) {
       Array.isArray(state?.category)
         ? formData.append('category', JSON.stringify(state?.category))
         : formData.append('category', JSON.stringify([state?.category]));
@@ -212,15 +218,17 @@ function Index(props) {
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
 
       formData.append('intreset', JSON.stringify(intrestinputFields));
+    } else if (formToggle == 7) {
+      formData.append('subCategory', JSON.stringify(inputFields));
+      formData.append('category', JSON.stringify(categoryForDistributer));
     }
     axios
       .post(apiUrl + 'user/updateuserprofile/', formData)
       .then((resp) => {
-        // console.log(`resp`, resp);
         sweetAlert('Update Successfully');
       })
       .catch((err) => {
-        showNotification('danger', err.response.data.message);
+        showNotification('danger', err?.response?.data?.message);
       });
   };
   const restrictAlpha = (e) => {
@@ -238,7 +246,6 @@ function Index(props) {
   };
   const updatesubcategory = (e) => {
     setsubCategory(category[e]);
-    // console.log(`subCategory`, category[e]);
   };
   const handleStatefunforcity = (data) => {
     setcityhandle(statehandle[data]);
@@ -372,11 +379,6 @@ function Index(props) {
     const newInputFields = intrestinputFields.map((i) => {
       if (id === i.id) {
         if (event.target.name == 'category') {
-          // console.log(
-          //   `id`,
-          //   i.categoryDropDown,
-          //   event.target.name == 'Category'
-          // );
           i[event.target.name] = event.target.value;
           i.categoryDropDown = category[event.target.value];
         }
@@ -407,6 +409,29 @@ function Index(props) {
       1
     );
     setIntrestinputFields(values);
+  };
+  const cusUpdate = (newArray) => {
+    var dataaa = [];
+    let rdata = newArray.map((data) => {
+      dataaa = [...dataaa, ...category[data]];
+      return dataaa;
+    });
+    setsubCategory(dataaa);
+  };
+  const updatesubcategoryIn = (value) => {
+    if (categoryForDistributer.includes(value)) {
+      setcategoryForDistributer((pre) => {
+        var newArray = pre.filter((item) => item !== value);
+        cusUpdate(newArray);
+        return newArray;
+      });
+    } else {
+      setcategoryForDistributer((pre) => {
+        var newArray = [...pre, value];
+        cusUpdate(newArray);
+        return newArray;
+      });
+    }
   };
   if (state)
     return (
@@ -544,58 +569,12 @@ function Index(props) {
                                   name='profileImg'
                                   onChange={fileChange}
                                   placeholder='image'
-                                  ref={register({
-                                    //   required: 'This is required ',
-                                  })}
+                                  // ref={register({
+                                  //   //   required: 'This is required ',
+                                  // })}
                                 />
                               </div>
                             </div>
-                            {/* <div className='col-lg-6'>
-                              <div className='form-group '>
-                                <label
-                                  className='col-form-label'
-                                  htmlFor='val-username'>
-                                  Upload Logo
-                                </label>
-                                <div class='custom-file mb-3'>
-                                  <input
-                                    type='file'
-                                    class='custom-file-input'
-                                    id='customFile'
-                                    accept='image/*'
-                                    onChange={(e) => {
-                                      setotherImage(e.target.files);
-                                      console.log(
-                                        _.size(e.target.files),
-                                        'otherImage'
-                                      );
-                                      let data = '';
-                                      Object.keys(e.target.files).forEach(
-                                        (key) => {
-                                          if (data == '') {
-                                            data =
-                                              data + e.target.files[key].name;
-                                          } else {
-                                            data =
-                                              data +
-                                              ',' +
-                                              e.target.files[key].name;
-                                          }
-                                          setimagename(data);
-                                        }
-                                      );
-                                    }}
-                                    name='otherImage'
-                                    multiple
-                                  />
-                                  <label
-                                    class='custom-file-label'
-                                    for='customFile'>
-                                    {imagename ? imagename : 'Choose File'}
-                                  </label>
-                                </div>
-                              </div>
-                            </div> */}
 
                             <div className='col-lg-12'>
                               <div className='contect_form1'>
@@ -603,6 +582,7 @@ function Index(props) {
                                   rows='4'
                                   placeholder='Message *'
                                   name='aboutCompany'
+                                  maxLength='10'
                                   defaultValue={state?.aboutCompany}
                                   ref={register}
                                   maxLength='500'></textarea>
@@ -984,10 +964,6 @@ function Index(props) {
                                             // required: 'This is required ',
                                           })}
                                         />
-                                        {console.log(
-                                          state?.category.includes(data),
-                                          state?.category
-                                        )}
 
                                         {data}
                                       </div>
@@ -1026,15 +1002,13 @@ function Index(props) {
                                         handleChange(event);
                                       }}
                                       ref={register}>
-                                      {/* {subCategory.map((data) => {
-                                  <option value={data}>{data}</option>;
-                                })} */}
                                       <option value=''>
                                         Select Sub Category
                                       </option>
-                                      {subCategory.map((data) => (
-                                        <option value={data}>{data}</option>
-                                      ))}
+                                      {Array.isArray(subCategory) &&
+                                        subCategory.map((data) => (
+                                          <option value={data}>{data}</option>
+                                        ))}
                                     </select>
                                   </div>
                                   <div className='col-md-4 col-sm-6 bb'>
@@ -1080,65 +1054,6 @@ function Index(props) {
                                 </div>
                               ))}
 
-                              {/* <h5 class='mt-5 col-sm-6 mb-2 cus_h1_text'>
-                                Upload Product Image (* Multiple Image )
-                              </h5> */}
-                              {/* <div className='row w-100 '>
-                                <div className='col-md-6 col-sm-12 '>
-                                  <div class='form-group '>
-                                    <label
-                                      class='col-form-label cus_d_none_sm'
-                                      for='val-username'>
-                                      Select Multiple Image
-                                    </label>
-
-                                    <div class='custom-file mb-3'>
-                                      <input
-                                        type='file'
-                                        class='custom-file-input'
-                                        id='customFile'
-                                        accept='image/*'
-                                        onChange={(e) => {
-                                          setotherImage(e.target.files);
-                                          console.log(
-                                            _.size(e.target.files),
-                                            'otherImage'
-                                          );
-                                          let data = '';
-                                          Object.keys(e.target.files).forEach(
-                                            (key) => {
-                                              if (data == '') {
-                                                data =
-                                                  data +
-                                                  e.target.files[key].name;
-                                              } else {
-                                                data =
-                                                  data +
-                                                  ',' +
-                                                  e.target.files[key].name;
-                                              }
-                                              setimagename(data);
-                                            }
-                                          );
-                                        }}
-                                        name='otherImage'
-                                        multiple
-                                      />
-                                      <label
-                                        class='custom-file-label'
-                                        for='customFile'>
-                                        {imagename ? imagename : 'Choose File'}
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div> */}
-                              {/* <div className='col-4 bb'>
-                              <button type='button' className='btn btn-primary'>
-                                Add
-                              </button>
-                            </div> */}
-                              {/* </div> */}
-
                               <div className='col-lg-12 d-flex justify-content-end'>
                                 <button
                                   type='button'
@@ -1180,9 +1095,6 @@ function Index(props) {
                                         // handleChange(event);
                                       }}
                                       ref={register}>
-                                      {/* {subCategory.map((data) => {
-                                  <option value={data}>{data}</option>;
-                                })} */}
                                       <option value=''>Select Category</option>
                                       {/* {category.map((data) => (
                                     <option value={data}>{data}</option>
@@ -1774,15 +1686,13 @@ function Index(props) {
                                         handleChange(event);
                                       }}
                                       ref={register}>
-                                      {/* {subCategory.map((data) => {
-                                  <option value={data}>{data}</option>;
-                                })} */}
                                       <option value=''>
                                         Select Sub Category
                                       </option>
-                                      {subCategory.map((data) => (
-                                        <option value={data}>{data}</option>
-                                      ))}
+                                      {Array.isArray(subCategory) &&
+                                        subCategory.map((data) => (
+                                          <option value={data}>{data}</option>
+                                        ))}
                                     </select>
                                   </div>
                                   <div className='col-md-4 col-sm-6 bb'>
@@ -1916,6 +1826,147 @@ function Index(props) {
                                 </button>
                               </div>
 
+                              <p className='successMag'>{successMsg}</p>
+                            </div>
+                          </>
+                        )}
+                        {formToggle == 7 && (
+                          <>
+                            <div className='row'>
+                              <div className='col-lg-6'>
+                                <div className='form-group '>
+                                  <label
+                                    className='col-form-label'
+                                    htmlFor='val-username'>
+                                    Select Category new
+                                    <span className='text-danger'>*</span>
+                                  </label>
+                                  <div className='py-4 px-4'>
+                                    {Object.keys(category).map((data) => (
+                                      <div className='w-110 my-3 d-flex align-items-center mr-3'>
+                                        <input
+                                          type='checkbox'
+                                          className='w-auto  mr-3 input_cus_radio'
+                                          id='val-username'
+                                          name='category'
+                                          checked={categoryForDistributer.includes(
+                                            data
+                                          )}
+                                          // value={state?.category}
+                                          onChange={(e) => {
+                                            // handleChange(e);
+                                            //
+                                            updatesubcategoryIn(e.target.value);
+                                          }}
+                                          value={data}
+                                          ref={register({
+                                            // required: 'This is required ',
+                                          })}
+                                        />
+
+                                        {data}
+                                      </div>
+                                    ))}
+                                    <ErrorMessage
+                                      errors={errors}
+                                      name='category'
+                                      render={({ message }) => (
+                                        <p className='error'>{message}</p>
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className='row'>
+                              {inputFields.map((inputField) => (
+                                <div
+                                  key={inputField.id}
+                                  className='row w-100 bb'>
+                                  <div className='col-2 cus_d_none_sm bb'>
+                                    Sub Category{' '}
+                                    <span className='text-danger'>*</span>
+                                  </div>
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    <select
+                                      className='form-control'
+                                      id='exampleFormControlSelect1'
+                                      name='name'
+                                      // required
+                                      // value={state?.subCategory}
+                                      value={inputField?.name}
+                                      // onChange={handleChange}
+                                      onChange={(event) => {
+                                        handleChangeInput(inputField.id, event);
+                                        handleChange(event);
+                                      }}
+                                      ref={register}>
+                                      <option value=''>
+                                        Select Sub Category
+                                      </option>
+                                      {Array.isArray(subCategory) &&
+                                        subCategory.map((data) => (
+                                          <option value={data}>{data}</option>
+                                        ))}
+                                    </select>
+                                  </div>
+                                  <div className='col-md-4 col-sm-6 bb'>
+                                    <input
+                                      type='text'
+                                      className='form-control'
+                                      id='val-username'
+                                      name='brandName'
+                                      onChange={(event) => {
+                                        handleChangeInput(inputField.id, event);
+                                        handleChange(event);
+                                      }}
+                                      value={inputField?.brandName}
+                                      // onChange={handleChange}
+                                      placeholder='Add more Brand'
+                                      // required
+                                      ref={register({
+                                        //   required: 'This is required ',
+                                      })}
+                                    />
+                                  </div>
+                                  <div className='col-md-2 col-sm-6 bb'>
+                                    {inputFields.length == 1 ? (
+                                      ''
+                                    ) : (
+                                      <span
+                                        class='badge light badge-danger btn_cus'
+                                        onClick={() =>
+                                          inputFields.length == 1
+                                            ? ''
+                                            : handleRemoveFields(inputField.id)
+                                        }>
+                                        Delete
+                                      </span>
+                                    )}
+
+                                    <span
+                                      class='badge light badge-success btn_cus ml-1'
+                                      onClick={handleAddFields}>
+                                      Add
+                                    </span>
+                                  </div>
+                                </div>
+                              ))}
+
+                              <div className='col-lg-12 d-flex justify-content-end'>
+                                <button
+                                  type='button'
+                                  className='btn btn-primary mr-2'
+                                  onClick={back}>
+                                  Back
+                                </button>
+
+                                <button
+                                  type='submit'
+                                  className='btn btn-primary'>
+                                  Save
+                                </button>
+                              </div>
                               <p className='successMag'>{successMsg}</p>
                             </div>
                           </>

@@ -131,6 +131,26 @@ export default class ContactUs extends Component {
     return (
       <>
         <Helmet>
+          <script type='application/ld+json'>
+            {JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: 'https://distributorhub.in/',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'contact-us',
+                  item: 'https://distributorhub.in/contact-us',
+                },
+              ],
+            })}
+          </script>
           <meta charSet='utf-8' />
           <title>
             Customer Care-contact-us / Feedback Form – Distributorhub.in

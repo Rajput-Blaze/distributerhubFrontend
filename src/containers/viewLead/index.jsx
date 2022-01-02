@@ -546,11 +546,18 @@ function ViewProfile(props) {
                     <button
                       type='button'
                       onClick={() => {
-                        history.push({
+                        var newid = role == 2 ? 7 : 3; //check role if distributer(role =2) then 7 update form
+                        return history.push({
                           pathname: '/updateData/' + id,
-                          data: 3,
+                          data: newid,
                         });
                       }}
+                      // onClick={() => {
+                      //   history.push({
+                      //     pathname: '/updateData/' + id,
+                      //     data: 3,
+                      //   });
+                      // }}
                       className='btn btn-light ml-2'>
                       <i
                         className='fa fa-pencil-square-o pr-1'
@@ -707,7 +714,7 @@ function ViewProfile(props) {
                       <i
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
-                      <span>Update</span>
+                      <span>Add</span>
                     </button>
                   </div>
                 </div>

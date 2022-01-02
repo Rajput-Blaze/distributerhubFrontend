@@ -13,7 +13,7 @@ export default class TermsCondition extends Component {
 
   render() {
     return (
-      <div className='page-wrapper'>
+      <div className='page-wrapper  mt-5 pt-3'>
         <div className='section-padding content-based-page'>
           <div className='container'>
             <p

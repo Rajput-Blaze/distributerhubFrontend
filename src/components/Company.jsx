@@ -160,7 +160,7 @@ function Index(props) {
       return;
     } else if (formToggle == 6) {
       // console.log(`state`, state);
-
+      setloading(true);
       const formData = new FormData();
       Object.keys(state).forEach((key) => {
         if (state[key]) {

@@ -42,6 +42,7 @@ export default function Index(props) {
         .then((resp) => {
           var data = resp?.data?.data;
           setState(resp?.data?.data);
+          localStorage.setItem('profileImg', resp?.data?.data?.profileImg);
           setsubCategory(resp?.data?.data?.subCategory);
           setintreset(resp?.data?.data?.intreset);
           setloction(resp?.data?.data?.preferred);
@@ -76,7 +77,7 @@ export default function Index(props) {
       console.log(`---------fire api undefined`, hiddenNumber?.value);
     }
   }, [hiddenNumber?.value]);
-  // console.log(`role`, role);
+
   const options = {
     responsive: {
       0: {
@@ -711,7 +712,7 @@ export default function Index(props) {
                       <i
                         className='fa fa-pencil-square-o pr-1'
                         aria-hidden='true'></i>
-                      <span>Update</span>
+                      <span>Add</span>
                     </button>
                   </div>
                 </div>

@@ -61,6 +61,26 @@ export default function Login(props) {
   return (
     <>
       <Helmet>
+        <script type='application/ld+json'>
+          {JSON.stringify({
+            '@context': 'https://schema.org/',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://distributorhub.in/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'login',
+                item: 'https://distributorhub.in/login',
+              },
+            ],
+          })}
+        </script>
         <meta charSet='utf-8' />
         <title>
           Find Best Business & channel Partner / Distributorhub.in-Login Here

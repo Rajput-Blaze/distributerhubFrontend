@@ -1,9 +1,10 @@
 const hostname = window.location.host;
 const api = {
-  // localhost: 'http://192.168.43.55:3001/',
+  // localhost: 'https://distributerbackend-v2.herokuapp.com/',
 
   localhost: 'http://localhost:3001/',
-  development: 'https://distributerhubackend.herokuapp.com/',
+  // development: 'https://distributerhubackend.herokuapp.com/',
+  development: 'https://distributerbackend-v2.herokuapp.com/',
 };
 
 let apiBase = '';

@@ -39,6 +39,26 @@ export default class About extends Component {
     return (
       <>
         <Helmet>
+          <script type='application/ld+json'>
+            {JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: 'https://distributorhub.in/',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Advantage/benefit',
+                  item: 'https://distributorhub.in/advantage-and-benefit',
+                },
+              ],
+            })}
+          </script>
           <meta charSet='utf-8' />
           <title>
             Best Business Opportunities and Distributorship Opportunities in
@@ -53,7 +73,7 @@ export default class About extends Component {
             content='distributorship opportunities, best business opportunities, channel partner, distributor, company, organization, world best business opportunity, new business opportunities'></meta>
           <link
             rel='canonical'
-            href='https://distributorhub.in/http://localhost:3000/advantage-and-benefit'
+            href='https://distributorhub.in/advantage-and-benefit'
           />
         </Helmet>
         <div className='page-wrapper mt-5'>
