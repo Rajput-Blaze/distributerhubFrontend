@@ -41363,7 +41363,7 @@ h1_tag_cum {
     height: 100vh;
     background: #ffffff6e;
     padding-top: 54vh;
-    z-index: 9999999999999999999999999;
+    z-index: 9999999;
     display: flex;
     align-content: center;
     justify-content: center;

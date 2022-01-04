@@ -845,7 +845,8 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Contact person
+                                Contact person{' '}
+                                <span className='text-danger'>*</span>
                               </label>
 
                               <input
