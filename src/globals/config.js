@@ -2,8 +2,8 @@ const hostname = window.location.host;
 const api = {
   // localhost: 'https://distributerbackend-v2.herokuapp.com/',
 
-  // localhost: 'http://localhost:3001/',
-  localhost: 'https://distributerhubackend.herokuapp.com/',
+  localhost: 'http://localhost:3001/',
+  // localhost: 'https://distributerhubackend.herokuapp.com/',
   development: 'https://distributerhubackend.herokuapp.com/',
 };
 

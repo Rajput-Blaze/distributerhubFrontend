@@ -191,12 +191,12 @@ export default class Header extends Component {
                       </Link>
                     </li>
                     <li className='nav-item' onClick={this.changePage}>
-                      <NavLink className='nav-link' to='/about-us'>
+                      {/* <NavLink className='nav-link' to='/about-us'>
                         About Us
-                      </NavLink>
-                      {/* <a className='nav-link' href='/about'>
+                      </NavLink> */}
+                      <a className='nav-link' href='/about'>
                         About Us
-                      </a> */}
+                      </a>
                     </li>
                     <li className='nav-item' onClick={this.changePage}>
                       <NavLink className='nav-link' to='/advantage-and-benefit'>

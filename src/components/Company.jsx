@@ -57,7 +57,7 @@ function Index(props) {
   const [inputfilepic, setinputfilepic] = useState('');
   const [districtData, setdistrictData] = useState([]);
   const [blockData, setblockData] = useState([]);
-  const [id, setid] = useState('');
+  const [checkstatus, setcheckstatus] = useState(true);
   const [Vechicle, setVechicle] = useState([]);
   const [formToggle, setformToggle] = useState(1);
   const [vehicle, setvehicle] = useState(props?.location?.data);
@@ -78,6 +78,17 @@ function Index(props) {
     stateee();
     categoryy();
   }, []);
+  useEffect(() => {
+    const unloadCallback = (event) => {
+      event.preventDefault();
+      event.returnValue = '';
+      return '';
+    };
+
+    window.addEventListener('beforeunload', unloadCallback);
+    return () => window.removeEventListener('beforeunload', unloadCallback);
+  }, []);
+
   const sweetAlert = (msg) => {
     history.push('/company-registration-successful');
     return;
@@ -113,9 +124,12 @@ function Index(props) {
   }
 
   const onSubmit = (formsubmitdata) => {
-    console.log(`formsubmitdata`, formToggle == 2 && Selectedyear == null);
-
-    if (formToggle == 1 && formsubmitdata.email && formsubmitdata.password) {
+    if (
+      formToggle == 1 &&
+      formsubmitdata.email &&
+      formsubmitdata.password &&
+      checkstatus
+    ) {
       setloading(true);
       axios
         .post(apiUrl + 'user/getPhone', {
@@ -142,6 +156,7 @@ function Index(props) {
               userType: 1,
             })
             .then(function (respon) {
+              setcheckstatus(false);
               setloading(false);
               if (formToggle == 1) {
                 setstep(1);
@@ -155,6 +170,12 @@ function Index(props) {
               console.log(`error`, error);
             });
         });
+    } else if (formToggle == 1 && !checkstatus) {
+      if (formToggle == 1) {
+        setstep(1);
+        setformToggle(2);
+        setheading('Company Details');
+      }
     } else if (formToggle == 2 && Selectedyear == null) {
       setSelectedyearerror('This is required ');
       return;
@@ -763,9 +784,10 @@ function Index(props) {
                                 }
                                 className='form-control'
                                 // onKeyPress={(e) => restrictAlpha(e)}
+                                onChange={handleChange}
                                 id='val-username'
                                 name='confirm_password'
-                                // value={state?.password}
+                                value={state?.confirm_password}
                                 // onChange={handleChange}
                                 placeholder='Enter confirm Password ..'
                                 ref={register({
@@ -938,7 +960,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Alternative email
+                                Email id
                               </label>
 
                               <input
@@ -948,7 +970,7 @@ function Index(props) {
                                 name='alternativeEmail'
                                 value={state?.alternativeEmail}
                                 onChange={handleChange}
-                                placeholder='Enter Alternative email..'
+                                placeholder='Enter Email id'
                                 ref={register({
                                   // required: 'This is required ',
                                 })}
@@ -1090,10 +1112,15 @@ function Index(props) {
                                 name='pincode'
                                 maxLength={6}
                                 onKeyUp={(e) => checkpincode(e)}
-                                defaultValue={state?.pincode}
+                                value={state?.pincode}
                                 placeholder='Enter pin code..'
                                 ref={register({
                                   required: 'This is required ',
+                                  pattern: {
+                                    value:
+                                      /(^[0-9][0-9][0-9][0-9][0-9][0-9]$)/g,
+                                    message: 'Enter Valid Pincode ',
+                                  },
                                 })}
                               />
 
@@ -1145,7 +1172,7 @@ function Index(props) {
                                 className='form-control'
                                 id='exampleFormControlSelect1'
                                 name='state'
-                                // value={state?.state}
+                                value={state?.state}
                                 // onChange={handleChange}
                                 onChange={(e) => {
                                   handleChange(e);
@@ -1174,14 +1201,13 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                City/Village{' '}
-                                <span className='text-danger'>*</span>
+                                City <span className='text-danger'>*</span>
                               </label>
                               <select
                                 className='form-control'
                                 id='exampleFormControlSelect1'
                                 name='cityVillage'
-                                // value={state?.state}
+                                value={state?.cityVillage}
                                 onChange={handleChange}
                                 // onChange={(e) => {
                                 //   handleChange(e);
@@ -1236,14 +1262,14 @@ function Index(props) {
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleSeconsRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
                             <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
@@ -1295,7 +1321,7 @@ function Index(props) {
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
@@ -1304,7 +1330,7 @@ function Index(props) {
                                   : handleThirdRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
                             <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
@@ -1454,14 +1480,14 @@ function Index(props) {
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleFourthRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
 
                             <button type='submit' className='btn btn-primary'>
                               next
@@ -1625,14 +1651,14 @@ function Index(props) {
                           ))}
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleFivethRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
 
                             <button type='submit' className='btn btn-primary'>
                               next
@@ -1673,19 +1699,20 @@ function Index(props) {
                               name='aboutCompany'
                               onChange={handleChange}
                               ref={register}
+                              maxLength='2000'
                               id='exampleFormControlTextarea1'
-                              rows='3'></textarea>{' '}
+                              rows='5'></textarea>{' '}
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handlesixthRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
 
                             <button type='submit' className='btn btn-primary'>
                               Save

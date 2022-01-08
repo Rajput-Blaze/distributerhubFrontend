@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
 import DatePicker from 'react-datepicker';
-
 import showNotification from '../../services/notificationService';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -685,7 +684,7 @@ function Index(props) {
                                 <label
                                   className='col-form-label'
                                   htmlFor='val-username'>
-                                  Alternative email
+                                  Email id
                                 </label>
                                 <input
                                   // required
@@ -694,7 +693,7 @@ function Index(props) {
                                   name='alternativeEmail'
                                   value={state?.alternativeEmail}
                                   onChange={handleChange}
-                                  placeholder='Enter  Alternative email..'
+                                  placeholder='Enter Email id'
                                   ref={register}
                                 />
                               </div>
@@ -810,7 +809,13 @@ function Index(props) {
                                   onKeyUp={(e) => checkpincode(e)}
                                   defaultValue={state?.pincode}
                                   placeholder='Enter pin code..'
-                                  ref={register}
+                                  ref={register({
+                                    pattern: {
+                                      value:
+                                        /(^[0-9][0-9][0-9][0-9][0-9][0-9]$)/g,
+                                      message: 'Enter Valid Pincode ',
+                                    },
+                                  })}
                                 />
 
                                 <ErrorMessage
@@ -1332,7 +1337,7 @@ function Index(props) {
                                 <label
                                   className='col-form-label'
                                   htmlFor='val-username'>
-                                  Alternative email
+                                  Email id
                                 </label>
                                 <input
                                   // required
@@ -1341,7 +1346,7 @@ function Index(props) {
                                   name='alternativeEmail'
                                   value={state?.alternativeEmail}
                                   onChange={handleChange}
-                                  placeholder='Enter  Alternative email..'
+                                  placeholder='Enter Email id'
                                   ref={register}
                                 />
                               </div>
@@ -1538,7 +1543,13 @@ function Index(props) {
                                   onKeyUp={(e) => checkpincode(e)}
                                   defaultValue={state?.pincode}
                                   placeholder='Enter pin code..'
-                                  ref={register}
+                                  ref={register({
+                                    pattern: {
+                                      value:
+                                        /(^[0-9][0-9][0-9][0-9][0-9][0-9]$)/g,
+                                      message: 'Enter Valid Pincode ',
+                                    },
+                                  })}
                                 />
 
                                 <ErrorMessage

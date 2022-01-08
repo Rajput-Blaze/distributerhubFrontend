@@ -155,13 +155,13 @@ function SerchField(props) {
     console.log('fgff', data);
     if (state?.type == 'company') {
       history.push({
-        pathname: '/company-detail/' + data?.companyName + '/' + data._id,
+        pathname: '/company-detail/' + data._id,
         data,
         type: state?.type,
       });
     } else {
       history.push({
-        pathname: '/Distributor-detail/' + data?.companyName + '/' + data._id,
+        pathname: '/Distributor-detail/' + data._id,
         data,
         type: state?.type,
       });

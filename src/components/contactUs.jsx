@@ -336,12 +336,12 @@ export default class ContactUs extends Component {
                 <div className='col-xl-10 offset-xl-1 col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                   <div className='contect_form1'>
                     <textarea
-                      rows='4'
+                      rows='6'
                       placeholder='Message *'
                       name='message'
                       value={this.state.formdata.message}
                       onChange={this.handleChange}
-                      maxLength='100'></textarea>
+                      maxLength='200'></textarea>
                     {this.state.submitted &&
                       this.state.formdata.message === '' && (
                         <span className='text-danger'> This is required</span>

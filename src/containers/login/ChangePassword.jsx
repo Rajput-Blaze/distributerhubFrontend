@@ -84,7 +84,7 @@ export default function ChangePassword() {
     <>
       {loading ? <Loaderr /> : null}
 
-      <div className='content'>
+      <div className='content mt-5 pt-3'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6 hide_in_sm'>
@@ -98,11 +98,10 @@ export default function ChangePassword() {
               <div className='row justify-content-center'>
                 <div className='col-md-8 mt-4'>
                   <div className='mb-4'>
-                    <h5 className='text-center'>Change Password</h5>
-                    <p className='mb-4 hide_in_sm'>
-                      Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
-                      consectetur adipisicing.
-                    </p>
+                    <h3 className='text-center h1_tag'> Reset Your Password</h3>
+                    {/* <p className='mb-4 hide_in_sm'>
+                     
+                    </p> */}
                   </div>
                   <form action='#' method='post'>
                     <div className='form-group first'>

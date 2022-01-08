@@ -730,7 +730,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                confirm Password
+                                Confirm Password
                                 <span className='text-danger'>*</span>
                               </label>
                               <input
@@ -743,7 +743,7 @@ function Index(props) {
                                 name='confirm_password'
                                 // value={state?.password}
                                 // onChange={handleChange}
-                                placeholder='Enter confirm Password ..'
+                                placeholder='Enter Confirm Password ..'
                                 ref={register({
                                   validate: (value) =>
                                     value === state.password ||
@@ -912,7 +912,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                Alternative email{' '}
+                                Email id
                                 <span className='text-danger'>*</span>
                               </label>
 
@@ -923,7 +923,7 @@ function Index(props) {
                                 name='alternativeEmail'
                                 value={state.alternativeEmail}
                                 onChange={handleChange}
-                                placeholder='Enter Alternative email..'
+                                placeholder='Enter Email id'
                                 ref={register({
                                   required: 'This is required ',
                                 })}
@@ -1185,6 +1185,11 @@ function Index(props) {
                                 placeholder='Enter pin code..'
                                 ref={register({
                                   required: 'This is required ',
+                                  pattern: {
+                                    value:
+                                      /(^[0-9][0-9][0-9][0-9][0-9][0-9]$)/g,
+                                    message: 'Enter Valid Pincode ',
+                                  },
                                 })}
                               />
 
@@ -1258,8 +1263,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                City/Village{' '}
-                                <span className='text-danger'>*</span>
+                                City <span className='text-danger'>*</span>
                               </label>
                               <select
                                 className='form-control'
@@ -1333,12 +1337,13 @@ function Index(props) {
                               <textarea
                                 class='form-control'
                                 name='aboutCompany'
+                                maxLength='1000'
                                 onChange={handleChange}
                                 ref={register({
                                   required: 'This is required ',
                                 })}
                                 id='exampleFormControlTextarea1'
-                                rows='3'></textarea>
+                                rows='5'></textarea>
                               <ErrorMessage
                                 errors={errors}
                                 name='aboutCompany'

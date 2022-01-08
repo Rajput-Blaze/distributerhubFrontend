@@ -364,7 +364,7 @@ export default function Index(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            Alternative email{' '}
+                            Email id
                             <span className='pull-right'>:</span>
                           </h6>
                         </div>

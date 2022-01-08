@@ -159,12 +159,12 @@ const routes = [
   },
   {
     // exact: true,distributer
-    path: '/company-detail/:company/:id',
+    path: '/company-detail/:id',
     Component: VehicleDetail,
   },
   {
     // exact: true,distributer
-    path: '/Distributor-detail/:company/:id',
+    path: '/Distributor-detail/:id',
     Component: VehicleDetail,
   },
   {

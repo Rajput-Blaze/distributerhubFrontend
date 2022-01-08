@@ -13,8 +13,8 @@ import axios from 'axios';
 import moment from 'moment';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 function Index(props) {
   if (!props.location?.data) {
     props.history.push({
@@ -26,7 +26,7 @@ function Index(props) {
   const [successMs, setsuccessMs] = useState('');
   const [successMsg, setsuccessMsg] = useState('');
   const [post, setpost] = useState([]);
-  const [exchange, setexchange] = useState(false)
+  const [exchange, setexchange] = useState(false);
   const [viewData, setViewData] = useState();
   const { register, errors, handleSubmit } = useForm();
   const [inputfilead, setinputfilead] = useState('');
@@ -80,15 +80,14 @@ function Index(props) {
     axios
       .post(apiUrl + 'user/verifyNo', pramsdata)
       .then((response) => {
-       
         let data = response?.data?.data;
         data.commercialUse = response?.data?.data?.vehicle?.commercialUse;
         data.vehicleToExchanghe =
           response?.data?.data?.vehicle?.vehicleToExchanghe;
         data.chequeBook = response?.data?.data?.docs?.chequeBook;
-        if(data?.vehicleToExchanghe == "no"){
-          setexchange(true)
-         }
+        if (data?.vehicleToExchanghe == 'no') {
+          setexchange(true);
+        }
         setState(data); //
         // if (data?.district) {
         //   gitBlock(data?.district);
@@ -108,9 +107,9 @@ function Index(props) {
     formsubmitdata.bankDoc = state?.bankDoc;
     formsubmitdata.panDoc = state?.panDoc;
     formsubmitdata.dateOfBirth = SelectedDate
-    ? moment(SelectedDate).format("l")
-    : "";
-   
+      ? moment(SelectedDate).format('l')
+      : '';
+
     const formData = new FormData();
     Object.keys(formsubmitdata).forEach((key) => {
       if (formsubmitdata[key]) {
@@ -146,12 +145,12 @@ function Index(props) {
         setformToggle(4);
         setheading('Buying Details');
       } else if (formToggle == 4) {
-        if(exchange==false){
+        if (exchange == false) {
           setformToggle(5);
           setheading('Exchange Vehicle');
-        }else{
+        } else {
           setformToggle(6);
-        setheading('Document');
+          setheading('Document');
         }
       } else if (formToggle == 5) {
         setformToggle(6);
@@ -287,13 +286,12 @@ function Index(props) {
       setpost([]);
     }
   };
-  const handleExchange=(e)=>{
-    if(e?.target?.value=="no"){
-      setexchange(true)
+  const handleExchange = (e) => {
+    if (e?.target?.value == 'no') {
+      setexchange(true);
     }
+  };
 
-  }
-  
   return (
     <>
       {/* <Header /> */}
@@ -437,28 +435,27 @@ function Index(props) {
                             </div>
                           </div>
 
-                          <div className="col-sm-6">
-                            <div className="form-group ">
+                          <div className='col-sm-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                htmlFor="val-username"
-                              >
+                                className='col-form-label'
+                                htmlFor='val-username'>
                                 Date of Birth
                               </label>
                               <DatePicker
-                                placeholderText="Select Date of Birth"
+                                placeholderText='Select Date of Birth'
                                 // onSelect={this.handleDateSelect.bind(this)}
                                 selected={SelectedDate}
-                                className="form-control"
+                                className='form-control'
                                 onChange={(date) => setSelectedDate(date)}
-                                dateFormat="dd/MM/yyyy"
-                                maxDate={moment().subtract(18, "years")._d}
+                                dateFormat='dd/MM/yyyy'
+                                maxDate={moment().subtract(18, 'years')._d}
                                 // minDate={moment().subtract(1, 'years')._d}
                                 // isClearable
                                 peekNextMonth
                                 showMonthDropdown
                                 showYearDropdown
-                                dropdownMode="select"
+                                dropdownMode='select'
                               />
                             </div>
                           </div>
@@ -689,9 +686,10 @@ function Index(props) {
                                     id='val-username'
                                     value='no'
                                     name='vehicleToExchanghe'
-                                    onChange={e=>{handleChange(e);
-                                      handleExchange(e)
-                                      }}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                      handleExchange(e);
+                                    }}
                                     checked={
                                       state?.vehicleToExchanghe == 'no'
                                         ? true
@@ -740,7 +738,13 @@ function Index(props) {
                                 onKeyUp={(e) => checkpincode(e)}
                                 defaultValue={state.pincode}
                                 placeholder='Enter pin code..'
-                                ref={register()}
+                                ref={register({
+                                  pattern: {
+                                    value:
+                                      /(^[0-9][0-9][0-9][0-9][0-9][0-9]$)/g,
+                                    message: 'Enter Valid Pincode ',
+                                  },
+                                })}
                               />
 
                               <ErrorMessage
@@ -924,11 +928,18 @@ function Index(props) {
                                   state?.financeSchemes ||
                                   state?.vehicle?.financeSchemes
                                 }
-                                name='financeSchemes'>  
-                                <option value="Cash">Cash</option>
-                                <option value="Bank Finance">Bank Finance</option>
-                                <option value="Normal Finance">Normal Finance</option>
-                                <option value=" Low Interest Finance"> Low Interest Finance</option>
+                                name='financeSchemes'>
+                                <option value='Cash'>Cash</option>
+                                <option value='Bank Finance'>
+                                  Bank Finance
+                                </option>
+                                <option value='Normal Finance'>
+                                  Normal Finance
+                                </option>
+                                <option value=' Low Interest Finance'>
+                                  {' '}
+                                  Low Interest Finance
+                                </option>
                               </select>
                             </div>
                           </Col>
@@ -949,8 +960,7 @@ function Index(props) {
                                   state?.vehicle?.buyingTimeline
                                 }
                                 ref={register}>
-                               
-                               <option value='5 Days'>5 Days</option>
+                                <option value='5 Days'>5 Days</option>
                                 <option value='10 Days'>10 Days</option>
                                 <option value='15 Days'>15 Days</option>
 
@@ -1212,8 +1222,9 @@ function Index(props) {
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
-                                exchange==true?handleFivethRequest(e):
-                                 handlesixthRequest(e); 
+                                exchange == true
+                                  ? handleFivethRequest(e)
+                                  : handlesixthRequest(e);
                               }}>
                               Previous
                             </button>
