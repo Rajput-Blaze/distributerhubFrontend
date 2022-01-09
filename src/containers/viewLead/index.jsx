@@ -218,11 +218,13 @@ function ViewProfile(props) {
                           <span>
                             <Image
                               className='doc_image'
-                              alt='img'
+                              alt='logo'
                               src={
-                                state && state.profileImg
+                                state &&
+                                state?.profileImg &&
+                                state?.profileImg != 'undefined'
                                   ? state.profileImg
-                                  : 'assets/images/17.jpg'
+                                  : '/assets/images/dummylogo.jpeg'
                               }
                             />
                           </span>
@@ -271,7 +273,9 @@ function ViewProfile(props) {
               {/* firm Details */}
               <div className='card widget-stat'>
                 <div className='card-header bg-custom-blue '>
-                  <h4 className='card-title text-white'>firm Details</h4>
+                  <h4 className='card-title text-white'>
+                    {companyDistributerName} Details
+                  </h4>
 
                   <div className='two_btns_ps'>
                     <button

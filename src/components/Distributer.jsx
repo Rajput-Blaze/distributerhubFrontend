@@ -1278,7 +1278,7 @@ function Index(props) {
                                 ref={register({
                                   required: 'This is required ',
                                 })}>
-                                <option value=''>Select State </option>
+                                <option value=''>Select city </option>
                                 {cityhandle.map((data) => (
                                   <option value={data}>{data}</option>
                                 ))}

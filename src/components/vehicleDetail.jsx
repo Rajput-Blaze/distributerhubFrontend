@@ -181,7 +181,14 @@ const VehicleDetail = (props) => {
                 {console.log(state?.profileImg, 'state?.profileImg')}
                 <img
                   // src={getCarImageUrl(state?.profileImg)} // https://tiimg.tistatic.com/gd/co_logos/MR-MART-v1-149910.jpeg
-                  src={state?.profileImg}
+                  src={
+                    state &&
+                    state?.profileImg &&
+                    state?.profileImg != 'undefined'
+                      ? state.profileImg
+                      : '/assets/images/dummylogo.jpeg'
+                  }
+                  // src={state?.profileImg}
                   class='responsive '
                   width='300'
                   height='300'
@@ -268,7 +275,9 @@ const VehicleDetail = (props) => {
                 {/* About us */}
                 <div className='card widget-stat'>
                   <div className='card-header bg-custom-blue '>
-                    <h4 className='card-title text-white'>About Firm</h4>
+                    <h4 className='card-title text-white'>
+                      About {state?.userType == 1 ? 'Company' : 'Distributor'}
+                    </h4>
 
                     <div className='two_btns_ps'></div>
                   </div>

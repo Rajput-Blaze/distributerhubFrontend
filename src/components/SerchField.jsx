@@ -253,7 +253,7 @@ function SerchField(props) {
                                   id='val-username'
                                   name='type'
                                   required
-                                  value='distributer'
+                                  value='distributor'
                                   //   checked={
                                   //     state?.commercialUse == 'no' ? true : ''
                                   //   }
@@ -391,8 +391,16 @@ function SerchField(props) {
                       <Image
                         className='img-fluid padding_10'
                         alt='img'
-                        src={data.profileImg}
+                        // src={data.profileImg}
+                        src={
+                          data &&
+                          data?.profileImg &&
+                          data?.profileImg != 'undefined'
+                            ? data.profileImg
+                            : '/assets/images/dummylogo.jpeg'
+                        }
                       />
+                      {/* /> */}
                     </div>
                     <div class='gsc_col-xs-12 holder truncate'>
                       {/* <Link title="Maruti Swift" to="/"> */}

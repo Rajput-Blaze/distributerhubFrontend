@@ -1100,6 +1100,10 @@ function Index(props) {
                         {formToggle == 4 && (
                           <>
                             <div className='row'>
+                              <h5 class=' mb-2 cus_h1_text pb-2'>
+                                Select Category and Sub-category in which you
+                                are interested for taking distribution-ship
+                              </h5>
                               {intrestinputFields.map((inputField) => (
                                 <div
                                   key={inputField.id}
@@ -1183,8 +1187,7 @@ function Index(props) {
                                 </div>
                               ))}
                               <h5 class='mt-5 mb-2 cus_h1_text'>
-                                Select preferred location for distribution-ship
-                                appointment
+                                Select preferred location
                               </h5>
                               {inputFieldscity.map((InputFieldcity) => (
                                 <div className='row w-100 bb'>
@@ -1692,6 +1695,10 @@ function Index(props) {
                         {formToggle == 6 && (
                           <>
                             <div className='row'>
+                              <h5 class=' mb-2 cus_h1_text pb-2'>
+                                Select Sub-category in which you are interested
+                                for Appointing Distributor
+                              </h5>
                               {intrestinputFields.map((inputField) => (
                                 <div
                                   key={inputField.id}

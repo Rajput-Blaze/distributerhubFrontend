@@ -1112,7 +1112,7 @@ function Index(props) {
                                 name='pincode'
                                 maxLength={6}
                                 onKeyUp={(e) => checkpincode(e)}
-                                value={state?.pincode}
+                                // value={state?.pincode}
                                 placeholder='Enter pin code..'
                                 ref={register({
                                   required: 'This is required ',
@@ -1422,7 +1422,7 @@ function Index(props) {
                           ))}
 
                           <h5 class='mt-5 col-sm-6 mb-2 cus_h1_text'>
-                            Upload your Office / Godown / Product Image
+                            Upload Product Image
                           </h5>
                           <div className='row w-100 '>
                             <div className='col-md-6 col-sm-12 '>
