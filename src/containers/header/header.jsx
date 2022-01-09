@@ -304,7 +304,7 @@ function Header(props) {
                       alt='img'
                       src={
                         role && role == 0
-                          ? localStorage.getItem('profileImg')
+                          ? '/assets/images/adminprof.png'
                           : '/assets/images/adminprof.png'
                       }
                     />

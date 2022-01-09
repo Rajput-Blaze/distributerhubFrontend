@@ -1355,14 +1355,14 @@ function Index(props) {
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleSeconsRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
                             <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
@@ -1388,14 +1388,16 @@ function Index(props) {
                                         type='checkbox'
                                         className='w-auto  mr-3 input_cus_radio'
                                         id='val-username'
-                                        name={'category.' + id}
+                                        name={'category'}
                                         //onChange={(e) => {
                                         // handleChange(e);
                                         // console.log(e.target.value);
                                         // updatesubcategory(e.target.value);
                                         // }}
                                         value={data}
-                                        ref={register}
+                                        ref={register({
+                                          required: 'This is required ',
+                                        })}
                                       />
                                       <span
                                         data-toggle='collapse'
@@ -1403,117 +1405,21 @@ function Index(props) {
                                         {data}
                                       </span>
                                     </div>
-                                    {/* <div id={'#demo' + id} className='row'>
-                                      <div className='col-4 bb'>
-                                        <select
-                                          className='form-control'
-                                          id='exampleFormControlSelect1'
-                                          name='name'
-                                          // value={state?.subCategory}
-                                          // value={inputField.firstName}
-                                          // onChange={handleChange}
-                                          onChange={(event) => {
-                                            // handleChangeInput(inputField.id, event);
-                                            handleChange(event);
-                                          }}
-                                          ref={register}>
-                                          <option value=''>
-                                            Select Sub Category
-                                          </option>
-                                          {subCategory.map((data) => (
-                                            <option value={data}>{data}</option>
-                                          ))}
-                                        </select>
-                                      </div>
-                                      <div className='col-4 bb'>
-                                        <input
-                                          type='text'
-                                          className='form-control'
-                                          id='val-username'
-                                          name='brandName'
-                                          onChange={(event) => {
-                                            // handleChangeInput(inputField.id, event);
-                                            handleChange(event);
-                                          }}
-                                          // value={state?.brandName}
-                                          // onChange={handleChange}
-                                          placeholder='Add more Brand'
-                                          // required
-                                          ref={register({
-                                            //   required: 'This is required ',
-                                          })}
-                                        />
-                                      </div>
-                                    </div>
-                                  */}
                                   </>
                                 ))}
-                                {/* <div className='w-110 my-3 d-flex align-items-center mr-3'>
-                                  <input
-                                    type='radio'
-                                    className='w-auto  mr-3 input_cus_radio'
-                                    id='val-username'
-                                    name='category'
-                                    onChange={(e) => {
-                                      handleChange(e);
-                                      // console.log(e.target.value);
-                                      updatesubcategory(e.target.value);
-                                    }}
-                                    value={'data'}
-                                    ref={register}
-                                  />
-                                  {'data'}
-                                </div>
-                                <div className='row'>
-                                  <div className='col-4 bb'>
-                                    <select
-                                      className='form-control'
-                                      id='exampleFormControlSelect1'
-                                      name='name'
-                                      // value={state?.subCategory}
-                                      // value={inputField.firstName}
-                                      // onChange={handleChange}
-                                      onChange={(event) => {
-                                        // handleChangeInput(inputField.id, event);
-                                        handleChange(event);
-                                      }}
-                                      ref={register}>
-                                     
-                                      <option value=''>
-                                        Select Sub Category
-                                      </option>
-                                      {subCategory.map((data) => (
-                                        <option value={data}>{data}</option>
-                                      ))}
-                                    </select>
-                                  </div>
-                                  <div className='col-4 bb'>
-                                    <input
-                                      type='text'
-                                      className='form-control'
-                                      id='val-username'
-                                      name='brandName'
-                                      onChange={(event) => {
-                                        // handleChangeInput(inputField.id, event);
-                                        handleChange(event);
-                                      }}
-                                      // value={state?.brandName}
-                                      // onChange={handleChange}
-                                      placeholder='Add more Brand'
-                                      // required
-                                      ref={register({
-                                        //   required: 'This is required ',
-                                      })}
-                                    />
-                                  </div>
-                                </div>
-                              */}
+                                <ErrorMessage
+                                  errors={errors}
+                                  name='category'
+                                  render={({ message }) => (
+                                    <p className='error'>{message}</p>
+                                  )}
+                                />
                               </div>
                             </div>
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
@@ -1522,7 +1428,7 @@ function Index(props) {
                                   : handleThirdRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
                             <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
@@ -1548,6 +1454,7 @@ function Index(props) {
                                   // value={state?.subCategory}
                                   // value={inputField.firstName}
                                   // onChange={handleChange}
+                                  required
                                   onChange={(event) => {
                                     handleChangeInput(inputField.id, event);
                                     handleChange(event);
@@ -1568,6 +1475,7 @@ function Index(props) {
                                   className='form-control'
                                   id='val-username'
                                   name='brandName'
+                                  required
                                   onChange={(event) => {
                                     handleChangeInput(inputField.id, event);
                                     handleChange(event);
@@ -1667,14 +1575,14 @@ function Index(props) {
                             intrestinputFields
                           )}
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleFourthRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
 
                             <button type='submit' className='btn btn-primary'>
                               next
@@ -1696,6 +1604,7 @@ function Index(props) {
                                   className='form-control'
                                   id='exampleFormControlSelect1'
                                   name='category'
+                                  required
                                   // value={state?.subCategory}
                                   // value={inputField.firstName}
                                   // onChange={handleChange}
@@ -1724,6 +1633,7 @@ function Index(props) {
                                   className='form-control'
                                   id='exampleFormControlSelect1'
                                   name='name'
+                                  required
                                   // value={state?.subCategory}
                                   // value={inputField.firstName}
                                   // onChange={handleChange}
@@ -1838,14 +1748,14 @@ function Index(props) {
                           ))}
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleFivethRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
 
                             <button type='submit' className='btn btn-primary'>
                               next
@@ -1876,14 +1786,14 @@ function Index(props) {
                           </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
-                            <button
+                            {/* <button
                               type='button'
                               className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handlesixthRequest(e);
                               }}>
                               Previous
-                            </button>
+                            </button> */}
 
                             <button type='submit' className='btn btn-primary'>
                               Save
