@@ -615,7 +615,7 @@ export default function Index(props) {
                               <thead>
                                 <tr className='table_th'>
                                   <th className='width100'>Sub Category</th>
-                                  <th className='width100'>SubBrand </th>
+                                  <th className='width100'>Brand </th>
                                 </tr>
                               </thead>
                               <tbody>

@@ -160,7 +160,7 @@ function Index(props) {
               companyName: formsubmitdata.companyName,
               email: formsubmitdata.email,
               role: 0, //type
-              type: 'distributer',
+              type: 'distributor',
             })
             .then(function (respon) {
               setloading(false);
@@ -246,7 +246,7 @@ function Index(props) {
       } else if (formToggle == 5) {
         setformToggle(6);
         setstep(5);
-        setheading('Upload logo/Video');
+        setheading('Upload logo');
       }
       //   else if (formToggle == 5) {
       //     setformToggle(6);
