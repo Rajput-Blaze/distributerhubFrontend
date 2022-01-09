@@ -41330,6 +41330,9 @@ margin-left: 8.3333333333%;
 
 }
 @media screen and (max-width: 480px) {
+  .btn-light{
+    background-color: #f8f9fa3d !important
+  }
 .img_main{
   width: 50vw;
 }

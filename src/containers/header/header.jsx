@@ -137,7 +137,7 @@ function Header(props) {
                     : role == 2
                     ? 'Admin Dashboard'
                     : role == 0
-                    ? ' Dashboard'
+                    ? localStorage.getItem('firmName')
                     : 'Dashboard'}
                 </div>
                 <div className='left-sub-tile'>
@@ -1046,34 +1046,6 @@ function Header(props) {
               ''
             )}
           </ul>
-          {role == 0 || role == 6 ? (
-            ''
-          ) : (
-            <Link to='/'>
-              <div className='add-menu-sidebar'>
-                <div className='user_main_icon_box d-flex justify-content-center align-items-center'>
-                  <Image
-                    alt='img'
-                    src={
-                      cmt && cmt?.profilePic
-                        ? apiUrl + cmt?.profilePic
-                        : 'assets/images/17.jpg'
-                    }
-                  />
-                </div>
-                <div className='ml-2'>
-                  <h5 className='text-white	font-w500 mb-0'>
-                    {cmt && cmt.name ? cmt.name.substring(0, 10) : 'CMT'}....
-                    {/* {viewData && viewData.lastName ? ' ' + viewData.lastName : ''} */}
-                  </h5>
-                  <h5 className='text-white	font-w500 mb-0'>
-                    {cmt && cmt.phoneNo ? cmt.phoneNo : 'Nan'}
-                  </h5>
-                  <p className=' mb-0'>Account</p>
-                </div>
-              </div>
-            </Link>
-          )}
         </div>
       </div>
     </header>

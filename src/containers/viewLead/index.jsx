@@ -6,7 +6,7 @@ import apiUrl from '../../globals/config';
 import Header from '../header/header';
 import { param } from 'jquery';
 import OwlCarousel from 'react-owl-carousel';
-
+import Swal from 'sweetalert2';
 import showNotification from '../../services/notificationService';
 var fileDownload = require('js-file-download');
 function ViewProfile(props) {
@@ -16,6 +16,19 @@ function ViewProfile(props) {
   //     pathname: '/',
   //   });
   // }
+  const alert = () => {
+    Swal.fire({
+      // title: '<strong>HTML <u>example</u></strong>',
+      icon: 'info',
+      html: ' Please Add Product Category Details  First',
+
+      showCloseButton: true,
+      // showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: 'ok',
+      cancelButtonText: 'cancel',
+    });
+  };
   const [role, setrole] = useState('');
   let history = useHistory();
   const [category, setcategory] = useState(
@@ -643,11 +656,15 @@ function ViewProfile(props) {
                     <button
                       type='button'
                       onClick={() => {
-                        var newid = role == 2 ? 4 : 6; //check role if distributer(role =2) then 4 update form
-                        return history.push({
-                          pathname: '/updateData/' + id,
-                          data: newid,
-                        });
+                        if (state?.category.length) {
+                          var newid = role == 2 ? 4 : 6; //check role if distributer(role =2) then 4 update form
+                          return history.push({
+                            pathname: '/updateData/' + id,
+                            data: newid,
+                          });
+                        } else {
+                          alert();
+                        }
                       }}
                       className='btn btn-light ml-2'>
                       <i

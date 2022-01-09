@@ -156,13 +156,33 @@ function Index(props) {
         var data = resp?.data?.data;
         let categoryy = resp?.data?.data?.category ?? '';
         data.category = categoryy;
-        setInputFields(data?.subCategory);
+        setInputFields(
+          data?.subCategory.length
+            ? data?.subCategory
+            : [{ id: uuidv4(), name: '', brandName: '' }]
+        );
         setState(data);
         setcategoryForDistributer(data?.category ?? []);
-        setIntrestinputFields(data?.intreset);
+        setIntrestinputFields(
+          data?.intreset.length
+            ? data?.intreset
+            : [
+                {
+                  id: uuidv4(),
+                  name: '',
+                  brandName: '',
+                  category: '',
+                  categoryDropDown: [],
+                },
+              ]
+        );
         setemail(resp?.data?.data?.email);
         //set subcategory
-        setInputFieldscity(data?.preferred);
+        setInputFieldscity(
+          data?.preferred.length
+            ? data?.preferred
+            : [{ id: uuidv4(), state: '', city: '', cityDropDown: [] }]
+        );
 
         if (data?.category && formToggle == 7) {
           categoryCall(false, data?.category);
@@ -1849,7 +1869,7 @@ function Index(props) {
                                   <label
                                     className='col-form-label'
                                     htmlFor='val-username'>
-                                    Select Category new
+                                    Select Category
                                     <span className='text-danger'>*</span>
                                   </label>
                                   <div className='py-4 px-4'>

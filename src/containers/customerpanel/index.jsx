@@ -46,6 +46,7 @@ export default function Index(props) {
           var data = resp?.data?.data;
           setState(resp?.data?.data);
           localStorage.setItem('profileImg', resp?.data?.data?.profileImg);
+          localStorage.setItem('firmName', resp?.data?.data?.companyName);
           setsubCategory(resp?.data?.data?.subCategory);
           setintreset(resp?.data?.data?.intreset);
           setloction(resp?.data?.data?.preferred);
