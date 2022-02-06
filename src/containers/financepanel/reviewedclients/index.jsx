@@ -6,6 +6,8 @@ import Header from '../../header/header';
 import Footer from '../../footer/footer';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
+import Swal from 'sweetalert2';
+
 import showNotification from '../../../services/notificationService';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
@@ -20,6 +22,7 @@ function Index(props) {
   const [confirmLead, setconfirmLead] = useState([]);
   const [disable, setdisable] = useState('');
   const [user, setuser] = useState({});
+  const [deletid, setdeletid] = useState('');
 
   useEffect(() => {
     ongoing(page);
@@ -84,6 +87,29 @@ function Index(props) {
       .catch((err) => {
         showNotification('danger', err.message);
       });
+  };
+  const deleteData = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteOne(id);
+        // .then(data=>{
+
+        // })
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+      }
+    });
   };
   // const reject = (userid) => {
   //   const formData = new FormData();
@@ -211,7 +237,10 @@ function Index(props) {
                               <span>Distributor Name</span>
                             </th>
                             <th>
-                              <span> Name</span>
+                              <span>First Name</span>
+                            </th>
+                            <th>
+                              <span>Last Name</span>
                             </th>
                             <th>
                               <span>Contact Number</span>
@@ -251,6 +280,8 @@ function Index(props) {
                               </td>
                               <td>{data?.companyName}</td>
                               <td>{data?.firstName}</td>
+                              <td>{data?.lastName ? data?.lastName : 'NaN'}</td>
+
                               <td>{data?.phoneNo}</td>
                               <td>{data?.email}</td>
                               <td>{data?.password}</td>
@@ -271,7 +302,10 @@ function Index(props) {
 
                                 <span
                                   class='badge light badge-danger'
-                                  onClick={() => deleteOne(data._id)}>
+                                  onClick={
+                                    () => deleteData(data._id)
+                                    // deleteOne(data._id)
+                                  }>
                                   Delete
                                 </span>
                                 <span

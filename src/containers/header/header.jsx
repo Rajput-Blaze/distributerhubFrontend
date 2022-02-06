@@ -14,30 +14,33 @@ function Header(props) {
   const [showPopup, setShowPopup] = useState(false);
   const [showSide, setShowSide] = useState(false);
   const [viewData, setViewData] = useState();
-  const [oemname, setoemname] = useState('');
+  const [companyName, setcompanyName] = useState('');
   const [cmt, setcmt] = useState();
   const [role, setRole] = useState();
   useEffect(() => {
     getProfile();
     setRole(localStorage.getItem('role'));
     getCmt();
+    if (localStorage.getItem('role') == 0) {
+      getbrand();
+    }
   }, []);
   const getbrand = (id) => {
-    // let token = localStorage.getItem('myData');
-    // let headers = {
-    //   headers: {
-    //     'x-token': `Bearer ${token}`,
-    //   },
-    // };
-    // axios
-    //   .get(apiUrl + 'brand/getBrandId?id=' + id, headers)
-    //   .then((resp) => {
-    //     setoemname(resp?.data?.data?.brandName);
-    //   })
-    //   .catch((err) => {
-    //     // setsuccessMsg("");
-    //     console.log(err);
-    //   });
+    let token = localStorage.getItem('myData');
+    let headers = {
+      headers: {
+        'x-token': `Bearer ${token}`,
+      },
+    };
+    axios
+      .get(apiUrl + 'user/companyName', headers)
+      .then((resp) => {
+        setcompanyName(resp?.data?.data[0]?.companyName);
+      })
+      .catch((err) => {
+        // setsuccessMsg("");
+        console.log(err);
+      });
   };
   const getProfile = () => {
     // let token = localStorage.getItem('myData');
@@ -137,12 +140,12 @@ function Header(props) {
                     : role == 2
                     ? 'Admin Dashboard'
                     : role == 0
-                    ? localStorage.getItem('firmName')
+                    ? companyName
                     : 'Dashboard'}
                 </div>
                 <div className='left-sub-tile'>
                   {' '}
-                  <span>{role == 3 && viewData?.oemName ? oemname : ''}</span>
+                  {/* <span>{role == 3 && viewData?.oemName ? oemname : ''}</span> */}
                 </div>
               </div>
               <ul className='navbar-nav header-right'>

@@ -385,53 +385,18 @@ function SerchField(props) {
                */}
 
               {searchresult.map((data, index) => (
-                <div class='col-10  col-md-4 col-lg-3 offset_1_sm'>
-                  <div class='x_car_offer_main_boxes_wrapper float_left'>
-                    <div class='x_car_offer_img float_left'>
-                      <Image
-                        className='img-fluid padding_10'
-                        alt='img'
-                        // src={data.profileImg}
-                        src={
-                          data &&
-                          data?.profileImg &&
-                          data?.profileImg != 'undefined'
-                            ? data.profileImg
-                            : '/assets/images/dummylogo.jpeg'
-                        }
-                      />
-                      {/* /> */}
-                    </div>
-                    <div class='gsc_col-xs-12 holder truncate'>
-                      {/* <Link title="Maruti Swift" to="/"> */}
-
-                      <div class='price'>
-                        <span class='icon-cd_R'>
-                          {state?.type == 'company'
-                            ? 'Company Name'
-                            : 'Distributor Name'}
-                          :-
-                        </span>
-                        {data?.companyName}
-                        <sup></sup>
-                      </div>
-                      <span>
-                        <i class='fas fa-map-marker-alt '>
-                          <span class='pl-2'>
-                            {data?.state}
-                            {','}
-                            {data?.cityVillage}
-                          </span>
-                        </i>
-                      </span>
-                      <div class='BtnFull cus_btn_center buttonHolder buttonHolder virtualNumberBtn'>
-                        <div
-                          class=' btn-dcb btn-col-cus'
-                          onClick={() => view(data)}>
-                          View {state?.type}
-                        </div>
-                      </div>
-                    </div>
+                <div class='card' style='width: 18rem;'>
+                  <img
+                    class='card-img-top'
+                    src='.../100px180/'
+                    alt='Card image cap'
+                  />
+                  <div class='card-body'>
+                    <h5 class='card-title'>Card title</h5>
+                    <p class='card-text'> up the bulk of the card's content.</p>
+                    <a href='#' class='btn btn-primary'>
+                      Go somewhere
+                    </a>
                   </div>
                 </div>
               ))}

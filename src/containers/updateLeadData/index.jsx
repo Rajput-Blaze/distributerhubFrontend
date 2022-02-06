@@ -97,8 +97,8 @@ function Index(props) {
 
   const onSubmit = (formsubmitdata) => {
     formsubmitdata.dateOfBirth = SelectedDate
-    ? moment(SelectedDate).format("l")
-    : "";
+      ? moment(SelectedDate).format('l')
+      : '';
     formsubmitdata.userid = state?.userid;
     formsubmitdata.exchangeVehicleRC = state?.exchangeVehicleRC;
     formsubmitdata.exchangeVehicleDL = state?.exchangeVehicleDL;
@@ -383,7 +383,8 @@ function Index(props) {
                                 ref={register({
                                   // required: "This is required ",
                                   pattern: {
-                                    value: /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
+                                    value:
+                                      /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
                                     message: 'Enter Valid Email id',
                                   },
                                 })}
@@ -442,7 +443,7 @@ function Index(props) {
                                 peekNextMonth
                                 showMonthDropdown
                                 showYearDropdown
-                                dropdownMode="select"
+                                dropdownMode='select'
                               />
                             </div>
                           </div>
@@ -816,7 +817,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                City/Village
+                                City
                               </label>
 
                               <input
@@ -907,10 +908,17 @@ function Index(props) {
                                   state?.vehicle?.financeSchemes
                                 }
                                 name='financeSchemes'>
-                                <option value="Cash">Cash</option>
-                                <option value="Bank Finance">Bank Finance</option>
-                                <option value="Normal Finance">Normal Finance</option>
-                                <option value=" Low Interest Finance"> Low Interest Finance</option>
+                                <option value='Cash'>Cash</option>
+                                <option value='Bank Finance'>
+                                  Bank Finance
+                                </option>
+                                <option value='Normal Finance'>
+                                  Normal Finance
+                                </option>
+                                <option value=' Low Interest Finance'>
+                                  {' '}
+                                  Low Interest Finance
+                                </option>
                               </select>
                             </div>
                           </Col>

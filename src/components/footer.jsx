@@ -39,14 +39,14 @@ export default class Footer extends Component {
                         <i class='fab fa-instagram' />
                       </a>
                     </li>
-                    <li style={{ backgroundColor: 'teal' }}>
-                      <a href='https://www.linkedin.com/company/distributor-hub/'>
-                        <i class='fab fa-linkedin' />
-                      </a>
-                    </li>
                     <li style={{ backgroundColor: 'red' }}>
                       <a href='https://www.youtube.com/channel/UCYBh3qczdqcMYie_L9nnbgw/'>
                         <i class='fab fa-youtube' />
+                      </a>
+                    </li>
+                    <li style={{ backgroundColor: '#0e76a8' }}>
+                      <a href='https://www.linkedin.com/company/distributor-hub/'>
+                        <i class='fab fa-linkedin' />
                       </a>
                     </li>
                   </ul>
@@ -57,34 +57,34 @@ export default class Footer extends Component {
                   <h3>UseFul Links</h3>
                   <ul>
                     <li>
-                      <Link to='/about-us'>
+                      <a href='/about-us'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; About
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to='/advantage-and-benefit'>
+                      <a href='/advantage-and-benefit'>
                         <i className='fa fa-long-arrow-right' /> &nbsp;
                         Advantages/Benefit
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to='/contact-us'>
+                      <a href='/contact-us'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Contact
                         Us
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link to='/terms-condition'>
+                      <a href='/terms-condition'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Terms
                         and Conditions
-                      </Link>
+                      </a>
                     </li>
 
                     <li>
-                      <Link to='/privacy-policy'>
+                      <a href='/privacy-policy'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Privacy
                         &amp; Cookies Policy
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -138,7 +138,14 @@ export default class Footer extends Component {
         <div className='footer-2'>
           <div className='container'>
             <div className='footer-widget'>
-              <p className='text-center  mb-0'> 2016-2021 </p>
+              <p className='text-center  mb-0'>
+                Design &amp; Development by{' '}
+                <a
+                  style={{ color: 'White' }}
+                  href='https://rajput-blaze.github.io/'>
+                  Vishwajeet Singh
+                </a>{' '}
+              </p>
             </div>
           </div>
         </div>

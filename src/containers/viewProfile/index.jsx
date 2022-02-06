@@ -9,7 +9,7 @@ import Header from '../header/header';
 
 function ViewProfile(props) {
   const [viewData, setViewData] = useState();
-  const [oemName, setoemName] = useState("")
+  const [oemName, setoemName] = useState('');
   const [role, setRole] = useState();
   useEffect(() => {
     getProfile();
@@ -22,9 +22,8 @@ function ViewProfile(props) {
       },
     };
     axios
-      .get(apiUrl + "brand/getBrandId?id="+id, headers)
-      .then((resp) => {
-      })
+      .get(apiUrl + 'brand/getBrandId?id=' + id, headers)
+      .then((resp) => {})
       .catch((err) => {
         // setsuccessMsg("");
         console.log(err);
@@ -43,7 +42,6 @@ function ViewProfile(props) {
       .get(apiUrl + 'user/getProfile', headers)
       .then((resp) => {
         setViewData(resp.data.data[0]);
-       
       })
       .catch((err) => {
         // setsuccessMsg("");
@@ -896,8 +894,7 @@ function ViewProfile(props) {
                           <div className='row mb-2'>
                             <div className='col-sm-3 col-5'>
                               <h6 className='f-w-500'>
-                                City/Village{' '}
-                                <span className='pull-right'>:</span>
+                                City <span className='pull-right'>:</span>
                               </h6>
                             </div>
                             <div className='col-sm-9 col-7'>

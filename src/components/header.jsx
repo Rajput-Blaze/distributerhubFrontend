@@ -179,37 +179,37 @@ export default class Header extends Component {
                       to='/'>
                       Home{' '}
                     </NavLink> */}
-                      <Link
+                      <a
                         // className='nav-link'
                         className={
                           this.context.store.pathName === '/'
                             ? ` nav-link `
                             : 'nav-link'
                         }
-                        to='/'>
+                        href='/'>
                         Home{' '}
-                      </Link>
+                      </a>
                     </li>
                     <li className='nav-item' onClick={this.changePage}>
-                      <NavLink className='nav-link' to='/about-us'>
+                      <a className='nav-link' href='/about-us'>
                         About Us
-                      </NavLink>
+                      </a>
                       {/* <a className='nav-link' href='/about'>
                         About Us
                       </a> */}
                     </li>
                     <li className='nav-item' onClick={this.changePage}>
-                      <NavLink className='nav-link' to='/advantage-and-benefit'>
+                      <a className='nav-link' href='/advantage-and-benefit'>
                         Advantages/Benefit
-                      </NavLink>
+                      </a>
                       {/* <a className='nav-link' href='/about'>
                         About Us
                       </a> */}
                     </li>
                     <li className='nav-item' onClick={this.changePage}>
-                      <NavLink className='nav-link' to='/contact-us'>
+                      <a className='nav-link' href='/contact-us'>
                         Contact Us{' '}
-                      </NavLink>
+                      </a>
                       {/* <a className='nav-link' href='/contact-us'>
                         Contact Us{' '}
                       </a> */}
@@ -219,13 +219,13 @@ export default class Header extends Component {
                     <li>
                       {session.getToken() == null ? (
                         <div className='login-button'>
-                          <Link
-                            to='/login'
+                          <a
+                            href='/login'
                             className='btn btn-primary ml-3 login-btn-cus'
                             // onClick={this.handleLoginClick}
                           >
                             Login
-                          </Link>
+                          </a>
                         </div>
                       ) : (
                         <div className='login-button'>
@@ -241,23 +241,23 @@ export default class Header extends Component {
                     <li>
                       {session.getToken() == null ? (
                         <div className='login-button call-btn'>
-                          <Link
-                            to='/registration-create-free-business-profile'
+                          <a
+                            href='/registration-create-free-business-profile'
                             className='btn btn-primary ml-3'
                             // onClick={this.registershow}
                           >
                             Register
-                          </Link>
+                          </a>
                         </div>
                       ) : (
                         <div className='login-button call-btn'>
-                          <Link
-                            to='/dashboard'
+                          <a
+                            href='/dashboard'
                             className='btn btn-primary ml-3'
                             //onClick={this.registershow}
                           >
                             Dashboard
-                          </Link>
+                          </a>
                         </div>
                       )}
                     </li>

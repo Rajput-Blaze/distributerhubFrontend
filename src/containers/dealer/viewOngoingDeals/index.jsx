@@ -310,7 +310,7 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            City/Village<span className='pull-right'>:</span>
+                            City<span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7'>

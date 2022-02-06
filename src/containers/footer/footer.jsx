@@ -13,9 +13,13 @@ export default class Footer extends React.Component {
     return (
       <div className='footer'>
         <div className='copyright'>
-          {/* <p className="mb-0">© 2016-2021  <a href="/#0/">Naayak</a> | All Rights
-                              Reserved. Powered By <a target="_blank" href="https://www.toxsl.com">ToXSL Technologies</a>
-                           </p> */}
+          <p className='mb-0'>
+            © 2016-2022 <a href='/#0/'>distributorhub</a> | All Rights Reserved.
+            Developed By{' '}
+            <a target='_blank' href='https://rajput-blaze.github.io/'>
+              Vishwajeet Singh
+            </a>
+          </p>
         </div>
       </div>
     );

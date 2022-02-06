@@ -12,7 +12,7 @@ function ViewProfile(props) {
   const [viewDataa, setViewDataa] = useState([]);
   const [arrMulti, setarrMulti] = useState([]);
   const [msg, setmsg] = useState('');
-  const [oemName, setoemName] = useState("")
+  const [oemName, setoemName] = useState('');
   const [vechile, setvechile] = useState([]);
   const [id, setid] = useState('');
   useEffect(() => {
@@ -27,10 +27,9 @@ function ViewProfile(props) {
       },
     };
     axios
-      .get(apiUrl + "brand/getBrandId?id="+id, headers)
+      .get(apiUrl + 'brand/getBrandId?id=' + id, headers)
       .then((resp) => {
-        setoemName(resp?.data?.data?.brandName)
-     
+        setoemName(resp?.data?.data?.brandName);
       })
       .catch((err) => {
         // setsuccessMsg("");
@@ -48,7 +47,7 @@ function ViewProfile(props) {
       .get(apiUrl + 'user/getProfile', headers)
       .then((resp) => {
         setViewData(resp.data.data[0]);
-        getbrand(resp.data.data[0].oemName)
+        getbrand(resp.data.data[0].oemName);
         setarrMulti(resp.data.data[0].vehicle[0].dealerVehicleType);
       })
       .catch((err) => {
@@ -67,7 +66,7 @@ function ViewProfile(props) {
       .get(apiUrl + 'subDealer/checksubDealer', headers)
       .then((resp) => {
         setid(resp?.data?.data[0]?._id);
-       
+
         setViewDataa(resp?.data?.data[0]?.subDealership);
       })
       .catch((err) => {
@@ -113,7 +112,7 @@ function ViewProfile(props) {
         console.log(err);
       });
   };
-  
+
   return (
     <>
       {/* <Header /> */}
@@ -142,7 +141,7 @@ function ViewProfile(props) {
                         aria-hidden='true'></i>
                       <span>Update</span>
                     </button>
-                    
+
                     {/* </Link> */}
                   </div>
                 </div>
@@ -157,11 +156,7 @@ function ViewProfile(props) {
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7'>
-                          <span>
-                            {oemName 
-                              ? oemName
-                              : 'N/A'}{' '}
-                          </span>
+                          <span>{oemName ? oemName : 'N/A'} </span>
                         </div>
                       </div>
                       <div className='row mb-2'>
@@ -420,7 +415,7 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            City/Village <span className='pull-right'>:</span>
+                            City <span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7'>

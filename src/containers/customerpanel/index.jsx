@@ -3,6 +3,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import base from '../../globals/base';
+import Swal from 'sweetalert2';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import OwlCarousel from 'react-owl-carousel';
@@ -33,7 +34,7 @@ export default function Index(props) {
   const [role, setrole] = useState('');
   const [hiddenNumber, sethiddenNumber] = useState(undefined);
   useEffect(() => {
-    setrole(localStorage.getItem('userType'));
+    setrole(localStorage.getItem('userType')); //firmName
     setcompanyDistributerName(
       localStorage.getItem('userType') == 1 ? 'Company' : 'Distributor'
     );
@@ -81,7 +82,19 @@ export default function Index(props) {
       console.log(`---------fire api undefined`, hiddenNumber?.value);
     }
   }, [hiddenNumber?.value]);
+  const alert = () => {
+    Swal.fire({
+      // title: '<strong>HTML <u>example</u></strong>',
+      icon: 'info',
+      html: ' Please Add Product Category Details  First',
 
+      showCloseButton: true,
+      // showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: 'ok',
+      cancelButtonText: 'cancel',
+    });
+  };
   const options = {
     responsive: {
       0: {
@@ -350,6 +363,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -410,6 +424,7 @@ export default function Index(props) {
                           </span>
                         </div>
                       </div>
+                      <hr />
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
@@ -437,7 +452,8 @@ export default function Index(props) {
                             {state && state?.website ? state.website : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>
+                      </div>{' '}
+                      <hr />
                       {/* start distributer data */}
                       {role == 1 ? (
                         ''
@@ -550,7 +566,7 @@ export default function Index(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            City/Village
+                            City
                             <span className='pull-right'>:</span>
                           </h6>
                         </div>
@@ -653,11 +669,15 @@ export default function Index(props) {
                     <button
                       type='button'
                       onClick={() => {
-                        var newid = role == 2 ? 4 : 6; //check role if distributer(role =2) then 4 update form
-                        return history.push({
-                          pathname: '/updateData/' + id,
-                          data: newid,
-                        });
+                        if (state?.category.length) {
+                          var newid = role == 2 ? 4 : 6; //check role if distributer(role =2) then 4 update form
+                          return history.push({
+                            pathname: '/updateData/' + id,
+                            data: newid,
+                          });
+                        } else {
+                          alert();
+                        }
                       }}
                       className='btn btn-light ml-2'>
                       <i

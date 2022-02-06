@@ -1,30 +1,30 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Image } from "react-bootstrap";
-import base from "../../globals/base";
-import Header from "../header/header";
-import Footer from "../footer/footer";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import apiUrl from "../../globals/config";
-import axios from "axios";
+import React, { useEffect, useState, useCallback } from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Image } from 'react-bootstrap';
+import base from '../../globals/base';
+import Header from '../header/header';
+import Footer from '../footer/footer';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import apiUrl from '../../globals/config';
+import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 import moment from 'moment';
 function Index(props) {
   const [post, setpost] = useState([]);
   const [viewData, setViewData] = useState();
   const { register, errors, handleSubmit } = useForm();
-  const [successMsg, setsuccessMsg] = useState("");
-  const [inputfilead, setinputfilead] = useState("Choose File");
-  const [heading, setheading] = useState("Personal Details");
-  const [inputfilepan, setinputfilepan] = useState("Choose File");
-  const [inputfile, setinputfile] = useState("Choose File");
-  const [inputfilepic, setinputfilepic] = useState("");
+  const [successMsg, setsuccessMsg] = useState('');
+  const [inputfilead, setinputfilead] = useState('Choose File');
+  const [heading, setheading] = useState('Personal Details');
+  const [inputfilepan, setinputfilepan] = useState('Choose File');
+  const [inputfile, setinputfile] = useState('Choose File');
+  const [inputfilepic, setinputfilepic] = useState('');
   const [districtData, setdistrictData] = useState([]);
   const [blockData, setblockData] = useState([]);
   const [SelectedDate, setSelectedDate] = useState(null);
@@ -32,32 +32,32 @@ function Index(props) {
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
   const [pramsdata, setpramsdata] = useState(props.location.data);
-  const [errorMsg, seterrorMsg] = useState("");
-  const [successMs, setsuccessMs] = useState("");
+  const [errorMsg, seterrorMsg] = useState('');
+  const [successMs, setsuccessMs] = useState('');
   const [radio, setradio] = useState();
-  const [exchange, setexchange] = useState(false)
+  const [exchange, setexchange] = useState(false);
   const [saveupdate, setsaveupdate] = useState({});
   const [state, setState] = React.useState({
-    firstName: "",
-    lastName: "",
-    fatherName: "",
-    dateOfBirth: "",
-    commercialUse: "",
-    email: "",
-    phoneNo: "",
-    pincode: "",
-    district: "",
-    postOffice: "",
-    block: "",
-    cityVillage: "",
-    address: "",
-    landmark: "",
-    aadharNo: "",
-    aadharDoc: "",
-    pan: "",
-    panDoc: "",
-    bankDetails: "",
-    bankDoc: "",
+    firstName: '',
+    lastName: '',
+    fatherName: '',
+    dateOfBirth: '',
+    commercialUse: '',
+    email: '',
+    phoneNo: '',
+    pincode: '',
+    district: '',
+    postOffice: '',
+    block: '',
+    cityVillage: '',
+    address: '',
+    landmark: '',
+    aadharNo: '',
+    aadharDoc: '',
+    pan: '',
+    panDoc: '',
+    bankDetails: '',
+    bankDoc: '',
   });
   // if (!pramsdata) {
   //   props.history.push({
@@ -74,11 +74,11 @@ function Index(props) {
     //   otp: 3424,
     // };
     axios
-      .post(apiUrl + "user/verifyNo", pramsdata)
+      .post(apiUrl + 'user/verifyNo', pramsdata)
       .then((response) => {
-        if(data?.vehicleToExchanghe == "no"){
-          setexchange(true)
-         }
+        if (data?.vehicleToExchanghe == 'no') {
+          setexchange(true);
+        }
         setState(response.data.data);
       })
       .catch(function (error) {
@@ -88,38 +88,36 @@ function Index(props) {
   const onSubmit = (formsubmitdata) => {
     try {
       formsubmitdata.dateOfBirth = SelectedDate
-      ? moment(SelectedDate).format("l")
-      : "";
+        ? moment(SelectedDate).format('l')
+        : '';
       if (formToggle == 1) {
-       
         setformToggle(2);
-        setheading("Vehicle Information");
+        setheading('Vehicle Information');
       } else if (formToggle == 2) {
         setformToggle(3);
-        setheading("Address");
+        setheading('Address');
       } else if (formToggle == 3) {
         setformToggle(4);
-        setheading("Buying Details");
+        setheading('Buying Details');
       } else if (formToggle == 4) {
-        if(exchange==false){
+        if (exchange == false) {
           setformToggle(5);
           setheading('Exchange Vehicle');
-        }else{
+        } else {
           setformToggle(6);
-        setheading('Document');
+          setheading('Document');
         }
       } else if (formToggle == 5) {
         setformToggle(6);
-        setheading("Document");
+        setheading('Document');
       } else if (formToggle == 6) {
-
         formsubmitdata.phoneNo = state?.phoneNo;
         formsubmitdata.aadharDoc = formsubmitdata?.aadharDoc[0];
         // formsubmitdata.bankDoc = formsubmitdata?.bankDoc[0];
         formsubmitdata.panDoc = formsubmitdata?.panDoc[0];
         setsaveupdate(formsubmitdata);
         setformToggle(7);
-        setheading("Bank Details");
+        setheading('Bank Details');
       } else {
         saveupdate.bankDoc = state.bankDoc;
         const formData = new FormData();
@@ -130,9 +128,9 @@ function Index(props) {
         });
 
         axios
-          .post(apiUrl + "user/updateDoc", formData)
+          .post(apiUrl + 'user/updateDoc', formData)
           .then((resp) => {
-            setsuccessMs("Document updated successfully!");
+            setsuccessMs('Document updated successfully!');
             // if (resp) {
             //   props.history.push("/viewProfile");
             // }
@@ -156,13 +154,12 @@ function Index(props) {
       [evt.target.name]: value,
     });
   };
-  const handleExchange=(e)=>{
-    if(e?.target?.value=="no"){
-      setexchange(true)
+  const handleExchange = (e) => {
+    if (e?.target?.value == 'no') {
+      setexchange(true);
     }
-  }
+  };
   const fileChange = (e) => {
-
     setState({
       ...state,
       [e.target.name]: e.target.files[0],
@@ -171,67 +168,66 @@ function Index(props) {
   const handleSeconsRequest = (e) => {
     e.preventDefault();
     setformToggle(1);
-    setheading("Personal Details");
+    setheading('Personal Details');
   };
   const handleThirdRequest = (e) => {
     e.preventDefault();
     setformToggle(2);
-    setheading("Vehicle Information");
+    setheading('Vehicle Information');
   };
   const handleFourthRequest = (e) => {
     e.preventDefault();
     setformToggle(3);
-    setheading("Address");
+    setheading('Address');
   };
   const handleFivethRequest = (e) => {
     e.preventDefault();
     setformToggle(4);
-    setheading("buying detail");
+    setheading('buying detail');
   };
   const handlesixthRequest = (e) => {
     e.preventDefault();
     setformToggle(5);
-    setheading("Exchange Vehicle");
+    setheading('Exchange Vehicle');
   };
   const handlesevenRequest = (e) => {
     e.preventDefault();
     setformToggle(6);
-    setheading("Document");
+    setheading('Document');
   };
   return (
     <>
-      <div className="content-body">
-        <form autocomplete="off" onSubmit={handleSubmit(onSubmit)}>
-          <div className="container-fluid">
-            <div className="row justify-content-center h-100 align-items-center emi_row">
-              <div className="col-md-12">
-                <div className="card widget-stat">
-                  <div className="card-header bg-custom-blue ">
-                    <h4 className="card-title text-white">{heading}</h4>
+      <div className='content-body'>
+        <form autocomplete='off' onSubmit={handleSubmit(onSubmit)}>
+          <div className='container-fluid'>
+            <div className='row justify-content-center h-100 align-items-center emi_row'>
+              <div className='col-md-12'>
+                <div className='card widget-stat'>
+                  <div className='card-header bg-custom-blue '>
+                    <h4 className='card-title text-white'>{heading}</h4>
                   </div>
-                  <div className="card-body">
-                    <div className="form-validation">
+                  <div className='card-body'>
+                    <div className='form-validation'>
                       {formToggle == 1 && (
-                        <div className="row">
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                        <div className='row'>
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
-                                First Name<span className="text-danger">*</span>
+                                className='col-form-label'
+                                for='val-username'>
+                                First Name<span className='text-danger'>*</span>
                               </label>
 
                               <input
-                                type="text"
-                                className="form-control"
-                                id="val-username"
-                                name="firstName"
+                                type='text'
+                                className='form-control'
+                                id='val-username'
+                                name='firstName'
                                 disabled
                                 value={state?.firstName}
                                 // defaultValue={"ffffff"}
                                 defaultValue={viewData?.name}
-                                placeholder="Enter name.."
+                                placeholder='Enter name..'
                                 onChange={handleChange}
                                 ref={register({
                                   //  required: "This is required ",
@@ -251,112 +247,109 @@ function Index(props) {
                               />
                               <ErrorMessage
                                 errors={errors}
-                                name="name"
+                                name='name'
                                 render={({ message }) => (
-                                  <p className="error">{message}</p>
+                                  <p className='error'>{message}</p>
                                 )}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Last Name
                               </label>
                               <input
                                 // type="number"
-                                className="form-control"
+                                className='form-control'
                                 // onKeyPress={(e) => restrictAlpha(e)}
-                                id="val-username"
-                                name="lastName"
+                                id='val-username'
+                                name='lastName'
                                 disabled
                                 value={state?.lastName}
                                 onChange={handleChange}
-                                placeholder="Enter last name.."
+                                placeholder='Enter last name..'
                                 ref={register}
                                 defaultValue={viewData?.lastname}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Father's Name
                               </label>
                               <input
                                 // type="number"
-                                className="form-control"
+                                className='form-control'
                                 // onKeyPress={(e) => restrictAlpha(e)}
-                                id="val-username"
-                                name="fathername"
+                                id='val-username'
+                                name='fathername'
                                 disabled
                                 value={state?.fatherName}
                                 onChange={handleChange}
-                                placeholder="Enter father name.."
+                                placeholder='Enter father name..'
                                 ref={register}
                                 defaultValue={viewData?.fathername}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Email
                               </label>
                               <input
-                                type="email"
-                                className="form-control"
-                                id="val-username"
-                                name="email"
+                                type='email'
+                                className='form-control'
+                                id='val-username'
+                                name='email'
                                 disabled
                                 value={state?.email}
                                 onChange={handleChange}
-                                placeholder="Enter email.."
+                                placeholder='Enter email..'
                                 ref={register({
                                   pattern: {
-                                    value: /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
-                                    message: "Enter Valid Email id",
+                                    value:
+                                      /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/,
+                                    message: 'Enter Valid Email id',
                                   },
                                 })}
                                 defaultValue={viewData?.email}
                               />
                               <ErrorMessage
                                 errors={errors}
-                                name="email"
+                                name='email'
                                 render={({ message }) => (
-                                  <p className="error">{message}</p>
+                                  <p className='error'>{message}</p>
                                 )}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Mobile Number
                               </label>
                               <input
                                 //  type="number"
-                                className="form-control"
-                                id="val-username"
-                                name="phoneNo"
+                                className='form-control'
+                                id='val-username'
+                                name='phoneNo'
                                 disabled
-                                maxLength="10"
+                                maxLength='10'
                                 value={state?.phoneNo}
                                 onChange={handleChange}
                                 onKeyPress={(e) => restrictAlpha(e)}
-                                placeholder="Enter mobile number..."
+                                placeholder='Enter mobile number...'
                                 ref={register}
                                 defaultValue={viewData?.phone}
                               />
@@ -382,108 +375,104 @@ function Index(props) {
                                 peekNextMonth
                                 showMonthDropdown
                                 showYearDropdown
-                                dropdownMode="select"
+                                dropdownMode='select'
                               />
                             </div>
                           </div>
 
-                          <div className="col-lg-12 d-flex justify-content-end">
-                            <button type="submit" className="btn btn-primary">
+                          <div className='col-lg-12 d-flex justify-content-end'>
+                            <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
                           </div>
-                          <p className="successMag">{successMsg}</p>
+                          <p className='successMag'>{successMsg}</p>
                         </div>
                       )}
                       {formToggle == 2 && (
-                        <div className="row">
-                          <div className="col-lg-6">
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                        <div className='row'>
+                          <div className='col-lg-6'>
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Wheels
                               </label>
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
                                 ref={register}
-                                name="wheels"
+                                name='wheels'
                                 disabled
-                                value={state?.vehicle?.wheels}
-                              >
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="6">+6</option>
+                                value={state?.vehicle?.wheels}>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='6'>+6</option>
                               </select>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            {" "}
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                          <div className='col-lg-6'>
+                            {' '}
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Brand
                               </label>
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
                                 ref={register}
-                                name="brand"
+                                name='brand'
                                 disabled
-                                value={state?.vehicle?.brand}
-                              >
+                                value={state?.vehicle?.brand}>
                                 <option>{state?.vehicle?.brand}</option>
                                 <option>Hero</option>
                                 <option>Tvs</option>
                               </select>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                          <div className='col-lg-6'>
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Type
                               </label>
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
                                 ref={register}
-                                name="type"
+                                name='type'
                                 disabled
-                                value={state?.vehicle?.type}
-                              >
+                                value={state?.vehicle?.type}>
                                 <option>{state?.vehicle?.type}</option>
                                 <option>Loading</option>
                               </select>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                          <div className='col-lg-6'>
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Vehicle Name
                               </label>
 
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
                                 ref={register}
-                                name="vehicleName"
+                                name='vehicleName'
                                 disabled
-                                value={state?.vehicle?.vehicleName}
-                              >
+                                value={state?.vehicle?.vehicleName}>
                                 <option>{state?.vehicle?.vehicleName}</option>
                                 <option>vehicleName 2</option>
                               </select>
                               <ErrorMessage
                                 errors={errors}
-                                name="vehicleName"
+                                name='vehicleName'
                                 render={({ message }) => (
-                                  <p className="error">{message}</p>
+                                  <p className='error'>{message}</p>
                                 )}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                          <div className='col-lg-6'>
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Variants
                               </label>
                               {/* <input
@@ -495,113 +484,114 @@ function Index(props) {
                               ref={register}
                             /> */}
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
                                 ref={register}
-                                name="variants"
+                                name='variants'
                                 disabled
-                                value={state?.vehicle?.variants}
-                              >
+                                value={state?.vehicle?.variants}>
                                 <option>{state?.vehicle?.variants}</option>
                                 <option>variants 2</option>
                               </select>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                          <div className='col-lg-6'>
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 No. of Units
                               </label>
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
-                                name="noOfUnits"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
+                                name='noOfUnits'
                                 disabled
                                 value={state?.vehicle?.noOfUnits}
                                 onKeyPress={(e) => restrictAlpha(e)}
-                                placeholder="Enter no. of units.."
+                                placeholder='Enter no. of units..'
                                 ref={register}
                               />
                               <ErrorMessage
                                 errors={errors}
-                                name="noOfUnits"
+                                name='noOfUnits'
                                 render={({ message }) => (
-                                  <p className="error">{message}</p>
+                                  <p className='error'>{message}</p>
                                 )}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                          <div className='col-lg-6'>
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Commercial Use
                               </label>
-                              <div class="d-flex px-2">
-                                <div class="w-110 d-flex align-items-center mr-3">
-                                  Yes{" "}
+                              <div class='d-flex px-2'>
+                                <div class='w-110 d-flex align-items-center mr-3'>
+                                  Yes{' '}
                                   <input
-                                    type="radio"
-                                    className="w-auto ml-2 input_cus_radio"
-                                    id="val-username"
-                                    name="commercialUse"
+                                    type='radio'
+                                    className='w-auto ml-2 input_cus_radio'
+                                    id='val-username'
+                                    name='commercialUse'
                                     disabled
                                     checked={
-                                      state?.vehicle?.commercialUse == "yes" ? true : ""
+                                      state?.vehicle?.commercialUse == 'yes'
+                                        ? true
+                                        : ''
                                     }
-                                   
                                     ref={register}
                                   />
                                 </div>
-                                <div class="w-110 d-flex align-items-center">
-                                  No{" "}
+                                <div class='w-110 d-flex align-items-center'>
+                                  No{' '}
                                   <input
-                                    type="radio"
+                                    type='radio'
                                     disabled
-                                    className="w-auto ml-2 input_cus_radio"
-                                    id="val-username"
-                                    name="commercialUse"
+                                    className='w-auto ml-2 input_cus_radio'
+                                    id='val-username'
+                                    name='commercialUse'
                                     checked={
-                                      state?.vehicle?.commercialUse == "no" ? true : ""
+                                      state?.vehicle?.commercialUse == 'no'
+                                        ? true
+                                        : ''
                                     }
-                                   
-                                    value="no"
+                                    value='no'
                                     ref={register}
                                   />
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            {" "}
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                          <div className='col-lg-6'>
+                            {' '}
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Any Vehicle to Exchange
                               </label>
-                              <div class="d-flex px-2">
-                                <div class="w-110 d-flex align-items-center mr-3">
-                                  Yes{" "}
+                              <div class='d-flex px-2'>
+                                <div class='w-110 d-flex align-items-center mr-3'>
+                                  Yes{' '}
                                   <input
-                                    type="radio"
-                                    className="w-auto ml-2 input_cus_radio"
-                                    id="val-username"
-                                    value="yes"
+                                    type='radio'
+                                    className='w-auto ml-2 input_cus_radio'
+                                    id='val-username'
+                                    value='yes'
                                     disabled
-                                    name="vehicleToExchanghe"
+                                    name='vehicleToExchanghe'
                                     // defaultValue={prevData.location.state?.detail?.vehicleToExchanghe}
                                     ref={register}
                                   />
                                 </div>
-                                <div class="w-110 d-flex align-items-center">
-                                  No{" "}
+                                <div class='w-110 d-flex align-items-center'>
+                                  No{' '}
                                   <input
-                                    type="radio"
+                                    type='radio'
                                     // onClick={() => setshowVehicles(false)}
-                                    className="w-auto ml-2 input_cus_radio"
-                                    id="val-username"
-                                    value="no"
+                                    className='w-auto ml-2 input_cus_radio'
+                                    id='val-username'
+                                    value='no'
                                     disabled
-                                    name="vehicleToExchanghe"
+                                    name='vehicleToExchanghe'
                                     // defaultValue={prevData.location.state?.detail?.vehicleToExchanghe}
                                     ref={register}
                                   />
@@ -610,48 +600,46 @@ function Index(props) {
                             </div>
                           </div>
 
-                          <div className="col-lg-12 d-flex justify-content-end">
+                          <div className='col-lg-12 d-flex justify-content-end'>
                             <button
-                              type="button"
-                              className="btn btn-primary mr-2"
+                              type='button'
+                              className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleSeconsRequest(e);
-                              }}
-                            >
+                              }}>
                               Previous
                             </button>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
                           </div>
-                          <p className="successMag">{successMsg}</p>
+                          <p className='successMag'>{successMsg}</p>
                         </div>
                       )}
                       {formToggle == 3 && (
-                        <div className="row">
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                        <div className='row'>
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Pin Code
                               </label>
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
                                 onKeyPress={(e) => restrictAlpha(e)}
-                                name="pincode"
+                                name='pincode'
                                 maxLength={6}
                                 disabled
                                 defaultValue={state.pincode}
-                                placeholder="Enter a pin code.."
+                                placeholder='Enter a pin code..'
                                 ref={register({
                                   pattern: {
                                     value: /^[0-9][0-9][0-9][0-9][0-9][0-9]$/,
-                                    message: "Enter Valid  Pin Code",
+                                    message: 'Enter Valid  Pin Code',
                                   },
                                 })}
                               />
@@ -673,25 +661,24 @@ function Index(props) {
                               /> */}
                               <ErrorMessage
                                 errors={errors}
-                                name="pincode"
+                                name='pincode'
                                 render={({ message }) => (
-                                  <p className="error">{message}</p>
+                                  <p className='error'>{message}</p>
                                 )}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 District
                               </label>
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
-                                name="district"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
+                                name='district'
                                 disabled
                                 value={state.district}
                                 ref={register}
@@ -701,170 +688,167 @@ function Index(props) {
                               </select>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Post Office
                               </label>
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
-                                name="postOffice"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
+                                name='postOffice'
                                 ref={register}
                                 disabled
-                                value={state.postOffice}
-                              >
+                                value={state.postOffice}>
                                 <option>{state.postOffice}</option>
                               </select>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Block
                               </label>
 
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
-                                name="block"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
+                                name='block'
                                 ref={register}
                                 defaultValue={state.block}
                                 // onChange={handleChange}
                                 disabled
-                                value={state.block}
-                              >
+                                value={state.block}>
                                 <option>{state.block}</option>
                               </select>
                             </div>
                           </div>
 
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
-                                City/Village
+                                className='col-form-label'
+                                for='val-username'>
+                                City
                               </label>
 
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
-                                name="cityVillage"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
+                                name='cityVillage'
                                 disabled
                                 value={state.cityVillage}
                                 onChange={handleChange}
-                                placeholder="Enter city-village name.."
+                                placeholder='Enter city-village name..'
                                 ref={register}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Address
                               </label>
 
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
-                                name="address"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
+                                name='address'
                                 disabled
                                 value={state.address}
                                 onChange={handleChange}
-                                placeholder="Enter address name.."
+                                placeholder='Enter address name..'
                                 ref={register}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Landmark
                               </label>
 
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
                                 disabled
                                 value={state.landmark}
                                 onChange={handleChange}
-                                name="landmark"
-                                placeholder="Enter landmark name.."
+                                name='landmark'
+                                placeholder='Enter landmark name..'
                                 ref={register}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-12 d-flex justify-content-end">
+                          <div className='col-lg-12 d-flex justify-content-end'>
                             <button
-                              type="button"
-                              className="btn btn-primary mr-2"
+                              type='button'
+                              className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleThirdRequest(e);
-                              }}
-                            >
+                              }}>
                               Previous
                             </button>
-                            <button type="submit" className="btn btn-primary">
+                            <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
                           </div>
-                          <p className="successMag">{successMsg}</p>
+                          <p className='successMag'>{successMsg}</p>
                         </div>
                       )}
                       {formToggle == 4 && (
-                        <div className="row">
+                        <div className='row'>
                           <Col sm={6}>
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Finance Schemes
                               </label>
 
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
                                 ref={register}
                                 disabled
                                 value={state?.vehicle?.financeSchemes}
-                                name="financeSchemes"
-                              >
-                                 <option value="Cash">Cash</option>
-                                <option value="Bank Finance">Bank Finance</option>
-                                <option value="Normal Finance">Normal Finance</option>
-                                <option value=" Low Interest Finance"> Low Interest Finance</option>
+                                name='financeSchemes'>
+                                <option value='Cash'>Cash</option>
+                                <option value='Bank Finance'>
+                                  Bank Finance
+                                </option>
+                                <option value='Normal Finance'>
+                                  Normal Finance
+                                </option>
+                                <option value=' Low Interest Finance'>
+                                  {' '}
+                                  Low Interest Finance
+                                </option>
                               </select>
                             </div>
                           </Col>
                           <Col sm={6}>
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Buying Timeline
                               </label>
                               <select
-                                class="form-control"
-                                id="exampleFormControlSelect1"
-                                name="buyingTimeline"
+                                class='form-control'
+                                id='exampleFormControlSelect1'
+                                name='buyingTimeline'
                                 disabled
                                 value={state?.vehicle?.buyingTimeline}
-                                ref={register}
-                              >
-                                 <option value='5 Days'>5 Days</option>
+                                ref={register}>
+                                <option value='5 Days'>5 Days</option>
                                 <option value='10 Days'>10 Days</option>
                                 <option value='15 Days'>15 Days</option>
 
@@ -875,167 +859,163 @@ function Index(props) {
                             </div>
                           </Col>
 
-                          <div className="col-lg-12 d-flex justify-content-end">
+                          <div className='col-lg-12 d-flex justify-content-end'>
                             <button
-                              type="button"
-                              className="btn btn-primary mr-2"
+                              type='button'
+                              className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleFourthRequest(e);
-                              }}
-                            >
+                              }}>
                               Previous
                             </button>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type='submit' className='btn btn-primary'>
                               next
                             </button>
                           </div>
-                          <p className="successMag">{successMsg}</p>
+                          <p className='successMag'>{successMsg}</p>
                         </div>
                       )}
                       {formToggle == 5 && (
-                        <div className="row">
+                        <div className='row'>
                           <Col sm={6}>
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Company
                               </label>
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
-                                name="exchangeCompany"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
+                                name='exchangeCompany'
                                 disabled
                                 value={state?.vehicle?.exchangeCompany}
-                                placeholder="Enter company.."
+                                placeholder='Enter company..'
                                 ref={register}
                               />
                             </div>
                           </Col>
-                          
+
                           <Col sm={6}>
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Model
                               </label>
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
-                                name="model"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
+                                name='model'
                                 disabled
                                 value={state?.vehicle?.model}
-                                placeholder="Enter Model.."
+                                placeholder='Enter Model..'
                                 ref={register}
                               />
                             </div>
                           </Col>
                           <Col sm={6}>
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Registration No.
                               </label>
                               <input
-                                type="text"
-                                class="form-control"
-                                id="val-username"
+                                type='text'
+                                class='form-control'
+                                id='val-username'
                                 onKeyPress={(e) => restrictAlpha(e)}
-                                name="registrationNumber"
+                                name='registrationNumber'
                                 disabled
                                 value={state?.vehicle?.registrationNumber}
-                                placeholder="Enter registration No..."
+                                placeholder='Enter registration No...'
                                 ref={register}
                               />
                             </div>
                           </Col>
                           <Col sm={6}>
-                            <div class="form-group ">
-                              <label class="col-form-label" for="val-username">
+                            <div class='form-group '>
+                              <label class='col-form-label' for='val-username'>
                                 Photo (Upload)
                               </label>
 
-                              <div class="custom-file">
+                              <div class='custom-file'>
                                 <input
-                                  type="text"
-                                  class="custom-file-input form-control"
+                                  type='text'
+                                  class='custom-file-input form-control'
                                   ref={register}
-                                  name="photoUpload" //
+                                  name='photoUpload' //
                                   value={
                                     state?.vehicle?.photoUpload
                                       ? state?.vehicle?.photoUpload
-                                          .split("/")[1]
-                                          .split("-")[1]
-                                      : "img"
+                                          .split('/')[1]
+                                          .split('-')[1]
+                                      : 'img'
                                   }
                                   // value="img"
                                 />
-                                <label class="custom-file-label">
+                                <label class='custom-file-label'>
                                   {state?.vehicle?.photoUpload
                                     ? state?.vehicle?.photoUpload
-                                        .split("/")[1]
-                                        .split("-")[1]
-                                    : "Choose file"}
+                                        .split('/')[1]
+                                        .split('-')[1]
+                                    : 'Choose file'}
                                 </label>
                               </div>
                             </div>
                           </Col>
 
-                          <div className="col-lg-12 d-flex justify-content-end">
+                          <div className='col-lg-12 d-flex justify-content-end'>
                             <button
-                              type="button"
-                              className="btn btn-primary mr-2"
+                              type='button'
+                              className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handleFivethRequest(e);
-                              }}
-                            >
+                              }}>
                               Previous
                             </button>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type='submit' className='btn btn-primary'>
                               next
                             </button>
                           </div>
-                          <p className="successMag">{successMsg}</p>
+                          <p className='successMag'>{successMsg}</p>
                         </div>
                       )}
                       {formToggle == 6 && (
-                        <div className="row">
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                        <div className='row'>
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Aadhaar Number
                               </label>
                               <input
-                                type="text"
-                                className="form-control"
-                                id="val-username"
-                                name="aadharNo"
+                                type='text'
+                                className='form-control'
+                                id='val-username'
+                                name='aadharNo'
                                 disabled
                                 defaultValue={state?.docs?.aadharNo}
                                 // value={state.aadharNo}
                                 onChange={handleChange}
                                 onKeyPress={(e) => restrictAlpha(e)}
-                                placeholder="Enter aadhar No.."
+                                placeholder='Enter aadhar No..'
                                 ref={register}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Upload Aadhaar Card
                               </label>
-                              <div class="custom-file">
+                              <div class='custom-file'>
                                 <input
-                                  type="file"
-                                  name="aadharDoc"
-                                  class="custom-file-input form-control"
+                                  type='file'
+                                  name='aadharDoc'
+                                  class='custom-file-input form-control'
                                   ref={register}
                                   // value= {(state?.docs?.aadharDoc)?state?.docs?.aadharDoc.split('/')[1].split("-")[1]:"Choose file"}
                                   // onChange={fileChange}
@@ -1043,73 +1023,71 @@ function Index(props) {
                                     setinputfilead(e.target.files[0].name)
                                   }
                                 />
-                                <label class="custom-file-label">
+                                <label class='custom-file-label'>
                                   {inputfilead}
                                   {/* {(state?.docs?.aadharDoc)?state?.docs?.aadharDoc.split('/')[1].split("-")[1]:"Choose file"} */}
                                 </label>
                               </div>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 PAN
                               </label>
                               <input
-                                type="text"
-                                className="form-control"
-                                id="val-username"
-                                name="pan"
+                                type='text'
+                                className='form-control'
+                                id='val-username'
+                                name='pan'
                                 disabled
                                 onChange={handleChange}
-                                placeholder="Enter pan name.."
+                                placeholder='Enter pan name..'
                                 ref={register}
                                 defaultValue={state?.docs?.pan}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 PAN (Upload)
                               </label>
-                              <div class="custom-file">
+                              <div class='custom-file'>
                                 <input
-                                  type="file"
-                                  name="panDoc"
-                                  class="custom-file-input form-control"
+                                  type='file'
+                                  name='panDoc'
+                                  class='custom-file-input form-control'
                                   ref={register}
                                   onChange={(e) =>
                                     setinputfilepan(e.target.files[0].name)
                                   }
                                   // onChange={fileChange}
                                 />
-                                <label class="custom-file-label">
+                                <label class='custom-file-label'>
                                   {inputfilepan}
                                   {/* {(state?.docs?.panDoc)?state?.docs?.panDoc.split('/')[1].split("-")[1]:"Choose file"} */}
                                 </label>
                               </div>
                             </div>
                           </div>
-                          <div className="col-lg-12 d-flex justify-content-end">
+                          <div className='col-lg-12 d-flex justify-content-end'>
                             <button
-                              type="button"
-                              className="btn btn-primary mr-2"
+                              type='button'
+                              className='btn btn-primary mr-2'
                               onClick={(e) => {
-                                exchange==true?handleFivethRequest(e):
-                                 handlesixthRequest(e); 
-                              }}
-                            >
+                                exchange == true
+                                  ? handleFivethRequest(e)
+                                  : handlesixthRequest(e);
+                              }}>
                               Previous
                             </button>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type='submit' className='btn btn-primary'>
                               Next
                             </button>
                           </div>
@@ -1117,43 +1095,41 @@ function Index(props) {
                         </div>
                       )}
                       {formToggle == 7 && (
-                        <div className="row">
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                        <div className='row'>
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Bank Name
                               </label>
                               <input
-                                type="text"
+                                type='text'
                                 disabled
-                                className="form-control"
-                                id="val-username"
-                                name="bankName"
+                                className='form-control'
+                                id='val-username'
+                                name='bankName'
                                 defaultValue={state?.docs?.bankName}
                                 // value={state.aadharNo}
                                 onChange={handleChange}
                                 onKeyPress={(e) => restrictAlpha(e)}
-                                placeholder="Enter aadhar No.."
+                                placeholder='Enter aadhar No..'
                                 ref={register}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Bank Passbook (Upload)
                               </label>
-                              <div class="custom-file">
+                              <div class='custom-file'>
                                 <input
-                                  type="file"
-                                  name="bankDoc"
-                                  class="custom-file-input form-control"
+                                  type='file'
+                                  name='bankDoc'
+                                  class='custom-file-input form-control'
                                   ref={register}
                                   // value= {(state?.docs?.aadharDoc)?state?.docs?.aadharDoc.split('/')[1].split("-")[1]:"Choose file"}
                                   onChange={fileChange}
@@ -1161,147 +1137,144 @@ function Index(props) {
                                   //   setinputfilead(e.target.files[0].name)
                                   // }
                                 />
-                                <label class="custom-file-label">
+                                <label class='custom-file-label'>
                                   {state.bankDoc?.name
                                     ? state.bankDoc?.name
-                                    : "Choose File"}
+                                    : 'Choose File'}
                                   {/* {inputfile} */}
                                   {/* {(state?.docs?.aadharDoc)?state?.docs?.aadharDoc.split('/')[1].split("-")[1]:"Choose file"} */}
                                 </label>
                               </div>
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 A/C No.
                               </label>
                               <input
-                                type="text"
+                                type='text'
                                 disabled
-                                className="form-control"
-                                id="val-username"
-                                name="acNo"
+                                className='form-control'
+                                id='val-username'
+                                name='acNo'
                                 onChange={handleChange}
-                                placeholder="Enter pan name.."
+                                placeholder='Enter pan name..'
                                 ref={register}
                                 defaultValue={state?.docs?.acNo}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Account Holder
                               </label>
                               <input
-                                type="text"
+                                type='text'
                                 disabled
-                                className="form-control"
-                                id="val-username"
-                                name="accountHolder"
+                                className='form-control'
+                                id='val-username'
+                                name='accountHolder'
                                 onChange={handleChange}
-                                placeholder="Enter pan name.."
+                                placeholder='Enter pan name..'
                                 ref={register}
                                 defaultValue={state?.docs?.accountHolder}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group ">
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 IFSC code
                               </label>
                               <input
-                                type="text"
+                                type='text'
                                 disabled
-                                className="form-control"
-                                id="val-username"
-                                name="ifscCode"
+                                className='form-control'
+                                id='val-username'
+                                name='ifscCode'
                                 onChange={handleChange}
-                                placeholder="Enter pan name.."
+                                placeholder='Enter pan name..'
                                 ref={register}
                                 defaultValue={state?.docs?.ifscCode}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group custom-check-design">
+                          <div className='col-lg-6'>
+                            <div className='form-group custom-check-design'>
                               <label
-                                className="col-form-label"
-                                for="val-username"
-                              >
+                                className='col-form-label'
+                                for='val-username'>
                                 Do you have cheque book?
                               </label>
-                              <div className="d-flex px-2 py-2">
-                                <div className="w-110 d-flex align-items-center mr-3">
+                              <div className='d-flex px-2 py-2'>
+                                <div className='w-110 d-flex align-items-center mr-3'>
                                   <input
-                                    type="radio"
+                                    type='radio'
                                     disabled
-                                    className="w-auto ml-2 input_cus_radio"
-                                    id="chequeBookY"
-                                    name="chequeBook"
+                                    className='w-auto ml-2 input_cus_radio'
+                                    id='chequeBookY'
+                                    name='chequeBook'
                                     ref={register}
                                     value={true}
                                     checked={
-                                      state?.docs?.chequeBook == "yes" ? true : ""
+                                      state?.docs?.chequeBook == 'yes'
+                                        ? true
+                                        : ''
                                     }
                                   />
                                   <label
-                                    className="check-label"
-                                    for="chequeBookY"
-                                  >
-                                    Yes{" "}
+                                    className='check-label'
+                                    for='chequeBookY'>
+                                    Yes{' '}
                                   </label>
                                 </div>
-                                <div className="w-110 d-flex align-items-center">
+                                <div className='w-110 d-flex align-items-center'>
                                   <input
-                                    type="radio"
+                                    type='radio'
                                     disabled
-                                    className="w-auto ml-2 input_cus_radio"
-                                    id="chequeBookN"
-                                    name="chequeBook"
+                                    className='w-auto ml-2 input_cus_radio'
+                                    id='chequeBookN'
+                                    name='chequeBook'
                                     ref={register}
                                     value={false}
                                     checked={
-                                      state?.docs?.chequeBook == "no" ? true : ""
+                                      state?.docs?.chequeBook == 'no'
+                                        ? true
+                                        : ''
                                     }
                                   />
                                   <label
-                                    className="check-label"
-                                    for="chequeBookNgit"
-                                  >
-                                    No{" "}
+                                    className='check-label'
+                                    for='chequeBookNgit'>
+                                    No{' '}
                                   </label>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div className="col-lg-12 d-flex justify-content-end">
+                          <div className='col-lg-12 d-flex justify-content-end'>
                             <button
-                              type="button"
-                              className="btn btn-primary mr-2"
+                              type='button'
+                              className='btn btn-primary mr-2'
                               onClick={(e) => {
                                 handlesevenRequest(e);
-                              }}
-                            >
+                              }}>
                               Previous
                             </button>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type='submit' className='btn btn-primary'>
                               Submit
                             </button>
                           </div>
-                          <p className="successMag">{successMs}</p>
+                          <p className='successMag'>{successMs}</p>
                         </div>
                       )}
                     </div>

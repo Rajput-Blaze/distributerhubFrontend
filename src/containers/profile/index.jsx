@@ -94,8 +94,7 @@ function Index(props) {
   const gitBlock = (value) => {
     axios
       .get(apiUrl + 'user/getDistrict?district=' + value)
-      .then((res) => {
-      })
+      .then((res) => {})
       .catch((error) => {
         if (error) {
           // setblockData([]);
@@ -150,7 +149,7 @@ function Index(props) {
     // ? moment(SelectedDate).format("l")
     // : "";
     // }
-    
+
     try {
       if (formToggle == 3) data.district = state?.district;
 
@@ -363,7 +362,7 @@ function Index(props) {
                                 peekNextMonth
                                 showMonthDropdown
                                 showYearDropdown
-                                dropdownMode="select"
+                                dropdownMode='select'
                               />
                             </div>
                           </div>
@@ -613,7 +612,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 for='val-username'>
-                                City/Village
+                                City
                               </label>
 
                               <input

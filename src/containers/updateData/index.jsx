@@ -897,7 +897,7 @@ function Index(props) {
                                 <label
                                   className='col-form-label'
                                   htmlFor='val-username'>
-                                  City/Village
+                                  City
                                 </label>
 
                                 <select
@@ -1634,7 +1634,7 @@ function Index(props) {
                                 <label
                                   className='col-form-label'
                                   htmlFor='val-username'>
-                                  City/Village
+                                  City
                                 </label>
 
                                 <select

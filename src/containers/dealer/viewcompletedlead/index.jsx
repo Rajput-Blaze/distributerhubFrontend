@@ -13,7 +13,7 @@ function ViewProfile(props) {
     });
   }
   const history = useHistory();
-  
+
   const [post, setpost] = useState([]);
   const [pramsdata, setpramsdata] = useState(props.location.data);
   const [blockData, setblockData] = useState([]);
@@ -35,7 +35,7 @@ function ViewProfile(props) {
           response.data?.data?.vehicle?.vehicleToExchanghe;
         data.chequeBook = response.data?.data?.docs?.chequeBook;
         getLeadss(data.createdByDealer); // createdByDealer
-       
+
         setState(data);
         setblockData([data.block]);
         setpost([{ Name: data.postOffice }]);
@@ -55,7 +55,7 @@ function ViewProfile(props) {
           response.data?.data?.vehicle?.vehicleToExchanghe;
         data.chequeBook = response.data?.data?.docs?.chequeBook;
         // createdByDealer
-       
+
         setStatee(data);
       })
       .catch(function (error) {
@@ -322,7 +322,7 @@ function ViewProfile(props) {
                       <div className='row mb-2'>
                         <div className='col-sm-3 col-5'>
                           <h6 className='f-w-500'>
-                            City/Village<span className='pull-right'>:</span>
+                            City<span className='pull-right'>:</span>
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7'>

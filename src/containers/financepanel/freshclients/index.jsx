@@ -12,6 +12,7 @@ import axios from 'axios';
 import * as constant from '../../../services/constant';
 import ReactPaginate from 'react-paginate';
 import Stage from '../component/Stage';
+import Swal from 'sweetalert2';
 import apiUrl from '../../../globals/config';
 var fileDownload = require('js-file-download');
 function Index(props) {
@@ -106,7 +107,29 @@ function Index(props) {
       data,
     });
   };
+  const deleteData = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteOne(id);
+        // .then(data=>{
 
+        // })
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+      }
+    });
+  };
   const deleteOne = (id) => {
     let token = localStorage.getItem('myData');
     let headers = {
@@ -166,7 +189,10 @@ function Index(props) {
                               <span>company Name</span>
                             </th>
                             <th>
-                              <span>Name</span>
+                              <span>First Name</span>
+                            </th>
+                            <th>
+                              <span>Last Name</span>
                             </th>
                             <th>
                               <span>Contact Number</span>
@@ -206,6 +232,7 @@ function Index(props) {
                               </td>
                               <td>{data?.companyName}</td>
                               <td>{data?.firstName}</td>
+                              <td>{data?.lastName ? data?.lastName : 'NaN'}</td>
                               <td>{data?.phoneNo}</td>
                               <td>{data?.email}</td>
                               <td>{data?.password}</td>
@@ -226,7 +253,7 @@ function Index(props) {
 
                                 <span
                                   class='badge light badge-danger'
-                                  onClick={() => deleteOne(data._id)}>
+                                  onClick={() => deleteData(data._id)}>
                                   Delete
                                 </span>
                                 <span

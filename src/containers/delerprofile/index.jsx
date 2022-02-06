@@ -37,7 +37,7 @@ function Index(props) {
   const [inputfilepic, setinputfilepic] = useState('');
   const [districtData, setdistrictData] = useState([]);
   const [blockData, setblockData] = useState([]);
-  const [oemName, setoemName] = useState("")
+  const [oemName, setoemName] = useState('');
   const [state, setState] = React.useState({
     oemName: '',
     dealershipName: '',
@@ -108,10 +108,8 @@ function Index(props) {
       },
     };
     axios
-      .get(apiUrl + "brand/getBrandId?id="+id, headers)
-      .then((resp) => {
-     
-      })
+      .get(apiUrl + 'brand/getBrandId?id=' + id, headers)
+      .then((resp) => {})
       .catch((err) => {
         // setsuccessMsg("");
         console.log(err);
@@ -120,9 +118,7 @@ function Index(props) {
   const gitBlock = (value) => {
     axios
       .get(apiUrl + 'user/getDistrict?district=' + value)
-      .then((res) => {
-       
-      })
+      .then((res) => {})
       .catch((error) => {
         if (error) {
           // setblockData([]);
@@ -142,7 +138,7 @@ function Index(props) {
       .then((resp) => {
         setState(resp.data.data[0]);
         setpost([{ Name: resp.data.data[0].postOffice }]);
-       
+
         setblockData([resp.data.data[0].block]);
         setviewDatanumber(resp.data.data[0].phoneNo);
         setcontactDatanumber(resp.data.data[0].contactNo);
@@ -152,7 +148,7 @@ function Index(props) {
         console.log(err);
       });
   };
-  
+
   const fileChange = (e) => {
     setState({
       ...state,
@@ -164,7 +160,6 @@ function Index(props) {
 
   const onSubmit = (data) => {
     try {
-      
       if (formToggle == 3) data.district = state?.district;
       // return
       data.profilePic = state?.profilePic;
@@ -644,7 +639,7 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 for='val-username'>
-                                City/Village
+                                City
                               </label>
 
                               <input
@@ -839,7 +834,6 @@ function Index(props) {
                               </div>
                             </div>
                           </div>
-                         
 
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button
@@ -1054,7 +1048,6 @@ function Index(props) {
                               </div>
                             </div>
                           </div>
-                         
 
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button
@@ -1209,11 +1202,8 @@ function Index(props) {
                                 placeholder='Enter Sub-Dealership Name..'
                                 value={state.subDealershipName}
                                 onChange={handleChange}
-                                ref={register({
-                                 
-                                })}
+                                ref={register({})}
                               />
-                              
                             </div>
                           </div>
                           <div className='col-lg-6'>
@@ -1342,11 +1332,8 @@ function Index(props) {
                                 placeholder='Enter Sub-Dealership Name..'
                                 // value={state.subDealershipName}
                                 // onChange={handleChange}
-                                ref={register({
-                                  
-                                })}
+                                ref={register({})}
                               />
-                             
                             </div>
                           </div>
                           <div className='col-lg-6'>
@@ -1384,10 +1371,8 @@ function Index(props) {
                                 onKeyPress={(e) => restrictAlpha(e)}
                                 id='val-username'
                                 name='subDealercontactNo'
-                               
                                 placeholder='Enter Contact Number'
                                 ref={register}
-                              
                               />
                             </div>
                           </div>
@@ -1403,13 +1388,11 @@ function Index(props) {
                                 class='form-control'
                                 id='val-username'
                                 name='subDealeremail'
-                               
                                 placeholder='Enter Email..'
                                 ref={register}
                               />
                             </div>
                           </div>
-                         
 
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button
