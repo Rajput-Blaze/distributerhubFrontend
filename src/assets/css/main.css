@@ -40664,6 +40664,7 @@ select {
     display: block;
     width: 100% !important;
     max-width: 190px;
+    margin: 0 auto;
   }
   .mw-100 {
     width: 100%;
@@ -41385,4 +41386,10 @@ select.form-control {
 }
 .responsiveCardouter {
   overflow-x: auto;
+}
+@media screen and (min-width: 768px) {
+  .imga-respons {
+    height: 250px;
+    width: 350px;
+  }
 }

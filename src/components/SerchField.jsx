@@ -387,7 +387,8 @@ function SerchField(props) {
               {searchresult.map((data, index) => (
                 <div class='col-10  col-md-4 col-lg-3 offset_1_sm'>
                   <div class='x_car_offer_main_boxes_wrapper float_left'>
-                    <div class='x_car_offer_img float_left'>
+                    {/* x_car_offer_img */}
+                    <div class=' float_left'>
                       <Image
                         className='img-fluid padding_10'
                         alt='img'

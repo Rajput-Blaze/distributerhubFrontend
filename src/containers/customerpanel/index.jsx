@@ -791,7 +791,7 @@ export default function Index(props) {
                               state?.otherImage.map((item, id) => (
                                 <div key={id} className='item'>
                                   <div className='x_car_offer_main_boxes_wrapper float_left'>
-                                    <div className='x_car_offer_img float_left'>
+                                    <div className=' float_left'>
                                       <img src={item} alt={item} />
                                     </div>
                                     <div

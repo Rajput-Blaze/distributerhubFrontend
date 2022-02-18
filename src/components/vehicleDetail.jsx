@@ -189,7 +189,7 @@ const VehicleDetail = (props) => {
                       : '/assets/images/dummylogo.jpeg'
                   }
                   // src={state?.profileImg}
-                  class='responsive '
+                  class='responsive h-100'
                   width='300'
                   height='300'
                 />{' '}
@@ -258,7 +258,7 @@ const VehicleDetail = (props) => {
                                 state?.otherImage.map((item, id) => (
                                   <div key={id} className='item'>
                                     <div className='x_car_offer_main_boxes_wrapper float_left'>
-                                      <div className='x_car_offer_img float_left'>
+                                      <div className=' float_left'>
                                         <img src={item} alt={item} />
                                       </div>
                                     </div>
