@@ -40665,6 +40665,8 @@ select {
     width: 100% !important;
     max-width: 190px;
     margin: 0 auto;
+    height: 250px;
+
   }
   .mw-100 {
     width: 100%;
