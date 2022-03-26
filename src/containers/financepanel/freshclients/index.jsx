@@ -51,12 +51,13 @@ function Index(props) {
     //   },
     // };
     axios
-      .get(apiUrl + 'user/getallcompany')
+      .get(apiUrl + 'user/getallcompany?skip=' + page)
       .then((resp) => {
         var data = resp?.data?.data;
-        console.log(`resp?.data`, resp?.data?.data);
-        setconfirmLead(resp?.data?.data);
-        setdatacount(data.length);
+        console.log(`resp?.count`, resp?.data?.data[0].count);
+        console.log(`resp?.data`, resp?.data?.data[0].data);
+        setconfirmLead(resp?.data?.data[0].data ?? []);
+        setdatacount(resp?.data?.data[0].count ?? 0);
       })
       .catch((err) => {
         showNotification('danger', err.message);
